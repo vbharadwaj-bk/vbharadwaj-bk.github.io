@@ -34,29 +34,6 @@
            src="{{ $avatar_image.RelPermalink }}" alt="{{$person_page.Title}}">
       {{ end }}
 
-      <div class="portrait-title">
-
-        <h2>
-          {{- if $person.name_pronunciation -}}
-            <ruby>
-              <rb>{{ $person_page.Title }}</rb>
-              <rt>{{ $person.name_pronunciation }}</rt>
-            </ruby>
-          {{- else -}}
-            {{- $person_page.Title -}}
-          {{- end -}}
-        </h2>
-
-        {{ with $person.role }}<h3>{{ . | markdownify | emojify }}</h3>{{ end }}
-
-        {{ range $person.organizations }}
-        <h3>
-          {{ with .url }}<a href="{{ . }}" target="_blank" rel="noopener">{{ end }}
-          <span>{{ .name }}</span>
-          {{ if .url }}</a>{{ end }}
-        </h3>
-        {{ end }}
-      </div>
 
       <ul class="network-icon" aria-hidden="true">
         {{ range $person.social }}

@@ -1,0 +1,12 @@
+# Font style metadata
+
+name = "vivek_custom"
+
+# Optional Google font URL
+google_fonts = "family=Quicksand&family=Roboto+Mono:wght@400;700&family=Source+Sans+Pro:wght@400"
+
+# Font families
+heading_font = "Quicksand"
+body_font = "Source Sans Pro"
+nav_font = "Quicksand"
+mono_font = "Roboto Mono"

@@ -1,47 +1,44 @@
 ---
 # Display name
-title: Alice Wu 吳恩達
+title: Vivek Bharadwaj 
 
 # Full name (for SEO)
-first_name: Alice
-last_name: Wu
+first_name: Vivek 
+last_name: Bharadwaj 
 
 # Status emoji
 status:
-  icon: ☕️
+  icon: 
 
 # Is this the primary user of the site?
 superuser: true
 
 # Role/position/tagline
-role: Professor of Artificial Intelligence
+role: Graduate Student at UC Berkeley 
 
 # Organizations/Affiliations to show in About widget
 organizations:
-  - name: Stanford University
-    url: https://www.stanford.edu/
+  - name: UC Berkeley 
+    url: https://www.berkeley.edu/
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include distributed robotics, mobile computing and programmable matter.
+bio: My research interests include (multi)linear algebra, high-performance computing, and sparse computation. 
 
 # Interests to show in About widget
 interests:
-  - Artificial Intelligence
-  - Computational Linguistics
-  - Information Retrieval
+  - Sparse Tensor / Matrix Algorithms 
+  - Numerical Linear Algebra 
+  - High-Performance Computing 
 
 # Education to show in About widget
 education:
   courses:
-    - course: PhD in Artificial Intelligence
-      institution: Stanford University
-      year: 2012
-    - course: MEng in Artificial Intelligence
-      institution: Massachusetts Institute of Technology
-      year: 2009
-    - course: BSc in Artificial Intelligence
-      institution: Massachusetts Institute of Technology
-      year: 2008
+    - course: PhD in Computer Science 
+      institution: University of California, Berkeley 
+      year: 2020-Present
+    - course: BS in Computer Science & Math
+      institution: California Institute of Technology
+      year: 2016-2020
 
 # Social/Academic Networking
 # For available icons, see: https://wowchemy.com/docs/getting-started/page-builder/#icons
@@ -79,6 +76,9 @@ email: ''
 # Highlight the author in author lists? (true/false)
 highlight_name: true
 ---
-
-Alice Wu is a professor of artificial intelligence at the Stanford AI Lab. Her research interests include distributed robotics, mobile computing and programmable matter. She leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
-{style="text-align: justify;"}
+I am an EECS PhD student at UC Berkeley, advised by the fantastic pair 
+[Jim Demmel](http://people.eecs.berkeley.edu/~demmel/) and 
+[Aydın Buluç](https://people.eecs.berkeley.edu/~aydin/). I'm associated with the BeBOP and PASSION groups, and 
+I'm supported by a Department of Energy [
+Computational Science Graduate Fellowship](https://www.krellinst.org/csgf/about-doe-csgf/news-events/2021-incoming-class)
+from the Krell Institute.
