@@ -75,6 +75,10 @@ email: ''
 
 # Highlight the author in author lists? (true/false)
 highlight_name: true
+
+#{{% callout note %}}
+#Check out a recent preprint with co-authors!
+#{{% /callout %}}
 ---
 I am an EECS PhD student at UC Berkeley, advised by the fantastic pair 
 [Jim Demmel](http://people.eecs.berkeley.edu/~demmel/) and 

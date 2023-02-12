@@ -10,11 +10,23 @@ sections:
     content:
       # Choose a user profile to display (a folder name within `content/authors/`)
       username: admin
-      # Override your bio text from `authors/admin/_index.md`?
-      text:
+      # Override your bio text from `authors/admin/_index.md`? 
+
+    design:
+      background:
+        # Choose a color such as from https://html-color-codes.info
+        # Text color (true=light, false=dark, or remove for the dynamic theme color). 
+
+    design:
+      background:
+        color: "#C0E0DE"
+
+
+
   - block: collection
+    id: publication
     content:
-      title: Recent Publications
+      title: Publications & Preprints
       text: 
       filters:
         folders:
@@ -26,54 +38,21 @@ sections:
   - block: collection
     id: talks
     content:
-      title: Recent & Upcoming Talks
+      title: Past & Upcoming Talks
       filters:
         folders:
           - event
     design:
       columns: '2'
       view: compact
-
-  - block: experience
-    content:
-      title: Experience
-      # Date format for experience
-      #   Refer to https://wowchemy.com/docs/customization/#date-format
-      date_format: Jan 2006
-      # Experiences.
-      #   Add/remove as many `experience` items below as you like.
-      #   Required fields are `title`, `company`, and `date_start`.
-      #   Leave `date_end` empty if it's your current employer.
-      #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
-      items:
-        - title: CEO
-          company: GenCoin
-          company_url: ''
-          company_logo: org-gc
-          location: California
-          date_start: '2021-01-01'
-          date_end: ''
-          description: |2-
-              Responsibilities include:
-
-              * Analysing
-              * Modelling
-              * Deploying
-        - title: Professor of Semiconductor Physics
-          company: University X
-          company_url: ''
-          company_logo: org-x
-          location: California
-          date_start: '2016-01-01'
-          date_end: '2020-12-31'
-          description: Taught electronic engineering and researched semiconductor physics.
-    design:
-      columns: '3'
-  - block: accomplishments
+  - block: accomplishments 
     content:
       # Note: `&shy;` is used to add a 'soft' hyphen in a long heading.
-      title: 'Accomplish&shy;ments'
-      subtitle:
+      title: 'Teaching'
+      subtitle: |
+        I was a TA for 4 quarters as an undergraduate and
+        one semester as a graduate student. Check out the reviews the students
+        left me at [this link](post/teaching_reviews/). 
       # Date format: https://wowchemy.com/docs/customization/#date-format
       date_format: Jan 2006
       # Accomplishments.
@@ -82,36 +61,102 @@ sections:
       #   Leave other parameters empty if not required.
       #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
       items:
-        - certificate_url: https://www.coursera.org
+        - title: "CS267: Applications of Parallel Computing (TA)"
+          date_end: '2022-05-17'
+          date_start: '2022-01-01'
+          description: 'Semester-long course on Parallel Computing.
+          Check out my recitation slides and video on optimizing
+          GEMM for the Intel Knights Landing processor.' 
+          organization: UC Berkeley 
+          organization_url: 'https://berkeley.edu' 
+          url: "https://sites.google.com/lbl.gov/cs267-spr2022" 
+        - title: "CS38: Algorithms (TA)"
           date_end: ''
-          date_start: '2021-01-25'
-          description: ''
-          organization: Coursera
-          organization_url: https://www.coursera.org
-          title: Neural Networks and Deep Learning
-          url: ''
-        - certificate_url: https://www.edx.org
-          date_end: ''
-          date_start: '2021-01-01'
-          description: Formulated informed blockchain models, hypotheses, and use cases.
-          organization: edX
-          organization_url: https://www.edx.org
-          title: Blockchain Fundamentals
-          url: https://www.edx.org/professional-certificate/uc-berkeleyx-blockchain-fundamentals
-        - certificate_url: https://www.datacamp.com
+          date_start: '2020-04-01'
+          description: "Proof-based algorithms course. I TA'd three times over
+          three years, and was awarded the 
+          [Thomas A. Tisch Prize for Undergraduate Teaching](https://www.cms.caltech.edu/academics/honors). 
+          "
+          organization: Caltech 
+          organization_url: https://caltech.edu
+
+        - title: 'CS21: Decidability and Tractability (TA)'
           date_end: '2020-12-21'
           date_start: '2020-07-01'
-          description: ''
-          organization: DataCamp
-          organization_url: https://www.datacamp.com
-          title: 'Object-Oriented Programming in R'
+          description: 'Undergraduate complexity theory course.'
+          organization: Caltech 
+          organization_url: https://caltech.edu
           url: ''
     design:
       columns: '2'
+  - block: markdown
+    id: service 
+    content:
+      title: Service
+      subtitle: '' 
+      text: |      
+        * 2022 March: [Reviewer for Berkeley SURF Applications](https://surf.berkeley.edu/): Read applications from undergraduate students seeking
+        funded research positions at Berkeley over the summer.
+        * 2022 March: Visit Days for SCI Graduate Admissions: Co-organized visit days for programming systems and scientific computing admits, contacted
+        admitted students 
+        * 2021 October-December: [CRS Science Ambassador](https://crscience.org/educators/): Gave virtual science presentations to students at Washington Elementary, Richmond
+        * 2021 January-March: [Virtual Be a Scientist Mentor](https://crscience.org/outreach/basdetails/): Coached BUSD students through science projects weekly
+        * 2019-2020: [Caltech Board of Control](https://donut.caltech.edu/lib/BoC_Reps): Member of student panel adjudicating cases of academic dishonesty
+        * 2020 Spring: [Caltech RISE Tutor](https://www.caltechy.org/rise-tutor): Tutored underpriveleged high school students from Pasadena Unified School district.
+        * 2018: Chair of the Caltech Student Faculty Conference for Computer Science (SFC): Chaired a committee of students and faculty charged with
+        making recommendations about the undergraduate computer science program at a conference of students and professors. 
+        [Here's our final report.](https://docs.google.com/document/d/e/2PACX-1vQb_tiDPwxd7M485BCGHVAvNjsGADY5sjggVnvqRqZnQe6nzv4nwiHn_GUIIIiaATT2mj7qJ8WonOlf/pub)
+        * Judge for the Following High School / Middle School Science Competitions
+          * 2023: (Planned) [USA Young Physicists Tournament](https://www.usaypt.org)
+          * 2022: [Alameda County Science Fair](https://acsef.zfairs.com)
+          * 2021: [USA Young Physicists Tournament](http://www.usaypt.org/)
+          * 2020: Blair Middle School Science Fair
+    design:
+      # See Page Builder docs for all section customization options.
+      # Choose how many columns the section has. Valid values: '1' or '2'.
+      columns: '2' 
+  - block: card_list 
+    content:
+      # Note: `&shy;` is used to add a 'soft' hyphen in a long heading.
+      title: 'Test'
+      subtitle: |
+        I was a TA for 4 quarters as an undergraduate and
+        one semester as a graduate student. Check out the reviews the students
+        left me at [this link](post/teaching_reviews/). 
+      # Date format: https://wowchemy.com/docs/customization/#date-format
+      date_format: Jan 2006
+      # Accomplishments.
+      #   Add/remove as many `item` blocks below as you like.
+      #   `title`, `organization`, and `date_start` are the required parameters.
+      #   Leave other parameters empty if not required.
+      #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
+      items:
+        - title: "CS267: Applications of Parallel Computing (TA)"
+          date_end: '2022-05-17'
+          date_start: '2022-01-01'
+          description: 'Semester-long course on Parallel Computing.
+          Check out my recitation slides and video on optimizing
+          GEMM for the Intel Knights Landing processor.' 
+          organization: UC Berkeley 
+          organization_url: 'https://berkeley.edu' 
+          url: "https://sites.google.com/lbl.gov/cs267-spr2022"  
+        - title: "Other item"
+          date_end: '2022-05-17'
+          date_start: '2022-01-01'
+          description: 'Semester-long course on Parallel Computing.
+          Check out my recitation slides and video on optimizing
+          GEMM for the Intel Knights Landing processor.' 
+          organization: UC Berkeley 
+          organization_url: 'https://berkeley.edu' 
+          url: "https://sites.google.com/lbl.gov/cs267-spr2022" 
+
+    design:
+      columns: '2'
+
   - block: collection
     id: posts
     content:
-      title: Recent Posts
+      title: Blog Posts 
       subtitle: ''
       text: ''
       # Choose how many pages you would like to display (0 = all pages)
@@ -135,42 +180,4 @@ sections:
       # Choose a layout view
       view: compact
       columns: '2'
-  - block: portfolio
-    id: projects
-    content:
-      title: Projects
-      filters:
-        folders:
-          - project
-      # Default filter index (e.g. 0 corresponds to the first `filter_button` instance below).
-      default_button_index: 0
-      # Filter toolbar (optional).
-      # Add or remove as many filters (`filter_button` instances) as you like.
-      # To show all items, set `tag` to "*".
-      # To filter by a specific tag, set `tag` to an existing tag name.
-      # To remove the toolbar, delete the entire `filter_button` block.
-      buttons:
-        - name: All
-          tag: '*'
-        - name: Deep Learning
-          tag: Deep Learning
-        - name: Other
-          tag: Demo
-    design:
-      # Choose how many columns the section has. Valid values: '1' or '2'.
-      columns: '1'
-      view: showcase
-      # For Showcase view, flip alternate rows?
-      flip_alt_rows: false
-  - block: collection
-    id: featured
-    content:
-      title: Featured Publications
-      filters:
-        folders:
-          - publication
-        featured_only: true
-    design:
-      columns: '2'
-      view: card
 ---

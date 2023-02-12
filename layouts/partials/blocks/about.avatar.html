@@ -21,6 +21,7 @@
 {{ $person := $person_page.Params }}
 {{ $avatar := ($person_page.Resources.ByType "image").GetMatch "*avatar*" }}
 {{ $avatar_shape := site.Params.features.avatar.shape | default "circle" }}
+
 <div class="row">
   <div class="col-12 col-lg-4">
     <div id="profile">
@@ -57,7 +58,6 @@
         </li>
         {{ end }}
       </ul>
-
     </div>
   </div>
   <div class="col-12 col-lg-8">
@@ -101,4 +101,9 @@
 
     </div>
   </div>
+</div>
+
+
+<div>
+  <a class="background-img"><img id="img1" src="img/background.png" /></a>
 </div>

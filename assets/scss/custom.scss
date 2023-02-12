@@ -1,3 +1,28 @@
 .home-section {
-    padding: 30px 0 30px 0;
+    padding: 50px 0 50px 0;
   }
+
+  //
+// Base styles
+//
+
+.card-custom {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0; // See https://github.com/twbs/bootstrap/pull/22740#issuecomment-305868106
+  height: $card-height;
+  word-wrap: break-word;
+  background-color: $card-bg;
+  background-clip: border-box;
+  border: $card-border-width solid $card-border-color;
+  @include border-radius(0px);
+}
+
+.wg-about .background-img {
+  position: absolute;
+  bottom: 0px;
+  @media screen and (min-width: 768px) {
+    bottom: 70px;
+  }
+}
