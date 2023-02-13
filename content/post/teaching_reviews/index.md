@@ -2,6 +2,7 @@
 title: My Teaching Reviews 
 date: 2022-07-22
 math: false 
+share: false
 image:
   placement: 1
   caption: ''

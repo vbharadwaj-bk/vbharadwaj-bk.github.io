@@ -20,7 +20,8 @@ sections:
     design:
       background:
         color: "#C0E0DE"
-
+      spacing:
+        padding: ["50px", "0", "10px", "0"]
 
 
   - block: collection
@@ -71,18 +72,18 @@ sections:
           organization_url: 'https://berkeley.edu' 
           url: "https://sites.google.com/lbl.gov/cs267-spr2022" 
         - title: "CS38: Algorithms (TA)"
-          date_end: ''
+          date_end: '2020-06-01'
           date_start: '2020-04-01'
           description: "Proof-based algorithms course. I TA'd three times over
-          three years, and was awarded the 
+          three years (2018, 2019, 2020), and was awarded the 
           [Thomas A. Tisch Prize for Undergraduate Teaching](https://www.cms.caltech.edu/academics/honors). 
           "
           organization: Caltech 
           organization_url: https://caltech.edu
 
         - title: 'CS21: Decidability and Tractability (TA)'
-          date_end: '2020-12-21'
-          date_start: '2020-07-01'
+          date_end: '2018-04-01'
+          date_start: '2018-01-01'
           description: 'Undergraduate complexity theory course.'
           organization: Caltech 
           organization_url: https://caltech.edu
@@ -115,44 +116,6 @@ sections:
       # See Page Builder docs for all section customization options.
       # Choose how many columns the section has. Valid values: '1' or '2'.
       columns: '2' 
-  - block: card_list 
-    content:
-      # Note: `&shy;` is used to add a 'soft' hyphen in a long heading.
-      title: 'Test'
-      subtitle: |
-        I was a TA for 4 quarters as an undergraduate and
-        one semester as a graduate student. Check out the reviews the students
-        left me at [this link](post/teaching_reviews/). 
-      # Date format: https://wowchemy.com/docs/customization/#date-format
-      date_format: Jan 2006
-      # Accomplishments.
-      #   Add/remove as many `item` blocks below as you like.
-      #   `title`, `organization`, and `date_start` are the required parameters.
-      #   Leave other parameters empty if not required.
-      #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
-      items:
-        - title: "CS267: Applications of Parallel Computing (TA)"
-          date_end: '2022-05-17'
-          date_start: '2022-01-01'
-          description: 'Semester-long course on Parallel Computing.
-          Check out my recitation slides and video on optimizing
-          GEMM for the Intel Knights Landing processor.' 
-          organization: UC Berkeley 
-          organization_url: 'https://berkeley.edu' 
-          url: "https://sites.google.com/lbl.gov/cs267-spr2022"  
-        - title: "Other item"
-          date_end: '2022-05-17'
-          date_start: '2022-01-01'
-          description: 'Semester-long course on Parallel Computing.
-          Check out my recitation slides and video on optimizing
-          GEMM for the Intel Knights Landing processor.' 
-          organization: UC Berkeley 
-          organization_url: 'https://berkeley.edu' 
-          url: "https://sites.google.com/lbl.gov/cs267-spr2022" 
-
-    design:
-      columns: '2'
-
   - block: collection
     id: posts
     content:
