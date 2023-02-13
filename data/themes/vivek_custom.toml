@@ -1,17 +1,15 @@
 name = "vivek custom"
 
-[dark]
+[light]
   # Primary
-  primary = "#EE8C2F"
+  primary = "#1565c0"
 
   # Menu
-  #old = "#EE8C2F"
-  #menu_primary = "#D97F6D"
-  menu_primary = "#002642"
+  menu_primary = "#fff"
+  menu_text = "#34495e"
+  menu_text_active = "#2962ff"
+  menu_title = "#2b2b2b"
 
-  menu_text = "#FFFFFF"
-  menu_text_active = "#ED872D"
-  menu_title = "#ED872D"
-
-  home_section_odd = "#001829" 
-  home_section_even = "#001829" 
+  # Home sections
+  home_section_odd = "rgb(255, 255, 255)"
+  home_section_even = "rgb(247, 247, 247)"
