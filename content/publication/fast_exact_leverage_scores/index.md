@@ -25,7 +25,6 @@ publication_types: ["3"]
 publication: "Preprint"
 publication_short: "Preprint"
 
-
 # abstract
 
 # Summary. An optional shortened abstract.
