@@ -7,7 +7,7 @@
 
 appearance:
   theme_day: minimal 
-  theme_night: vivek_custom 
+#  theme_night: vivek_custom 
   font: vivek_custom 
   font_size: L
 
