@@ -108,8 +108,7 @@ sections:
         making recommendations about the undergraduate computer science program at a conference of students and professors. 
         [Here's our final report.](https://docs.google.com/document/d/e/2PACX-1vQb_tiDPwxd7M485BCGHVAvNjsGADY5sjggVnvqRqZnQe6nzv4nwiHn_GUIIIiaATT2mj7qJ8WonOlf/pub)
         * Judge for the Following High School / Middle School Science Competitions
-          * 2023: (Planned) [USA Young Physicists Tournament](https://www.usaypt.org)
-          * 2022: [Alameda County Science Fair](https://acsef.zfairs.com)
+          * 2022-2023: [Alameda County Science Fair](https://acsef.zfairs.com)
           * 2021: [USA Young Physicists Tournament](http://www.usaypt.org/)
           * 2020: Blair Middle School Science Fair
     design:
