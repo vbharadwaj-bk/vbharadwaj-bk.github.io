@@ -66,7 +66,7 @@ sections:
           date_end: '2022-05-17'
           date_start: '2022-01-01'
           description: 'Semester-long course on Parallel Computing.
-          Check out my recitation slides and video on optimizing
+          Check out my [recitation slides](teaching/cs267/gemm_recitation.pdf) and [video](https://www.youtube.com/watch?v=wGW4GPX7s5I) on optimizing
           GEMM for the Intel Knights Landing processor.' 
           organization: UC Berkeley 
           organization_url: 'https://berkeley.edu' 

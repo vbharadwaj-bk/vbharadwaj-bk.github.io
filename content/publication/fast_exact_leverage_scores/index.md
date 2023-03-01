@@ -33,6 +33,10 @@ publication_short: "Preprint"
 tags:
 featured: false
 
+links:
+- name: Slides - SIAM CSE23 
+  url: siam_cse_slides.pdf 
+
 url_pdf: "https://arxiv.org/pdf/2301.12584.pdf" 
 url_code: "https://github.com/vbharadwaj-bk/fast_tensor_leverage"
 url_dataset:

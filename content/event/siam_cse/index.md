@@ -18,7 +18,7 @@ abstract:
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
-date: '2023-03-01T13:50:00+01:00'
+date: '2023-03-01T14:30:00+01:00'
 #date_end: '2023-03-01T15:00:00Z'
 all_day: false
 
@@ -37,7 +37,7 @@ image:
 
 url_code: ''
 url_pdf: ''
-url_slides: ''
+url_slides: 'publication/fast_exact_leverage_scores/siam_cse_slides.pdf'
 url_video: ''
 
 # Markdown Slides (optional).
@@ -55,5 +55,8 @@ slides: ""
 projects: []
 ---
 
-I'll be speaking at a SIAM Minisymposium on sparse computation about recent work on randomized
-algorithms for sparse tensor decomposition. Find me there! 
+This was a talk at a SIAM Minisymposium on sparse computation. 
+It discusses randomized sampling algorithms for massive sparse tensor decomposition - check
+out the slides for more information.
+
+
