@@ -13,7 +13,7 @@ entries:
   - date: 2023-09-21
     content: |
       I'm happy to announce the acceptance of our recent work to Neurips 
-      2023! 
+      2023. 
 
 
 ---

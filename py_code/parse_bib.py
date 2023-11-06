@@ -30,6 +30,7 @@ def parse_bibliography(filename, output_key, SITE):
         "pdf",
         "supp",
         "blog",
+        "video",
         "code",
         "poster",
         "slides",

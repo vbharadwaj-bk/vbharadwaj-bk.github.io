@@ -50,4 +50,4 @@ from the Krell Institute.
 </div>
 </div>
 
-**Email Contact**: `firstname_lastname [at] berkeley.edu`
+**Email**: `firstname_lastname [at] berkeley.edu`
