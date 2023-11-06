@@ -1,6 +1,7 @@
 ---
 title: talks 
 template: talks 
-nav: false 
-summary: A list of all your talks.
+nav: true
+nav_order: 1 
+summary: Includes past and planned events. 
 ---

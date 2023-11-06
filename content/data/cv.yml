@@ -1,32 +1,73 @@
 - title: General Information
   type: map
   contents:
-    - name: Full Name
-      value: Albert Einstein
-    - name: Date of Birth
-      value: 14th March 1879
+    - name: Name
+      value: Vivek Bharadwaj 
+    - name: Interests
+      value: |
+        Numerical Linear Algebra, Tensor Problems, High-Performance Computing,
+        Randomized Algorithms, Sparsity in ML 
     - name: Languages
-      value: English, German
+      value: C, C++, Python, Java, OCaml 
+    - name: Tools 
+      value: OpenMP, MPI, CUDA, UPC++, Pybind11, Pytorch
 
 - title: Education
   type: time_table
   contents:
-    - title: PhD
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1905
+    - title: PhD, Computer Science
+      institution: University of California, Berkeley 
+      year: 2020-2025
       description:
-        - Desc.elements.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Federal teaching diploma
-      institution: Eidgenössische Technische Hochschule, Zurich, Switzerland
-      year: 1900
+        - "Advisors: James Demmel and Aydın Buluç"  
+        - "Focus: Randomized Algorithms for Tensor Problems"
+        - "Funding: DOE CSGF (2021-2025)"
+
+    - title: Bachelor of Science, Computer Science & Mathematics 
+      institution: California Institute of Technology 
+      year: 2016-2020 
       description:
-        - Description 1.
-        - Description 2.
+        - "Cumulative GPA: 3.9/4.3"
+
+- title: Awards and Fellowships
+  type: time_table
+  contents:
+    - year: 2023 
+      elements: 
+        - Berkeley Outstanding Graduate Student Instructor 
+    - year: 2021 
+      elements: 
+        - DoE Computational Science Graduate Fellowship 
+    - year: 2020 
+      elements: 
+        - Honorable Mention, National Science Foundation GRFP
+        - Thomas A. Tisch Prize for Undergraduate Teaching
+    - year: 2017
+      elements:
+        - "Ph11 Scholar. Funded research position awarded for solving \"hurdle\" problems at Caltech."
+    - year: 2016
+      elements:
+        - "National Merit Scholar. Applied funds to study at Caltech."
+
+- title: Volunteering 
+  type: time_table
+  contents:
+    - year: ONGOING 
+      maindescription: "Judge for the following science contests:"
+      elements: 
+        - "2023, 2022: Alameda County Science Fair"
+        - "2022: USA Young Physicists Tournament"
+        - "2020: Blair Middle School Science Fair" 
+
+    - year: 2021 OCT-DEC 
+      elements: 
+        - "CRS Science Ambassador: Gave virtual science presentations to students at Washington Elementary, Richmond"
+    - year: 2021 JAN-MAR
+      elements: 
+        - "Virtual Be a Scientist Mentor: Coached BUSD students through science projects weekly"
+    - year: 2020 SPRING
+      elements: 
+        - "Caltech RISE Tutor: Tutored high school students from Pasadena Unified School district."
 
 - title: Experience
   type: time_table
@@ -67,17 +108,6 @@
     - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
       year: 2015-now
       maindescription: A beautiful, simple, clean, and responsive Jekyll theme for academics.
-
-- title: Honors and Awards
-  type: time_table
-  contents:
-    - year: 1921
-      elements: 
-        - Nobel Prize in Physics 
-        - Matteucci Medal
-    - year: 2029
-      elements: 
-        - Max Planck Medal
 
 - title: Academic Interests
   type: nested_list
