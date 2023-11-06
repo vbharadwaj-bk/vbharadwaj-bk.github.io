@@ -5,15 +5,15 @@ nav: false
 summary: An archive of announcements.
 
 entries:
-  - date: 2016-01-15 
+  - date: 2023-11-05 
     content: |
-      A simple inline announcement with emoji! ✨😄
+      My new website is up! It's a clone of [al-folio](https://github.com/alshedivat/al-folio), but rewritten entirely with Jinja, Python,
+      and Pelican.
 
-  - date: 2015-11-07 
+  - date: 2023-09-21
     content: |
-      [A long announcement with details]({filename}/posts/announcement.md)
+      I'm happy to announce the acceptance of our recent work to Neurips 
+      2023! 
 
-  - date: 2015-10-22 
-    content: |
-      Another inline announcement. You can even use **Markdown** in your announcements! Here is a [link](#PhysRev.47.777) to a paper on the same page.
+
 ---

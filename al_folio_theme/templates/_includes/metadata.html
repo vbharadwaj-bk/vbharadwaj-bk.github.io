@@ -19,7 +19,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>
     {%- if SITE.title is none -%}
-        {%- set title -%}{{ SITE.first_name }} {{ SITE.middle_name }} {{ SITE.last_name }}{%- endset -%}
+        {%- set title -%}{{ SITE.first_name }}&nbsp;{%-if SITE.middle_name -%}{{ SITE.middle_name}}&nbsp;{%-endif-%}{{ SITE.last_name }}{%- endset -%}
     {%- else -%}
         {%- set title -%}{{ SITE.title }}{%- endset -%}
     {%- endif -%}

@@ -3,14 +3,15 @@ Title: Home
 Template: about
 URL: ''
 save_as: index.html
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
+subtitle: |
+  PhD student. Works on: <b>HPC</b>,
+  <b>sparse tensors</b>, and <b>randomized algorithms</b>.
 
 profile: 
   align: right
   image: images/prof_pic.jpg
   image_circular: false # crops the image to make it circular
-  address: >
-    <p>Email: firstname_lastname [at] princeton.edu</p>
+  address: 
 
 news: true  # includes a list of news items
 latest_posts: true  # includes a list of the newest posts
@@ -18,8 +19,35 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 talks: true # includes latest talks
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+I am an EECS graduate student at UC Berkeley, advised by the fantastic pair 
+[Jim Demmel](http://people.eecs.berkeley.edu/~demmel/) and 
+[Aydın Buluç](https://people.eecs.berkeley.edu/~aydin/). I'm associated with the BeBOP and PASSION groups, and 
+I'm supported by a Department of Energy [
+Computational Science Graduate Fellowship](https://www.krellinst.org/csgf/about-doe-csgf/news-events/2021-incoming-class)
+from the Krell Institute.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+<div class="desktop">
+<div class="row">
+    <div class="col-5 pr-0">
+    <div class="row justify-content-center">
+    <ul> 
+    <h4>Interests</h4>
+    <li>Communication Analysis</li>
+    <li>Tensor Algorithms</li>
+    <li>Numerical Linear Algebra</li>
+    </ul>
+    </div> 
+    </div>
+    <div class="col-7"> 
+    <div class="row justify-content-center">
+    <ul>
+    <h4>Education</h4>
+    <li>PhD in Computer Science.<br>UC Berkeley, 2020-Present</li>
+    <li>BS in CS + Mathematics.<br> Caltech, 2016-2020</li>
+    </div>
+    </ul> 
+    </div>
+</div>
+</div>
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](http://fortawesome.github.io/Font-Awesome/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+**Email Contact**: `firstname_lastname [at] berkeley.edu`

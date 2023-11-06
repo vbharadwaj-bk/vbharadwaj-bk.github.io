@@ -1,13 +1,13 @@
-- venue: Institute for Advanced Study (IAS) Seminar 
-  title: Musings on General Relativity 
-  date: 2023-02-01
+- venue: Workshop on Sparse Tensor Computations, Chicago IL
+  title: Leverage-Based Sampling Algorithms for Tensor Decomposition Problems 
+  date: 2023-10-18
   buttons:
     slides: slides_link
     video: video_link
 
-- venue: Caltech Job Talk 
-  title: Brownian Motion 
-  date: 2021-02-01
+- venue: SIAM Computational Science and Engineering, Amsterdam, The Netherlands
+  title: Faster Exact Leverage Score Sampling from Khatri-Rao Products 
+  date: 2023-03-01
   buttons:
     slides: slides_link
     video: video_link
