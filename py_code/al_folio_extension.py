@@ -18,12 +18,12 @@ class ListItem(Content):
         klass = 'draft_news' if self.status == 'draft' else None
         return super()._expand_settings(key, klass)
 
-def content_pass(gen, md, input, strip_p_tags=False):
+def content_pass(gen, md, input, source_path, strip_p_tags=False):
     md_data = md.reset().convert(input)
     converted_content = ListItem(content=md_data,
                         metadata=None, 
                         settings=gen.settings,
-                        source_path=None, 
+                        source_path=source_path, 
                         context=gen.context)
 
     result = converted_content.content 
@@ -61,7 +61,7 @@ def process_content_fields(page_generator):
             try:
                 for element in article.metadata["courses"]:
                     for field, strip_p_tags in fields_to_process:
-                        element[field] = content_pass(gen, md, element[field], strip_p_tags=strip_p_tags)
+                        element[field] = content_pass(gen, md, element[field], article.source_path, strip_p_tags=strip_p_tags)
                 gen.context["teaching"] = article.metadata["courses"]
             except Exception as e:
                 log.error(f"Error loading teaching! {e}") 
@@ -76,7 +76,7 @@ def process_content_fields(page_generator):
             try:
                 for element in article.metadata["entries"]:
                     for field, strip_p_tags in fields_to_process:
-                        element[field] = content_pass(gen, md, element[field], strip_p_tags=strip_p_tags)
+                        element[field] = content_pass(gen, md, element[field], article.source_path, strip_p_tags=strip_p_tags)
                 gen.context["news"] = article.metadata["entries"]
             except Exception as e:
                 log.error(f"Error loading news! {e}")
@@ -88,7 +88,7 @@ def process_content_fields(page_generator):
             for i, child in enumerate(el["children"]):
                 if child != "divider":
                     str_to_process = child + '{: class="dropdown-item" }'
-                    el["children"][i] = content_pass(gen, md, str_to_process, strip_p_tags=True)
+                    el["children"][i] = content_pass(gen, md, str_to_process, '', strip_p_tags=True)
 
 
     # Sort pages for the navigation bar

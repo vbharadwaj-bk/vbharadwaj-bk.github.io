@@ -21,7 +21,7 @@ courses:
       🏅 **Award: [2023 Outstanding Graduate Student Instructor](https://gsi.berkeley.edu/programs-services/award-programs/ogsi/)**
 
       Semester-long course on Parallel Computing. Check out my 
-      [recitation slides]({static}/../pdf/gemm_knl_slides.pdf) 
+      [recitation slides]({static}/images/prof_pic.jpg) 
       and [video](https://www.youtube.com/watch?v=wGW4GPX7s5I) on optimizing GEMM for the Intel 
       Knights Landing processor. 
 
