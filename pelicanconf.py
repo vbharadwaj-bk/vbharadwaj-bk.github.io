@@ -21,7 +21,9 @@ PLUGINS = ['pelican.plugins.webassets',
            'pelican.plugins.sitemap', 
            al_folio_extension]
 
-AUTHOR = f'{SITE["first_name"]} {SITE["middle_name"] if SITE["middle_name"] else ""} {SITE["last_name"]}'
+name_fields = ["first_name", "middle_name", "last_name"]
+AUTHOR = ' '.join([SITE[field] for field in name_fields if field in SITE and SITE[field] is not None])
+
 SITENAME = SITE["title"]
 
 if SITENAME is None:

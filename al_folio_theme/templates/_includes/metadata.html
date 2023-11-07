@@ -1,7 +1,7 @@
 {% if SITE.enable_google_verification or SITE.enable_bing_verification %}
-    <!-- WebSITE verification -->
+    <!-- Website verification -->
     {% if SITE.enable_google_verification -%}
-    <meta name="google-SITE-verification" content="{{ SITE.google_SITE_verification }}" />
+    <meta name="google-site-verification" content="{{ SITE.google_site_verification }}" />
     {%- endif -%}
     {% if SITE.enable_bing_verification -%}
     <meta name="msvalidate.01" content="{{ SITE.bing_SITE_verification }}" />
@@ -35,7 +35,7 @@
         {{ title }}
     {%- endif -%}
     </title>
-    <meta name="author" content="{{ SITE.first_name }} {{ SITE.middle_name }} {{ SITE.last_name }}">
+    <meta name="author" content="{{ AUTHOR }}">
     <meta name="description" content="{%- if page.description -%}{{ page.description }}{%- else -%}{{ SITE.description }}{%- endif -%}">
 {%- if page.keywords or SITE.keywords %}
     <meta name="keywords" content="{%- if page.keywords -%}{{ page.keywords }}{%- else -%}{{ SITE.keywords }}{%- endif -%}">
