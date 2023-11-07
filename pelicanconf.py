@@ -150,7 +150,7 @@ SITEMAP = {
             "posts/category/",
             "posts/page/",
             "posts/tag/",
-            "404/$",
+            "404.html$",
         ]
 }
 

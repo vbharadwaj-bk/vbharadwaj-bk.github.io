@@ -29,6 +29,59 @@
       description:
         - "Cumulative GPA: 3.9/4.3"
 
+- title: Experience 
+  type: time_table
+  contents:
+    - title: Graduate Student Researcher 
+      institution: Lawrence Berkeley National Lab 
+      year: Summers<br>'23, '21, '20
+      description:
+        - "Focus: randomized algorithms for sparse matrix and tensor factorization."
+        - |
+          Research is a blend of theoretical and applied work, with 
+          an emphasis on high-peformance implementation.
+
+    - title: Visiting Student Researcher 
+      institution: National Renewable Energy Laboratory 
+      year: Summer '22 
+      description:
+        - "Focus: randomized Krylov method preconditioning."
+        - |
+          Wrote CUDA kernels for randomized butterfly transformations and 
+          incomplete LDL factorization, both used as preconditioners.
+
+    - title: Software Engineering Intern 
+      institution: Jane Street Capital 
+      year: Summer '19
+      description:
+        - Wrote protocols to relay market data from exchanges to traders.
+        - Made improvements to Iron, an in-house fork of the Mercurial VCS.
+
+    - title: Caltech SURF Intern
+      institution: Anandkumar Lab, Caltech  
+      year: Summer '18 
+      description:
+        - |
+          Focus: Continuous analogues of tensor decomposition and Gaussian process
+          modeling, mentored by Rose Yu.
+
+    - title: Ph11 Scholar 
+      institution: Shapiro Lab, Caltech 
+      year: Summer '17
+      description:
+        - |
+          Focus: GPU-based MRI simulations of diffusing water molecule spins in
+          strong magnetic fields. 
+
+        - |
+          Work published in a Journal of the German Chemical Society (code 
+          on Github).
+
+- title: Publications, Talks, and Teaching 
+  type: list
+  contents:
+    - See links in the navigation bar. 
+
 - title: Awards and Fellowships
   type: time_table
   contents:
@@ -49,79 +102,46 @@
       elements:
         - "National Merit Scholar. Applied funds to study at Caltech."
 
+- title: Professional Service
+  type: time_table
+  contents:
+    - year: Ongoing
+      maindescription: "Peer review for the following journals / conferences:"
+      elements:
+        - "2023: Numerical Linear Algebra with Applications, Wiley."
+
+    - year: 2022
+      elements:
+        - "Reviewer, Berkeley SURF Research Applications"
+        - "Graduate Visit Day Co-organizer, Scientific Computing"
+
+    - year: 2019-20
+      maindescription: "Caltech Board of Control"
+      elements:
+        - "Served on the student panel adjudicating cases of academic dishonesty."
+
+    - year: 2019
+      maindescription: "Student Chair, Caltech CS Student-Faculty Conference"
+      elements:
+        - "Read our final report <a href=\"https://docs.google.com/document/d/e/2PACX-1vQb_tiDPwxd7M485BCGHVAvNjsGADY5sjggVnvqRqZnQe6nzv4nwiHn_GUIIIiaATT2mj7qJ8WonOlf/pub\">here</a>."
+
 - title: Volunteering 
   type: time_table
   contents:
-    - year: ONGOING 
+    - year: Ongoing
       maindescription: "Judge for the following science contests:"
       elements: 
         - "2023, 2022: Alameda County Science Fair"
         - "2022: USA Young Physicists Tournament"
         - "2020: Blair Middle School Science Fair" 
 
-    - year: 2021 OCT-DEC 
+    - year: Oct-Dec 2021
       elements: 
         - "CRS Science Ambassador: Gave virtual science presentations to students at Washington Elementary, Richmond"
-    - year: 2021 JAN-MAR
+    - year: Jan-Mar 2021
       elements: 
         - "Virtual Be a Scientist Mentor: Coached BUSD students through science projects weekly"
-    - year: 2020 SPRING
+    - year: Spring 2020
       elements: 
         - "Caltech RISE Tutor: Tutored high school students from Pasadena Unified School district."
 
-- title: Experience
-  type: time_table
-  contents:
-    - title: Professor of Theoretical Physics
-      institution: Institute for Advanced Study, Princeton University
-      year: 1933 - 1955
-      description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Visiting Professor
-      institution: California Institute of Technology, Pasadena, California, US
-      year: 1933
-      description:
-        - Description 1.
-        - Description 2.
-
-    - title: Director
-      institution: Kaiser Wilhelm Institute for Physics, Berlin, Germany.
-      year: 1917-1933
-
-    - title: Professor of Theoretical Physics
-      institution: Karl-Ferdinand University, Prague, Czechoslovakia
-      year: 1911 - 1917
-      description:
-
-    - title: Associate Professor of Theoretical Physics
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1909 - 1911
-
-- title: Open Source Projects
-  type: time_table
-  contents:
-    - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
-      year: 2015-now
-      maindescription: A beautiful, simple, clean, and responsive Jekyll theme for academics.
-
-- title: Academic Interests
-  type: nested_list
-  contents:
-    - title: Topic 1.
-      elements: 
-        - Description 1.
-        - Description 2.
-    - title: Topic 2.
-      elements:
-        - Description 1.
-        - Description 2.
-
-- title: Other Interests
-  type: list
-  contents:
-    - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.

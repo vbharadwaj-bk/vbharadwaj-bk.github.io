@@ -16,7 +16,8 @@ profile:
 news: true  # includes a list of news items
 latest_posts: true  # includes a list of the newest posts
 selected_papers: true # includes a list of papers marked as "selected={true}"
-talks: true # includes latest talks
+talks:
+  limit: 2 
 ---
 
 I am an EECS graduate student at UC Berkeley, advised by the fantastic pair 

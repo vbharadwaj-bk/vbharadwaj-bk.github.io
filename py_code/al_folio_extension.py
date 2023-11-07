@@ -93,6 +93,12 @@ def process_content_fields(generators):
                     str_to_process = child + '{: class="dropdown-item" }'
                     el["children"][i] = content_pass(gen, md, str_to_process, '', strip_p_tags=True)
 
+    if "talks" in gen.context["SITE"]["data"]:
+        talks = gen.context["SITE"]["data"]["talks"]
+        for talk in talks:
+            talk["venue"] = content_pass(gen, md, talk["venue"], '', strip_p_tags=True)
+
+
 
     # Sort pages for the navigation bar
     pages = gen.context["pages"]

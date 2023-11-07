@@ -94,7 +94,7 @@
           {% if page.talks -%}
             <hr>
             <h2><a href="{{ 'talks/' | relative_url }}" style="color: inherit;">recent & upcoming talks</a></h2>
-            {{ talk_list(SITE.data.talks, nodivide=true) }}
+            {{ talk_list(SITE.data.talks[:page.talks.limit], nodivide=true) }}
           {%- endif %}
 
           <!-- Latest posts -->
