@@ -1,4 +1,4 @@
-from pelican.generators import Generator
+from pelican.generators import Generator, PagesGenerator
 from pelican.contents import Content
 import logging
 from pelican import signals
@@ -47,9 +47,12 @@ class ALFolioGenerator(Generator):
         pass
 
 
-def process_content_fields(page_generator):
+def process_content_fields(generators):
     md = Markdown(extensions=["extra"])
-    gen = page_generator
+    gen = None
+    for generator in generators:
+        if isinstance(generator, PagesGenerator): 
+            gen = generator 
 
     # Load teaching
     key = "pages/teaching.md"
@@ -116,4 +119,4 @@ def get_generators(pelican_object):
 
 def register():
     signals.get_generators.connect(get_generators)
-    signals.page_generator_finalized.connect(process_content_fields)
+    signals.all_generators_finalized.connect(process_content_fields)
