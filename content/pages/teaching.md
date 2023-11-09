@@ -12,7 +12,7 @@ courses:
     content: |
       Two-week graduate summer program about randomized sketching algorithms and tensor computations.
       I gave a talk about my work on the last day
-      of the program; check out the [video](). 
+      of the program; check out the [video](https://player.vimeo.com/video/852491761) (Vimeo video title may be wrong). 
       
   - title: "[Applications of Parallel Computers](https://sites.google.com/lbl.gov/cs267-spr2022)" 
     subtitle: Spring 2022, Teaching Assistant.
