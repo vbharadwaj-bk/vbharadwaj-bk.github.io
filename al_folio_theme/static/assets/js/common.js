@@ -12,11 +12,13 @@ $(document).ready(function() {
 
   // bootstrap-toc
   if($('#toc-sidebar').length){
+    let navbarHeight = $("#navbar").outerHeight(true);
     var navSelector = "#toc-sidebar";
     var $myNav = $(navSelector);
     Toc.init($myNav);
     $("body").scrollspy({
       target: navSelector,
+      offset: navbarHeight*1.29, 
     });
   }
 
