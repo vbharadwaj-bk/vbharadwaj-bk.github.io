@@ -37,9 +37,6 @@ def parse_bibliography(filename, output_key, SITE):
         "website",
     ]
 
-    # Fields to remove from final bibtex representation
-    fields_to_remove = ["abbr", "bibtex_show", "arxiv", "preview", "selected"] + button_fields
-
     for key in data.entries:
         d = data.entries[key]
 
@@ -79,6 +76,18 @@ def parse_bibliography(filename, output_key, SITE):
                 link = d.fields[field]
                 entry["button_fields"][field] = {"link": link}
                 entry["button_fields"][field]["relative"] = "://" not in link
+
+        explicit_button_fields = []
+        for field in d.fields:
+            if field.startswith("btn-"):
+                explicit_button_fields.append(field)
+                link = d.fields[field]
+                updated_field_name = ' '.join(field.split('-')[1:]) 
+                entry["button_fields"][updated_field_name] = {"link": link}
+                entry["button_fields"][updated_field_name]["relative"] = "://" not in link
+
+        # Fields to remove from final bibtex representation
+        fields_to_remove = ["abbr", "bibtex_show", "arxiv", "preview", "selected"] + button_fields + explicit_button_fields
 
         for field in fields_to_remove:
             if field in d.fields:
