@@ -145,18 +145,6 @@ blockquote {
   }
 }
 
-@media (min-width: 576px) {
-  .profile {
-    width: 30%;
-
-    .address {
-      p {
-        display: block;
-      }
-    }
-  }
-}
-
 .post-description {
   margin-bottom: 2rem;
   font-size: 0.875rem;
@@ -1269,7 +1257,7 @@ display: block;
 display: none;
 }
 
-  @media all and (max-width: 575px) {
+@media all and (max-width: 575px) {
   .desktop {
   display: none;
   }
@@ -1280,4 +1268,23 @@ display: none;
 
 .social {
   font-size: 2.0rem;
+}
+
+
+.footerdesktop {
+display: block;
+}
+
+.footermobile mobile {
+display: none;
+}
+
+@media all and (max-width: 575px),
+       all and (max-height: 575px) {
+  .footerdesktop {
+  display: none;
+  }
+  .footermobile {
+  display: block;
+  }
 }
