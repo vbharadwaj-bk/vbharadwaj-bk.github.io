@@ -8,6 +8,11 @@ import re
 
 from jinja2 import Environment, FileSystemLoader
 
+from markdown.inlinepatterns import InlineProcessor
+from markdown.extensions import Extension
+import xml.etree.ElementTree as etree
+
+
 class TemplateBlockExtension(Extension):
     def __init__(self, **kwargs):
         self.config = {
@@ -19,9 +24,8 @@ class TemplateBlockExtension(Extension):
     def extendMarkdown(self, md):
         """ Add `FencedBlockPreprocessor` to the Markdown instance. """
         md.registerExtension(self)
-
         md.preprocessors.register(TemplateBlockPreprocessor(md, self.getConfigs()), 'template_block', 175)
-
+        md.preprocessors.register(MathBlockPreprocessor(md, self.getConfigs()), 'math_block', 15)
 
 class TemplateBlockPreprocessor(Preprocessor):
     """ 
@@ -75,4 +79,59 @@ class TemplateBlockPreprocessor(Preprocessor):
 
             else:
                 break
+        return text.split("\n")
+
+
+class MathBlockPreprocessor(Preprocessor):
+    """ 
+    Find and extract template blocks.
+    This extension renders any template block it finds 
+    using Jinja and outputs an error if template
+    rendering fails. 
+    """
+
+    TEMPLATE_BLOCK_MATH = re.compile(
+        dedent(r'''
+            (?P<fence>^\$\$)
+            (?P<mathblock>.*?)                 
+            (?P=fence)                        
+        '''),
+        re.MULTILINE | re.DOTALL | re.VERBOSE
+    )
+
+    TEMPLATE_LINE_MATH = re.compile(
+        dedent(r'''
+            (?P<fence>\$)
+            (?P<mathline>[^\$].*?)
+            (?P=fence)                      
+        '''),
+        re.MULTILINE | re.DOTALL | re.VERBOSE
+    )
+
+    def __init__(self, md, config):
+        super().__init__(md)
+        self.config = config
+
+    def run(self, lines):
+        """ Match and store Template Blocks in the `HtmlStash`. """
+
+        text = "\n".join(lines)
+        while 1:
+            m = self.TEMPLATE_BLOCK_MATH.search(text)
+            if m:
+                mathblock = '\[' + m.group('mathblock') + '\]'
+                stash = self.md.htmlStash.store(mathblock)
+                text = f'{text[:m.start()]}\n{stash}\n{text[m.end():]}'
+            else:
+                break
+
+        while 1:
+            m = self.TEMPLATE_LINE_MATH.search(text)
+            if m:
+                mathline = '\(' + m.group('mathline') + '\)'
+                stash = self.md.htmlStash.store(mathline)
+                text = f'{text[:m.start()]}\n{stash}\n{text[m.end():]}'
+            else:
+                break
+
         return text.split("\n")

@@ -34,9 +34,6 @@ highlight_theme_dark: native    # https://github.com/jwarby/jekyll-pygments-them
 navbar_fixed: true
 footer_fixed: true
 
-display_tags: ['formatting', 'announcements', 'toc', 'math', 'blockquotes'] # these tags will be displayed on the front page of your blog
-display_categories: ['sample-posts'] # these categories will be displayed on the front page of your blog
-
 # Dimensions
 max_width: 850px
 
@@ -99,18 +96,20 @@ contact_note: >
 google_analytics:  # your Google Analytics measurement ID (format: G-XXXXXXXXXX)
 cronitor_analytics:  # cronitor RUM analytics site ID (format: XXXXXXXXX)
 
-google_site_verification:  # your google-site-verification ID (Google Search Console)
 bing_site_verification:  # out your bing-site-verification ID (Bing Webmaster)
 
 # -----------------------------------------------------------------------------
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_enabled: false 
-blog_name: "Vivek's Blog"
+blog_enabled: true 
+blog_name: "blog posts"
 blog_nav_title: blog 
-blog_description: a simple whitespace theme for academics
-permalink: /blog/:year/:title/
+blog_description: May contain trace amounts of peanuts. 
+blog_splash:
+
+display_tags: [] # these tags will be displayed on the front page of your blog
+display_categories: [] # these categories will be displayed on the front page of your blog
 
 # Pagination
 pagination:
@@ -130,7 +129,7 @@ announcements:
   limit: 5 # leave blank to include all the news in the `_news` folder
 
 latest_posts:
-  enabled: true
+  enabled: false 
   scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
   limit: 3 # leave blank to include all the blog posts
 

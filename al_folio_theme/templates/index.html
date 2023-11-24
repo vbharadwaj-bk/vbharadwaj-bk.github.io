@@ -139,8 +139,10 @@
     </p>
 {%- if post.thumbnail -%}
     </div>
-  <div class="col-sm-3">
-    <img class="card-img" src="{{post.thumbnail | relative_url}}" style="object-fit: cover; height: 90%" alt="image">
+  <div class="col-sm-3" align="center">
+    <div class="card border-0" style="width: 8rem;">
+      <img class="card-img" src="{{post.thumbnail | relative_url}}" style="object-fit: scale" alt="image">
+    </div>
   </div>
 </div>
 {%- endif -%}
