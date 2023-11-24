@@ -105,8 +105,8 @@ bing_site_verification:  # out your bing-site-verification ID (Bing Webmaster)
 blog_enabled: true 
 blog_name: "blog posts"
 blog_nav_title: blog 
-blog_description: May contain trace amounts of peanuts. 
-blog_splash:
+blog_description: may contain trace amounts of peanuts
+blog_splash: "images/berkeley_splash_light.png"
 
 display_tags: [] # these tags will be displayed on the front page of your blog
 display_categories: [] # these categories will be displayed on the front page of your blog

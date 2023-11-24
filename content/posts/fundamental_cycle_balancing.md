@@ -121,12 +121,14 @@ letter "N":
 
 !TEMPLATE!
 <div class="row">
-    <div class="col-sm mt-3 mt-md-0">
+    <div class="col-4">
     </div>
-    <div class="col-sm mt-3 mt-md-0">
+
+        <div class="col-4 card border-0 bg-white p-1 mb-3">
         {{ figure(path="images/blog/cycle_balancing.svg",title="An Example Signed Graph") }}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
+        </div>
+
+    <div class="col-4">
     </div>
 </div>
 !TEMPLATE!
