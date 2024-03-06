@@ -1,0 +1,39 @@
+- venue: "[SIAM Conference on Parallel Processing](https://www.siam.org/conferences/cm/conference/pp24), Baltimore MD"
+  title: Distributed-Memory Randomized Candecomp / PARAFAC Decomposition 
+  date: 2024-03-05
+
+- venue: "[MILA Tensor Network Reading Group](https://tensor-networks.github.io/), Virtual"
+  title: Randomized Leverage Score Sampling and CP Decomposition (Redux) 
+  date: 2024-02-06
+  buttons:
+    video: https://www.youtube.com/watch?v=u4X5DBRbrjc
+
+- venue: "UC Berkeley Qualifying Exam"
+  title: Exploiting Sparsity and Randomness to Accelerate Linear Least-Squares at Scale 
+  date: 2024-01-17
+  buttons:
+    slides: pdf/2024/qual_slides.pdf
+
+- venue: "[Workshop on Sparse Tensor Computations](https://solomonik.cs.illinois.edu/tensor_workshop/index.html), Chicago IL"
+  title: Leverage-Score Sampling for CP and Tensor-Train Decomposition
+  date: 2023-10-18
+  buttons:
+    slides: pdf/2023/2023_sparse_tensor_workshop.pdf
+    video: https://www.youtube.com/watch?v=mlbBuOdJPL0&t=3956s 
+
+- venue: "[Sparsitute All-Hands Meeting](https://sparsitute.lbl.gov/2023-all-members-meeting), Chicago IL"
+  title: Randomized Sparse CP Decomposition at Scale 
+  date: 2023-10-17
+
+- venue: "[Seminar on High-Dimensional Computing](https://quantumtative.github.io/seminar_fall2023), Berkeley CA"
+  title: Introduction to TT-ALS and TT-Cross
+  date: 2023-09-19
+  buttons:
+    notes: pdf/2023/2023_hsdc_seminar.pdf
+
+- venue: "[SIAM CSE23 Sparsity Minisymposium](https://www.siam.org/conferences/cm/conference/cse23), Amsterdam, The Netherlands"
+  title: Faster Exact Leverage Score Sampling from Khatri-Rao Products 
+  date: 2023-03-01
+  buttons:
+    slides: pdf/2023/2023_siam_cse.pdf
+

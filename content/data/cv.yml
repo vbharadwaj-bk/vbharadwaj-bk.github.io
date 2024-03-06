@@ -1,0 +1,147 @@
+- title: General Information
+  type: map
+  contents:
+    - name: Name
+      value: Vivek Bharadwaj 
+    - name: Interests
+      value: |
+        Numerical Linear Algebra, Tensor Problems, High-Performance Computing,
+        Randomized Algorithms, Sparsity in ML 
+    - name: Languages
+      value: C, C++, Python, Java, OCaml 
+    - name: Tools 
+      value: OpenMP, MPI, CUDA, UPC++, Pybind11, Pytorch
+
+- title: Education
+  type: time_table
+  contents:
+    - title: PhD, Computer Science
+      institution: University of California, Berkeley 
+      year: 2020-2025
+      description:
+        - "Advisors: James Demmel and Aydın Buluç"  
+        - "Focus: Randomized Algorithms for Tensor Problems"
+        - "Funding: DOE CSGF (2021-2025)"
+
+    - title: Bachelor of Science, Computer Science & Mathematics 
+      institution: California Institute of Technology 
+      year: 2016-2020 
+      description:
+        - "Cumulative GPA: 3.9/4.3"
+
+- title: Experience 
+  type: time_table
+  contents:
+    - title: Graduate Student Researcher 
+      institution: Lawrence Berkeley National Lab 
+      year: Summers<br>'23, '21, '20
+      description:
+        - "Focus: randomized algorithms for sparse matrix and tensor factorization."
+        - |
+          Research is a blend of theoretical and applied work, with 
+          an emphasis on high-peformance implementation.
+
+    - title: Visiting Student Researcher 
+      institution: National Renewable Energy Laboratory 
+      year: Summer '22 
+      description:
+        - "Focus: randomized Krylov method preconditioning."
+        - |
+          Wrote CUDA kernels for randomized butterfly transformations and 
+          incomplete LDL factorization, both used as preconditioners.
+
+    - title: Software Engineering Intern 
+      institution: Jane Street Capital 
+      year: Summer '19
+      description:
+        - Wrote protocols to relay market data from exchanges to traders.
+        - Made improvements to Iron, an in-house fork of the Mercurial VCS.
+
+    - title: Caltech SURF Intern
+      institution: Anandkumar Lab, Caltech  
+      year: Summer '18 
+      description:
+        - |
+          Focus: Continuous analogues of tensor decomposition and Gaussian process
+          modeling, mentored by Rose Yu.
+
+    - title: Ph11 Scholar 
+      institution: Shapiro Lab, Caltech 
+      year: Summer '17
+      description:
+        - |
+          Focus: GPU-based MRI simulations of diffusing water molecule spins in
+          strong magnetic fields. 
+
+        - |
+          Work published in a Journal of the German Chemical Society (code 
+          on Github).
+
+- title: Publications, Talks, and Teaching 
+  type: list
+  contents:
+    - See links in the navigation bar. 
+
+- title: Awards and Fellowships
+  type: time_table
+  contents:
+    - year: 2023 
+      elements: 
+        - Berkeley Outstanding Graduate Student Instructor 
+    - year: 2021 
+      elements: 
+        - DoE Computational Science Graduate Fellowship 
+    - year: 2020 
+      elements: 
+        - Honorable Mention, National Science Foundation GRFP
+        - Thomas A. Tisch Prize for Undergraduate Teaching
+    - year: 2017
+      elements:
+        - "Ph11 Scholar. Funded research position awarded for solving \"hurdle\" problems at Caltech."
+    - year: 2016
+      elements:
+        - "National Merit Scholar. Applied funds to study at Caltech."
+
+- title: Professional Service
+  type: time_table
+  contents:
+    - year: Ongoing
+      maindescription: "Peer review for the following journals / conferences:"
+      elements:
+        - "2023: Numerical Linear Algebra with Applications, Wiley."
+
+    - year: 2022
+      elements:
+        - "Reviewer, Berkeley SURF Research Applications"
+        - "Graduate Visit Day Co-organizer, Scientific Computing"
+
+    - year: 2019-20
+      maindescription: "Caltech Board of Control"
+      elements:
+        - "Served on the student panel adjudicating cases of academic dishonesty."
+
+    - year: 2019
+      maindescription: "Student Chair, Caltech CS Student-Faculty Conference"
+      elements:
+        - "Read our final report <a href=\"https://docs.google.com/document/d/e/2PACX-1vQb_tiDPwxd7M485BCGHVAvNjsGADY5sjggVnvqRqZnQe6nzv4nwiHn_GUIIIiaATT2mj7qJ8WonOlf/pub\">here</a>."
+
+- title: Volunteering 
+  type: time_table
+  contents:
+    - year: Ongoing
+      maindescription: "Judge for the following science contests:"
+      elements: 
+        - "2022-2024: Alameda County Science Fair"
+        - "2022: USA Young Physicists Tournament"
+        - "2020: Blair Middle School Science Fair" 
+
+    - year: Oct-Dec 2021
+      elements: 
+        - "CRS Science Ambassador: Gave virtual science presentations to students at Washington Elementary, Richmond"
+    - year: Jan-Mar 2021
+      elements: 
+        - "Virtual Be a Scientist Mentor: Coached BUSD students through science projects weekly"
+    - year: Spring 2020
+      elements: 
+        - "Caltech RISE Tutor: Tutored high school students from Pasadena Unified School district."
+
