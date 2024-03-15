@@ -5,6 +5,11 @@ nav: false
 summary: An archive of announcements.
 
 entries:
+
+  - date: 2024-03-15 
+    content: |
+      Summer plans: I'll be at [NVIDIA](https://nvidia.com/en-us/) (Santa Clara campus) working on sparse linear algebra primitives.
+
   - date: 2024-01-17 
     content: |
       I passed my qualifying exam! Check out my
