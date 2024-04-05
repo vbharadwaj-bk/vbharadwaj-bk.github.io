@@ -1,0 +1,5 @@
+bold: '["{\bf #1}", 1]'
+norm: '["\left \lVert #1 \right \rVert", 1]'
+RR: '"\mathbb{R}"'
+br: '["\left[ #1 \right]", 1]'
+E: '["\mathrm{E}\left[ #1 \right]", 1]'
