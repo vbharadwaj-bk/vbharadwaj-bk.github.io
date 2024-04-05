@@ -5,6 +5,12 @@ nav: false
 summary: An archive of announcements.
 
 entries:
+  - date: 2024-04-05 
+    content: |
+      I'm delighted that our paper
+      [Distributed-Memory Randomized Algorithms for Sparse Tensor CP Decomposition](https://arxiv.org/abs/2210.05105) has been accepted
+      at [SPAA 2024](https://spaa.acm.org/).
+
 
   - date: 2024-03-15 
     content: |
