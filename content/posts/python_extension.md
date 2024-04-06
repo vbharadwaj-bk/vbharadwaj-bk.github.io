@@ -33,6 +33,8 @@ specifically on interacting with Numpy / Scipy code. Does either of the followin
 algorithm that doesn't map neatly onto the functions that these libraries provide.
 2. You have a large existing C++ codebase or library, and you want a set of Python bindings
 that enable users to call into these libraries. 
+3. Your application requires shared-memory multithreading,
+which Python does not (at the time of writing) support. 
 
 If so, you're in the right place. This tutorial will show you how to
 shuttle large amounts of data back and forth between the Python and
@@ -162,13 +164,12 @@ to C++, or vice-versa. Let's say we want to write a C++ extension
 to compute the Frobenius norm of a matrix 
 $X \in \RR^{n \times m}$, defined as
 
-$$\norm{X}_F = \sum_{i=1, j=1}^{n, m} X_{ij}$$
+$$\norm{X}_F = \sum_{i=1, j=1}^{n, m} X_{ij}^2$$
 
 Here's what the calling code looks like at the Python layer:
 ```python
 import numpy as np
-import cppimport
-import cppimport.import_hook
+import cppimport, cppimport.import_hook
 import my_extension
 
 X = np.random.normal(size=(500, 5), dtype=np.float64)
@@ -233,8 +234,48 @@ pointer inputs, so it's useful to know how to extract them
 from the Python buffers.
 
 ### Mutating and Returning Data from C++ 
-You will frequently want to return arrays of data from the
-C++ layer to the user. 
+We can also mutate data in Python buffers directly.
+Suppose we want to add to add 3 to all elements of a
+matrix `X`:
+```python
+import numpy as np
+import cppimport, cppimport.import_hook
+import my_extension
+
+X = np.random.normal(size=(500, 5), dtype=np.float64)
+my_extension.add3(X)
+```
+Here's the extension to do that:
+
+```C++ 
+//cppimport
+/* my_extension.cpp */
+#include <pybind11/pybind11.h>
+#include <pybind11/numpy.h>
+#include <cmath>
+
+using namespace std;
+namespace py=pybind11;
+
+void add3(py::array_t<double> mat_py) {
+    py::buffer_info info = mat_py.request();
+    double* ptr = static_cast<double*>(info.ptr);
+    uint64_t num_elements = info.shape[0] * info.shape[1];
+
+    for(uint64_t i = 0; i < num_elements; i++) {
+        ptr[i] += 3.0;
+    }
+}
+
+PYBIND11_MODULE(my_extension, m) {
+    m.def("add3", &add3);
+}
+/*
+<%
+setup_pybind11(cfg)
+%>
+*/
+```
 
 !!! danger "Danger: Auto-conversions create unexpected behavior" 
     Suppose your Python extension takes an argument of type
@@ -247,8 +288,16 @@ C++ layer to the user.
     not reflect in the original array. Auto-conversion can
     be disabled in Pybind11.
 
-### Customizing Your Build Process
-Suppose now that you want to link an external library
+Finally, you can also 
+
+
+### Customizing the cppimport Build Process 
+What happens if you want to link an external library to
+your extension or specify additional flags to the C++
+compiler / linker? This is no problem if you 
+build your extension with CMake: you can
+use `target_include_directories`, 
+`target_link_libraries`, and `target_compile_options`.
 
 
 
