@@ -245,8 +245,8 @@ C++ layer to the user.
     be disabled in Pybind11.
 
 ### Customizing Your Build Process
-Let's suppose you want to link an external library to your
-extension. 
+Suppose now that you want to link an external library
+
 
 
 ### Example Application: BFS on a Graph 
