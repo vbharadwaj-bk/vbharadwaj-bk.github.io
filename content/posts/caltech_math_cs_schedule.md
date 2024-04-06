@@ -8,51 +8,10 @@ Summary: >
   useful for anyone else who might be
   considering a double major. 
 ---
-Like most students at Caltech, I spent most of my
-waking hours doing problem sets. I was a Math + CS
-double-major, a decision that extended those waking hours.
-Scroll down to see my course list.
-
-Because I was a "CS-major first", the math major was a lot
-more difficult. I didn't have a lot of experience with 
-math contests or problem-solving as an undergraduate, and I
-also missed several early-morning lectures. 
-Here are some opinions if you are also a CS major thinking about adding
-math (note: these are specific to Caltech). 
-
-#### Reasons to add math 
-- **Because you want to see "Math and Computer Science" on your diploma.** That's a really
-shallow reason, but if you want it (I did), you should go for it, and don't let
-anyone tell you otherwise! 
-
-- **Because the math might be relevant later.** Because Caltech's math
-curriculum is covers algebra, analysis, and topology, you get a solid exposure to
-each one. A lot of this stuff shows up in computer science in unexpected ways. For
-example, the [Brescamp-Lieb Inequality](https://en.wikipedia.org/wiki/Brascamp%E2%80%93Lieb_inequality)
-is used to [prove lower bounds for the memory movement costs of matrix multiplication](https://arxiv.org/pdf/2003.00119.pdf).
-
-- **Because you want to get better at writing proofs.** After a ton of problem sets, it becomes
-second nature. You also get better at collaborating with others and explaining your
-work. If you choose to LaTeX your sets, you become better at that too.  
-
-#### Reasons not to add math 
-- **It consumes nearly all your free course slots.** You'll lose a lot of freedom 
-choose courses that are interesting to you, and you'll have to take certain classes
-at certain times, since they won't be offered otherwise. Being an undergraduate
-is probably the only time you get to study *whatever you want*. Do you really
-want to spend it jumping through hoops?
-
-- **It eats up professional and personal time.** If I hadn't added the math major, I would
-have spent the extra time preparing for technical interviews, doing computer science
-research, and spending time with my friends. Instead, I spent that time solving problems
-in algebra or complex analysis, most of which I have forgotten.
-
-- **It doesn't help much for graduate school admissions.** For computer science at least, 
-I think graduate schools care more about your research and recommendation letters than whether
-you took the hardest math class out there. 
-
-I regret nothing! Here's my undergraduate schedule: 
-
+I thoroughly enjoyed my time at Caltech taking classes.
+In retrospect, I wish I had spent a bit more time 
+doing research, but I regret nothing. You can 
+find my undergraduate class schedule below. 
 
 !TEMPLATE!
 {% set advanced_placement =
