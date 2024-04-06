@@ -10,6 +10,9 @@ Summary: >
 latex_macro_file: 'content/latex/common_macros.yaml'
 toc:
   sidebar: True
+
+latex_macros:
+  abs: '["\left| #1 \right|", 1]'
 ---
 
 ### Introduction

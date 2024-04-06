@@ -119,6 +119,21 @@ def process_content_fields(generators):
     sorted_pages = sorted(sorted_pages, key=itemgetter(0))
     gen.context["nav_sorted_pages"] = sorted_pages
 
+    # Import a LaTeX macro file for any article / page that asks for it 
+    pages_and_articles = pages + gen.context["articles"]
+    for el in pages_and_articles:
+        if "latex_macro_file" in el.metadata:
+            macros = None
+            with open(el.metadata["latex_macro_file"]) as f:
+                macros = yaml.safe_load(f)
+
+            if "latex_macros" in el.metadata:
+                for add_macro in el.metadata["latex_macros"]:
+                    macros[add_macro] = el.metadata["latex_macros"][add_macro] 
+
+            el.latex_macros = macros
+            el.metadata["latex_macros"] = macros
+
 
 def get_generators(pelican_object):
     return ALFolioGenerator
