@@ -27,7 +27,7 @@ required! We'll be using Ben Thompson's awesome [cppimport](https://github.com/t
 extension, which you can install via `pip`. 
 
 There are many other tutorials on Pybind11 online. This tutorial focuses
-specifically on interacting with Numpy / Scipy code. Does either of the following apply to you?
+specifically on interacting with Numpy / Scipy code. Does any of the following apply to you?
 
 1. You're writing an app mostly in Scipy / Numpy, but there's one part of your
 algorithm that doesn't map neatly onto the functions that these libraries provide.
@@ -36,16 +36,41 @@ that enable users to call into these libraries.
 3. Your application requires shared-memory multithreading,
 which Python does not (at the time of writing) support. 
 
-If so, you're in the right place. This tutorial will show you how to
-shuttle large amounts of data back and forth between the Python and
-C++ layers of your code.
+If so, you're in the right place. Before we start, I should mention that this
+tutorial is based on the following resources. 
 
-### Getting Started with cppimport 
+1. The official [Pybind11 documentation](https://pybind11.readthedocs.io/en/stable/index.html), and in particular the [page on Numpy arrays](https://pybind11.readthedocs.io/en/stable/advanced/pycpp/numpy.html?highlight=Eigen#numpy).
+
+2. The [README documentation for the cppimport extension](https://github.com/tbenthompson/cppimport/tree/main).
+
+The Pybind11 documentation has a comprehensive set of example codes 
+with better coding practices than what this tutorial exposes. That said,
+I hope that this tutorial lowers the barrier to entry to create extensions
+and saves you some Googling. 
+
+### Getting Started 
+You can download the finished code for this tutorial at [this git repo](). This
+tutorial has been tested on Mac (Apple Silicon) and Linux systems. If you're 
+using Windows, try [Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/about).
+
+Fire up a terminal / text-editor and create 
+a directory `Pybind11_tutorial`. Inside, create a pair of files `my_extension.cpp`
+and `calling_code.py`. Your directory structure should look like this:
+
+```console
+Pybind11_tutorial (directory)
+├── calling_code.py
+└── my_extension.cpp
+```
+
+We will do all of our work inside the `Pybind11_tutorial` directory. 
 The [cppimport](https://github.com/tbenthompson/cppimport) package is
 by far the simplest (and coolest) way I've seen to start writing
-C++ extensions quickly. You can install the package via 
-`pip install cppimport`. Open an editor and create a 
-file `my_extension.cpp`:
+C++ extensions quickly. Install the package via
+
+```pip install cppimport``` 
+
+Then enter the following into `my_extension.cpp`:
 
 ```C++ 
 //cppimport
@@ -57,8 +82,13 @@ void hello_world(int x) {
     std::cout << "Hello world! Your number is " << x << std::endl;
 }
 
+void print_double(double x) {
+    std::cout << "The double you entered is " << x << std::endl;
+}
+
 PYBIND11_MODULE(my_extension, m) {
-    m.def("hello_world", &hello_world);
+    m.def("hello_world", &hello_world)
+    m.def("print_double", &print_double);
 }
 /*
 <%
@@ -69,17 +99,17 @@ setup_pybind11(cfg)
 That's all you need to create a working extension! Let's walk through
 the key lines:
 
-1. `//cppimport`: This first-line comment is needed if you're using
+1. `//cppimport`: This first-line comment is **necessary** if you're using
 cppimport to compile your extensions.
 
 2. `#include<pybind11/pybind11.h>`: This header exposes 
 classes and functions necessary to interface with Python.
 
-3. `PYBIND11_MODULE...`: After declaring a dummy test function
-`hello_world`, we define a Python module named `my_extension` and
-give it a local name `m`. We expose the function to the Python
-layer with the `m.def` statement on the next line. Note that the names
-for the function at the Python and C++ layers **do not** have to be
+3. `PYBIND11_MODULE...`: After declaring two test functions
+`hello_world` and `print_double`, we define a Python module named 
+`my_extension` and give it a local name `m`. We expose twofunction to the Python
+layer with the `m.def` statements on the next two lines. Note: the function
+names at the Python and C++ layers **do not** have to be
 the same. For example, you can rename the `hello_world` function
 at the C++ layer by providing a different string argument in the 
 `m.def` line, which can be very useful.
@@ -96,26 +126,30 @@ of comments for now.
     build system of your choice, provided that you supply the Pybind11 
     header paths and libraries. 
     
-Let's try calling our extension from Python. Before you try your extension, 
+Now let's write the corresponding code to call the extension at the Python layer. 
+Enter the following into
+`calling_code.py`:
+
+```python
+# calling_code.py
+import cppimport 
+import cppimport.import_hook
+import my_extension 
+my_extension.hello_world(5)
+my_extension.print_double(3.14)
+```
+
+Let's test it out. Before you run the code, 
 make sure that you export the shell variables `CC` and `CXX` to the
 C / C++ compilers of your choice, or else `cppimport` will attempt
-to locate compilers for you. Fire up a terminal in the same folder
-as your extension file and enter the following: 
-
+to locate compilers for you. Fire up a terminal and try the following:
 ```console
-[shell]% python
-Python 3.11.8 | packaged by conda-forge | (main, Feb 16 2024, 20:49:36) [Clang 16.0.6 ] on darwin
-Type "help", "copyright", "credits" or "license" for more information.
->>> import cppimport 
->>> import cppimport.import_hook
->>> import my_extension 
->>> my_extension.hello_world(5)
+[shell]% python calling_code.py
 Hello world! Your number is 5
->>>
+The double you entered is 3.14
 ```
-If all goes well, you should see `Hello world!` message
-printed along with the number you supplied as an argument.
-Congratulations! You now have a working extension. 
+You should see the output listed above on 
+your console. Congratulations! You now have a working extension. 
 
 ### Behind the Scenes 
 Here's a little more information about what's going on.
@@ -288,7 +322,41 @@ setup_pybind11(cfg)
     not reflect in the original array. Auto-conversion can
     be disabled in Pybind11.
 
-Finally, you can also 
+Finally, you can also initialize and return Numpy arrays from the C++
+layer; here's an revsision of the `add3` function that returns a new buffer
+instead of mutating in place:
+
+```C++ 
+//cppimport
+/* my_extension.cpp */
+#include <pybind11/pybind11.h>
+#include <pybind11/numpy.h>
+#include <cmath>
+
+using namespace std;
+namespace py=pybind11;
+
+/*
+ * Returns a copy
+ */
+void add3_returncopy(py::array_t<double> mat_py) {
+    py::buffer_info info_in = mat_py.request();
+    double* ptr_in = static_cast<double*>(info_in.ptr);
+    uint64_t num_elements = info.shape[0] * info.shape[1];
+
+    auto result = py::array_t<double>(info_in.size);
+    py::buffer_info info_out = result.request();
+    double* ptr_out = static_cast<double*>(info_out.ptr);
+
+    for(int i = 0; i < num_elements; i++) {
+        ptr_out[i] = ptr_in[i] + 3.0;
+    }
+}
+
+PYBIND11_MODULE(my_extension, m) {
+    m.def("add3_returncopy", &add3);
+}
+```
 
 
 ### Customizing the cppimport Build Process 
