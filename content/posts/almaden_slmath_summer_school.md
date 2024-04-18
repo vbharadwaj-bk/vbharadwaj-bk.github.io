@@ -50,9 +50,8 @@ per day, I estimate that the summer school covered roughly the same
 content as a standard quarter-long mathematics course in just two
 weeks. Everyone was tired by the end, but the course content was valuable. 
 
-
 The first week of the summer school covered the basics of linear 
-algebra and the mathematics of randomization and sketching, a tool
+algebra and the mathematics of randomization and sketching, tools 
 used to decrease the computational cost of expensive linear algebra
 primitives. The second week covered tensors, which are generalize
 matrices and vectors to higher dimensions. 
