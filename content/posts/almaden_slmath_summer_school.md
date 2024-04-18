@@ -39,6 +39,43 @@ for the school, which took place at the beautiful IBM Research campus
 in Almaden, CA. I had the pleasure to work with fellow TAs 
 Yijun Dong and Rachel Minster. 
 
+### Problem Sets and Curriculum
+Each of the two problem sets assigned per day was comparable 
+in length to a weekly university homework assignment. 
+The students worked in 
+groups so that they could finish the problems in the short 
+time alotted, while the TAs roamed between the groups to help. Given
+two lectures (roughly 2.5-3 hours) and 3 hours of homework
+per day, I estimate that the summer school covered roughly the same
+content as a standard quarter-long mathematics course in just two
+weeks. Everyone was tired by the end, but the course content was valuable. 
+
+
+The first week of the summer school covered the basics of linear 
+algebra and the mathematics of randomization and sketching, a tool
+used to decrease the computational cost of expensive linear algebra
+primitives. The second week covered tensors, which are generalize
+matrices and vectors to higher dimensions. 
+
+I work at the intersection of these topics. In addition
+to TAing, I was gratified to meet some of the heavyweights
+in both fields, and we had many productive discussions.
+
+!TEMPLATE!
+<div class="row">
+    <div class="col-2">
+    </div>
+        <div class="col-8 card border-0 bg-white p-1 mb-3">
+        {{ figure(path="images/blog/ibm_slmath/group_outdoors.jpg",title="Class Photo Outdoors", class="img-fluid rounded z-depth-1", zoomable=True) }}
+        <div class="caption">
+        Outdoor class photo against the backdrop of sunny Almaden. 
+        </div>
+</div>
+<div class="col-2">
+</div>
+</div>
+!TEMPLATE!
+
 ### Logistics 
 The students stayed at the dormitories of San Jose State university
 and took a bus to the summer school every day, which took place over
@@ -57,44 +94,8 @@ provided!). At the end of the day, dinners were provided in brown
 paper bags for the students before they boarded the bus back to the
 dorm. 
 
-They fed us well! But we needed it. Thinking through / helping others
-with problem sets made us all hungry. 
+They fed us well! But the work made us hungry, and we needed it. 
 
-!TEMPLATE!
-<div class="row">
-    <div class="col-2">
-    </div>
-        <div class="col-8 card border-0 bg-white p-1 mb-3">
-        {{ figure(path="images/blog/ibm_slmath/group_outdoors.jpg",title="Class Photo Outdoors", class="img-fluid rounded z-depth-1", zoomable=True) }}
-        <div class="caption">
-        Outdoor class photo against the backdrop of sunny Almaden. 
-        </div>
-</div>
-<div class="col-2">
-</div>
-</div>
-!TEMPLATE!
-
-### Problem Sets and Curriculum
-Each of the two problem sets assigned per day was comparable 
-in length to a weekly university homework assignment. 
-The students worked in 
-groups so that they could finish the problems in the short 
-time alotted, while the TAs roamed between the groups to help. Given
-two lectures (roughly 2.5-3 hours) and 3 hours of homework
-per day, I estimate that the summer school covered roughly the same
-content as a standard quarter-long mathematics course in just two
-weeks. By the end, everyone was exhausted. 
-
-The first week of the summer school covered the basics of linear 
-algebra and the mathematics of randomization and sketching, a tool
-used to decrease the computational cost of expensive linear algebra
-primitives. The second week covered tensors, which are generalize
-matrices and vectors to higher dimensions. 
-
-I work at the intersection of these topics. In addition
-to TAing, I was gratified to meet some of the heavyweights
-in both fields, and we had many productive discussions.
 
 ### Research Seminar and Career Panel 
 
