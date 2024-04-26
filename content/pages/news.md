@@ -5,12 +5,18 @@ nav: false
 summary: An archive of announcements.
 
 entries:
+  - date: 2024-04-25 
+    content: |
+      Charles Block, Gerasimos Gerogiannis, and three other wonderful researchers
+      from UIUC and Indiana University built on the [code](https://github.com/PASSIONLab/distributed_sddmm) from our [2022 IPDPS paper](https://arxiv.org/abs/2203.07673). 
+      Their work on high-performance distributed-memory SpMM will
+      appear at ASPLOS 2024, and you can read it [here](https://dl.acm.org/doi/10.1145/3620665.3640427).
+
   - date: 2024-04-05 
     content: |
       I'm delighted that our paper
       [Distributed-Memory Randomized Algorithms for Sparse Tensor CP Decomposition](https://arxiv.org/abs/2210.05105) has been accepted
       at [SPAA 2024](https://spaa.acm.org/).
-
 
   - date: 2024-03-15 
     content: |
