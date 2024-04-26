@@ -108,8 +108,8 @@
     - year: Ongoing
       maindescription: "Peer review for the following journals / conferences:"
       elements:
-        - "2023: Numerical Linear Algebra with Applications, Wiley"
         - "2024: Supercomputing 2024 Artifact Evaluation"
+        - "2023: Numerical Linear Algebra with Applications, Wiley"
         - "2021: IEEE Signal Processing Letters"
 
     - year: 2022
