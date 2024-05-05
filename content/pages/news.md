@@ -5,12 +5,13 @@ nav: false
 summary: An archive of announcements.
 
 entries:
-  - date: 2024-04-25 
+  - date: 2024-05-04 
     content: |
       Charles Block, Gerasimos Gerogiannis, and three other wonderful researchers
-      from UIUC and Indiana University built on the [code](https://github.com/PASSIONLab/distributed_sddmm) from our [2022 IPDPS paper](https://arxiv.org/abs/2203.07673). 
-      Their work on high-performance distributed-memory SpMM will
-      appear at ASPLOS 2024, and you can read it [here](https://dl.acm.org/doi/10.1145/3620665.3640427).
+      from UIUC and IU built on the [code](https://github.com/PASSIONLab/distributed_sddmm) from our [2022 IPDPS paper](https://arxiv.org/abs/2203.07673). 
+      Read their ASPLOS 2024 paper [here](https://dl.acm.org/doi/10.1145/3620665.3640427).
+      **Update**: Nabil Abubaker and Torsten Hoefler (ETH Zurich) also tested our code!
+      Their paper is [here](https://arxiv.org/pdf/2404.19638). 
 
   - date: 2024-04-05 
     content: |
