@@ -1,6 +1,8 @@
 - venue: "[SIAM Conference on Applied Linear Algebra](https://www.siam.org/conferences/cm/conference/la24), Paris, France"
-  title: Upcoming (Title and Date Subject to Change) 
+  title: Sampling-Based Sketches for Tensor Train Core Chains
   date: 2024-05-13
+  buttons:
+    slides: pdf/2024/la24_slides.pdf
 
 - venue: "[SIAM Conference on Parallel Processing](https://www.siam.org/conferences/cm/conference/pp24), Baltimore MD"
   title: Distributed-Memory Randomized Candecomp / PARAFAC Decomposition 
