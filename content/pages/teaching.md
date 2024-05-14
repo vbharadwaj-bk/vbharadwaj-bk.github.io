@@ -18,6 +18,8 @@ courses:
     subtitle: Spring 2022, Teaching Assistant.
     badge: Berkeley CS267 
     content: |
+      🏅 **Award: [2024 Teaching Effectiveness Award](https://gsi.berkeley.edu/programs-services/award-programs/teaching-effectiveness/)**
+
       🏅 **Award: [2023 Outstanding Graduate Student Instructor](https://gsi.berkeley.edu/programs-services/award-programs/ogsi/)**
 
       Semester-long course on Parallel Computing. Check out my 

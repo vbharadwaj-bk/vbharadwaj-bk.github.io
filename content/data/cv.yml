@@ -85,7 +85,10 @@
 - title: Awards and Fellowships
   type: time_table
   contents:
-    - year: 2023 
+    - year: 2024 
+      elements: 
+        - Berkeley Teaching Effectiveness Award
+    - year: 2022 
       elements: 
         - Berkeley Outstanding Graduate Student Instructor 
     - year: 2021 
@@ -95,6 +98,9 @@
       elements: 
         - Honorable Mention, National Science Foundation GRFP
         - Thomas A. Tisch Prize for Undergraduate Teaching
+    - year: 2019
+      elements:
+        - Caltech Hacktech Best Educational Hack (Presentr) 
     - year: 2017
       elements:
         - "Ph11 Scholar. Funded research position awarded for solving \"hurdle\" problems at Caltech."
