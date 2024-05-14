@@ -5,6 +5,13 @@ nav: false
 summary: An archive of announcements.
 
 entries:
+  - date: 2024-05-14 
+    content: |
+      I am thrilled to receive Berkeley's
+      [Teaching Effectiveness Award](https://gsi.berkeley.edu/programs-services/award-programs/teaching-effectiveness/) (2023-2024). The prize comes with a $500
+      check, and the winner names / essays will be public
+      soon. 
+
   - date: 2024-05-04 
     content: |
       Charles Block, Gerasimos Gerogiannis, and three other wonderful researchers
