@@ -60,5 +60,5 @@ to see comments that I received.
 condensed to remove information that doesn't relate 
 to me. 
 
-In the July 2023, I also TA'd an summer program 
+In July 2023, I also TA'd an summer program 
 held by the Simons Laufer Mathematical Institute.
