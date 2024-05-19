@@ -10,7 +10,7 @@ entries:
       I am thrilled to receive Berkeley's
       [Teaching Effectiveness Award](https://gsi.berkeley.edu/programs-services/award-programs/teaching-effectiveness/) (2023-2024). The prize comes with a $500
       check, and the winner names / essays will be public
-      soon. 
+      soon. Read my essay [here]({filename}/posts/tea_essay.md)!
 
   - date: 2024-05-04 
     content: |

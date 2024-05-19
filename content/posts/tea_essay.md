@@ -16,9 +16,9 @@ student instructors who have identified and
 fixed a particular problem in their classes. 
 Winners are selected on the basis of an essay
 they submit.
-This essay won the 2023-2024 award. If you'd like to verify
-some of the information in this essay, check out
-my [student reviews for CS267 in 2022]({static}/pdf/teaching_reviews/reviews_berkeley.pdf).* 
+This essay won the 2023-2024 award. 
+Also check out
+my [student reviews for CS267 in 2022]({static}/pdf/teaching_reviews/reviews_berkeley.pdf)!* 
 
 
 !TEMPLATE!
