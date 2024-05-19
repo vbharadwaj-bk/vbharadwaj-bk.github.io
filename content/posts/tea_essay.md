@@ -6,18 +6,37 @@ Summary: |
   An essay I wrote for the 2023-2024 Teaching
   Effectiveness Award contest. This essay
   was one of 15 submissions chosen for the award. 
-thumbnail_icon: 
+thumbnail: "images/blog/cookies.jpeg" 
 ---
 
 **Background**: 
 *The Berkeley Teaching Effectiveness Award (TEA)
-recognizes a small number of "outstanding graduate
-student instructors" who have identified and 
-fixed a particular problem in their classes. This 
-essay won the 2023-2024 award, and is also published 
-on the [TEA website](). If you'd like to verify
+recognizes around 15 graduate
+student instructors who have identified and 
+fixed a particular problem in their classes. 
+Winners are selected on the basis of an essay
+they submit.
+This essay won the 2023-2024 award. If you'd like to verify
 some of the information in this essay, check out
 my [student reviews for CS267 in 2022]({static}/pdf/teaching_reviews/reviews_berkeley.pdf).* 
+
+
+!TEMPLATE!
+<div class="row">
+    <div class="col-2">
+    </div>
+        <div class="col-8 card border-0 bg-white p-1 mb-3">
+        {{ figure(path="images/blog/cookies.jpeg",title="A tray of cookies.", class="img-fluid rounded z-depth-1", zoomable=False) }}
+        <div class="caption">
+        A delicious tray of cookies. Wikimedia
+        Commons public domain.
+        </div>
+</div>
+<div class="col-2">
+</div>
+</div>
+!TEMPLATE!
+
 
 The demand for computer science classes has 
 ballooned across the nation, and UC Berkeley 
