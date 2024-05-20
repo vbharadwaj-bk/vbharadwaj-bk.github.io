@@ -1,10 +1,10 @@
 {% if SITE.enable_google_verification or SITE.enable_bing_verification %}
     <!-- Website verification -->
     {% if SITE.enable_google_verification -%}
-    <meta name="google-site-verification" content="{{ SITE.google_site_verification }}" />
+    <meta name="google-site-verification" content="{{ SITE.google_site_verification }}">
     {%- endif -%}
     {% if SITE.enable_bing_verification -%}
-    <meta name="msvalidate.01" content="{{ SITE.bing_SITE_verification }}" />
+    <meta name="msvalidate.01" content="{{ SITE.bing_SITE_verification }}">
     {%- endif -%}
     <!-- Avoid warning on Google Chrome
         Error with Permissions-Policy header: Origin trial controlled feature not enabled: 'interest-cohort'.
