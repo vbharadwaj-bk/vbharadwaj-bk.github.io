@@ -51,8 +51,8 @@ from the Krell Institute.
     <h4>Education</h4>
     <li>PhD in Computer Science.<br>UC Berkeley, 2020-Present</li>
     <li>BS in CS + Mathematics.<br> Caltech, 2016-2020</li>
-    </div>
     </ul> 
+    </div>
     </div>
 </div>
 </div>
