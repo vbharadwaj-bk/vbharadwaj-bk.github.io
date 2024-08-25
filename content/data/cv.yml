@@ -32,6 +32,18 @@
 - title: Experience 
   type: time_table
   contents:
+    - title: Sparse Linear Algebra Intern 
+      institution: NVIDIA Math Libraries Team
+      year: Summer '24
+      description:
+        - |
+          Focus: rewrote large parts of cuSPARSELt, a library for structured
+          sparse-dense matrix multiplication in machine learning, for new Blackwell
+          generation GPUs. 
+        - |
+          Also investigated custom semiring support with JIT linking for sparse
+          matrix-vector multiplication.
+
     - title: Graduate Student Researcher 
       institution: Lawrence Berkeley National Lab 
       year: Summers<br>'23, '21, '20
