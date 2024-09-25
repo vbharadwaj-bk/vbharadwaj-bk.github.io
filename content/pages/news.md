@@ -5,6 +5,14 @@ nav: false
 summary: An archive of announcements.
 
 entries:
+  - date: 2024-09-25 
+    content: |
+      [Beheshteh Rakhshan](https://scholar.google.ca/citations?user=AWGU-v8AAAAJ&hl=en) and I,
+      along with [Osman Asif Malik](https://osmanmalik.github.io/) and 
+      [Guillaume Rabusseau](https://www-labs.iro.umontreal.ca/~grabus/),
+      worked on [this paper](https://arxiv.org/abs/2406.02749) on sketching
+      tensor train core chains. It was just accepted as a poster to NeurIPS 2024. 
+
   - date: 2024-05-14 
     content: |
       I am thrilled to receive Berkeley's
