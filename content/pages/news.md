@@ -17,8 +17,8 @@ entries:
     content: |
       I am thrilled to receive Berkeley's
       [Teaching Effectiveness Award](https://gsi.berkeley.edu/programs-services/award-programs/teaching-effectiveness/) (2023-2024). The prize comes with a $500
-      check, and the winner names / essays will be public
-      soon. Read my essay [here]({filename}/posts/tea_essay.md)!
+      check, and the list of winners is [online](https://gsi.berkeley.edu/programs-services/award-programs/teaching-effectiveness/tea-recipients/tea-year/tea-2020-2025/). Read my essay [on my blog]({filename}/posts/tea_essay.md) or
+      [on the GSI center website](https://gsi.berkeley.edu/cookie-cutters-scaling-a-parallel-computing-class-while-retaining-its-humanity/)!
 
   - date: 2024-05-04 
     content: |

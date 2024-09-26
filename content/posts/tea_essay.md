@@ -12,12 +12,13 @@ thumbnail: "images/blog/cookies.jpeg"
 **Background**: 
 *The Berkeley Teaching Effectiveness Award (TEA)
 recognizes around 15 graduate
-student instructors who have identified and 
+student instructors each year who have identified and 
 fixed a particular problem in their classes. 
 Winners are selected on the basis of an essay
 they submit.
-This essay won the 2023-2024 award. 
-Also check out
+This essay won the [2023-2024 award](https://gsi.berkeley.edu/programs-services/award-programs/teaching-effectiveness/tea-recipients/tea-year/tea-2020-2025/), and a 
+[copy of this essay](https://gsi.berkeley.edu/cookie-cutters-scaling-a-parallel-computing-class-while-retaining-its-humanity/) was posted to the GSI resource center
+website. Also check out
 my [student reviews for CS267 in 2022]({static}/pdf/teaching_reviews/reviews_berkeley.pdf)!* 
 
 
