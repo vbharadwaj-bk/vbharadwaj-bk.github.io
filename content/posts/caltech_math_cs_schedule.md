@@ -8,9 +8,10 @@ Summary: >
   useful for anyone else who might be
   considering a double major. 
 ---
-Here's a list of classes I took as an undergraduate at Caltech. I double-majored in
-math and computer-science, so this schedule might be a useful example if you're thinking
-of doing the same thing.
+I thoroughly enjoyed my time at Caltech taking classes.
+In retrospect, I wish I had spent a bit more time 
+doing research, but I regret nothing. You can 
+find my undergraduate class schedule below. 
 
 !TEMPLATE!
 {% set advanced_placement =

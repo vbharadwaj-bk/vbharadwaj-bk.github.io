@@ -32,6 +32,18 @@
 - title: Experience 
   type: time_table
   contents:
+    - title: Sparse Linear Algebra Intern 
+      institution: NVIDIA Math Libraries Team
+      year: Summer '24
+      description:
+        - |
+          Focus: rewrote large parts of cuSPARSELt, a library for structured
+          sparse-dense matrix multiplication in machine learning, for new Blackwell
+          generation GPUs. 
+        - |
+          Also investigated custom semiring support with JIT linking for sparse
+          matrix-vector multiplication.
+
     - title: Graduate Student Researcher 
       institution: Lawrence Berkeley National Lab 
       year: Summers<br>'23, '21, '20
@@ -85,7 +97,10 @@
 - title: Awards and Fellowships
   type: time_table
   contents:
-    - year: 2023 
+    - year: 2024 
+      elements: 
+        - Berkeley Teaching Effectiveness Award
+    - year: 2022 
       elements: 
         - Berkeley Outstanding Graduate Student Instructor 
     - year: 2021 
@@ -95,6 +110,9 @@
       elements: 
         - Honorable Mention, National Science Foundation GRFP
         - Thomas A. Tisch Prize for Undergraduate Teaching
+    - year: 2019
+      elements:
+        - Caltech Hacktech Best Educational Hack (Presentr) 
     - year: 2017
       elements:
         - "Ph11 Scholar. Funded research position awarded for solving \"hurdle\" problems at Caltech."
@@ -108,7 +126,10 @@
     - year: Ongoing
       maindescription: "Peer review for the following journals / conferences:"
       elements:
-        - "2023: Numerical Linear Algebra with Applications, Wiley."
+        - "2024: Neural Information Processing Systems"
+        - "2024: Supercomputing 2024 Artifact Evaluation"
+        - "2023: Numerical Linear Algebra with Applications, Wiley"
+        - "2021: IEEE Signal Processing Letters"
 
     - year: 2022
       elements:

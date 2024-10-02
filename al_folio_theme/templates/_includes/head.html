@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@{{ SITE.mdb.version }}/css/mdb.min.css" integrity="{{ SITE.mdb.integrity.css }}" crossorigin="anonymous">
 
     <!-- Bootstrap Table -->
-    <link defer rel="stylesheet" href="https://unpkg.com/bootstrap-table@{{ SITE.bootstrap_table.version }}/dist/bootstrap-table.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@{{ SITE.bootstrap_table.version }}/dist/bootstrap-table.min.css">
 
     <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@{{ SITE.fontawesome.version }}/css/all.min.css" integrity="{{ SITE.fontawesome.integrity }}" crossorigin="anonymous">
@@ -25,7 +25,7 @@
     {% if SITE.icon|length <= 4 %}
     <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>{{ SITE.icon }}</text></svg>">
     {% elif SITE.icon != none %}
-    <link rel="shortcut icon" href="{{ ('theme/assets/img/' ~ SITE.icon) | absolute_url }}"/>
+    <link rel="shortcut icon" href="{{ SITE.icon | absolute_url }}"/>
     {% endif %}
 
     {% assets filters="libsass,cssmin", output="css/main.css", "css/main.scss" %}

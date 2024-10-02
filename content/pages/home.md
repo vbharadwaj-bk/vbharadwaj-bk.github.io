@@ -4,7 +4,7 @@ Template: about
 URL: ''
 save_as: index.html
 subtitle: |
-  PhD student. Works on: <b>HPC</b>,
+  PhD student. Works on: <b>graphs</b>,
   <b>sparse tensors</b>, and <b>randomized algorithms</b>.
 
 profile: 
@@ -39,7 +39,7 @@ from the Krell Institute.
     <div class="row justify-content-center">
     <ul class="lower-font-size"> 
     <h4>Interests</h4>
-    <li>Communication Analysis</li>
+    <li>Sparse Computations</li>
     <li>Tensor Algorithms</li>
     <li>Numerical Linear Algebra</li>
     </ul>
@@ -51,8 +51,8 @@ from the Krell Institute.
     <h4>Education</h4>
     <li>PhD in Computer Science.<br>UC Berkeley, 2020-Present</li>
     <li>BS in CS + Mathematics.<br> Caltech, 2016-2020</li>
-    </div>
     </ul> 
+    </div>
     </div>
 </div>
 </div>

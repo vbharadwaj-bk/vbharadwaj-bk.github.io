@@ -87,7 +87,6 @@
               </div>
               </div>
             </div>
-          </div>
           {%- endif %}
 
           <!-- News -->
@@ -115,6 +114,7 @@
           {% if page.selected_papers -%}
             <hr>
             <h2><a href="{{ 'publications/' | relative_url }}" style="color: inherit;">selected publications</a></h2>
+            * denotes equal contribution
             {{ pub_list(SITE.publications | selectattr("selected"), nodivide=true) }}
           {%- endif %}
       </article>
