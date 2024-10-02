@@ -1,8 +1,8 @@
 ---
 Title: Writing C++ Extensions for Numpy Code 
-Date: 2024-04-04 
+Date: 2024-10-02
 Category: computer-science 
-thumbnail: 
+thumbnail: "images/blog/python_thumbnail.jpg" 
 Summary: >
   A tutorial on writing C++ extensions for Python using Pybind11
   that interface seamlessly with Numpy or Scipy. 
@@ -23,8 +23,7 @@ even production-ready machine learning, but performance really suffers if
 your project needs primitives that aren't exposed by libraries like
 Numpy, Scipy, or Pytorch. This is a tutorial on extending Python
 by writing C++ extensions using Pybind11. No complicated buildfiles
-required! We'll be using Ben Thompson's awesome [cppimport](https://github.com/tbenthompson/cppimport)
-extension, which you can install via `pip`. 
+required! We'll be using Ben Thompson's awesome [cppimport](https://github.com/tbenthompson/cppimport) extension, which you can install via `pip`. 
 
 There are many other tutorials on Pybind11 online. This tutorial focuses
 specifically on interacting with Numpy / Scipy code. Does any of the following apply to you?
@@ -46,13 +45,12 @@ tutorial is based on the following resources.
 The Pybind11 documentation has a comprehensive set of example codes 
 with better coding practices than what this tutorial exposes. That said,
 I hope that this tutorial lowers the barrier to entry to create extensions
-and saves you some Googling. 
+and saves you some Googling.
+
+Credit for the Python in the thumbnail for this post goes to Diego Delso, delso.photo, 
+License CC BY-SA.
 
 ### Getting Started 
-You can download the finished code for this tutorial at [this git repo](). This
-tutorial has been tested on Mac (Apple Silicon) and Linux systems. If you're 
-using Windows, try [Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/about).
-
 Fire up a terminal / text-editor and create 
 a directory `Pybind11_tutorial`. Inside, create a pair of files `my_extension.cpp`
 and `calling_code.py`. Your directory structure should look like this:
@@ -68,7 +66,9 @@ The [cppimport](https://github.com/tbenthompson/cppimport) package is
 by far the simplest (and coolest) way I've seen to start writing
 C++ extensions quickly. Install the package via
 
-```pip install cppimport``` 
+```bash
+pip install cppimport
+``` 
 
 Then enter the following into `my_extension.cpp`:
 
@@ -358,21 +358,9 @@ PYBIND11_MODULE(my_extension, m) {
 }
 ```
 
-
-### Customizing the cppimport Build Process 
-What happens if you want to link an external library to
-your extension or specify additional flags to the C++
-compiler / linker? This is no problem if you 
-build your extension with CMake: you can
-use `target_include_directories`, 
-`target_link_libraries`, and `target_compile_options`.
-
-
-
-### Example Application: BFS on a Graph 
-Let's say we want to write a breadth-first search (BFS) routine for a 
-graph $G=(V, E)$. For this tutorial, 
-we're going to use the Matrix-Market (.mtx) format of `bcspwr02`, a small power system graph that
+### Exercise: CSR Matrix-Vector Multiplication 
+Let's say we want to write a CSR-based matrix-vector multiplication function.
+For this tutorial, we're going to use the Matrix-Market (.mtx) format of `bcspwr02`, a small power system graph that
 you can [download from the Suitesparse Matrix Collection](https://sparse.tamu.edu/HB/bcspwr02).
 Scipy contains a blazingly-fast multithreaded routine to load the adjacency matrix $A$ of the graph: 
 
@@ -404,7 +392,8 @@ $\abs{V}+1$. The nonzeros in the range
 `adjacency.indptr[i]` (inclusive) to `adjacency.indptr[i+1]` (exclusive)
 all belong to row $A_{i:}$.
 
-You could probably write a BFS implementation with just a few lines
-of code in Python, but this would be exceptionally slow for graphs
-with billions of edges. Our goal is to write a C++ extension that
-performs the search efficiently. 
+Your task: write a multithreaded, CSR-based matrix-vector multiply code in C++ 
+and expose a Python binding for it.
+
+
+
