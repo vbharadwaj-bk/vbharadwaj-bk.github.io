@@ -195,10 +195,10 @@ This magic is brought to you by Pybind11. That said, passing
 scalar arguments back and forth isn't that interesting. Usually,
 we want to make *arrays of data* from the Python layer accessible
 to C++, or vice-versa. Let's say we want to write a C++ extension 
-to compute the squared Frobenius norm of a matrix 
+to compute the Frobenius norm of a matrix 
 $X \in \RR^{n \times m}$, defined as
 
-$$\norm{X}_F^2 = \sum_{i=1, j=1}^{n, m} X_{ij}^2$$
+$$\norm{X}_F = \sqrt{\sum_{i=1, j=1}^{n, m} X_{ij}^2}$$
 
 Here's what the calling code looks like at the Python layer:
 ```python
