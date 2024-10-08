@@ -87,7 +87,7 @@ void print_double(double x) {
 }
 
 PYBIND11_MODULE(my_extension, m) {
-    m.def("hello_world", &hello_world)
+    m.def("hello_world", &hello_world);
     m.def("print_double", &print_double);
 }
 /*
@@ -107,7 +107,7 @@ classes and functions necessary to interface with Python.
 
 3. `PYBIND11_MODULE...`: After declaring two test functions
 `hello_world` and `print_double`, we define a Python module named 
-`my_extension` and give it a local name `m`. We expose twofunction to the Python
+`my_extension` and give it a local name `m`. We expose two functions to the Python
 layer with the `m.def` statements on the next two lines. Note: the function
 names at the Python and C++ layers **do not** have to be
 the same. For example, you can rename the `hello_world` function

@@ -31,7 +31,7 @@ courses:
     subtitle: Spring 2020, Spring 2019, Spring 2018, Teaching Assistant.
     badge: Caltech CS38/138
     content: |
-      🏅 **Award: [2020 Thomas A. Tisch Prize](https://www.cms.caltech.edu/academics/honors#thomas-a-tisch-prize-for-undergraduate-teaching-in-computing-and-mathematical-sciences)**
+      🏅 **[2020 Thomas A. Tisch Prize](https://www.cms.caltech.edu/academics/honors#thomas-a-tisch-prize-for-undergraduate-teaching-in-computing-and-mathematical-sciences)**
 
       Proof-based algorithms course. I taught three times over three years (2018, 2019, 2020); responsibilities
       included grading homework, holding office hours, and testing exam questions. 
