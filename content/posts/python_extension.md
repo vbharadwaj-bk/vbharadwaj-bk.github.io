@@ -35,8 +35,8 @@ that enable users to call into these libraries.
 3. Your application requires shared-memory multithreading,
 which Python does not (at the time of writing) support. 
 
-If so, you're in the right place. Before we start, I should mention that this
-tutorial is based on the following resources. 
+If so, you're in the right place. I should mention that this
+tutorial is based on the following resources:
 
 1. The official [Pybind11 documentation](https://pybind11.readthedocs.io/en/stable/index.html), and in particular the [page on Numpy arrays](https://pybind11.readthedocs.io/en/stable/advanced/pycpp/numpy.html?highlight=Eigen#numpy).
 
@@ -44,13 +44,17 @@ tutorial is based on the following resources.
 
 The Pybind11 documentation has a comprehensive set of example codes 
 with better coding practices than what this tutorial exposes. That said,
-I hope that this tutorial lowers the barrier to entry to create extensions
-and saves you some Googling.
+I hope that this tutorial can save you some googling. 
 
 Credit for the Python in the thumbnail for this post goes to Diego Delso, delso.photo, 
 License CC BY-SA.
 
-### Getting Started 
+### Getting Started
+You can find the completed code for this tutorial at 
+<https://github.com/vbharadwaj-bk/python_cpp_tutorial>. The instructions
+below assume that you start from scratch on either a Linux or Mac platform
+with Python3 and Numpy installed. 
+
 Fire up a terminal / text-editor and create 
 a directory `Pybind11_tutorial`. Inside, create a pair of files `my_extension.cpp`
 and `calling_code.py`. Your directory structure should look like this:
@@ -139,10 +143,7 @@ my_extension.hello_world(5)
 my_extension.print_double(3.14)
 ```
 
-Let's test it out. Before you run the code, 
-make sure that you export the shell variables `CC` and `CXX` to the
-C / C++ compilers of your choice, or else `cppimport` will attempt
-to locate compilers for you. Fire up a terminal and try the following:
+Let's test it out. Open a terminal window and try the following:
 ```console
 [shell]% python calling_code.py
 Hello world! Your number is 5
@@ -150,6 +151,13 @@ The double you entered is 3.14
 ```
 You should see the output listed above on 
 your console. Congratulations! You now have a working extension. 
+
+!!! tip 
+    `cppimport` will attempt to locate a C / C++ compiler for you.
+    If you need a specific compiler, you can set the shell
+    variables CC and CXX environment variables from the command 
+    line, e.g. `CC=gcc-13; CXX=g++-13`.
+
 
 ### Behind the Scenes 
 Here's a little more information about what's going on.
@@ -161,14 +169,6 @@ with the same name as the module and the comment `//cppimport`
 as the first line. The cppimport package then compiles the 
 Python module, and you can subsequently call any of the
 methods defined. 
-
-!!! tip "Tip: Move Extension Files to a Separate Folder"
-    If you want to keep your codebase clean, try moving
-    the `.cpp` extension files to a subfolder of your main
-    directory. If `my_extension.cpp` is located in folder
-    `cpp_ext` relative to the current directory, the line
-    `import cpp_ext.my_extension` will allow you to use
-    the extension correctly. 
 
 One smart feature about cppimport is that the extension is
 *only recompiled when a C++ dependency file changes*. Later
@@ -206,8 +206,13 @@ import numpy as np
 import cppimport, cppimport.import_hook
 import my_extension
 
-X = np.random.normal(size=(500, 5), dtype=np.float64)
-f_norm = my_extension.f_norm(X)
+rng = np.random.default_rng()
+X = rng.standard_normal(size=(500, 5), dtype=np.float64)
+f_norm_extension = my_extension.f_norm(X)
+print(f"Extension Fro. norm is {f_norm_extension:.2f}")
+
+f_norm_numpy = np.linalg.norm(X, "fro")
+print(f"Numpy Fro. norm is     {f_norm_numpy:.2f}")
 ```
 Here's what that extension looks like at the C++ layer:
 
@@ -228,7 +233,7 @@ double f_norm(py::array_t<double> mat_py) {
 
     double sq_fnorm = 0.0;
     for(uint64_t i = 0; i < num_elements; i++) {
-        sq_fnorm += ptr[i];
+        sq_fnorm += ptr[i] * ptr[i];
     }
     return sqrt(sq_fnorm);
 }
@@ -267,6 +272,14 @@ BLAS / LAPACK implementations also typically require raw
 pointer inputs, so it's useful to know how to extract them
 from the Python buffers.
 
+!!! tip "Tip: Move Extension Files to a Separate Folder"
+    If you want to keep your codebase clean, try moving
+    the `.cpp` extension files to a subfolder of your main
+    directory. If `my_extension.cpp` is located in folder
+    `cpp_ext` relative to the current directory, the line
+    `import cpp_ext.my_extension` will allow you to use
+    the extension correctly. 
+
 ### Mutating and Returning Data from C++ 
 We can also mutate data in Python buffers directly.
 Suppose we want to add to add 3 to all elements of a
@@ -276,8 +289,10 @@ import numpy as np
 import cppimport, cppimport.import_hook
 import my_extension
 
-X = np.random.normal(size=(500, 5), dtype=np.float64)
+X = np.ones(shape=(2, 2), dtype=np.float64)
+print(X)
 my_extension.add3(X)
+print(X)
 ```
 Here's the extension to do that:
 
@@ -336,26 +351,29 @@ instead of mutating in place:
 using namespace std;
 namespace py=pybind11;
 
-/*
- * Returns a copy
- */
-void add3_returncopy(py::array_t<double> mat_py) {
+py::array_t<double> add3_returncopy(py::array_t<double> mat_py) {
     py::buffer_info info_in = mat_py.request();
     double* ptr_in = static_cast<double*>(info_in.ptr);
-    uint64_t num_elements = info.shape[0] * info.shape[1];
+    uint64_t num_elements = info_in.shape[0] * info_in.shape[1];
 
-    auto result = py::array_t<double>(info_in.size);
+    auto result = py::array_t<double>(info_in.shape);
     py::buffer_info info_out = result.request();
     double* ptr_out = static_cast<double*>(info_out.ptr);
 
-    for(int i = 0; i < num_elements; i++) {
+    for(uint64_t i = 0; i < num_elements; i++) {
         ptr_out[i] = ptr_in[i] + 3.0;
     }
+    return result;
 }
 
 PYBIND11_MODULE(my_extension, m) {
-    m.def("add3_returncopy", &add3);
+    m.def("add3_returncopy", &add3_returncopy);
 }
+/*
+<%
+setup_pybind11(cfg)
+%>
+*/
 ```
 
 ### Exercise: CSR Matrix-Vector Multiplication 
@@ -376,9 +394,7 @@ with open(path, 'rb') as f:
 ```
 After executing this code, `adjacency` is a compressed-sparse-row (CSR) Scipy sparse matrix 
 containing the graph adjacency matrix (Wikipedia has a [nice explanation](https://en.wikipedia.org/wiki/Sparse_matrix#Compressed_sparse_row_(CSR,_CRS_or_Yale_format)) of the format). There are three fields
-of the `adjacency` class that we care about, and for this tutorial, the only relevant pieces of information
-are their datatypes and sizes. I've also listed their semantic meaning below, in case you're interested, but 
-feel free to ignore that info. 
+of the `adjacency` class that we care about:
 
 1. `adjacency.data`: A 1D Numpy array of type `float64` with length $\textrm{nnz}(A)$. The value 
 `adjacency.data[i]` gives the weight of nonzero $i$ from $A$, where the nonzeros are ordered 
