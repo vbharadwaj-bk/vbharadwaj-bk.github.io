@@ -24,8 +24,9 @@ courses:
 
       Semester-long course on Parallel Computing. Check out my 
       [recitation slides]({static}/pdf/gemm_knl_slides.pdf) 
-      and [video](https://www.youtube.com/watch?v=wGW4GPX7s5I) on optimizing GEMM for the Intel 
-      Knights Landing processor. 
+      and [video](https://www.youtube.com/watch?v=wGW4GPX7s5I) on optimizing GEMM for the Intel Knights Landing processor. I was very happy to receive OGSI and
+      TEA awards for this work - check out the [EECS news note](https://eecs.berkeley.edu/news/vivek-bharadwaj-and-yicheng-zhu-receive-teaching-effectiveness-award/)
+      about it.
 
   - title: Algorithms 
     subtitle: Spring 2020, Spring 2019, Spring 2018, Teaching Assistant.
