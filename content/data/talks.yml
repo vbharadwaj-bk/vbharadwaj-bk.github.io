@@ -3,6 +3,7 @@
   date: 2024-11-01
   buttons:
     slides: pdf/2024/redwood_krp_leverage.pdf
+    video: https://drive.google.com/file/d/14nHx_zBwAmgyPsvBXcIbHRdWW15u1mGf/view?usp=drive_link
 
 - venue: "[SIAM Conference on Applied Linear Algebra](https://www.siam.org/conferences/cm/conference/la24), Paris, France"
   title: Sampling-Based Sketches for Tensor Train Core Chains
