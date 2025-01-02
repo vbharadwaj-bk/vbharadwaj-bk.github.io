@@ -1,6 +1,6 @@
 ---
 Title: "PhD Travelogue"
-Date: 2024-04-09 
+Date: 2025-01-01
 Category: personal 
 Summary: Places I've visited in graduate school. 
 thumbnail_icon: '<i class="fa-solid fa-plane fa-5x"></i>'
@@ -24,12 +24,13 @@ where I presented something.
 
 | Dates         | Event                            | Location      |   
 |---------------|----------------------------------|---------------|
+| 2024 Dec.     | *NeurIPS 2024                    | Vancouver, Canada |
 | 2024 July     | *CSGF Program Review             | Washington D.C. |
 | 2024 June     | *SPAA 2024                       | Nantes, France |
 | 2024 May      | *SIAM Applied Linear Algebra     | Paris, France |
 | 2024 Mar.     | *SIAM Parallel Processing        | Baltimore, MD |
 | 2024 Jan.     | *SLICE Lab Winter Retreat        | Santa Cruz, CA|
-| 2023 Dec.     | *Neurips 2023                    | New Orleans, LA |
+| 2023 Dec.     | *NeurIPS 2023                    | New Orleans, LA |
 | 2023 Nov.     | Supercomputing 2023              | Denver, CO    |
 | 2023 Oct.     | *Sparsitute Annual Meeting & Sparse Tensor Workshop | Chicago, IL   |
 | 2023 July     | *Simons SLMATH 1064              | Almaden, CA   |
