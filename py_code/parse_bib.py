@@ -57,8 +57,8 @@ def parse_bibliography(filename, output_key, SITE):
             entry_author["last"] = ' '.join(author.last_names)
             entry["author_array"].append(entry_author)
 
-            if entry_author["first"] in SITE["first_name"] and \
-                entry_author["last"] in SITE["last_name"]:
+            if entry_author["first"].replace("*", "") in SITE["first_name"] and \
+                entry_author["last"].replace("*", "") in SITE["last_name"]:
                 entry_author["is_self"] = True
 
         for field in non_link_fields:
@@ -92,6 +92,11 @@ def parse_bibliography(filename, output_key, SITE):
         for field in fields_to_remove:
             if field in d.fields:
                 d.fields.pop(field)
+
+        # Remove * for equal contribution when showing raw bibtex 
+        for author in d.persons['author']:
+            author.first_names = [name.replace("*", "") for name in author.first_names]
+            author.last_names = [name.replace("*", "") for name in author.last_names]
 
         md = Markdown(extensions=['extra', 'codehilite'])
         md_code = "``` bibtex\n" + d.to_string("bibtex") + "\n```"
