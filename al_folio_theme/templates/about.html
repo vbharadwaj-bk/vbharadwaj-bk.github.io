@@ -114,7 +114,7 @@
           {% if page.selected_papers -%}
             <hr>
             <h2><a href="{{ 'publications/' | relative_url }}" style="color: inherit;">selected publications</a></h2>
-            * denotes equal contribution
+            * denotes equal contribution. See more papers on the dedicated publications page. 
             {{ pub_list(SITE.publications | selectattr("selected"), nodivide=true) }}
           {%- endif %}
       </article>
