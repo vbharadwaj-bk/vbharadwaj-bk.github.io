@@ -1,3 +1,7 @@
+- venue: "[SIAM CSE 2025 Matrix Computations Minisymposium](https://www.siam.org/conferences-events/siam-conferences/cse25/), Fort Worth, TX"
+  title: Engineering Fast Kernels for Rotation-Equivariant Deep Neural Networks (Planned) 
+  date: 2025-03-04
+
 - venue: "[Redwood Center for Theoretical Neuroscience Group Meeting](https://redwood.berkeley.edu/), Berkeley, CA"
   title: Subspace Embeddings for Khatri-Rao Products (Redux)
   date: 2024-11-01
@@ -33,10 +37,6 @@
   buttons:
     slides: pdf/2023/2023_sparse_tensor_workshop.pdf
     video: https://www.youtube.com/watch?v=mlbBuOdJPL0&t=3956s 
-
-- venue: "[Sparsitute All-Hands Meeting](https://sparsitute.lbl.gov/2023-all-members-meeting), Chicago IL"
-  title: Randomized Sparse CP Decomposition at Scale 
-  date: 2023-10-17
 
 - venue: "[Seminar on High-Dimensional Computing](https://quantumtative.github.io/seminar_fall2023), Berkeley CA"
   title: Introduction to TT-ALS and TT-Cross
