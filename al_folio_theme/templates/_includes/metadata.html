@@ -104,8 +104,8 @@
         {%- set link -%}https://www.linkedin.com/in/{{ SITE.linkedin_username }}{%- endset -%}
         {%- set sameaslinks = sameaslinks + [link] -%}
     {%- endif -%}
-    {%- if SITE.twitter_username -%}
-        {%- set link -%}https://twitter.com/{{ SITE.twitter_username }}{%- endset -%}
+    {%- if SITE.bluesky_username -%}
+        {%- set link -%}https://bsky.app/profile/{{ SITE.bluesky_username}}{%- endset -%}
         {%- set sameaslinks = sameaslinks + [link] -%}
     {%- endif -%}
     {%- if SITE.mastodon_username -%}

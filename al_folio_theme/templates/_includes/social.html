@@ -38,8 +38,8 @@
             {%- if SITE.linkedin_username -%}
             <a href="https://www.linkedin.com/in/{{ SITE.linkedin_username }}" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
             {% endif %}
-            {%- if SITE.twitter_username -%}
-            <a href="https://twitter.com/{{ SITE.twitter_username }}" title="Twitter"><i class="fab fa-twitter"></i></a>
+            {%- if SITE.bluesky_username -%}
+            <a href="https://bsky.app/profile/{{ SITE.bluesky_username }}" title="Bluesky"><i class="fa-brands fa-square-bluesky"></i></a>
             {% endif %}
             {%- if SITE.mastodon_username -%}
             <a rel="me" href="https://{{ SITE.mastodon_username  }}" title="Mastodon"><i class="fab fa-mastodon"></i></a>
