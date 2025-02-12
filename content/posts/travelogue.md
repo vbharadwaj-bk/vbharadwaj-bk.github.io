@@ -24,6 +24,8 @@ where I presented something.
 
 | Dates         | Event                            | Location      |   
 |---------------|----------------------------------|---------------|
+| 2025 July     | *CSGF Program Review             | Washington D.C. |
+| 2025 March    | *SIAM CSE 2025                   | Fort Worth, TX |
 | 2024 Dec.     | *NeurIPS 2024                    | Vancouver, Canada |
 | 2024 July     | *CSGF Program Review             | Washington D.C. |
 | 2024 June     | *SPAA 2024                       | Nantes, France |

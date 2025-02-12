@@ -126,15 +126,20 @@
     - year: Ongoing
       maindescription: "Peer review for the following journals / conferences:"
       elements:
+        - "2025: ACM SPAA Junior PC Member"
         - "2024: Neural Information Processing Systems"
         - "2024: Supercomputing 2024 Artifact Evaluation"
         - "2023: Numerical Linear Algebra with Applications, Wiley"
         - "2021: IEEE Signal Processing Letters"
 
+    - year: 2025
+      elements:
+        - "General EECS Graduate Visit Day Co-organizer" 
+
     - year: 2022
       elements:
         - "Reviewer, Berkeley SURF Research Applications"
-        - "Graduate Visit Day Co-organizer, Scientific Computing"
+        - "Graduate Visit Day Area Co-Organizer, Scientific Computing"
 
     - year: 2019-20
       maindescription: "Caltech Board of Control"
@@ -155,6 +160,10 @@
         - "2023, 2022: Alameda County Science Fair"
         - "2022: USA Young Physicists Tournament"
         - "2020: Blair Middle School Science Fair" 
+
+    - year: March 2025 
+      elements: 
+        - "Panelist for Berkeley L&S Graduate School Workshop"
 
     - year: Oct-Dec 2021
       elements: 
