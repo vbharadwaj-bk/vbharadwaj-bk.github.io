@@ -80,7 +80,7 @@ let initTheme = (theme) => {
   var nonce = localStorage.getItem("nonce");
   if (nonce == null || nonce == "null" || nonce == 1) {
     theme = "dark";
-    localStorage.setItem("nonce", 1);
+    localStorage.setItem("nonce", 2);
   }
 
   setTheme(theme);
