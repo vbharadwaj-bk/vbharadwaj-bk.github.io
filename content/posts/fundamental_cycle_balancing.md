@@ -123,7 +123,7 @@ letter "N":
     <div class="col-4">
     </div>
 
-        <div class="col-4 card border-0 bg-white p-1 mb-3">
+        <div class="col-4 card border-0 bg-white p-1 mb-3" style="background-color: white !important">
         {{ figure(path="images/blog/cycle_balancing.svg",title="An Example Signed Graph") }}
         </div>
 

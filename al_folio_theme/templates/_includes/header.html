@@ -1,10 +1,10 @@
 {% set is_homepage = (output_file == 'index.html') %}
 
 {% set navbar_title %}
-<a class="navbar-brand title font-weight-lighter" href="{{ SITEURL }}/">
+<a class="navbar-brand title" href="{{ SITEURL }}/">
   {%- if SITE.title is none -%}
     {%- if SITE.first_name -%}
-      <span class="font-weight-bold">{{- SITE.first_name -}}&nbsp;</span>
+      {{- SITE.first_name -}}&nbsp
     {%- endif -%}
     {%- if SITE.middle_name -%}
       {{- SITE.middle_name -}}&nbsp;
