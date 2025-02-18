@@ -1,7 +1,3 @@
-    {% assets "assets/js/theme.js" %}
-    <script src="{{ASSET_URL | relative_url }}"></script>
-    {% endassets %}
-
     <!-- Metadata, OpenGraph and Schema.org -->
     {% include '_includes/metadata.html' %}
 
@@ -46,8 +42,7 @@
 
     <!-- Dark Mode -->
     {% if SITE.enable_darkmode %}
-
-    {% assets "assets/js/dark_mode.js" %}
+    {% assets "assets/js/theme.js", "assets/js/dark_mode.js" %}
     <script src="{{ASSET_URL | relative_url }}"></script>
     {% endassets %}
     {% endif %}
