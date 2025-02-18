@@ -10,7 +10,7 @@ entries:
       Austin Glover and I are thrilled to announce [OpenEquivariance](https://github.com/vbharadwaj-bk/OpenEquivariance), 
       a fast kernel generator for rotation equivariant deep neural networks. These machine learning models rotate their predictions
       in a compatible way when the input (a point cloud) rotates. Read
-      our preprint [here](https://arxiv.org/abs/2501.13986).
+      it [here](https://arxiv.org/abs/2501.13986).
 
   - date: 2024-09-25 
     content: |

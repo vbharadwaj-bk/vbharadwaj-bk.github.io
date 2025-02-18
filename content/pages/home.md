@@ -24,7 +24,7 @@ I am an EECS graduate student at UC Berkeley, advised by the fantastic pair
 [Jim Demmel](http://people.eecs.berkeley.edu/~demmel/) and 
 [Aydın Buluç](https://people.eecs.berkeley.edu/~aydin/). I'm associated with the BeBOP and PASSION groups, and 
 I'm supported by a Department of Energy [
-Computational Science Graduate Fellowship](https://www.krellinst.org/csgf/about-doe-csgf/news-events/2021-incoming-class)
+Computational Science Graduate Fellowship](https://www.krellinst.org/csgf/)
 from the Krell Institute.
 
 <style>
@@ -38,7 +38,7 @@ from the Krell Institute.
     <div class="col-5 pr-0">
     <div class="row justify-content-center">
     <ul class="lower-font-size"> 
-    <h4>Interests</h4>
+    <h5>Interests</h5>
     <li>Geometric Deep Learning</li>
     <li>Sparse Computations</li>
     <li>Randomized Sketches</li>
@@ -49,7 +49,7 @@ from the Krell Institute.
     <div class="col-7"> 
     <div class="row justify-content-center">
     <ul class="lower-font-size">
-    <h4>Education</h4>
+    <h5>Background</h5>
     <li>PhD in Computer Science.<br>UC Berkeley, 2020-Present</li>
     <li>BS in CS + Mathematics.<br> Caltech, 2016-2020</li>
     </ul> 

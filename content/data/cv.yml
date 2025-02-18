@@ -5,7 +5,7 @@
       value: Vivek Bharadwaj 
     - name: Interests
       value: |
-        Numerical Linear Algebra, Tensor Problems, High-Performance Computing,
+        Geometric Deep Learning, Tensor Problems, HPC,
         Randomized Algorithms, Sparsity in ML 
     - name: Languages
       value: C, C++, Python, Java, OCaml 
@@ -19,8 +19,7 @@
       institution: University of California, Berkeley 
       year: 2020-2025
       description:
-        - "Advisors: James Demmel and Aydın Buluç"  
-        - "Focus: Randomized Algorithms for Tensor Problems"
+        - "Advisors: James Demmel and Aydın Buluç" 
         - "Funding: DOE CSGF (2021-2025)"
 
     - title: Bachelor of Science, Computer Science & Mathematics 
@@ -39,7 +38,7 @@
         - |
           Focus: rewrote large parts of cuSPARSELt, a library for structured
           sparse-dense matrix multiplication in machine learning, for new Blackwell
-          generation GPUs. 
+          GPUs. 
         - |
           Also investigated custom semiring support with JIT linking for sparse
           matrix-vector multiplication.
@@ -108,7 +107,7 @@
         - DoE Computational Science Graduate Fellowship 
     - year: 2020 
       elements: 
-        - Honorable Mention, National Science Foundation GRFP
+        - Honorable Mention, NSF GRFP
         - Thomas A. Tisch Prize for Undergraduate Teaching
     - year: 2019
       elements:
@@ -129,7 +128,7 @@
         - "2025: ACM SPAA Junior PC Member"
         - "2024: Neural Information Processing Systems"
         - "2024: Supercomputing 2024 Artifact Evaluation"
-        - "2023: Numerical Linear Algebra with Applications, Wiley"
+        - "2023: NLA with Applications, Wiley"
         - "2021: IEEE Signal Processing Letters"
 
     - year: 2025

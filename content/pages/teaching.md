@@ -46,9 +46,8 @@ courses:
     subtitle: Winter 2018, Teaching Assistant.
     badge: Caltech CS21
     content: |
-      Introductory complexity theory course. Besides grading homework and exams, I gave two 
-      lectures on NP-completeness while my professor was out (not my slides / content, but it was great
-      public speaking experience).
+      Introductory complexity theory course (computability, NP-completeness, reductions). Graded homework / exams, held office hours, and
+      guest-lectured twice.
 ---
 I was a teaching assistant for four classes on algorithms / complexity as an undergraduate at 
 Caltech, and one class on parallel computing at Berkeley. All of these classes had 100+ students! 
@@ -57,7 +56,7 @@ identifies students has been redacted. Scroll down to the last page of the Berke
 to see comments that I received.
 
 - [Reviews from UC Berkeley]({static}/pdf/teaching_reviews/reviews_berkeley.pdf).
-- [Reviews from Caltech]({static}/pdf/teaching_reviews/reviews_caltech.pdf). These reviews have been 
+- [Reviews from Caltech]({static}/pdf/teaching_reviews/reviews_caltech.pdf), 
 condensed to remove information that doesn't relate 
 to me. 
 

@@ -26,6 +26,17 @@ strong {
   font-weight: normal;
 }
 
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--global-heading-color)
+}
+
+
 hr {
   border-top: 1px solid var(--global-divider-color);
 }
@@ -40,7 +51,7 @@ table {
   th {
     font-size: 1rem;
     font-weight: #{$font-weight-bold}; 
-    color: white;
+    color: var(--global-heading-color); 
     div {
       font-weight: inherit;
     }
@@ -636,6 +647,7 @@ footer.sticky-bottom {
 
       .title {
         font-weight: #{$font-weight-bold};
+        color: var(--global-heading-color);
       }
 
       .author {
@@ -667,8 +679,8 @@ footer.sticky-bottom {
 
       .links {
         a.btn {
-          color: var(--global-text-color);
-          border: 1px solid var(--global-text-color);
+          color: var(--global-heading-color);
+          border: 1px solid var(--global-heading-color);
           padding-left: 1rem;
           padding-right: 1rem;
           padding-top: 0.25rem;
@@ -809,23 +821,10 @@ html.transition *:after {
     border-left: 5px solid var(--global-theme-color);
     margin: 1.5em 0px;
     padding: 8px;
-    font-size: 1.2rem;
+    font-size: 1.0rem;
 
     p {
       margin-bottom: 0;
-    }
-  }
-
-  .admonition.danger { 
-    border-color: var(--global-danger-block);
-    background-color: var(--global-danger-block-bg);
-
-    p {
-      color: var(--global-danger-block-text);
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-      color: var(--global-danger-block-title);
     }
   }
 
@@ -837,10 +836,36 @@ html.transition *:after {
       color: var(--global-tip-block-text);
     }
 
-    h1, h2, h3, h4, h5, h6 {
+    title{
       color: var(--global-tip-block-title);
     }
+
+    .admonition-title {
+      font-weight: #{$font-weight-bold};
+      text-align: left;
+      color: var(--global-heading-color);
+    }
   }
+
+  .admonition.danger {
+    border-color: var(--global-danger-block);
+    background-color: var(--global-danger-block-bg);
+
+    p {
+      color: var(--global-danger-block-text);
+    }
+
+    title{
+      color: var(--global-danger-block-title);
+    }
+
+    .admonition-title {
+      font-weight: #{$font-weight-bold};
+      text-align: left;
+      color: var(--global-heading-color);
+    }
+  }
+
 
   .admonition.warning {
     border-color: var(--global-warning-block);
@@ -850,16 +875,16 @@ html.transition *:after {
       color: var(--global-warning-block-text);
     }
 
-    h1, h2, h3, h4, h5, h6 {
+    title{
       color: var(--global-warning-block-title);
     }
-  }
 
-  .admonition-title {
-    font-weight: #{$font-weight-bold};
-    text-align: left;
+    .admonition-title {
+      font-weight: #{$font-weight-bold};
+      text-align: left;
+      color: var(--global-heading-color);
+    }
   }
-
 }
 
 progress {
@@ -1117,6 +1142,7 @@ nav[data-toggle="toc"] {
 
       .title {
         font-weight: #{$font-weight-bold};
+        color: var(--global-heading-color);
       }
 
       .author {

@@ -42,6 +42,8 @@
 
     <!-- Dark Mode -->
     {% if SITE.enable_darkmode %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/{{ SITE.highlight_theme_dark ~ '.css' }}" media="screen" id="highlight_theme_dark">
+
     {% assets "assets/js/theme.js", "assets/js/dark_mode.js" %}
     <script src="{{ASSET_URL | relative_url }}"></script>
     {% endassets %}
