@@ -35,7 +35,7 @@
                   {% else %}
                     {%- set profile_image_class = "img-fluid z-depth-1 rounded" -%}
                   {% endif %}
-                  {{ figure(profile_image_path, class=profile_image_class, alt=page.profile.image, cache_bust=True)}}
+                  {{ figure(profile_image_path, class=profile_image_class, alt=page.profile.image, cache_bust=True, width=0.01, height=0.01)}}
                 {% endif -%}
                 <div class="d-flex justify-content-center">
                 {%- include '_includes/social.html' %}

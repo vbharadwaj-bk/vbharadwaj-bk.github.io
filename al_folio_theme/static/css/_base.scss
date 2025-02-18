@@ -31,13 +31,16 @@ hr {
 }
 
 table {
-  td,
-  th {
+  td {
     font-size: 1rem;
+    color: var(--global-text-color);
+    font-weight: #{font-weight-normal};
   }
 
   th {
-    font-weight: bold;
+    font-size: 1rem;
+    font-weight: #{font-weight-bold};
+    color: white;
   }
 }
 
@@ -225,7 +228,7 @@ blockquote {
 
   .navbar-nav .nav-item.active>.nav-link {
     background-color: inherit;
-    font-weight: bolder;
+    font-weight: var(--font-weight-bold);
     color: var(--global-theme-color);
 
     &:hover {
@@ -628,7 +631,7 @@ footer.sticky-bottom {
       }
 
       .title {
-        font-weight: bolder;
+        font-weight: var(--font-weight-bold);
       }
 
       .author {
@@ -1106,7 +1109,7 @@ nav[data-toggle="toc"] {
       }
 
       .title {
-        font-weight: bolder;
+        font-weight: #{font-weight-bold};
       }
 
       .author {
