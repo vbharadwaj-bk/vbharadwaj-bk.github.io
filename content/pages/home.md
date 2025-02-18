@@ -3,9 +3,9 @@ Title: Home
 Template: about
 URL: ''
 save_as: index.html
-subtitle: |
-  PhD student. Works on: <b>geometric deep learning</b>,
-  <b>randomized algorithms</b>, <b>graphs</b>, and <b>sparse tensors</b>.
+#subtitle: |
+#  PhD student. Works on: <b>geometric deep learning</b>,
+#  <b>randomized algorithms</b>, <b>graphs</b>, and <b>sparse tensors</b>.
 
 profile: 
   align: right
@@ -39,10 +39,10 @@ from the Krell Institute.
     <div class="row justify-content-center">
     <ul class="lower-font-size"> 
     <h4>Interests</h4>
-    <li>Equivariant Neural Networks</li>
+    <li>Geometric Deep Learning</li>
     <li>Sparse Computations</li>
     <li>Randomized Sketches</li>
-    <li>Tensor Algorithms</li>
+    <li>Graph Algorithms</li>
     </ul>
     </div> 
     </div>

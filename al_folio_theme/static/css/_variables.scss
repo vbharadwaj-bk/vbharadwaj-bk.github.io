@@ -24,7 +24,7 @@ $pink-color-light:    #ffdddd !default;
 $yellow-color:        #efcc00 !default;
 
 $grey-color:          #828282 !default;
-$grey-color-light:    lighten($grey-color, 40%);
+$grey-color-light:    lighten($grey-color, 30%);
 $grey-color-dark:     #1C1C1D;
 $grey-900:            #212529;
 
@@ -36,4 +36,4 @@ $verdigris-blue: #129db3 !default;
 // Theme colors
 
 $code-bg-color-light:     rgba($verdigris-blue, 0.03);
-$code-bg-color-dark:      #2c3237 !default;
+$code-bg-color-dark:      #1d1E20 !default;
