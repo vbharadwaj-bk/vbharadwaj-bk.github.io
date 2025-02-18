@@ -110,7 +110,7 @@ blockquote {
 // Card
 
 .card {
-  background-color: var(--global-card-bg-color);
+  background-color: var(--global-card-bg-color) !important;
 
   img {
     width: 100%;
@@ -200,7 +200,7 @@ blockquote {
   border: 1px solid var(--global-divider-color);
 
   a:not(.active) {
-    color: var(--global-text-color);
+    color: var(--global-heading-color);
   }
 
   a:hover {
@@ -213,7 +213,7 @@ blockquote {
 }
 
 .dropdown-item {
-  color: var(--global-text-color);
+  color: var(--global-heading-color);
 
   &:hover {
     color: var(--global-hover-color);
@@ -229,11 +229,11 @@ blockquote {
   }
 
   .navbar-brand {
-    color: var(--global-text-color);
+    color: var(--global-heading-color);
   }
 
   .navbar-nav .nav-item .nav-link {
-    color: var(--global-text-color);
+    color: var(--global-heading-color);
 
     &:hover {
       color: var(--global-hover-color);
@@ -1138,6 +1138,7 @@ nav[data-toggle="toc"] {
       .date {
         font-size: 1rem;
         font-weight: #{$font-weight-bold};
+        color: var(--global-heading-color);
       }
 
       .title {
