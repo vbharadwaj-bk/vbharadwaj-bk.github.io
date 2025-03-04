@@ -1,6 +1,8 @@
 - venue: "[SIAM CSE 2025 Matrix Computations Minisymposium](https://www.siam.org/conferences-events/siam-conferences/cse25/), Fort Worth, TX"
-  title: Engineering Fast Kernels for Rotation-Equivariant Deep Neural Networks (Planned) 
+  title: Engineering Fast Kernels for Rotation-Equivariant Deep Neural Networks
   date: 2025-03-04
+  buttons:
+    slides: pdf/2025/siam_acda25.pdf
 
 - venue: "[Redwood Center for Theoretical Neuroscience Group Meeting](https://redwood.berkeley.edu/), Berkeley, CA"
   title: Subspace Embeddings for Khatri-Rao Products (Redux)
