@@ -8,11 +8,12 @@
       <div class="post">
         <header class="post-header">
           <div class="desktop">
-            <h1 class="post-title">
-              {% if SITE.title is none -%}{{ SITE.first_name }}&nbsp;{%- if SITE.middle_name -%}
+            <h1 class="post-title font-weight-lighter">
+              {% if SITE.title is none -%}<span class="font-weight-bolder">{{ SITE.first_name }}</span>&nbsp;{%- if SITE.middle_name -%}
                   {{- SITE.middle_name -}}&nbsp;
                 {%- endif -%}
-              {{ SITE.last_name }}{%- else -%}{{ SITE.title }}{%- endif %}
+              <span class="font-weight-lighter">{{ SITE.last_name}}</span>
+              {%- else -%}{{ SITE.title }}{%- endif %}
             </h1>
             <p class="desc">{{ page.subtitle }}</p>
           </div>

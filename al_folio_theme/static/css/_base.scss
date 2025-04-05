@@ -2,20 +2,6 @@
  * Styles for the base elements of the theme.
  ******************************************************************************/
 
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-em,
-div,
-li,
-span,
-strong {
-}
-
 b {
   font-weight: #{$font-weight-normal};
 }
@@ -27,7 +13,6 @@ h4,
 h5,
 h6 {
   color: var(--global-heading-color);
-  font-weight: #{$font-weight-normal};
 }
 
 
