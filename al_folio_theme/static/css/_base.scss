@@ -2,14 +2,6 @@
  * Styles for the base elements of the theme.
  ******************************************************************************/
 
-// Typography
-:root {
-  font-family: Inter, sans-serif;
-}
-@supports (font-variation-settings: normal) {
-  :root { font-family: Inter, sans-serif; }
-}
-
 p,
 h1,
 h2,
@@ -22,13 +14,10 @@ div,
 li,
 span,
 strong {
-  font-family: Inter;
-  font-weight: normal;
 }
 
 b {
-  font-family: Inter;
-  font-weight: #{$font-weight-bold};
+  font-weight: #{$font-weight-normal};
 }
 
 h1,
@@ -38,7 +27,7 @@ h4,
 h5,
 h6 {
   color: var(--global-heading-color);
-  font-weight: #{$font-weight-bold};
+  font-weight: #{$font-weight-normal};
 }
 
 
@@ -50,12 +39,11 @@ table {
   td {
     font-size: 1rem;
     color: var(--global-text-color);
-    font-weight: #{$font-weight-normal};
   }
 
   th {
     font-size: 1rem;
-    font-weight: #{$font-weight-bold}; 
+    font-weight: #{$font-weight-normal}; 
     color: var(--global-heading-color); 
     div {
       font-weight: inherit;
@@ -247,7 +235,7 @@ blockquote {
 
   .navbar-nav .nav-item.active>.nav-link {
     background-color: inherit;
-    font-weight: #{$font-weight-bold};
+    font-weight: #{$font-weight-normal};
     color: var(--global-theme-color);
 
     &:hover {
@@ -651,7 +639,7 @@ footer.sticky-bottom {
       }
 
       .title {
-        font-weight: #{$font-weight-bold};
+        font-weight: #{$font-weight-normal};
         color: var(--global-heading-color);
       }
 
@@ -846,7 +834,7 @@ html.transition *:after {
     }
 
     .admonition-title {
-      font-weight: #{$font-weight-bold};
+      font-weight: #{$font-weight-normal};
       text-align: left;
       color: var(--global-heading-color);
     }
@@ -865,7 +853,7 @@ html.transition *:after {
     }
 
     .admonition-title {
-      font-weight: #{$font-weight-bold};
+      font-weight: #{$font-weight-normal};
       text-align: left;
       color: var(--global-heading-color);
     }
@@ -885,7 +873,7 @@ html.transition *:after {
     }
 
     .admonition-title {
-      font-weight: #{$font-weight-bold};
+      font-weight: #{$font-weight-normal};
       text-align: left;
       color: var(--global-heading-color);
     }
@@ -1142,12 +1130,12 @@ nav[data-toggle="toc"] {
 
       .date {
         font-size: 1rem;
-        font-weight: #{$font-weight-bold};
+        font-weight: #{$font-weight-normal};
         color: var(--global-heading-color);
       }
 
       .title {
-        font-weight: #{$font-weight-bold};
+        font-weight: #{$font-weight-normal};
         color: var(--global-heading-color);
       }
 
