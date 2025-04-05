@@ -5,6 +5,11 @@ nav: false
 summary: An archive of announcements.
 
 entries:
+  - date: 2025-04-05
+    content: |
+      [OpenEquivariance](https://github.com/vbharadwaj-bk/OpenEquivariance) was accepted to
+      SIAM ACDA 2025! See you in Montréal. 
+
   - date: 2025-01-26
     content: |
       Austin Glover and I are thrilled to announce [OpenEquivariance](https://github.com/vbharadwaj-bk/OpenEquivariance), 
