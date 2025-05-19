@@ -4,15 +4,30 @@ template: page
 nav: true 
 summary: Information about my PhD exit talk and published work
 ---
-I'm excited to graduate with
-my PhD in computer science from UC Berkeley. If you would
-like to attend my exit talk on August 13, 2025, please send me
-an email!
+I'm excited to graduate with my PhD in computer science 
+from UC Berkeley. If you would like to attend my exit talk, 
+please send me an email! Details to follow, but it 
+will likely happen during the week of August 11-15, 2025.
 
-### My PhD by the Numbers
-PhD work is "bursty": in computer science, it involves long periods of exploration 
+My work explores high-performance algorithms for tensor kernels. 
+A *tensor* is a multidimensional array, and a kernel is
+a highly optimized piece of mathematical code. Vectors and matrices
+are two examples of tensors, but I'm interested in tensors with 3+ 
+dimensions. Unfortunately, tensor kernels are underexplored
+compared to matrix kernels, both in theory and practice.
+My thesis aims to fill that knowledge gap by introducing new
+algorithms for one specific tensor kernel, the Matricized
+Tensor Times Khatri-Rao Product (MTTKRP). We use
+those algorithms to accelerate multiple critical computational
+applications, as well as a launching pad to study other related
+problems.
+
+### A PhD by the Numbers
+Graduate work is "bursty": in computer science, it 
+involves long periods of exploration 
 followed by high-intensity code sprints and paper writing. 
-Here's an annotated graph of my average daily Github contributions over time: 
+Here's an annotated graph of my average daily Github contributions over time, along with the deadlines for some of the conferences
+we submitted our work to: 
 
 !TEMPLATE!
 <div class="chartjs">
@@ -175,6 +190,10 @@ https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.2.0/dist/chartjs-plugin-zoom.
   </div>
 </br>
 !TEMPLATE!
+The ICML'23 submission became our NeurIPS'23 paper, and the
+work for SPAA'24 was completed long before submission. For
+ACDA'25, most contributions were pull requests that squashed
+several commits (hence the lower peaks). 
 
 Here are some statistics from the past five years. 
 Some numbers (like thesis page count, research diary length, or 
@@ -187,8 +206,8 @@ by noise. Others, I'm very proud of.
 | Powerpoint slides in research diary | 630+ |
 | Total dissertation page count (incl. frontmatter + references) | 160+ |
 | BeBOP + PASSION group presentations | 35 |
-| Domestic + international conference trips | 18 |
-| Semesters at Berkeley, including summer | 14 |
+| Domestic + international conference trips | 15 |
+| Semesters at Berkeley, including summers | 14 |
 | Non-research classes taken | 8 |
 | Published papers | 5 |
 | Summer internships | 2 |
