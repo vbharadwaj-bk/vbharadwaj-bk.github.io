@@ -80,7 +80,8 @@ https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.2.0/dist/chartjs-plugin-zoom.
         color: null, 
         fill: false,
         data: gh_json['data'],
-        pointRadius: 0
+        pointRadius: 0,
+        tension: 0.1
       }]
     };
 
