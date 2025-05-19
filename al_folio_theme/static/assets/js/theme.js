@@ -40,7 +40,7 @@ let setTheme = (theme) => {
 
     let charts = document.getElementsByClassName("chartjs");
     for (let i = 0; i < charts.length; i++) {
-      charts[i].refreshChart();
+      //charts[i].refreshChart();
     }
 
   } else {
@@ -92,5 +92,3 @@ let initTheme = (theme) => {
 };
 
 initTheme(localStorage.getItem("theme"));
-
-slkdjflskjdfkj

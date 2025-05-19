@@ -36,7 +36,8 @@ Here's an annotated graph of my average daily Github contributions over time:
       datasets: [{  
         label: 'Dataset with point data',
         backgroundColor: cssvar('--global-theme-color'),
-        borderColor: cssvar('--global-theme-color'), 
+        borderColor: cssvar('--global-theme-color'),
+        color: null, 
         fill: false,
         data: [{
           x: new Date(2023, 0, 1), 
@@ -60,9 +61,7 @@ Here's an annotated graph of my average daily Github contributions over time:
       options: {
         plugins: {
           legend: {
-            labels: {
-              color: cssvar('--global-text-color'),
-            }
+            labels: {color: null}
           }
         },
         scales: {
@@ -75,55 +74,68 @@ Here's an annotated graph of my average daily Github contributions over time:
             title: {
               display: true,
               text: 'Date'
-            }
+            },
+            ticks: {color: null},
+            grid: {color: null}
           },
           y: {
             title: {
               display: true,
               text: 'value'
-            }
+            },
+            ticks: {color: null},
+            grid: {color: null}
           }
         },
       },
     };
 
-    let chart = new Chart(ctx, config);
+    function modifyChartColors(config, data) {
+      let globalTextColor = cssvar('--global-text-color');
+      let chartGridColor = cssvar('--chart-grid-color');
 
-    function refreshChart() {
-      fields = [
-        chart.config.options.scales.x.ticks,
-        chart.config.options.scales.y.ticks,
-        chart.config.options.scales.x.grid,
-        chart.config.options.scales.y.grid,
-        chart.config.options.scales.x.title,
-        chart.config.options.scales.y.title,
-        chart.config.options.plugins.legend.labels
+      global_color_fields = [
+        config.options.scales.x.ticks,
+        config.options.scales.y.ticks,
+        config.options.scales.x.title,
+        config.options.scales.y.title,
+        config.options.plugins.legend.labels
       ]
 
-      let globalTextColor = cssvar('--global-text-color');
-      // Bring globalTextColor closer to gray 
-      //let lightenedTextColor = 
+      grey_fields = [
+        config.options.scales.x.grid,
+        config.options.scales.y.grid,
+      ]
 
-      chart.data.datasets.forEach((dataset) => {
+      data.datasets.forEach((dataset) => {
         dataset.backgroundColor = cssvar('--global-theme-color'); 
         dataset.borderColor = cssvar('--global-theme-color'); 
       });
 
-      fields.forEach((field) => {
+      global_color_fields.forEach((field) => {
         field.color = globalTextColor;
       });
-      
-      chart.update();
+
+      grey_fields.forEach((field) => {
+        field.color = chartGridColor; 
+      });
     }
 
-    chart.canvas.parentNode.refreshChart = refreshChart; 
-    refreshChart();
+    modifyChartColors(config, config.data);
+    let chart = new Chart(ctx, config);
+
+    chart.canvas.parentNode.refreshChart = function() {
+      modifyChartColors(chart.config, chart.data);
+      // Log to the console
+      console.log('Chart colors updated');
+      chart.update(); 
+    } 
   </script>
   </div>
 </br>
 
-Here are some statistics about my PhD. Some numbers (like
-thesis page count, research diary length, or 
+Here are some statistics from the past five years. 
+Some numbers (like thesis page count, research diary length, or 
 Github contributions) are pointless and clearly influenced 
 by noise. Others, I'm very proud of. 
 
