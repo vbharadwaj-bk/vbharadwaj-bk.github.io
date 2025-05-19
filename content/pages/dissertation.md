@@ -14,55 +14,97 @@ PhD work is "bursty": in computer science, it involves long periods of explorati
 followed by high-intensity code sprints and paper writing. 
 Here's an annotated graph of my average daily Github contributions over time: 
 
+!TEMPLATE!
 <div class="chartjs">
   <canvas id="github_contributions"></canvas>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@0.1.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
+  <script src="
+https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.2.0/dist/chartjs-plugin-zoom.min.js
+"></script>
 
   <script>
     function cssvar(name) {
       return getComputedStyle(document.documentElement).getPropertyValue(name);
     }
 
+    const verticalLinePlugin = {
+      getLinePosition: function (chart, pointIndex) {
+          const meta = chart.getDatasetMeta(0); // first dataset is used to discover X coordinate of a point
+          const data = meta.data;
+          return data[pointIndex].x;
+      },
+
+      renderVerticalLine: function (chartInstance, pointIndex, label) {
+          const lineLeftOffset = this.getLinePosition(chartInstance, pointIndex);
+          const scale = chartInstance.scales.y;
+          const context = chartInstance.ctx;
+          // render vertical line
+          context.beginPath();
+          context.strokeStyle = '#ff0000';
+          context.moveTo(lineLeftOffset, scale.top);
+          context.lineTo(lineLeftOffset, scale.bottom);
+          context.stroke();
+
+          // write label
+          context.fillStyle = "#ff0000";
+          context.textAlign = 'center';
+          context.fillText(label, lineLeftOffset, (scale.bottom - scale.top) / 9 + scale.top);
+      },
+
+      beforeDatasetsDraw: function (chart, easing) {
+          if(chart.config._config.lineAtIndex)
+              chart.config._config.lineAtIndex.forEach(pointIndex => this.renderVerticalLine(chart, pointIndex[0], pointIndex[1]));
+      }
+    };
+
     const ctx = document.getElementById('github_contributions');
 
-    const DATA_COUNT = 7;
-    const NUMBER_CFG = {count: DATA_COUNT, min: 0, max: 100};
+    function Get(yourUrl){
+      var Httpreq = new XMLHttpRequest(); // a new request
+      Httpreq.open("GET",yourUrl,false);
+      Httpreq.send(null);
+      return Httpreq.responseText;          
+    }
+
+    var gh_json = JSON.parse(Get("{{ 'json/phd_github_activity.json' | relative_url}}"));
 
     const data = {
-      labels: [new Date(2023, 0, 1), new Date(2023, 0, 2), new Date(2023, 0, 3), new Date(2023, 0, 4), new Date(2023, 0, 5), new Date(2023, 0, 6), new Date(2023, 0, 7)],
       datasets: [{  
-        label: 'Dataset with point data',
-        backgroundColor: cssvar('--global-theme-color'),
-        borderColor: cssvar('--global-theme-color'),
+        label: '28-Day Moving Average GH Daily Contributions',
+        backgroundColor: null, 
+        borderColor: null, 
         color: null, 
         fill: false,
-        data: [{
-          x: new Date(2023, 0, 1), 
-          y: 100
-        }, {
-          x: new Date(2024, 0, 2), 
-          y: 200 
-        }, {
-          x: new Date(2024, 0, 3), 
-          y: 50 
-        }, {
-          x: new Date(2024, 0, 5), 
-          y: 200 
-        }],
+        data: gh_json['data'],
+        pointRadius: 0
       }]
     };
 
     const config = {
       type: 'line',
       data: data,
+      lineAtIndex: gh_json['milestones'],
+      plugins: [verticalLinePlugin],
       options: {
         plugins: {
           legend: {
             labels: {color: null}
-          }
+          },
+          zoom: {
+              zoom: {
+                  wheel: {
+                    enabled: true,
+                  },
+                  pinch: {
+                    enabled: true
+                  },
+                  mode: 'xy',
+                }
+              }
         },
         scales: {
           x: {
@@ -81,7 +123,7 @@ Here's an annotated graph of my average daily Github contributions over time:
           y: {
             title: {
               display: true,
-              text: 'value'
+              text: 'Avg. Daily Contributions'
             },
             ticks: {color: null},
             grid: {color: null}
@@ -126,13 +168,12 @@ Here's an annotated graph of my average daily Github contributions over time:
 
     chart.canvas.parentNode.refreshChart = function() {
       modifyChartColors(chart.config, chart.data);
-      // Log to the console
-      console.log('Chart colors updated');
       chart.update(); 
     } 
   </script>
   </div>
 </br>
+!TEMPLATE!
 
 Here are some statistics from the past five years. 
 Some numbers (like thesis page count, research diary length, or 
