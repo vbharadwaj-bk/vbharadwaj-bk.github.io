@@ -6,22 +6,137 @@ summary: Information about my PhD exit talk and published work
 ---
 I'm excited to graduate with
 my PhD in computer science from UC Berkeley. If you would
-like to attend my exit talk, please send me an email! 
+like to attend my exit talk on August 13, 2025, please send me
+an email!
 
 ### My PhD by the Numbers
-Here are some statistics about my PhD. Some statistics (like
-thesis page count, research journal length, or 
-Github contributions) are pointless and clearly contain a lot
-of noise. Others, I'm very proud of. At the very least,
-I hope the 
+PhD work is "bursty": in computer science, it involves long periods of exploration 
+followed by high-intensity code sprints and paper writing. 
+Here's an annotated graph of my average daily Github contributions over time: 
+
+<div class="chartjs">
+  <canvas id="github_contributions"></canvas>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@0.1.1"></script>
+
+  <script>
+    function cssvar(name) {
+      return getComputedStyle(document.documentElement).getPropertyValue(name);
+    }
+
+    const ctx = document.getElementById('github_contributions');
+
+    const DATA_COUNT = 7;
+    const NUMBER_CFG = {count: DATA_COUNT, min: 0, max: 100};
+
+    const data = {
+      labels: [new Date(2023, 0, 1), new Date(2023, 0, 2), new Date(2023, 0, 3), new Date(2023, 0, 4), new Date(2023, 0, 5), new Date(2023, 0, 6), new Date(2023, 0, 7)],
+      datasets: [{  
+        label: 'Dataset with point data',
+        backgroundColor: cssvar('--global-theme-color'),
+        borderColor: cssvar('--global-theme-color'), 
+        fill: false,
+        data: [{
+          x: new Date(2023, 0, 1), 
+          y: 100
+        }, {
+          x: new Date(2024, 0, 2), 
+          y: 200 
+        }, {
+          x: new Date(2024, 0, 3), 
+          y: 50 
+        }, {
+          x: new Date(2024, 0, 5), 
+          y: 200 
+        }],
+      }]
+    };
+
+    const config = {
+      type: 'line',
+      data: data,
+      options: {
+        plugins: {
+          legend: {
+            labels: {
+              color: cssvar('--global-text-color'),
+            }
+          }
+        },
+        scales: {
+          x: {
+            type: 'time',
+            time: {
+              // Luxon format string
+              tooltipFormat: 'DD T'
+            },
+            title: {
+              display: true,
+              text: 'Date'
+            }
+          },
+          y: {
+            title: {
+              display: true,
+              text: 'value'
+            }
+          }
+        },
+      },
+    };
+
+    let chart = new Chart(ctx, config);
+
+    function refreshChart() {
+      fields = [
+        chart.config.options.scales.x.ticks,
+        chart.config.options.scales.y.ticks,
+        chart.config.options.scales.x.grid,
+        chart.config.options.scales.y.grid,
+        chart.config.options.scales.x.title,
+        chart.config.options.scales.y.title,
+        chart.config.options.plugins.legend.labels
+      ]
+
+      let globalTextColor = cssvar('--global-text-color');
+      // Bring globalTextColor closer to gray 
+      //let lightenedTextColor = 
+
+      chart.data.datasets.forEach((dataset) => {
+        dataset.backgroundColor = cssvar('--global-theme-color'); 
+        dataset.borderColor = cssvar('--global-theme-color'); 
+      });
+
+      fields.forEach((field) => {
+        field.color = globalTextColor;
+      });
+      
+      chart.update();
+    }
+
+    chart.canvas.parentNode.refreshChart = refreshChart; 
+    refreshChart();
+  </script>
+  </div>
+</br>
+
+Here are some statistics about my PhD. Some numbers (like
+thesis page count, research diary length, or 
+Github contributions) are pointless and clearly influenced 
+by noise. Others, I'm very proud of. 
 
 | Statistic | Quantity |
 | -------- | --------------- |
-| Slides in research journal (Powerpoint) | ~630 |
-| Total dissertation page count (incl. frontmatter + references) | ~160 |
-| BeBOP + PASSION Group meeting presentations | 35 |
+| Piazza forum contributions as a CS267 teaching assistant | 831 |
+| Powerpoint slides in research diary | 630+ |
+| Total dissertation page count (incl. frontmatter + references) | 160+ |
+| BeBOP + PASSION group presentations | 35 |
 | Domestic + international conference trips | 18 |
+| Semesters at Berkeley, including summer | 14 |
 | Non-research classes taken | 8 |
 | Published papers | 5 |
 | Summer internships | 2 |
 | PhDs (almost) earned | 1 |
+</br>

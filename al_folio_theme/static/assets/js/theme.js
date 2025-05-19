@@ -38,6 +38,11 @@ let setTheme = (theme) => {
       }
     }
 
+    let charts = document.getElementsByClassName("chartjs");
+    for (let i = 0; i < charts.length; i++) {
+      charts[i].refreshChart();
+    }
+
   } else {
     document.documentElement.removeAttribute("data-theme");
   }
@@ -87,3 +92,5 @@ let initTheme = (theme) => {
 };
 
 initTheme(localStorage.getItem("theme"));
+
+slkdjflskjdfkj
