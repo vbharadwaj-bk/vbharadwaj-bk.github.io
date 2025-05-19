@@ -17,6 +17,7 @@
   --global-distill-app-color: #{$grey-color};
   --global-divider-color: rgba(0,0,0,.1);
   --global-card-bg-color: #{$white-color};
+  --chart-grid-color: rgb(201, 201, 201);
 
   --global-tip-block: #42b983;
   --global-tip-block-bg: #e2f5ec;
@@ -52,7 +53,7 @@ html[data-theme='dark'] {
   --global-bg-color: #{$grey-color-dark};
   --global-code-bg-color: #{$code-bg-color-dark};
   --global-text-color: #{$grey-color-light};
-  --global-text-color-light: #{$grey-color-light};
+  --global-text-color-light: #{$grey-color-dark};
   --global-heading-color: #{$white-color};
   --global-theme-color: rgb(0, 240, 228); 
   --global-hover-color: rgb(0, 240, 228); 
@@ -63,6 +64,7 @@ html[data-theme='dark'] {
   --global-distill-app-color: #{$grey-color-light};
   --global-divider-color: #424246;
   --global-card-bg-color: black;
+  --chart-grid-color: rgb(76, 76, 76);
 
   --global-tip-block: #33bf80;
   --global-tip-block-bg: #123123;
