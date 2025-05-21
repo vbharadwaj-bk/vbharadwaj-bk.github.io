@@ -36,10 +36,6 @@ we submitted our work to:
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@0.1.1"></script>
-  <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
-  <script src="
-https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.2.0/dist/chartjs-plugin-zoom.min.js
-"></script>
 
   <script>
     function cssvar(name) {
@@ -109,18 +105,7 @@ https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.2.0/dist/chartjs-plugin-zoom.
         plugins: {
           legend: {
             labels: {color: null}
-          },
-          zoom: {
-              zoom: {
-                  wheel: {
-                    enabled: true,
-                  },
-                  pinch: {
-                    enabled: true
-                  },
-                  mode: 'xy',
-                }
-              }
+          }
         },
         scales: {
           x: {
