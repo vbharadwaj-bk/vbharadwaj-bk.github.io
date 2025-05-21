@@ -30,7 +30,7 @@ Here's an annotated graph of my average daily Github contributions over time, al
 we submitted our work to: 
 
 !TEMPLATE!
-<div class="chartjs">
+<div class="chartjs" style="aspect-ratio: 2">
   <canvas id="github_contributions"></canvas>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
