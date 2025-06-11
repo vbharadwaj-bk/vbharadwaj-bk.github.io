@@ -6,8 +6,8 @@ summary: Information about my PhD exit talk and published work
 ---
 I'm excited to graduate with my PhD in computer science 
 from UC Berkeley. If you would like to attend my exit talk, 
-please send me an email! Details to follow, but it 
-will likely happen during the week of August 11-15, 2025.
+please send me an email! It
+will occur on **July 21, 2025**. 
 
 My work explores high-performance algorithms for tensor kernels. 
 A *tensor* is a multidimensional array, and a kernel is
