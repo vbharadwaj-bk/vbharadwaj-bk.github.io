@@ -5,6 +5,12 @@ nav: false
 summary: An archive of announcements.
 
 entries:
+  - date: 2025-06-22
+    content: |
+      I'm presenting this [poster]({static}/pdf/2025/enn_poster.pdf) at LBNL's [Deep Learning for Science](https://dl4sci-school.lbl.gov/home) workshop - stop by to chat
+      if you're attending. 
+      
+
   - date: 2025-04-05
     content: |
       [OpenEquivariance](https://github.com/vbharadwaj-bk/OpenEquivariance) was accepted to

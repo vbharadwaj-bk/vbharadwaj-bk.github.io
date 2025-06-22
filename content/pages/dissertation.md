@@ -4,10 +4,18 @@ template: page
 nav: true 
 summary: Information about my PhD exit talk and published work
 ---
-I'm excited to graduate with my PhD in computer science 
-from UC Berkeley. If you would like to attend my exit talk, 
-please send me an email! It
-will occur on **July 21, 2025**. 
+I'm excited to graduate with my PhD in computer science from UC Berkeley!
+You are welcome to attend my thesis seminar. Find the details below: 
+
+| Dissertation Talk | Accelerating Multilinear Maps and Structured Sparse Tensor Kernels               |
+|-----------------------------|----------------------------------------------------------------------------------|
+| Date                        | July 21, 2025                                                                    |
+| Time                        | 10:00 AM PDT                                                                     |
+| Location                    | 310 Jacobs Hall, UC Berkeley |
+| Calendar Invite + Zoom Link | [Click here](https://events.berkeley.edu/events/event/300838-dissertation-talk-accelerating-multilinear-maps#), scroll to "Download to my calendar" |
+
+</br>
+
 
 My work explores high-performance algorithms for tensor kernels. 
 A *tensor* is a multidimensional array, and a kernel is
@@ -18,14 +26,11 @@ compared to matrix kernels, both in theory and practice.
 My thesis aims to fill that knowledge gap by introducing new
 algorithms for one specific tensor kernel, the Matricized
 Tensor Times Khatri-Rao Product (MTTKRP). We use
-those algorithms to accelerate multiple critical computational
-applications, as well as a launching pad to study other related
-problems.
+those algorithms to accelerate multiple critical 
+applications, as well as a launching pad to study other related problems.
 
 ### A PhD by the Numbers
-Graduate work is "bursty": in computer science, it 
-involves long periods of exploration 
-followed by high-intensity code sprints and paper writing. 
+My graduate work was "bursty": it involved long periods of exploration followed by code sprints and paper writing. 
 Here's an annotated graph of my average daily Github contributions over time, along with the deadlines for some of the conferences
 we submitted our work to: 
 
@@ -87,7 +92,8 @@ we submitted our work to:
       datasets: [{  
         label: '28-Day Moving Average GH Daily Contributions',
         backgroundColor: null, 
-        borderColor: null, 
+        borderColor: null,
+        borderWidth: 0.8, 
         color: null, 
         fill: false,
         data: gh_json['data'],
@@ -175,10 +181,6 @@ we submitted our work to:
   </div>
 </br>
 !TEMPLATE!
-The ICML'23 submission became our NeurIPS'23 paper, and the
-work for SPAA'24 was completed long before submission. For
-ACDA'25, most contributions were pull requests that squashed
-several commits (hence the lower peaks). 
 
 Here are some statistics from the past five years. 
 Some numbers (like thesis page count, research diary length, or 
@@ -189,7 +191,7 @@ by noise. Others, I'm very proud of.
 | -------- | --------------- |
 | Piazza forum contributions as a CS267 teaching assistant | 831 |
 | Powerpoint slides in research diary | 630+ |
-| Total dissertation page count (incl. frontmatter + references) | 160+ |
+| Total dissertation page count (incl. frontmatter + references) | 170+ |
 | BeBOP + PASSION group presentations | 35 |
 | Domestic + international conference trips | 15 |
 | Semesters at Berkeley, including summers | 14 |
