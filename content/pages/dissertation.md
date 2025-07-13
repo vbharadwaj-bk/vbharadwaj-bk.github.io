@@ -191,7 +191,7 @@ by noise. Others, I'm very proud of.
 | -------- | --------------- |
 | Piazza forum contributions as a CS267 teaching assistant | 831 |
 | Powerpoint slides in research diary | 630+ |
-| Total dissertation page count (incl. frontmatter + references) | 170+ |
+| Total dissertation page count (incl. frontmatter + references) | 182 |
 | BeBOP + PASSION group presentations | 35 |
 | Domestic + international conference trips | 15 |
 | Semesters at Berkeley, including summers | 14 |

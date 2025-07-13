@@ -5,6 +5,13 @@ nav: false
 summary: An archive of announcements.
 
 entries:
+  - date: 2025-07-12
+    content: |
+      On July 21 at 10AM PDT, I will give my 🎉 🎉 dissertation exit talk 🎉 🎉! You
+      are welcome to attend, either virtually or in-person on UC Berkeley's campus.
+      Find the details [here]({filename}/pages/dissertation.md).
+
+
   - date: 2025-06-22
     content: |
       I'm presenting this [poster]({static}/pdf/2025/enn_poster.pdf) at LBNL's [Deep Learning for Science](https://dl4sci-school.lbl.gov/home) workshop - stop by to chat
