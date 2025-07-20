@@ -1,3 +1,10 @@
+- venue: "[DOE CSGF Program Review](https://www.siam.org/conferences-events/siam-conferences/cse25/), Washington, D.C."
+  title: Final Year Fellow Presentation (Chemistry Graph Neural Networks) 
+  date: 2025-07-15
+  buttons:
+    slides: pdf/2025/csgf_program_review.pdf
+
+
 - venue: "[SIAM CSE 2025 Matrix Computations Minisymposium](https://www.siam.org/conferences-events/siam-conferences/cse25/), Fort Worth, TX"
   title: Engineering Fast Kernels for Rotation-Equivariant Deep Neural Networks
   date: 2025-03-04
