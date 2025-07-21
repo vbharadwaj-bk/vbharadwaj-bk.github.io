@@ -4,8 +4,9 @@ template: page
 nav: true 
 summary: Information about my PhD exit talk and published work
 ---
-I'm excited to graduate with my PhD in computer science from UC Berkeley!
-You are welcome to attend my thesis seminar. Find the details below: 
+I want to thank everybody attended my dissertation talk - I was
+so thrilled to share my work, and I hope anyone who attended found it
+interesting. Find the details below!
 
 | Dissertation Talk | Accelerating Multilinear Maps and Structured Sparse Tensor Kernels               |
 |-----------------------------|----------------------------------------------------------------------------------|
@@ -13,6 +14,7 @@ You are welcome to attend my thesis seminar. Find the details below:
 | Time                        | 10:00 AM PDT                                                                     |
 | Location                    | 310 Jacobs Hall, UC Berkeley |
 | Calendar Invite + Zoom Link | [Click here](https://events.berkeley.edu/events/event/300838-dissertation-talk-accelerating-multilinear-maps#), scroll to "Download to my calendar" |
+| Slides                      | [PDF]({static}/pdf/2025/bharadwaj_dissertation_slides.pdf)                          |
 
 </br>
 
