@@ -4,7 +4,7 @@ template: page
 nav: true 
 summary: Information about my PhD exit talk and published work
 ---
-I want to thank everybody attended my dissertation talk - I was
+I want to thank everybody who attended my dissertation talk. I was
 so thrilled to share my work, and I hope anyone who attended found it
 interesting. Find the details below!
 
