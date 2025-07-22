@@ -4,6 +4,12 @@ template: page
 nav: true 
 summary: Information about my PhD exit talk and published work
 ---
+
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/YWAESXZGdbU?si=7LxwCeS0S5eqx_y4&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</br>
+</center>
+
 I want to thank everybody who attended my dissertation talk. I was
 so thrilled to share my work, and I hope anyone who attended found it
 interesting. Find the details below!
@@ -17,7 +23,6 @@ interesting. Find the details below!
 | Slides                      | [PDF]({static}/pdf/2025/bharadwaj_dissertation_slides.pdf)                          |
 
 </br>
-
 
 My work explores high-performance algorithms for tensor kernels. 
 A *tensor* is a multidimensional array, and a kernel is
@@ -193,12 +198,12 @@ by noise. Others, I'm very proud of.
 | -------- | --------------- |
 | Piazza forum contributions as a CS267 teaching assistant | 831 |
 | Powerpoint slides in research diary | 630+ |
-| Total dissertation page count (incl. frontmatter + references) | 182 |
+| Total dissertation page count (incl. frontmatter + references) | 183 |
 | BeBOP + PASSION group presentations | 35 |
 | Domestic + international conference trips | 15 |
 | Semesters at Berkeley, including summers | 14 |
 | Non-research classes taken | 8 |
 | Published papers | 5 |
 | Summer internships | 2 |
-| PhDs (almost) earned | 1 |
+| PhDs earned | 1 |
 </br>
