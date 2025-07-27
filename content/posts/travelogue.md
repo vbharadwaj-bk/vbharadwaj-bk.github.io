@@ -24,6 +24,7 @@ where I presented something.
 
 | Dates         | Event                            | Location      |   
 |---------------|----------------------------------|---------------|
+| 2025 July     | *SIAM ACDA 2025                  | Montréal, Canada |
 | 2025 July     | *CSGF Program Review             | Washington D.C. |
 | 2025 March    | *SIAM CSE 2025                   | Fort Worth, TX |
 | 2024 Dec.     | *NeurIPS 2024                    | Vancouver, Canada |
