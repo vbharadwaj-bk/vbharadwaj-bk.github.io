@@ -22,6 +22,7 @@ interesting. Find the details below!
 | Location                    | 310 Jacobs Hall, UC Berkeley |
 | Calendar Invite + Zoom Link | [Click here](https://events.berkeley.edu/events/event/300838-dissertation-talk-accelerating-multilinear-maps#), scroll to "Download to my calendar" |
 | Slides                      | [PDF]({static}/pdf/2025/bharadwaj_dissertation_slides.pdf)                          |
+| Published Thesis | [PDF](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2025/EECS-2025-146.pdf)                          |
 
 </br>
 
