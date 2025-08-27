@@ -20,12 +20,11 @@ talks:
   limit: 3 
 ---
 
-I am an EECS graduate student at UC Berkeley, advised by the fantastic pair 
+I recently completed a very happy PhD at UC Berkeley, advised by 
 [Jim Demmel](http://people.eecs.berkeley.edu/~demmel/) and 
-[Aydın Buluç](https://people.eecs.berkeley.edu/~aydin/). I'm associated with the BeBOP and PASSION groups, and 
-I'm supported by a Department of Energy [
-Computational Science Graduate Fellowship](https://www.krellinst.org/csgf/)
-from the Krell Institute.
+[Aydın Buluç](https://people.eecs.berkeley.edu/~aydin/)! I'm off to 
+[Apple 🍎](https://www.apple.com) to work on machine learning as part of the platform
+architecture team. 
 
 <style>
   .lower-font-size li {
@@ -50,7 +49,7 @@ from the Krell Institute.
     <div class="row justify-content-center">
     <ul class="lower-font-size">
     <h5>Background</h5>
-    <li>PhD in Computer Science.<br>UC Berkeley, 2020-Present</li>
+    <li>PhD in Computer Science.<br>UC Berkeley, 2020-2025</li>
     <li>BS in CS + Mathematics.<br> Caltech, 2016-2020</li>
     </ul> 
     </div>
