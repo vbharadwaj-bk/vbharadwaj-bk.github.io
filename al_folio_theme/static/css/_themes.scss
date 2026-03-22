@@ -55,15 +55,15 @@ html[data-theme='dark'] {
   --global-text-color: #{$grey-color-light};
   --global-text-color-light: #{$grey-color};
   --global-heading-color: #{$white-color};
-  --global-theme-color: rgb(0, 240, 228); 
-  --global-hover-color: rgb(0, 240, 228); 
+  --global-theme-color: rgb(255, 209, 94); 
+  --global-hover-color: rgb(255, 209, 94); 
   --global-hover-text-color: #{$white-color};
   --global-footer-bg-color: #{$grey-color-light};
   --global-footer-text-color: #{$grey-color-dark};
   --global-footer-link-color: #{$black-color};
   --global-distill-app-color: #{$grey-color-light};
   --global-divider-color: #424246;
-  --global-card-bg-color: black;
+  --global-card-bg-color: rgb(27, 27, 27);
   --chart-grid-color: rgb(76, 76, 76);
 
   --global-tip-block: #33bf80;

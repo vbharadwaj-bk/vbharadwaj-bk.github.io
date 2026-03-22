@@ -24,7 +24,10 @@ I recently completed a very happy PhD at UC Berkeley, advised by
 [Jim Demmel](http://people.eecs.berkeley.edu/~demmel/) and 
 [Aydın Buluç](https://people.eecs.berkeley.edu/~aydin/)! I'm off to 
 [Apple 🍎](https://www.apple.com) to work on machine learning as part of the platform
-architecture team. 
+architecture team. My dissertation covers **high-performance deep learning kernel generation**,
+**distributed-memory graph neural networks**, and new algorithms in 
+**randomized numerical linear algebra**. More recently, I've been thinking about 
+transformer architectures. 
 
 <style>
   .lower-font-size li {
