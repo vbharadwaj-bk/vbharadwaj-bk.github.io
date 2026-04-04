@@ -96,5 +96,5 @@ we're going to define a real representation:
     Hello
 
 
-!!! theorem "Represenations of $O(3)$ 
+!!! theorem "Represenations of $O(3) f(x)$"
     Hello $f(x)$

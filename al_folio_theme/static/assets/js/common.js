@@ -10,23 +10,6 @@ $(document).ready(function() {
   });
   $('a').removeClass('waves-effect waves-light');
 
-  // Normalize custom titles, e.g. "!!! theorem \"X\"" -> "Theorem (X)"
-  [['definition', 'Definition'], ['theorem', 'Theorem']].forEach(function(entry) {
-    const typeClass = entry[0];
-    const baseTitle = entry[1];
-    $(`.admonition.${typeClass} .admonition-title`).each(function() {
-      const currentTitle = $(this).text().trim();
-      if (!currentTitle || currentTitle === baseTitle) {
-        return;
-      }
-      const alreadyNormalized = new RegExp(`^${baseTitle}\\s*\\(.+\\)$`);
-      if (alreadyNormalized.test(currentTitle)) {
-        return;
-      }
-      $(this).text(`${baseTitle} (${currentTitle})`);
-    });
-  });
-
   // bootstrap-toc
   if($('#toc-sidebar').length){
     let navbarHeight = $("#navbar").outerHeight(true);
