@@ -12,14 +12,14 @@ but the ideas are worth grappling with.
 
 #### Math + CompSci Essays
 
-| Item | What is it? |
-|------|-------------|
-| [Paul Lockhart's Lament](https://www.mimuw.edu.pl/~pawelst/rzut_oka/Zajecia_dla_MISH_2011-12/Lektury_files/LockhartsLament.pdf) | A cleary-eyed broadside against bad mathematics curricula in lower, middle, and high school. | 
-| [Rich Sutton's Bitter Lesson](http://www.incompleteideas.net/IncIdeas/BitterLesson.html) | To hell with human intuition - by Sutton, structured search and compute will dominate the world. |
-| [Sarah Hooker's Hardware Lottery](https://hardwarelottery.github.io/) | What research ideas win and which don't? Hooker's got a convincing explanation for the structure of modern deep learning algorithms. |
-| [James Somers ponders ChatGPT](https://www.newyorker.com/magazine/2023/11/20/a-coder-considers-the-waning-days-of-the-craft) | An ode to programming and its changing role in the LLM age. | 
-| [Akshay Venkatesh considers the AI Mathematician](https://www.math.ias.edu/~akshay/research/IASEssay.pdf) | Mathematics is an art, and we humans decide what art is valuable. Venkatesh wonders how AI writing proofs will change that. |
-| [Underwood Dudley on Mathematical Cranks](https://www.ufv.ca/media/faculty/gregschlitt/information/WhatToDoWhenTrisectorComes.pdf) | How do you deal with a someone claming to solve an impossible problem? Dudley has some practical (and very funny) ideas. |
+| Item |
+|------|
+| [Paul Lockhart's Lament](https://www.mimuw.edu.pl/~pawelst/rzut_oka/Zajecia_dla_MISH_2011-12/Lektury_files/LockhartsLament.pdf) |
+| [Rich Sutton's Bitter Lesson](http://www.incompleteideas.net/IncIdeas/BitterLesson.html) |
+| [Sarah Hooker's Hardware Lottery](https://hardwarelottery.github.io/) |
+| [James Somers ponders ChatGPT](https://www.newyorker.com/magazine/2023/11/20/a-coder-considers-the-waning-days-of-the-craft) |
+| [Akshay Venkatesh considers the AI Mathematician](https://www.math.ias.edu/~akshay/research/IASEssay.pdf) | 
+| [Underwood Dudley on Mathematical Cranks](https://www.ufv.ca/media/faculty/gregschlitt/information/WhatToDoWhenTrisectorComes.pdf) |
 
 &nbsp;
 
@@ -49,14 +49,15 @@ but the ideas are worth grappling with.
 | [Cat Person](https://www.newyorker.com/magazine/2017/12/11/cat-person) | 😢 |
 | [The Pool](https://www.newyorker.com/magazine/2025/09/22/the-pool-fiction-t-coraghessan-boyle) | 🤔 | 
 | [Children's Holiday Letters to Satan](https://www.newyorker.com/humor/daily-shouts/childrens-holiday-letters-satan) | 🤣 |
+| [Escape from Spiderhead](https://www.newyorker.com/magazine/2010/12/20/escape-from-spiderhead) | 🤔 |
 
 &nbsp;
 
 #### Books, fiction 
 | Item | Sad, Thoughtful, Funny? |
 |------|-------------------------|
-| [Dear Committee Members](https://www.newyorker.com/recommends/read/dear-committee-members-by-julie-schumacher) | 🤣 |
-| The Uncollected Stories of Allan Garganus | 🤔 |
+| [*Dear Committee Members*](https://www.newyorker.com/recommends/read/dear-committee-members-by-julie-schumacher) | 🤣 |
+| *The Uncollected Stories of Allan Garganus* | 🤔 |
 
 &nbsp;
 
