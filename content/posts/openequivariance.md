@@ -89,5 +89,12 @@ However: $f$ in our case will represent an intermediate layer of a deep graph ne
 much of its expressive capability by operating on input / output vectors of arbitrary dimensionality. What
 does equivariance mean when $f$ has the signature $f: \RR^m \rightarrow \RR^n\ $? 
 
-We need some additional machinery to construct a general definition of an equivariant function. 
+We need some additional machinery to construct a general definition of an equivariant function: specifically,
+we're going to define a real representation:
 
+!!! definition "Real Representation"
+    Hello
+
+
+!!! theorem "Represenations of $O(3)$ 
+    Hello $f(x)$

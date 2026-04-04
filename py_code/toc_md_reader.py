@@ -33,6 +33,11 @@ DUPES_NOT_ALLOWED = set(
     k for k, v in DUPLICATES_DEFINITIONS_ALLOWED.items() if not v
 ) - {"tags", "authors"}
 
+DEFINITION_ADMONITION_TITLE_RE = re.compile(
+    r'(<div\\s+class="[^"]*\\badmonition\\b[^"]*\\bdefinition\\b[^"]*"[^>]*>\\s*<p\\s+class="admonition-title">)(.*?)(</p>)',
+    re.DOTALL,
+)
+
 _DEL = object()
 
 YAML_METADATA_PROCESSORS = {
@@ -66,6 +71,22 @@ def _parse_date(obj):
         obj = obj.isoformat()
 
     return get_date(str(obj).strip().replace("_", " "))
+
+
+def _normalize_definition_admonition_titles(html):
+    """Rewrite custom definition titles to the form: Definition (Title)."""
+
+    def repl(match):
+        prefix, title, suffix = match.groups()
+        clean_title = title.strip()
+
+        # Keep Markdown's default title unchanged.
+        if clean_title.lower() == "definition":
+            return f"{prefix}{title}{suffix}"
+
+        return f"{prefix}Definition ({clean_title}){suffix}"
+
+    return DEFINITION_ADMONITION_TITLE_RE.sub(repl, html)
 
 
 class TOCMarkdownReader(MarkdownReader):
@@ -107,6 +128,8 @@ class TOCMarkdownReader(MarkdownReader):
                 toc_md = Markdown(extensions=['toc'])
                 _ = toc_md.convert(m.group("content"))
                 metadata["parsed_toc"] = toc_md.toc_tokens
+
+        content = _normalize_definition_admonition_titles(content)
 
         return content, metadata
 

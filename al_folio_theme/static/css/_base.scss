@@ -863,6 +863,44 @@ html.transition *:after {
       color: var(--global-heading-color);
     }
   }
+
+  .admonition.definition {
+    border-color: var(--global-definition-block);
+    background-color: var(--global-definition-block-bg);
+
+    p {
+      color: var(--global-definition-block-text);
+    }
+
+    title{
+      color: var(--global-definition-block-title);
+    }
+
+    .admonition-title {
+      font-weight: #{$font-weight-normal};
+      text-align: left;
+      color: var(--global-heading-color);
+    }
+  }
+
+  .admonition.theorem {
+    border-color: var(--global-theorem-block);
+    background-color: var(--global-theorem-block-bg);
+
+    p {
+      color: var(--global-theorem-block-text);
+    }
+
+    title{
+      color: var(--global-theorem-block-title);
+    }
+
+    .admonition-title {
+      font-weight: #{$font-weight-normal};
+      text-align: left;
+      color: var(--global-heading-color);
+    }
+  }
 }
 
 progress {

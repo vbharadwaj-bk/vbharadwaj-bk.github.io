@@ -31,6 +31,14 @@
   --global-danger-block-bg: #ffe0e0;
   --global-danger-block-text: #600;
   --global-danger-block-title: #c00;
+  --global-definition-block: #b5bcc3;
+  --global-definition-block-bg: #f3f5f7;
+  --global-definition-block-text: #3a4046;
+  --global-definition-block-title: #5b636b;
+  --global-theorem-block: #7b8fc0;
+  --global-theorem-block-bg: #eef1f8;
+  --global-theorem-block-text: #2e3950;
+  --global-theorem-block-title: #506189;
 
   .fa-sun {
     display : none;
@@ -75,6 +83,14 @@ html[data-theme='dark'] {
   --global-danger-block: #c00;
   --global-danger-block-bg: #360000;
   --global-danger-block-text: #e3e3e3;
+  --global-definition-block: #7f8a95;
+  --global-definition-block-bg: #2b3137;
+  --global-definition-block-text: #dfe4e8;
+  --global-definition-block-title: #b6c0c9;
+  --global-theorem-block: #95a5cc;
+  --global-theorem-block-bg: #253045;
+  --global-theorem-block-text: #e3e9f7;
+  --global-theorem-block-title: #c2cfef;
 
   .fa-sun {
     padding-left: 10px;
