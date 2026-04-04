@@ -32,9 +32,9 @@ $$E = f_{\textrm{NN}}\paren{\bold{R}, \scr M; \bold{w}},$$
 where $\bold{w}$ contains trainable weights that parameterize the network. To get the atomic forces,
 we can calculate
 
-$$F = - \frac{\partial E}{\partial \bold{R}} = - \frac{\partial f_{\textrm{NN}}(\bold{R}, \scr{M}; \bold{w})}{\partial \bold R}.$$
-The advantage of this approach is that the force field is *conservative*, which promotes energy conservation 
-over the simulation lifetime.
+$$F = - \frac{\partial E}{\partial \bold{R}} = - \frac{\partial f_{\textrm{NN}}(\bold{R}, \scr{M}; \bold{w})}{\partial \bold R} \in \RR^{N \times 3}.$$
+The advantage of this approach is that the resulting force field is *conservative*, 
+which promotes energy conservation over the simulation lifetime.
 
 
 !TEMPLATE!
@@ -54,12 +54,40 @@ over the simulation lifetime.
 !TEMPLATE!
 The energy of a molecule doesn't change when you rotate it in space. It also shouldn't change
 if the order of the position vectors in $\bold{R}$ changes. A rotation-equivariant graph neural network
-satisfies both properties, and we'll examine their mathematical and computational aspects in this post.
+makes predictions that satisfy both properties, and we'll examine 
+their mathematical and computational aspects in this post.
 A quick plug: in January 2025, we released 
 [OpenEquivariance](https://github.com/vbharadwaj-bk/OpenEquivariance) to accelerate equivariant 
 graph neural networks by an order of magnitude. 
 
 There are lots of online resources on equivariant graph neural networks. I recommend
-[Tensor Field Netwwrks](https://arxiv.org/abs/1802.08219), one of the first papers in this space,
-for an accessible yet rigorous take. 
+[Tensor Field Networks](https://arxiv.org/abs/1802.08219), one of the first papers in this space,
+for an accessible and rigorous take. Slides from 
+[Tess Smidt](https://blondegeek.github.io/) are very useful, but I find them a bit difficult
+to parse due to my lack of domain knowledge. I'm not a chemist, so I'm going to give you an 
+explanation that requires no prerequisite besides a strong mathematical background. Skip ahead
+if you're familiar with these networks already. 
+
+## An Intuition for Equivariance
+Let's formalize our definition of equivariance a little further. Suppose we want to design an
+function $f: \RR^{3} \rightarrow \RR$ so that any rotation in the input vector produces no change
+in the output scalar. We'll let $G$ be the [group](https://en.wikipedia.org/wiki/Group_(mathematics))
+of rotations including reflection in 3D space, and we'll define $\bold{R}(g) \in \RR^{3 \times 3}$ 
+as the canonical [3D rotation matrix](https://en.wikipedia.org/wiki/Rotation_matrix#In_three_dimensions)
+for any rotation $g \in G$. In this case, the equivariance property on $f$ is 
+
+$$f\paren{\bold{R}(g) \cdot \bold{x}} = f(\bold{x})\quad\forall \bold{x} \in \RR^{3}, g \in G.$$
+
+Perfect. Say, now, that $f$ predicts a 3D vector instead of a scalar, i.e. its signature is
+$f: \RR^3 \rightarrow \RR^3$. Here too, we have one natural definition of equivariance:
+
+$$f\paren{\bold{R}(g) \cdot \bold{x}} = \bold{R}(g) \cdot f(\bold{x})\quad\forall \bold{x} \in \RR^{3}, g \in G.$$
+
+In other words, rotations on the function input convert to rotations on the function output. So far, so good.
+
+However: $f$ in our case will represent an intermediate layer of a deep graph neural network, which derives
+much of its expressive capability by operating on input / output vectors of arbitrary dimensionality. What
+does equivariance mean when $f$ has the signature $f: \RR^m \rightarrow \RR^n\ $? 
+
+We need some additional machinery to construct a general definition of an equivariant function. 
 
