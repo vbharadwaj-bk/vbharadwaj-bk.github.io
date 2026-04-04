@@ -71,7 +71,7 @@ if you're familiar with these networks already.
 ## An Intuition for Equivariance
 Let's formalize our definition of equivariance a little further. Suppose we want to design an
 function $f: \RR^{3} \rightarrow \RR$ so that any rotation in the input vector produces no change
-in the output scalar. We'll let $G$ be the [group](https://en.wikipedia.org/wiki/Group_(mathematics))
+in the output scalar. We'll let $G=O(3)$ be the [group](https://en.wikipedia.org/wiki/Group_(mathematics))
 of rotations including reflection in 3D space, and we'll define $\bold{R}(g) \in \RR^{3 \times 3}$ 
 as the canonical [3D rotation matrix](https://en.wikipedia.org/wiki/Rotation_matrix#In_three_dimensions)
 for any rotation $g \in G$. In this case, the equivariance property on $f$ is 
@@ -87,14 +87,26 @@ In other words, rotations on the function input convert to rotations on the func
 
 However: $f$ in our case will represent an intermediate layer of a deep graph neural network, which derives
 much of its expressive capability by operating on input / output vectors of arbitrary dimensionality. What
-does equivariance mean when $f$ has the signature $f: \RR^m \rightarrow \RR^n\ $? 
+does equivariance mean when $f$ has the signature $f: \RR^m \rightarrow \RR^n$, where $n, m > 3$? 
 
 We need some additional machinery to construct a general definition of an equivariant function: specifically,
-we're going to define a real representation:
+define a real representation as follows:
 
-!!! definition "Real Representation"
-    Hello
+!!! definition "Representation"
+    A (real) representation is a map $D: G \rightarrow \RR^{n \times n}$ that preserves the group structure
+    of $G$ under matrix multiplication:
+    $$D(g \circ h) = D(g) \cdot D(h),$$
+    where $\circ$ is the group operator. 
 
+In our case, ever rotation is mapped to a square matrix of arbitrary dimension that *represents* the group
+element. If you multiply two of these matrices together, you get a third matrix representing the rotation
+that is a composition of the two input rotations. Armed with this definition, we have the following general 
+definition:
 
-!!! theorem "Represenations of $O(3) f(x)$"
-    Hello $f(x)$
+!!! definition "Equivariant Function"
+    A function $f: \RR^n \rightarrow \RR^m$ is equivariant with respect to representations 
+    $D_{\textrm{in}}: G \rightarrow \RR^{n \times n}$ and
+    $D_{\textrm{out}}: G \rightarrow \RR^{m \times m}$ iff 
+
+    $$D_{\textrm{out}}\paren{g} \cdot f \paren{\bold{x}} = f\paren{D_{\textrm{in}}\paren{g} \cdot \bold{x}}$$
+
