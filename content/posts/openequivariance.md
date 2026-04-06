@@ -232,7 +232,7 @@ will be learnable parameters of our network.
         <div class="col-8 card border-0 bg-white p-1 mb-3">
         {{ figure(path="images/blog/cg_tensor_product.png",title="CG Tensor product and weight matmul.", class="img-fluid rounded z-depth-1", zoomable=True) }}
         <div class="caption">
-        The Clebsch-Gordon tensor product followed by a dimensionality reduction
+        The Clebsch-Gordon (CG) tensor product followed by a dimensionality reduction
         and structured reweighting. 
         </div>
 </div>
@@ -240,13 +240,14 @@ will be learnable parameters of our network.
 </div>
 </div>
 !TEMPLATE!
-The operation $\bold{P} \paren{\bold{x} \otimes \bold{y}}$ is called the Clebsch-Gordon tensor product;
-for convenience, we will inc
+The operation $\bold{P} \paren{\bold{x} \otimes \bold{y}}$ is called the **Clebsch-Gordon tensor product**.
+For convenience, we will often expand this operation to include multiplication by $\bold W$. At this point,
+we are ready to assemble our rotation-equivariant neural network! 
 
 
 ## OpenEquivariance: Turbocharging CG Tensor Products
-*OpenEquivariance* is our attempt to accelerate the CG tensor product. I've sketched out the package 
-architecture in the diagram below. Several details of the tensor product 
+*OpenEquivariance* is our attempt to accelerate the CG tensor product; I've sketched out the package
+architecture below. 
 
 !TEMPLATE!
 <div class="row">
@@ -258,4 +259,27 @@ architecture in the diagram below. Several details of the tensor product
 </div>
 !TEMPLATE!
 
+Because tensor product operations vary wildly between network architectures (and indeed, even between layers of 
+the same network!), OpenEquivariance uses JIT compilation to achieve high performance. Users begin by
+specifying the input and output representations (as well as the structure of the weight 
+matrix $\bold W$) with standard `e3nn` syntax. 
+OpenEquivariance uses [Jinja](https://jinja.palletsprojects.com/en/stable/) templates to generate a kernel
+that minimizes DRAM-SRAM traffic, then uses a C++ adapter to compile the kernels through either
+the NVIDIA runtime compiler (NVRTC) or HIP runtime compiler (HIPRTC).
 
+The compiled kernels are hashed and cached until a user running either PyTorch or JAX executes 
+the tensor product. Binding codes for either framework retrieve the cached kernel binaries and dispatch 
+them to the hardware. We considered a variety of other package designs, but as this table shows, each
+has a specific drawback.
+
+| Approach            | Cross-GPU? | Cross-ML-Framework? | `torch.compile()`? | Notes                                                                            |
+|---------------------|------------|---------------------|--------------------|----------------------------------------------------------------------------------|
+| Precompiled Kernels | ✅          | ✅                   | ✅                  | Too much case handling / branching within a kernel compared to JIT.              |
+| CUDA Python         | ⛔️          | ✅                   | ⛔️                  | Offers streamlined JIT compiler and CUDA API access, not much else.              |
+| Triton              | 🤔          | ⛔️                   | ✅                  | Easy to program, but sacrifices too much SRAM control.                           |
+| OpenEquivariance    | ✅          | ✅                   | ✅                  | Requires high upfront development cost for JIT compiler / ML framework bindings. |
+
+Users of chemical foundation models need to call their model from C++, e.g. when integrating with LAMMPS; this rules
+out CUDA Python. Triton has relatively poor performance for this kernel, ceding too much control to the automatic shared
+memory manager. Unfortunately, building a sufficiently-general kernel generator required us to hand-roll much of our
+C++ infrastructure. 
