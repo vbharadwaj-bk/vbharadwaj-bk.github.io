@@ -901,6 +901,25 @@ html.transition *:after {
       color: var(--global-heading-color);
     }
   }
+
+  .admonition.proposition {
+    border-color: var(--global-proposition-block);
+    background-color: var(--global-proposition-block-bg);
+
+    p {
+      color: var(--global-proposition-block-text);
+    }
+
+    title{
+      color: var(--global-proposition-block-title);
+    }
+
+    .admonition-title {
+      font-weight: #{$font-weight-normal};
+      text-align: left;
+      color: var(--global-heading-color);
+    }
+  }
 }
 
 progress {

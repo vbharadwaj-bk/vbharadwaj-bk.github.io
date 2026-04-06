@@ -39,6 +39,10 @@
   --global-theorem-block-bg: #eef1f8;
   --global-theorem-block-text: #2e3950;
   --global-theorem-block-title: #506189;
+  --global-proposition-block: #6fa2a4;
+  --global-proposition-block-bg: #e8f4f4;
+  --global-proposition-block-text: #234244;
+  --global-proposition-block-title: #3f7477;
 
   .fa-sun {
     display : none;
@@ -91,6 +95,10 @@ html[data-theme='dark'] {
   --global-theorem-block-bg: #253045;
   --global-theorem-block-text: #e3e9f7;
   --global-theorem-block-title: #c2cfef;
+  --global-proposition-block: #7fb4b6;
+  --global-proposition-block-bg: #20383a;
+  --global-proposition-block-text: #d9f0f1;
+  --global-proposition-block-title: #b8dde0;
 
   .fa-sun {
     padding-left: 10px;

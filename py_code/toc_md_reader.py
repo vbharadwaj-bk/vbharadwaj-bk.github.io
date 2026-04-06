@@ -34,7 +34,7 @@ DUPES_NOT_ALLOWED = set(
 ) - {"tags", "authors"}
 
 CUSTOM_ADMONITION_TITLE_RE = re.compile(
-    r'(<div\s+class="[^"]*\badmonition\b[^"]*\b(?P<kind>definition|theorem)\b[^"]*"[^>]*>\s*<p\s+class="admonition-title">)(?P<title>.*?)(</p>)',
+    r'(<div\s+class="[^"]*\badmonition\b[^"]*\b(?P<kind>definition|theorem|proposition)\b[^"]*"[^>]*>\s*<p\s+class="admonition-title">)(?P<title>.*?)(</p>)',
     re.DOTALL,
 )
 
