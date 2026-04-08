@@ -37,21 +37,7 @@ The advantage of this approach is that the resulting force field is *conservativ
 which promotes energy conservation over the simulation lifetime.
 
 
-!TEMPLATE!
-<div class="row">
-    <div class="col-2">
-    </div>
-        <div class="col-8 card border-0 bg-white p-1 mb-3">
-        {{ figure(path="images/blog/atomic_gnn.png",title="Pipeline for molecular property prediction.", class="img-fluid rounded z-depth-1", zoomable=True) }}
-        <div class="caption">
-        Atomic graph neural networks take in atom positions and metadata. They emit predictions of 
-        total system energy and the force on each atom.
-        </div>
-</div>
-<div class="col-2">
-</div>
-</div>
-!TEMPLATE!
+!figure(images/blog/atomic_gnn.png, medium, "Pipeline for molecular property prediction.", "Atomic graph neural networks take in atom positions and metadata. They emit predictions of total system energy and the force on each atom.")
 The energy of a molecule doesn't change when you rotate it in space. It also shouldn't change
 if the order of the position vectors in $\bold{R}$ changes. A rotation-equivariant graph neural network
 makes predictions that satisfy both properties, and we'll examine 
@@ -225,21 +211,8 @@ of $\bold{P}\paren{\bold{x} \otimes \bold{y}}$ corresponding to Wigner matrices 
 and it linearly combines the chunks that remain to reduce dimensionality. The weights in $\bold W$
 will be learnable parameters of our network.
 
-!TEMPLATE!
-<div class="row">
-    <div class="col-2">
-    </div>
-        <div class="col-8 card border-0 bg-white p-1 mb-3">
-        {{ figure(path="images/blog/cg_tensor_product.png",title="CG Tensor product and weight matmul.", class="img-fluid rounded z-depth-1", zoomable=True) }}
-        <div class="caption">
-        The Clebsch-Gordon (CG) tensor product followed by a dimensionality reduction
-        and structured reweighting. 
-        </div>
-</div>
-<div class="col-2">
-</div>
-</div>
-!TEMPLATE!
+!figure(images/blog/cg_tensor_product.png, medium, "CG Tensor product and weight matmul.", "The Clebsch-Gordon (CG) tensor product followed by a dimensionality reduction and structured reweighting.")
+
 The operation $\bold{P} \paren{\bold{x} \otimes \bold{y}}$ is called the **Clebsch-Gordon tensor product**.
 For convenience, we will often expand this operation to include multiplication by $\bold W$. At this point,
 we are ready to assemble our rotation-equivariant neural network! 
@@ -247,36 +220,14 @@ we are ready to assemble our rotation-equivariant neural network!
 ## Building a Rotation-Equivariant Graph Neural Network
 Let's now turn to the [Nequip](https://github.com/mir-group/nequip) equivariant neural network.
 
-!TEMPLATE!
-<div class="row">
-    <div class="col-2">
-    </div>
-        <div class="col-8 card border-0 bg-white p-1 mb-3">
-        {{ figure(path="images/blog/egnn.png",title="An equivariant GNN.", class="img-fluid rounded z-depth-1", zoomable=True) }}
-        <div class="caption">
-        Equivariant graph neural networks combine node features with edge features using the CC tensor product. The
-        resulting vectors are aggregated across the neighborhood of each node.
-        </div>
-</div>
-<div class="col-2">
-</div>
-</div>
-!TEMPLATE!
+!figure(images/blog/egnn.png, medium, "An equivariant GNN.", "Equivariant graph neural networks combine node features with edge features using the CG tensor product. The resulting vectors are aggregated across the neighborhood of each node.")
 
 
 ## OpenEquivariance: Turbocharging CG Tensor Products
 *OpenEquivariance* is our attempt to accelerate the CG tensor product; I've sketched out the package
 architecture below. 
 
-!TEMPLATE!
-<div class="row">
-        <div class="col-19 card border-0 bg-white p-1 mb-3">
-        {{ figure(path="images/blog/oeq_software_stack.svg",title="OpenEquivariance software stack.", class="img-fluid rounded z-depth-1", zoomable=True) }}
-        <div class="caption">The OpenEquivariance software stack.
-        </div>
-</div>
-</div>
-!TEMPLATE!
+!figure(images/blog/oeq_software_stack.svg, large, "OpenEquivariance software stack.", "The OpenEquivariance software stack.")
 
 Because tensor product operations vary wildly between network architectures (and indeed, even between layers of 
 the same network!), OpenEquivariance uses JIT compilation to achieve high performance. Users begin by

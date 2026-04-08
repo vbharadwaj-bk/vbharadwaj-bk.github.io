@@ -16,7 +16,7 @@
   --global-footer-link-color: #{$white-color};
   --global-distill-app-color: #{$grey-color};
   --global-divider-color: rgba(0,0,0,.1);
-  --global-card-bg-color: #{$white-color};
+  --global-card-bg-color: #f5f6f8;
   --chart-grid-color: rgb(201, 201, 201);
 
   --global-tip-block: #42b983;
@@ -58,6 +58,16 @@
   }
   .repo-img-dark {
     display: none;
+  }
+
+  .card {
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+  }
+
+  .card .z-depth-1 {
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
   }
 }
 

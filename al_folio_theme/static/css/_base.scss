@@ -80,15 +80,19 @@ blockquote {
 
 .caption {
   font-size: 0.875rem;
-  margin-top: 0.75rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
+  margin-top: 0.6rem;
+  margin-bottom: 0.4rem;
+  text-align: left;
 }
 
 // Card
 
 .card {
   background-color: var(--global-card-bg-color) !important;
+
+  figure {
+    margin-bottom: 0;
+  }
 
   img {
     width: 100%;
