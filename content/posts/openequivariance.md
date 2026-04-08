@@ -244,6 +244,25 @@ The operation $\bold{P} \paren{\bold{x} \otimes \bold{y}}$ is called the **Clebs
 For convenience, we will often expand this operation to include multiplication by $\bold W$. At this point,
 we are ready to assemble our rotation-equivariant neural network! 
 
+## Building a Rotation-Equivariant Graph Neural Network
+Let's now turn to the [Nequip](https://github.com/mir-group/nequip) equivariant neural network.
+
+!TEMPLATE!
+<div class="row">
+    <div class="col-2">
+    </div>
+        <div class="col-8 card border-0 bg-white p-1 mb-3">
+        {{ figure(path="images/blog/egnn.png",title="An equivariant GNN.", class="img-fluid rounded z-depth-1", zoomable=True) }}
+        <div class="caption">
+        Equivariant graph neural networks combine node features with edge features using the CC tensor product. The
+        resulting vectors are aggregated across the neighborhood of each node.
+        </div>
+</div>
+<div class="col-2">
+</div>
+</div>
+!TEMPLATE!
+
 
 ## OpenEquivariance: Turbocharging CG Tensor Products
 *OpenEquivariance* is our attempt to accelerate the CG tensor product; I've sketched out the package
