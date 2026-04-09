@@ -3,7 +3,8 @@ Title: "Required Reading"
 Date: 2026-03-22
 Category: personal 
 Summary: Articles, papers, and books I love. 
-thumbnail: "images/blog/reading_thumbnail.jpg" 
+thumbnail: "images/blog/reading_thumbnail.jpg"
+disclaimer: false
 ---
 
 Most academics have a collection of favorite articles and books on their websites.

@@ -80,15 +80,19 @@ blockquote {
 
 .caption {
   font-size: 0.875rem;
-  margin-top: 0.75rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
+  margin-top: 0.6rem;
+  margin-bottom: 0.4rem;
+  text-align: left;
 }
 
 // Card
 
 .card {
   background-color: var(--global-card-bg-color) !important;
+
+  figure {
+    margin-bottom: 0;
+  }
 
   img {
     width: 100%;
@@ -161,6 +165,32 @@ blockquote {
       text-decoration: none;
     }
   }
+}
+
+.post-authorship-note {
+  background: var(--global-card-bg-color);
+  border: 1px solid var(--global-divider-color);
+  border-left: 3px solid var(--global-theme-color);
+  border-radius: 0.5rem;
+  margin: 0.25rem 0 1.35rem 0;
+  padding: 0.65rem 0.85rem;
+}
+
+.post-authorship-note-label {
+  display: block;
+  color: var(--global-heading-color);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.2rem;
+  text-transform: uppercase;
+}
+
+.post-authorship-note-text {
+  color: var(--global-text-color-light);
+  display: block;
+  font-size: 0.82rem;
+  line-height: 1.35;
 }
 
 
@@ -470,11 +500,12 @@ footer.sticky-bottom {
       }
     }
 
-    &.active .page-link {
-      color: $white-color;
+    &.active .page-link.page-number-link {
+      color: var(--global-bg-color);
       background-color: var(--global-theme-color);
 
       &:hover {
+        color: var(--global-bg-color);
         background-color: var(--global-theme-color);
       }
     }
@@ -733,11 +764,28 @@ footer.sticky-bottom {
 // Rouge Color Customization
 figure.highlight {
   margin: 0 0 1rem;
+  background-color: var(--global-code-bg-color) !important;
+}
+
+// Override external Pygments theme backgrounds with site theme variables.
+div.highlight,
+.highlighttable,
+.highlighttable td,
+.codehilite {
+  background-color: var(--global-code-bg-color) !important;
+}
+
+div.highlight pre,
+div.highlight pre code,
+.codehilite pre,
+.codehilite pre code,
+pre > code {
+  background-color: transparent !important;
 }
 
 pre {
   color: var(--global-theme-color);
-  background-color: var(--global-code-bg-color);
+  background-color: var(--global-code-bg-color) !important;
   border-radius: 6px;
   padding: 6px 12px;
 
@@ -752,7 +800,7 @@ pre {
 
 code {
   color: var(--global-theme-color);
-  background-color: var(--global-code-bg-color);
+  background-color: var(--global-code-bg-color) !important;
   border-radius: 3px;
   padding: 3px 3px;
   span {
@@ -855,6 +903,63 @@ html.transition *:after {
 
     title{
       color: var(--global-warning-block-title);
+    }
+
+    .admonition-title {
+      font-weight: #{$font-weight-normal};
+      text-align: left;
+      color: var(--global-heading-color);
+    }
+  }
+
+  .admonition.definition {
+    border-color: var(--global-definition-block);
+    background-color: var(--global-definition-block-bg);
+
+    p {
+      color: var(--global-definition-block-text);
+    }
+
+    title{
+      color: var(--global-definition-block-title);
+    }
+
+    .admonition-title {
+      font-weight: #{$font-weight-normal};
+      text-align: left;
+      color: var(--global-heading-color);
+    }
+  }
+
+  .admonition.theorem {
+    border-color: var(--global-theorem-block);
+    background-color: var(--global-theorem-block-bg);
+
+    p {
+      color: var(--global-theorem-block-text);
+    }
+
+    title{
+      color: var(--global-theorem-block-title);
+    }
+
+    .admonition-title {
+      font-weight: #{$font-weight-normal};
+      text-align: left;
+      color: var(--global-heading-color);
+    }
+  }
+
+  .admonition.proposition {
+    border-color: var(--global-proposition-block);
+    background-color: var(--global-proposition-block-bg);
+
+    p {
+      color: var(--global-proposition-block-text);
+    }
+
+    title{
+      color: var(--global-proposition-block-title);
     }
 
     .admonition-title {
@@ -993,6 +1098,63 @@ progress::-moz-progress-bar {
 }
 
 /* Table of Contents */
+.toc-fullwidth-layout {
+  position: relative;
+}
+
+.toc-sidebar {
+  width: 240px;
+}
+
+.toc-sidebar-heading {
+  color: var(--global-text-color-light);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.45rem;
+  text-transform: uppercase;
+}
+
+.toc-sidebar-legacy-sticky.sticky-top {
+  top: 5rem !important;
+}
+
+.toc-sidebar-legacy-sticky nav[data-toggle="toc"] {
+  top: 0;
+}
+
+@media (min-width: 1200px) {
+  .toc-fullwidth-layout .toc-sidebar-left {
+    left: calc(50% - 425px - 250px);
+    position: fixed;
+    top: 7rem;
+  }
+
+  .toc-fullwidth-layout .toc-sidebar-right {
+    left: calc(50% + 425px + 24px);
+    position: fixed;
+    top: 7rem;
+  }
+
+  .toc-fullwidth-layout .toc-sidebar-heading-outboard.toc-sidebar-heading-left {
+    left: calc(50% - 425px - 250px);
+    position: fixed;
+    top: 5.7rem;
+    width: 240px;
+  }
+
+  .toc-fullwidth-layout .toc-sidebar-heading-outboard.toc-sidebar-heading-right {
+    left: calc(50% + 425px + 24px);
+  }
+}
+
+@media (max-width: 1299.98px) {
+  .toc-fullwidth-layout .toc-sidebar,
+  .toc-fullwidth-layout .toc-sidebar-heading-outboard {
+    display: none;
+  }
+}
+
 nav[data-toggle="toc"] {
   top: 5rem;
 
@@ -1029,6 +1191,12 @@ nav[data-toggle="toc"] {
     visibility: hidden;
     height: 0;
     top: 0;
+  }
+
+  .toc-sidebar-heading {
+    visibility: hidden;
+    height: 0;
+    margin: 0;
   }
 }
 

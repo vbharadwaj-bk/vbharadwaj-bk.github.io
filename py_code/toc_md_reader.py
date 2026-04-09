@@ -33,6 +33,11 @@ DUPES_NOT_ALLOWED = set(
     k for k, v in DUPLICATES_DEFINITIONS_ALLOWED.items() if not v
 ) - {"tags", "authors"}
 
+CUSTOM_ADMONITION_TITLE_RE = re.compile(
+    r'(<div\s+class="[^"]*\badmonition\b[^"]*\b(?P<kind>definition|theorem|proposition)\b[^"]*"[^>]*>\s*<p\s+class="admonition-title">)(?P<title>.*?)(</p>)',
+    re.DOTALL,
+)
+
 _DEL = object()
 
 YAML_METADATA_PROCESSORS = {
@@ -66,6 +71,30 @@ def _parse_date(obj):
         obj = obj.isoformat()
 
     return get_date(str(obj).strip().replace("_", " "))
+
+
+def _normalize_custom_admonition_titles(html):
+    """Rewrite custom admonition titles to the form: Kind (Title)."""
+
+    def repl(match):
+        prefix = match.group(1)
+        kind = match.group("kind")
+        title = match.group("title")
+        suffix = match.group(4)
+
+        base_title = kind.capitalize()
+        clean_title = title.strip()
+
+        # Keep Markdown's default title unchanged.
+        if clean_title.lower() == kind:
+            return f"{prefix}{title}{suffix}"
+
+        if re.fullmatch(rf"{base_title}\s*\(.+\)", clean_title):
+            return f"{prefix}{title}{suffix}"
+
+        return f"{prefix}{base_title} ({clean_title}){suffix}"
+
+    return CUSTOM_ADMONITION_TITLE_RE.sub(repl, html)
 
 
 class TOCMarkdownReader(MarkdownReader):
@@ -107,6 +136,8 @@ class TOCMarkdownReader(MarkdownReader):
                 toc_md = Markdown(extensions=['toc'])
                 _ = toc_md.convert(m.group("content"))
                 metadata["parsed_toc"] = toc_md.toc_tokens
+
+        content = _normalize_custom_admonition_titles(content)
 
         return content, metadata
 

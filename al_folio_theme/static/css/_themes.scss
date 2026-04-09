@@ -16,7 +16,7 @@
   --global-footer-link-color: #{$white-color};
   --global-distill-app-color: #{$grey-color};
   --global-divider-color: rgba(0,0,0,.1);
-  --global-card-bg-color: #{$white-color};
+  --global-card-bg-color: #f5f6f8;
   --chart-grid-color: rgb(201, 201, 201);
 
   --global-tip-block: #42b983;
@@ -31,6 +31,18 @@
   --global-danger-block-bg: #ffe0e0;
   --global-danger-block-text: #600;
   --global-danger-block-title: #c00;
+  --global-definition-block: #b5bcc3;
+  --global-definition-block-bg: #f3f5f7;
+  --global-definition-block-text: #3a4046;
+  --global-definition-block-title: #5b636b;
+  --global-theorem-block: #7b8fc0;
+  --global-theorem-block-bg: #eef1f8;
+  --global-theorem-block-text: #2e3950;
+  --global-theorem-block-title: #506189;
+  --global-proposition-block: #6fa2a4;
+  --global-proposition-block-bg: #e8f4f4;
+  --global-proposition-block-text: #234244;
+  --global-proposition-block-title: #3f7477;
 
   .fa-sun {
     display : none;
@@ -46,6 +58,16 @@
   }
   .repo-img-dark {
     display: none;
+  }
+
+  .card {
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+  }
+
+  .card .z-depth-1 {
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
   }
 }
 
@@ -75,6 +97,18 @@ html[data-theme='dark'] {
   --global-danger-block: #c00;
   --global-danger-block-bg: #360000;
   --global-danger-block-text: #e3e3e3;
+  --global-definition-block: #7f8a95;
+  --global-definition-block-bg: #2b3137;
+  --global-definition-block-text: #dfe4e8;
+  --global-definition-block-title: #b6c0c9;
+  --global-theorem-block: #95a5cc;
+  --global-theorem-block-bg: #253045;
+  --global-theorem-block-text: #e3e9f7;
+  --global-theorem-block-title: #c2cfef;
+  --global-proposition-block: #7fb4b6;
+  --global-proposition-block-bg: #20383a;
+  --global-proposition-block-text: #d9f0f1;
+  --global-proposition-block-title: #b8dde0;
 
   .fa-sun {
     padding-left: 10px;

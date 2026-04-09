@@ -25,14 +25,14 @@
       {% if min_height %}min-height="{{min_height}} "{% endif %}
       {% if max_width %}max-width="{{ max_width }} "{% endif %}
       {% if max_height %}max-height="{{max_height}} "{% endif %}
-      {% if alt %}alt="{{alt}} "{% endif %}
-      {% if title %}title="{{title}}"{% endif %}
+      {% if alt %}alt="{{ alt | trim }}"{% endif %}
+      {% if title %}title="{{ title | trim }}"{% endif %}
       {% if zoomable %}data-zoomable{% endif %}
       onerror="this.onerror=null; $('.responsive-img-srcset').remove();"
     >
   </picture>
 
-  {%- if caption -%}<figcaption class="caption">{{ caption }}</figcaption>{%- endif %}
+  {%- if caption -%}<figcaption class="caption">{{ caption | trim }}</figcaption>{%- endif %}
 
 </figure>
 

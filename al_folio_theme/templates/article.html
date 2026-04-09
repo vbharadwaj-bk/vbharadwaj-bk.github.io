@@ -39,6 +39,18 @@
   </header>
 
   <article class="post-content">
+    {% set disclaimer_raw = article.disclaimer if article.disclaimer is defined else true %}
+    {% set disclaimer_enabled = disclaimer_raw %}
+    {% if disclaimer_raw is string %}
+      {% set disclaimer_enabled = disclaimer_raw | trim | lower not in ['false', '0', 'no', 'off'] %}
+    {% endif %}
+    {% if disclaimer_enabled %}
+    {% set disclaimer_text = SITE.disclaimer_text if SITE.disclaimer_text is defined else "No text in this post was generated using an LLM." %}
+    <div class="post-authorship-note" role="note" aria-label="Authorship note">
+      <span class="post-authorship-note-label">Author's Note</span>
+      <span class="post-authorship-note-text">{{ disclaimer_text }}</span>
+    </div>
+    {% endif %}
     <div id="markdown-content">
       {{ article.content }}
     </div>

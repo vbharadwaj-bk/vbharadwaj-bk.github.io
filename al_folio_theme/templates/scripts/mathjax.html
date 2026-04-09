@@ -1,18 +1,18 @@
-    {%- if SITE.enable_math -%}
-    <!-- MathJax -->
-    <script type="text/javascript">
-      window.MathJax = {
-        tex: {
-          tags: 'ams'
-          {% if page.latex_macros %}
-          ,macros: {
-            {% for macro in page.latex_macros %}
-            {{macro}}: {{page.latex_macros[macro] | replace('\\', '\\\\') }}{% if not loop.last %},{% endif %}
-            {% endfor %}
-          }
-          {% endif %}
+  {%- if SITE.enable_math -%}
+  <!-- MathJax -->
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        tags: 'ams'
+        {% if page.latex_macros %}
+        ,macros: {
+          {% for macro in page.latex_macros %}
+          {{macro}}: {{page.latex_macros[macro] | replace('\\', '\\\\') }}{% if not loop.last %},{% endif %}
+          {% endfor %}
         }
-      };
-    </script>
-    <script defer id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@{{ SITE.mathjax.version }}/es5/tex-mml-chtml.js"></script>
-    {%- endif %}
+        {% endif %}
+      }
+    };
+  </script>
+  <script defer id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@{{ SITE.mathjax.version }}/es5/tex-mml-chtml.js"></script>
+  {%- endif %}

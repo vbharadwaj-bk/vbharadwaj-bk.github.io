@@ -107,6 +107,7 @@ blog_name: "blog posts"
 blog_nav_title: blog 
 blog_description: may contain trace amounts of peanuts
 blog_splash: "images/berkeley_splash_light.png"
+disclaimer_text: "No text in this post was generated using an LLM. The opinions expressed here do not reflect those of my employer or affiliates."
 
 display_tags: [] # these tags will be displayed on the front page of your blog
 display_categories: [] # these categories will be displayed on the front page of your blog

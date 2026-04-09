@@ -3,7 +3,10 @@
   contents:
     - name: Name
       value: Vivek Bharadwaj 
-    - name: Interests
+    - name: Affiliation 
+      value: |
+        Apple
+    - name: Research Interests
       value: |
         Geometric Deep Learning, Tensor Problems, HPC,
         Randomized Algorithms, Sparsity in ML 
@@ -31,6 +34,14 @@
 - title: Experience 
   type: time_table
   contents:
+    - title: Machine Learning Engineer 
+      institution: Apple 
+      year: Sept. 2025-Now
+      description:
+        - |
+          Platform architecture; I work at the intersection of hardware and software,
+          investigating ways to map compute to hardware. 
+
     - title: Sparse Linear Algebra Intern 
       institution: NVIDIA Math Libraries Team
       year: Summer '24
