@@ -29,13 +29,19 @@
               {{ self.content() }}
             </div>
             <div class="col-sm-3">
-              <nav id="toc-sidebar" class="sticky-top"></nav>
+              <div class="toc-sidebar-legacy-sticky sticky-top">
+                <div class="toc-sidebar-heading">Contents</div>
+                <nav id="toc-sidebar"></nav>
+              </div>
             </div>
           </div>
           {% else %}
           <div class="row">
             <div class="col-sm-3">
-              <nav id="toc-sidebar" class="sticky-top"></nav>
+              <div class="toc-sidebar-legacy-sticky sticky-top">
+                <div class="toc-sidebar-heading">Contents</div>
+                <nav id="toc-sidebar"></nav>
+              </div>
             </div>
             <div class="col-sm-9">
               {{ self.content() }}
@@ -43,6 +49,7 @@
           </div>
           {% endif %}
         {% else %}
+          <div class="toc-sidebar-heading toc-sidebar-heading-outboard toc-sidebar-heading-{{ page.toc.sidebar if page.toc.sidebar in ['left', 'right'] else 'left' }}">Contents</div>
           <nav id="toc-sidebar" class="sticky-top toc-sidebar toc-sidebar-{{ page.toc.sidebar if page.toc.sidebar in ['left', 'right'] else 'left' }}"></nav>
           {{ self.content() }}
         {% endif %}
