@@ -24,7 +24,7 @@
     {% set end_range = [dates_paginator.num_pages, dates_page.number + 2] | min %}
     {% for page_num in range(start_range, end_range + 1) -%}
       {% set page = dates_paginator.page(page_num) %}
-      <li class="page-item {% if dates_page.number == page_num %}active{% endif %}"><a class="page-link" href="{{ page.url | relative_url }}" title="{{blah}}">{{ page_num }}</a></li>
+      <li class="page-item {% if dates_page.number == page_num %}active{% endif %}"><a class="page-link page-number-link" href="{{ page.url | relative_url }}" title="{{blah}}">{{ page_num }}</a></li>
     {% endfor -%}
 
     <li class="page-item {% if not next_page_url %}disabled{% endif %}">

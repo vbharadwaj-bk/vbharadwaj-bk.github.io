@@ -7,6 +7,7 @@ Summary: >
   A table of courses that I took as an undergraduate, 
   useful for anyone else who might be
   considering a double major. 
+disclaimer: false
 ---
 I thoroughly enjoyed my time at Caltech taking classes.
 In retrospect, I wish I had spent a bit more time 

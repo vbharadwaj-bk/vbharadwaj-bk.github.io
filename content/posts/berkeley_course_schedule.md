@@ -5,6 +5,7 @@ Category: personal
 thumbnail: "images/blog/soda_thumbnail.jpeg"
 Summary: >
   A page listing my coursework at UC Berkeley.
+disclaimer: false
 ---
 As of 2024, EECS PhD students at UC Berkeley need to complete
 24 units of coursework consisting of:

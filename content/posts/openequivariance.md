@@ -265,8 +265,9 @@ by linear neural network layers or normalization.
 
 The graph convolution, illustrated in the figure above, repeats over multiple layers. The final layer produces a collection
 of scalars for each node, which are summed and reduced to get the final node energy output. Backpropagating through the
-network with respect to the atomic positions $\bold{R}$ yields the atomic forces. 
+network with respect to the atomic positions $\bold{R}$ yields the atomic forces.
 
+## Major Bottlenecks 
 
 
 ## OpenEquivariance: Turbocharging CG Tensor Products

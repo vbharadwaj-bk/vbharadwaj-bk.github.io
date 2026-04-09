@@ -4,6 +4,7 @@ Date: 2025-01-01
 Category: personal 
 Summary: Places I've visited in graduate school. 
 thumbnail_icon: '<i class="fa-solid fa-plane fa-5x"></i>'
+disclaimer: false
 ---
 I've had the good fortune to travel a lot during my PhD, with more trips to follow. 
 Here's a list of events I've attended (or will attend shortly) and places I've visited 

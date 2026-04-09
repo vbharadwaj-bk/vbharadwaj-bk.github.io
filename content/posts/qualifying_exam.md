@@ -4,6 +4,7 @@ Date: 2024-01-17
 Category: computer-science 
 Summary: A landing page for my qual at Berkeley. 
 thumbnail: "images/blog/qual_splash_img.png"
+disclaimer: false
 ---
 I will take my PhD qualifying exam on January 17, 2024.
 The exam consists of a presentation of my research so far
