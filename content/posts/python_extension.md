@@ -159,7 +159,7 @@ your console. Congratulations! You now have a working extension.
     line, e.g. `CC=gcc-13; CXX=g++-13`.
 
 
-### Behind the Scenes 
+### Compilation Details 
 Here's a little more information about what's going on.
 When you use `import cppimport.import_hook`, you're enabling 
 cppimport to compile extensions from `.cpp` files as needed. 

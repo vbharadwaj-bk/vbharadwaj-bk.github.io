@@ -18,30 +18,33 @@
     {%- include '_includes/header.html' %}
 
     <!-- Content -->
-    <div class="container mt-5">
-      {% if page.toc and page.toc.sidebar %}
-        {% if page.toc.sidebar == "right" %}
-        <div class="row">
-          <!-- main content area -->
-          <div class="col-sm-9">
-            {% block content %}{% endblock %}
+    {% set has_toc_sidebar = page.toc and page.toc.sidebar %}
+    {% set use_legacy_toc_layout = has_toc_sidebar and (page.template == 'cv' or page.path_no_ext == 'cv') %}
+    <div class="container mt-5 {% if has_toc_sidebar and not use_legacy_toc_layout %}toc-fullwidth-layout{% endif %}">
+      {% if has_toc_sidebar %}
+        {% if use_legacy_toc_layout %}
+          {% if page.toc.sidebar == "right" %}
+          <div class="row">
+            <div class="col-sm-9">
+              {{ self.content() }}
+            </div>
+            <div class="col-sm-3">
+              <nav id="toc-sidebar" class="sticky-top"></nav>
+            </div>
           </div>
-          <!-- sidebar, which will move to the top on a small screen -->
-          <div class="col-sm-3">
-            <nav id="toc-sidebar" class="sticky-top"></nav>
+          {% else %}
+          <div class="row">
+            <div class="col-sm-3">
+              <nav id="toc-sidebar" class="sticky-top"></nav>
+            </div>
+            <div class="col-sm-9">
+              {{ self.content() }}
+            </div>
           </div>
-        </div>
+          {% endif %}
         {% else %}
-        <div class="row">
-          <!-- sidebar, which will move to the top on a small screen -->
-          <div class="col-sm-3">
-            <nav id="toc-sidebar" class="sticky-top"></nav>
-          </div>
-          <!-- main content area -->
-          <div class="col-sm-9">
-            {{ self.content() }}
-          </div>
-        </div>
+          <nav id="toc-sidebar" class="sticky-top toc-sidebar toc-sidebar-{{ page.toc.sidebar if page.toc.sidebar in ['left', 'right'] else 'left' }}"></nav>
+          {{ self.content() }}
         {% endif %}
       {% else %}
         {{ self.content() }}

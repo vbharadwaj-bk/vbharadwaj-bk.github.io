@@ -1098,6 +1098,34 @@ progress::-moz-progress-bar {
 }
 
 /* Table of Contents */
+.toc-fullwidth-layout {
+  position: relative;
+}
+
+.toc-sidebar {
+  width: 240px;
+}
+
+@media (min-width: 1200px) {
+  .toc-fullwidth-layout .toc-sidebar-left {
+    left: calc(50% - 425px - 250px);
+    position: fixed;
+    top: 7rem;
+  }
+
+  .toc-fullwidth-layout .toc-sidebar-right {
+    left: calc(50% + 425px + 24px);
+    position: fixed;
+    top: 7rem;
+  }
+}
+
+@media (max-width: 1299.98px) {
+  .toc-fullwidth-layout .toc-sidebar {
+    display: none;
+  }
+}
+
 nav[data-toggle="toc"] {
   top: 5rem;
 

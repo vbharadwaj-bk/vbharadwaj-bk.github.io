@@ -1,10 +1,13 @@
 ---
-Title: "Accelerating Equivariant Neural Networks" 
+Title: "Accelerating Rotation-Equivariant Networks" 
 Date: 2026-03-22
 Category: computer-science 
 Summary: A deep dive into OpenEquivariance, our Clebsch-Gordon tensor product accelerator.  
 thumbnail: "images/blog/cg_tensor_product.png" 
 latex_macro_file: 'content/latex/common_macros.yaml'
+
+toc:
+  sidebar: True
 ---
 An *equivariant graph neural network* preserves certain geometric relations between its input
 and output. We'll focus on 3D rotation-equivariant neural networks in this post, which have the
