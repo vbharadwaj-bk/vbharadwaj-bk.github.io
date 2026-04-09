@@ -98,7 +98,8 @@ define an equivariant function as follows:
 
 This definition subsumes the first two examples above.
 In the first example , we had $D_\textrm{in}(g) = \bold{R}(g), D_{\textrm{out}}(g) = \bold{I}^{1 \times 1}.$
-In the second example, we had $D_\textrm{in}(g) = D_\textrm{out}(g) = \bold{R}(g)$. An important property here
+In the second example, we had $D_\textrm{in}(g) = D_\textrm{out}(g) = \bold{R}(g)$. When $D_{\textrm{out}}$ is
+the identity matrix, we call the function is *invariant*. An important property here
 is that equivariance *composes*: that is,
 
 !!! proposition "Composition of Equivariance"
@@ -163,8 +164,23 @@ we mean that $D(g)$ is Wigner block diagonal with 3 copies of $D^{(1)}$ along th
 $D^{(0)}$ along its diagonal. Empirically, picking representations with higher-order Wigner blocks leads
 to more accurate, data-efficient neural networks.
 
-Now that we know how to construct a representation, we'll need one more tool before we can build our network.
-We need to know how to combine two equivariant functions to produce a third.
+Software packages like [`e3nn`](https://e3nn.org/) and [QuTIP](https://qutip.org/) can calculate Wigner d-matrices.
+Next, we'll construct functions that are equivariant to these representations. 
+
+## Spherical Harmonic Functions
+Much as sines and cosines form a basis for a large class of real-valued scalar functions, the spherical harmonics form
+a basis for functions on the sphere $S^2$. The spherical harmonic of degree $\ell$ is a function
+
+$$Y^{(\ell)}: S^2 \rightarrow \RR^{2\ell+1}.$$
+
+The main fact we'll need about spherical harmonics relates to equivariance:
+
+!!! theorem "Equivariance Properties of Spherical Harmonics"
+    The spherical harmonic of degree $\ell$ is equivariant to output representation $D^{(\ell)}$
+    and input representation $D^{(1)}$:
+    $$D^{(\ell)}(g) \cdot Y^{(\ell)}(\hat r) = Y^{(\ell)}\paren{D^{(1)}(g) \cdot \hat r}$$
+
+The next ingredient we need is the ability to combine two equivariant functions to produce a third.
 
 ## Interacting Equivariant Functions 
 Let $\bold{x} \in \RR^n$ and $\bold{y} \in \RR^m$ be two intermediate vectors in some layer of an equivariant network, which
@@ -218,9 +234,39 @@ For convenience, we will often expand this operation to include multiplication b
 we are ready to assemble our rotation-equivariant neural network! 
 
 ## Building a Rotation-Equivariant Graph Neural Network
-Let's now turn to the [Nequip](https://github.com/mir-group/nequip) equivariant neural network.
+Let's now turn to the [Nequip](https://github.com/mir-group/nequip) equivariant neural network. Nequip is a 
+[graph convolutional network](https://en.wikipedia.org/wiki/Graph_neural_network#Graph_convolutional_network), so the
+input atomic coordinates are first processed into a nearest neighbors graph $G = (V, E)$. 
+Each node is then assigned a feature vector.
 
 !figure(images/blog/egnn.png, medium, "An equivariant GNN.", "Equivariant graph neural networks combine node features with edge features using the CG tensor product. The resulting vectors are aggregated across the neighborhood of each node.")
+
+At some intermediate layer of the network, let the node features be
+$\bold{x_1}...\bold{x_{\abs{V}}}$ with representation $D_x$: we will first construct edge 
+features $\bold{y_1}...\bold{y_{\abs{E}}}$ using the spherical harmonic functions up to some degree $\ell$ applied to the
+unit vector defining the direction of each edge:
+
+$$\bold{y}_{ij} = \textrm{concat}_{i=1}^{\ell}Y^{(\ell)}(\hat r_{ij}).$$
+The edge vectors are equivariant to representation $D_y$. We also need weights 
+$\bold{W_1}... \bold{W_{\abs{E}}}$. We will use a standard multilayer perceptron network to
+compute these weights from the inter-node distance for each edge.
+
+$$\bold{W}_{ij} = f_{MLP}(\norm{\vec{r}})$$
+
+Computing the weights in this manner ensures that $\bold{W}$ is an invariant function of the input coordinates, as
+internode distances are rotation-invariant. Finally, we combine the node features with the edge features using
+the CG tensor product, aggregating the result for each edge across the node neighborhood. 
+Each row $\bold{z_j}$ of the graph convolution output, $j \in \br{\abs{V}}$, is given by
+
+$$\bold{z_i} = \sum_{(i, j) \in \scr N(i)} \bold{W}_{ij} \paren{\bold{x}_j \otimes_{CG} \bold{y}_{ij}}$$
+It's easy to check that each row $\bold{z_i}$ is an equivariant function of the network input using
+the composition property established above. The resulting vectors node vectors may be further processed
+by linear neural network layers or normalization.
+
+The graph convolution, illustrated in the figure above, repeats over multiple layers. The final layer produces a collection
+of scalars for each node, which are summed and reduced to get the final node energy output. Backpropagating through the
+network with respect to the atomic positions $\bold{R}$ yields the atomic forces. 
+
 
 
 ## OpenEquivariance: Turbocharging CG Tensor Products
