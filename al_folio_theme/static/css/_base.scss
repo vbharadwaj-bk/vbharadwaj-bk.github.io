@@ -764,11 +764,28 @@ footer.sticky-bottom {
 // Rouge Color Customization
 figure.highlight {
   margin: 0 0 1rem;
+  background-color: var(--global-code-bg-color) !important;
+}
+
+// Override external Pygments theme backgrounds with site theme variables.
+div.highlight,
+.highlighttable,
+.highlighttable td,
+.codehilite {
+  background-color: var(--global-code-bg-color) !important;
+}
+
+div.highlight pre,
+div.highlight pre code,
+.codehilite pre,
+.codehilite pre code,
+pre > code {
+  background-color: transparent !important;
 }
 
 pre {
   color: var(--global-theme-color);
-  background-color: var(--global-code-bg-color);
+  background-color: var(--global-code-bg-color) !important;
   border-radius: 6px;
   padding: 6px 12px;
 
@@ -783,7 +800,7 @@ pre {
 
 code {
   color: var(--global-theme-color);
-  background-color: var(--global-code-bg-color);
+  background-color: var(--global-code-bg-color) !important;
   border-radius: 3px;
   padding: 3px 3px;
   span {

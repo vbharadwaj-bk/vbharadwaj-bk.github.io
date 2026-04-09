@@ -47,7 +47,7 @@
     {% if disclaimer_enabled %}
     {% set disclaimer_text = SITE.disclaimer_text if SITE.disclaimer_text is defined else "No text in this post was generated using an LLM." %}
     <div class="post-authorship-note" role="note" aria-label="Authorship note">
-      <span class="post-authorship-note-label">Authorship Note</span>
+      <span class="post-authorship-note-label">Author's Note</span>
       <span class="post-authorship-note-text">{{ disclaimer_text }}</span>
     </div>
     {% endif %}

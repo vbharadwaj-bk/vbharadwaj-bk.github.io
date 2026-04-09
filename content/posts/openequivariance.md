@@ -2,7 +2,7 @@
 Title: "Accelerating Equivariant Neural Networks" 
 Date: 2026-03-22
 Category: computer-science 
-Summary: A deep-dive into OpenEquivariance, our Clebsch-Gordon tensor product accelerator.  
+Summary: A deep dive into OpenEquivariance, our Clebsch-Gordon tensor product accelerator.  
 thumbnail: "images/blog/cg_tensor_product.png" 
 latex_macro_file: 'content/latex/common_macros.yaml'
 ---
@@ -36,8 +36,8 @@ $$F = - \frac{\partial E}{\partial \bold{R}} = - \frac{\partial f_{\textrm{NN}}(
 The advantage of this approach is that the resulting force field is *conservative*, 
 which promotes energy conservation over the simulation lifetime.
 
-
 !figure(images/blog/atomic_gnn.png, medium, "Pipeline for molecular property prediction.", "Atomic graph neural networks take in atom positions and metadata. They emit predictions of total system energy and the force on each atom.")
+
 The energy of a molecule doesn't change when you rotate it in space. It also shouldn't change
 if the order of the position vectors in $\bold{R}$ changes. A rotation-equivariant graph neural network
 makes predictions that satisfy both properties, and we'll examine 
@@ -46,17 +46,18 @@ A quick plug: in January 2025, we released
 [OpenEquivariance](https://github.com/vbharadwaj-bk/OpenEquivariance) to accelerate equivariant 
 graph neural networks by an order of magnitude. 
 
-There are lots of online resources on equivariant graph neural networks. I recommend
-[Tensor Field Networks](https://arxiv.org/abs/1802.08219), one of the first papers in this space,
-for an accessible and rigorous take. Slides from 
-[Tess Smidt](https://blondegeek.github.io/) are very useful, but I find them a bit difficult
-to parse due to my lack of domain knowledge. I'm not a chemist, so I'm going to give you an 
-explanation that requires no prerequisite besides a strong mathematical background. Skip ahead
-if you're familiar with these networks already. 
+Much of this material is drawn from the [e3nn convolution tutorial](https://docs.e3nn.org/en/latest/guide/convolution.html),
+[Lim and Nelson's introductory paper](https://arxiv.org/abs/2205.07362), and [Tensor Field Networks](https://arxiv.org/abs/1802.08219), a foundational paper in the space. Slides from 
+[Tess Smidt](https://blondegeek.github.io/) are also very useful, but I find them a bit difficult
+to parse due to my lack of domain knowledge. I'm not a chemist, so I'm going to give you a homegrown 
+explanation that requires no prerequisite besides a strong linear algebra background. 
+[Skip ahead](#openequivariance-turbocharging-cg-tensor-products) if you're a veteran and want details of our 
+computational contributions. This material is adapted from our 
+[paper](https://epubs.siam.org/doi/10.1137/1.9781611979084.3) describing OpenEquivariance. 
 
 ## An Intuition for Equivariance
-Let's formalize our definition of equivariance a little further. Suppose we want to design an
-function $f: \RR^{3} \rightarrow \RR$ so that any rotation in the input vector produces no change
+Let's formalize our definition of equivariance a little further. Consider a 
+function $f: \RR^{3} \rightarrow \RR$ such that any rotation in the input vector produces no change
 in the output scalar. We'll let $G=SO(3)$ be the [group](https://en.wikipedia.org/wiki/Group_(mathematics))
 of rotations excluding reflection in 3D space, and we'll define $\bold{R}(g) \in \RR^{3 \times 3}$ 
 as the canonical [3D rotation matrix](https://en.wikipedia.org/wiki/Rotation_matrix#In_three_dimensions)
@@ -79,33 +80,33 @@ We need some additional machinery to construct a general definition of an equiva
 define a real representation as follows:
 
 !!! definition "Representation"
-    A (real) representation is a map $D: G \rightarrow \RR^{n \times n}$ that preserves the group structure
+    A (real) representation is a map $\bold{D}: G \rightarrow \RR^{n \times n}$ that preserves the group structure
     of $G$ under matrix multiplication:
-    $$D(g \circ h) = D(g) \cdot D(h),$$
+    $$\bold{D}(g \circ h) = \bold{D}(g) \cdot \bold{D}(h),$$
     where $\circ$ is the group operator. 
 
-In our case, ever rotation is mapped to a square matrix of arbitrary dimension that *represents* the group
+In our case, every rotation is mapped to a square matrix of arbitrary dimension that *represents* the group
 element. If you multiply two of these matrices together, you get a third matrix representing the rotation
 that is a composition of the two input rotations. Using a pair of input and output representations, we
 define an equivariant function as follows:
 
 !!! definition "Equivariant Function"
     A function $f: \RR^n \rightarrow \RR^m$ is equivariant with respect to representations 
-    $D_{\textrm{in}}: G \rightarrow \RR^{n \times n}$ and
-    $D_{\textrm{out}}: G \rightarrow \RR^{m \times m}$ iff 
+    $\bold{D}_{\textrm{in}}: G \rightarrow \RR^{n \times n}$ and
+    $\bold{D}_{\textrm{out}}: G \rightarrow \RR^{m \times m}$ iff 
 
-    $$D_{\textrm{out}}\paren{g} \cdot f \paren{\bold{x}} = f\paren{D_{\textrm{in}}\paren{g} \cdot \bold{x}}\quad \forall g \in G.$$
+    $$\bold{D}_{\textrm{out}}\paren{g} \cdot f \paren{\bold{x}} = f\paren{\bold{D}_{\textrm{in}}\paren{g} \cdot \bold{x}}\quad \forall g \in G.$$
 
 This definition subsumes the first two examples above.
-In the first example , we had $D_\textrm{in}(g) = \bold{R}(g), D_{\textrm{out}}(g) = \bold{I}^{1 \times 1}.$
-In the second example, we had $D_\textrm{in}(g) = D_\textrm{out}(g) = \bold{R}(g)$. When $D_{\textrm{out}}$ is
-the identity matrix, we call the function is *invariant*. An important property here
+In the first example , we had $\bold{D}_\textrm{in}(g) = \bold{R}(g), \bold{D}_{\textrm{out}}(g) = \bold{I}^{1 \times 1}.$
+In the second example, we had $\bold{D}_\textrm{in}(g) = \bold{D}_\textrm{out}(g) = \bold{R}(g)$. When $\bold{D}_{\textrm{out}}$ is
+the identity matrix, we call the function *invariant*. An important property here
 is that equivariance *composes*: that is,
 
 !!! proposition "Composition of Equivariance"
-    Suppose $f$ is equivariant w.r.t. input representation $D_x$ and output representation $D_y$, and
-    $g$ is equivariant w.r.t. input representation $D_y$ and output representation $D_z$. Then $g \circ f$
-    is equivariant w.r.t. input representation $D_x$ and output representation $D_z$, where $\circ$
+    Suppose $f$ is equivariant w.r.t. input representation $\bold{D}_x$ and output representation $\bold{D}_y$, and
+    $g$ is equivariant w.r.t. input representation $\bold{D}_y$ and output representation $\bold{D}_z$. Then $g \circ f$
+    is equivariant w.r.t. input representation $\bold{D}_x$ and output representation $\bold{D}_z$, where $\circ$
     denotes function composition.
 
 By ensuring that each layer of a deep neural network is equivariant, the composition 
@@ -123,45 +124,45 @@ which we consider in the next section.
 How do we build an expressive representation of the rotation group? There's a family
 of building block representations we can use: 
 
-$$D^{(0)}(g) = \bold{I}^{1 \times 1} \in \RR^{1 \times 1}$$
-$$D^{(1)}(g) = \bold{R}(g) \in \RR^{3 \times 3}$$ 
-$$D^{(2)}(g) =\ ...\ \in \RR^{5 \times 5}$$ 
+$$\bold{D}^{(0)}(g) = \bold{I}^{1 \times 1} \in \RR^{1 \times 1}$$
+$$\bold{D}^{(1)}(g) = \bold{R}(g) \in \RR^{3 \times 3}$$ 
+$$\bold{D}^{(2)}(g) =\ ...\ \in \RR^{5 \times 5}$$ 
 $$...$$
-Each $D^{(i)}$ matrix is called a **Wigner d-matrix**. One way we can build a new representation 
+Each $\bold{D}^{(i)}$ matrix is called a **Wigner d-matrix**. One way we can build a new representation 
 is by selecting some of these building blocks and arranging them along the diagonal of a new matrix function: 
 
 $$
-D(g) = 
+\bold{D}(g) = 
 \begin{bmatrix}
-D^{(i_1)}(g) & & 0\\
+\bold{D}^{(i_1)}(g) & & 0\\
 & \ddots & \\
-0& & D^{(i_D)}(g)
+0& & \bold{D}^{(i_D)}(g)
 \end{bmatrix}.
 $$
 How powerful is this method? It turns out that *any representation* of $SO(3)$ is similar to
 a Wigner-block diagonal representation: 
 
 !!! theorem "Canonical form for SO(3) Representations"
-    Any real representation $D(g)$ of $SO(3)$ can be written in the form
+    Any real representation $\bold{D}(g)$ of $SO(3)$ can be written in the form
     $$
-    D(g) = P^{-1}
+    \bold{D}(g) = \bold{P}^{-1}
     \begin{bmatrix}
-    D^{(i_1)}(g) & & 0\\
+    \bold{D}^{(i_1)}(g) & & 0\\
     & \ddots & \\
-    0& & D^{(i_D)}(g)
+    0& & \bold{D}^{(i_D)}(g)
     \end{bmatrix}
-    P
+    \bold{P}
     $$
-    for some invertible matrix $P$.
+    for some invertible matrix $\bold{P}$.
 
 Keep this canonical form theorem in mind, because we'll need it in just a bit.
 That said, the intermediate representations for our network layers will be Wigner-block diagonal. 
 When we write
 
-$$D(g) \cong \verb|3x1 + 1x0|,$$
+$$\bold{D}(g) \cong \verb|3x1 + 1x0|,$$
 
-we mean that $D(g)$ is Wigner block diagonal with 3 copies of $D^{(1)}$ along the diagonal and 1 copy of
-$D^{(0)}$ along its diagonal. Empirically, picking representations with higher-order Wigner blocks leads
+we mean that $\bold{D}(g)$ is Wigner block diagonal with 3 copies of $\bold{D}^{(1)}$ along the diagonal and 1 copy of
+$\bold{D}^{(0)}$ along its diagonal. Empirically, picking representations with higher-order Wigner blocks leads
 to more accurate, data-efficient neural networks.
 
 Software packages like [`e3nn`](https://e3nn.org/) and [QuTIP](https://qutip.org/) can calculate Wigner d-matrices.
@@ -171,47 +172,47 @@ Next, we'll construct functions that are equivariant to these representations.
 Much as sines and cosines form a basis for a large class of real-valued scalar functions, the spherical harmonics form
 a basis for functions on the sphere $S^2$. The spherical harmonic of degree $\ell$ is a function
 
-$$Y^{(\ell)}: S^2 \rightarrow \RR^{2\ell+1}.$$
+$$\bold{Y}^{(\ell)}: S^2 \rightarrow \RR^{2\ell+1}.$$
 
 The main fact we'll need about spherical harmonics relates to equivariance:
 
 !!! theorem "Equivariance Properties of Spherical Harmonics"
-    The spherical harmonic of degree $\ell$ is equivariant to output representation $D^{(\ell)}$
-    and input representation $D^{(1)}$:
-    $$D^{(\ell)}(g) \cdot Y^{(\ell)}(\hat r) = Y^{(\ell)}\paren{D^{(1)}(g) \cdot \hat r}$$
+    The spherical harmonic of degree $\ell$ is equivariant to output representation $\bold{D}^{(\ell)}$
+    and input representation $\bold{D}^{(1)}$:
+    $$\bold{D}^{(\ell)}(g) \cdot \bold{Y}^{(\ell)}(\hat r) = \bold{Y}^{(\ell)}\paren{\bold{D}^{(1)}(g) \cdot \hat r}$$
 
-The next ingredient we need is the ability to combine two equivariant functions to produce a third.
+The next ingredient on our roster will allow us to combine two equivariant functions to produce a third. 
 
 ## Interacting Equivariant Functions 
 Let $\bold{x} \in \RR^n$ and $\bold{y} \in \RR^m$ be two intermediate vectors in some layer of an equivariant network, which
 are equivariant functions of the network input $\bold{v}$. We have
 
-$$D_x(g) \cdot \bold{x}(\bold{v}) = \bold{x}\paren{D_{in}(g) \cdot \bold{v}}$$
-$$D_y(g) \cdot \bold{y}(\bold{v}) = \bold{y}\paren{D_{in}(g) \cdot \bold{v}}$$
+$$\bold{D}_x(g) \cdot \bold{x}(\bold{v}) = \bold{x}\paren{\bold{D}_{in}(g) \cdot \bold{v}}$$
+$$\bold{D}_y(g) \cdot \bold{y}(\bold{v}) = \bold{y}\paren{\bold{D}_{in}(g) \cdot \bold{v}}$$
 Our task is to construct a new vector $\bold{z}$ that, viewed as a function of the input $\bold{v}$,
-is equivariant w.r.t. input representation $D_{in}$ and some output representation $D_z$. 
+is equivariant w.r.t. input representation $\bold{D}_{in}$ and some output representation $\bold{D}_z$. 
 The [Kronecker Product](https://en.wikipedia.org/wiki/Kronecker_product) offers a general, natural way
 to combine the two vectors. We can easily verify
 
-$$(D_x \otimes D_y)(g) \cdot \br{\bold{x}(\bold{v}) \otimes \bold{y}(\bold{v})} = \bold{x}(D_{in}(g) \cdot \bold{v}) \otimes \bold{y}\paren{D_{in}(g) \cdot \bold{v}}.$$
+$$(\bold{D}_x \otimes \bold{D}_y)(g) \cdot \br{\bold{x}(\bold{v}) \otimes \bold{y}(\bold{v})} = \bold{x}(\bold{D}_{in}(g) \cdot \bold{v}) \otimes \bold{y}\paren{\bold{D}_{in}(g) \cdot \bold{v}}.$$
 
 Unfortunately, $\bold x \otimes \bold y \in \RR^{nm}$. As vectors flow
 through the network, they would grow in length at an intractable rate. A simple fix is dropping
 elements of $\bold x \otimes \bold y$, but we can't do this without compromising the equivariance property. 
-Furthermore, $D_x \otimes D_y$ is no longer Wigner block-diagonal.
+Furthermore, $\bold{D}_x \otimes \bold{D}_y$ is no longer Wigner block-diagonal.
 
 To solve these two problems, we'll resort to the canonical form theorem from earlier. We first form
-$\bold{z}'(\bold{v}) = \bold{P} \paren{\bold{x}(\bold{v}) \otimes \bold{y}(\bold{v})}$, where $\bold{P}$
-is the similarity matrix that block diagonalizes $D_x \otimes D_y$. If we let $D_{z'} = \bold{P} \paren{D_x \otimes D_y} \bold{P}^{-1}$, note that $D_{z'}$ is a block-diagonal representation. We further have 
+$$\bold{z}'(\bold{v}) = \bold{P} \paren{\bold{x}(\bold{v}) \otimes \bold{y}(\bold{v})},$$ 
+where $\bold{P}$ is the similarity matrix that block diagonalizes $\bold{D}_x \otimes \bold{D}_y$. If we let $\bold{D}_{z'} = \bold{P} \paren{\bold{D}_x \otimes \bold{D}_y} \bold{P}^{-1}$, note that $\bold{D}_{z'}$ is a block-diagonal representation. We further have 
 
 $$
 \begin{equation}
 \begin{aligned}
-D_z'(g) \bold{z}'(\bold v)
-&= \bold{P} \paren{D_x(g) \otimes D_y(g)} \bold{P}^{-1} \br{\bold{P} \paren{\bold{x}(\bold v) \otimes \bold{y}(\bold v)}} \\
-&= \bold{P} \paren{D_x(g) \bold{x}(\bold v) \otimes D_y(g) \bold{y}(\bold v)} \\
-&= \bold{P} \paren{\bold{x}(D_{in}(g) \bold v) \otimes \bold{y}(D_{in}(g) \bold v)} \\
-&= \bold{z'}(D_{in}(g) \bold{v}),
+\bold{D}_{z'}(g) \bold{z}'(\bold v)
+&= \bold{P} \paren{\bold{D}_x(g) \otimes \bold{D}_y(g)} \bold{P}^{-1} \br{\bold{P} \paren{\bold{x}(\bold v) \otimes \bold{y}(\bold v)}} \\
+&= \bold{P} \paren{\bold{D}_x(g) \bold{x}(\bold v) \otimes \bold{D}_y(g) \bold{y}(\bold v)} \\
+&= \bold{P} \paren{\bold{x}(\bold{D}_{in}(g) \bold v) \otimes \bold{y}(\bold{D}_{in}(g) \bold v)} \\
+&= \bold{z'}(\bold{D}_{in}(g) \bold{v}),
 \end{aligned}
 \end{equation}
 $$
@@ -242,37 +243,43 @@ Each node is then assigned a feature vector.
 !figure(images/blog/egnn.png, medium, "An equivariant GNN.", "Equivariant graph neural networks combine node features with edge features using the CG tensor product. The resulting vectors are aggregated across the neighborhood of each node.")
 
 At some intermediate layer of the network, let the node features be
-$\bold{x_1}...\bold{x_{\abs{V}}}$ with representation $D_x$: we will first construct edge 
+$\bold{x_1}...\bold{x_{\abs{V}}}$ with representation $\bold{D}_x$: we will first construct edge 
 features $\bold{y_1}...\bold{y_{\abs{E}}}$ using the spherical harmonic functions up to some degree $\ell$ applied to the
 unit vector defining the direction of each edge:
 
-$$\bold{y}_{ij} = \textrm{concat}_{i=1}^{\ell}Y^{(\ell)}(\hat r_{ij}).$$
-The edge vectors are equivariant to representation $D_y$. We also need weights 
-$\bold{W_1}... \bold{W_{\abs{E}}}$. We will use a standard multilayer perceptron network to
+$$\bold{y}_{ij} = \textrm{concat}_{i=1}^{\ell}\bold{Y}^{(\ell)}(\hat r_{ij}).$$
+The edge vectors are equivariant to representation $\bold{D}_y$. We also need weights 
+$\bold{W_1}... \bold{W}_{\abs{E}}$. We will use a standard multilayer perceptron network to
 compute these weights from the inter-node distance for each edge.
 
 $$\bold{W}_{ij} = f_{MLP}(\norm{\vec{r}})$$
 
-Computing the weights in this manner ensures that $\bold{W}$ is an invariant function of the input coordinates, as
+Observe that $\bold{W}$ is an invariant function of the input coordinates, as
 internode distances are rotation-invariant. Finally, we combine the node features with the edge features using
 the CG tensor product, aggregating the result for each edge across the node neighborhood. 
-Each row $\bold{z_j}$ of the graph convolution output, $j \in \br{\abs{V}}$, is given by
+Each row $\bold{z_i}$ of the graph convolution output, $i \in \br{\abs{V}}$, is given by
 
 $$\bold{z_i} = \sum_{(i, j) \in \scr N(i)} \bold{W}_{ij} \paren{\bold{x}_j \otimes_{CG} \bold{y}_{ij}}$$
 It's easy to check that each row $\bold{z_i}$ is an equivariant function of the network input using
-the composition property established above. The resulting vectors node vectors may be further processed
+the composition property established above. The resulting node vectors may be further processed
 by linear neural network layers or normalization.
 
 The graph convolution, illustrated in the figure above, repeats over multiple layers. The final layer produces a collection
 of scalars for each node, which are summed and reduced to get the final node energy output. Backpropagating through the
-network with respect to the atomic positions $\bold{R}$ yields the atomic forces.
+network with respect to the atomic positions $\bold{R}$ yields the atomic forces. With a little more math, we can make
+these networks reflection-equivariant as well. A network that is equivariant to 
+the Euclidean distance-preserving transforms of rotation, translation, and reflection is *E(3)-equivariant*.
 
-## Major Bottlenecks 
-
+As in most equivariant chemical foundation models, the computational bottleneck in Nequip is the calculation of CG tensor
+products for each edge. Due to high sparsity of the Clebsch-Gordon coefficient tensor, the irregular workload is 
+anathema to GPUs that are optimized for low-precision dense matrix multiplication. 
 
 ## OpenEquivariance: Turbocharging CG Tensor Products
 *OpenEquivariance* is our attempt to accelerate the CG tensor product; I've sketched out the package
-architecture below. 
+architecture below. [Our 2025 paper](https://epubs.siam.org/doi/10.1137/1.9781611979084.3) details many 
+of the GPU kernel optimizations we made to achieve high performance, but does not cover the software stack we
+used. That's what this section covers, and getting this architecture correct was a critical stepping stone to
+ensuring wide adoption of our package. 
 
 !figure(images/blog/oeq_software_stack.svg, large, "OpenEquivariance software stack.", "The OpenEquivariance software stack.")
 
@@ -300,3 +307,9 @@ Users of chemical foundation models need to call their model from C++, e.g. when
 out CUDA Python. Triton has relatively poor performance for this kernel, ceding too much control to the automatic shared
 memory manager. Unfortunately, building a sufficiently-general kernel generator required us to hand-roll much of our
 C++ infrastructure. 
+
+Today, OpenEquivariance is integrated with [Nequip](https://github.com/mir-group/nequip), 
+[MACE](https://github.com/acesuit/mace), [Sevennet](https://sevennet.readthedocs.io/en/latest/),
+and [Nequix](https://github.com/atomicarchitects/nequix/commits/main/). In future posts, I'll cover 
+further details about our package and lessons learned building it.
+
