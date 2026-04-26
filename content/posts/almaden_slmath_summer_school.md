@@ -44,7 +44,7 @@ Each of the two problem sets assigned per day was comparable
 in length to a weekly university homework assignment. 
 The students worked in 
 groups so that they could finish the problems in the short 
-time alotted, while the TAs roamed between the groups to help. Given
+time allotted, while the TAs roamed between the groups to help. Given
 two lectures (roughly 2.5-3 hours) and 3 hours of homework
 per day, I estimate that the summer school covered roughly the same
 content as a standard quarter-long mathematics course in just two
@@ -84,7 +84,7 @@ fresh fruit and muffins for students and staff, and each morning
 there was a lecture for slightly more than an hour. After a break,
 the students received a problem set to work on until lunch at noon,
 which we usually ate outside under a leafy canopy atop a hill. 
-Temperatures regularly exceeded 80 Farenheit outside, but the
+Temperatures regularly exceeded 80 Fahrenheit outside, but the
 auditorium was air-conditioned. 
 
 The afternoon session was a mirror of the morning: a lecture, 

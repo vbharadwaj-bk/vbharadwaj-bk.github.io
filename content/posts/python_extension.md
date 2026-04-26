@@ -173,7 +173,7 @@ methods defined.
 One smart feature about cppimport is that the extension is
 *only recompiled when a C++ dependency file changes*. Later
 in this tutorial, we'll mention how to specify the list of
-dependencies explicilty for multi-file builds. For now,
+dependencies explicitly for multi-file builds. For now,
 try executing the Python code a second time. You'll notice
 that the second execution is marginally faster, since cppimport
 doesn't bother recompiling the unchanged extension file. 
