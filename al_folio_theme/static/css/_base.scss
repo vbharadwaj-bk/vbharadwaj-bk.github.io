@@ -113,6 +113,10 @@ blockquote {
   }
 }
 
+.svg-card {
+  background-color: white !important;
+}
+
 // Citation
 
 .citation,
@@ -824,6 +828,15 @@ html.transition *:after {
     color: var(--global-text-color-light);
     font-size: 0.875rem;
     margin-bottom: 0;
+
+    a {
+      color: var(--global-text-color-light);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--global-theme-color);
+      }
+    }
   }
 
   .post-tags {
