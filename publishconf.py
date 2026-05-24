@@ -7,7 +7,7 @@ sys.path.append(os.curdir)
 
 from pelicanconf import *
 
-import py_code.urls_publish as urls_publish
+import extensions.urls_publish as urls_publish
 relative_url, absolute_url = urls_publish.make_functions()
 
 JINJA_FILTERS = {

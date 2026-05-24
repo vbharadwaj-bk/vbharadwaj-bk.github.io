@@ -3,15 +3,15 @@ import sys, os
 from datetime import datetime
 sys.path.append('.')
 
-from py_code.cache_buster import *
-from py_code.render_main_scss import *
-from py_code.slugify import *
-from py_code.parse_bib import *
-from py_code.toc_md_reader import TOCMarkdownReader
-from py_code.filter_projects import filter_projects 
-from py_code.template_block import *
-from py_code import al_folio_extension 
-from py_code.urls_dev import relative_url, absolute_url
+from extensions.cache_buster import *
+from extensions.render_main_scss import *
+from extensions.slugify import *
+from extensions.parse_bib import *
+from extensions.toc_md_reader import TOCMarkdownReader
+from extensions.filter_projects import filter_projects 
+from extensions.template_block import *
+from extensions import al_folio_extension 
+from extensions.urls_dev import relative_url, absolute_url
 
 SITE = None
 with open("content/config.yml", "rb") as stream:
@@ -157,4 +157,3 @@ SITEMAP = {
 }
 
 READERS = {'md': TOCMarkdownReader}
-
