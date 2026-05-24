@@ -10,3 +10,4 @@ rjsmin
 pillow
 invoke
 livereload
+pre-commit

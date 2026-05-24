@@ -1,62 +1,74 @@
 - venue: "[DOE CSGF Program Review](https://www.krellinst.org/csgf/conf/2025), Washington, D.C."
-  title: Final Year Fellow Presentation (Chemistry Graph Neural Networks) 
+  title: Final Year Fellow Presentation (Chemistry Graph Neural Networks)
   date: 2025-07-15
   buttons:
     slides: pdf/2025/csgf_program_review.pdf
     video: https://www.youtube.com/watch?v=z7jp9XiC2w4
 
-
-- venue: "[SIAM CSE 2025 Matrix Computations Minisymposium](https://www.siam.org/conferences-events/siam-conferences/cse25/), Fort Worth, TX"
+- venue: >-
+    [SIAM CSE 2025 Matrix Computations Minisymposium](https://www.siam.org/conferences-events/siam-conferences/cse25/),
+    Fort Worth, TX
   title: Engineering Fast Kernels for Rotation-Equivariant Deep Neural Networks
   date: 2025-03-04
   buttons:
     slides: pdf/2025/siam_acda25.pdf
 
-- venue: "[Redwood Center for Theoretical Neuroscience Group Meeting](https://redwood.berkeley.edu/), Berkeley, CA"
+- venue: >-
+    [Redwood Center for Theoretical Neuroscience Group Meeting](https://redwood.berkeley.edu/),
+    Berkeley, CA
   title: Subspace Embeddings for Khatri-Rao Products (Redux)
   date: 2024-11-01
   buttons:
     slides: pdf/2024/redwood_krp_leverage.pdf
     video: https://drive.google.com/file/d/14nHx_zBwAmgyPsvBXcIbHRdWW15u1mGf/view?usp=drive_link
 
-- venue: "[SIAM Conference on Applied Linear Algebra](https://www.siam.org/conferences/cm/conference/la24), Paris, France"
+- venue: >-
+    [SIAM Conference on Applied Linear Algebra](https://www.siam.org/conferences/cm/conference/la24),
+    Paris, France
   title: Sampling-Based Sketches for Tensor Train Core Chains
   date: 2024-05-13
   buttons:
     slides: pdf/2024/la24_slides.pdf
 
-- venue: "[SIAM Conference on Parallel Processing](https://www.siam.org/conferences/cm/conference/pp24), Baltimore MD"
-  title: Distributed-Memory Randomized Candecomp / PARAFAC Decomposition 
+- venue: >-
+    [SIAM Conference on Parallel Processing](https://www.siam.org/conferences/cm/conference/pp24),
+    Baltimore MD
+  title: Distributed-Memory Randomized Candecomp / PARAFAC Decomposition
   date: 2024-03-05
 
 - venue: "[MILA Tensor Network Reading Group](https://tensor-networks.github.io/), Virtual"
-  title: Randomized Leverage Score Sampling and CP Decomposition (Redux) 
+  title: Randomized Leverage Score Sampling and CP Decomposition (Redux)
   date: 2024-02-06
   buttons:
     video: https://www.youtube.com/watch?v=u4X5DBRbrjc
 
 - venue: "UC Berkeley Qualifying Exam"
-  title: Exploiting Sparsity and Randomness to Accelerate Linear Least-Squares at Scale 
+  title: Exploiting Sparsity and Randomness to Accelerate Linear Least-Squares at Scale
   date: 2024-01-17
   buttons:
     slides: pdf/2024/qual_slides.pdf
 
-- venue: "[Workshop on Sparse Tensor Computations](https://solomonik.cs.illinois.edu/tensor_workshop/index.html), Chicago IL"
+- venue: >-
+    [Workshop on Sparse Tensor Computations](https://solomonik.cs.illinois.edu/tensor_workshop/index.html),
+    Chicago IL
   title: Leverage-Score Sampling for CP and Tensor-Train Decomposition
   date: 2023-10-18
   buttons:
     slides: pdf/2023/2023_sparse_tensor_workshop.pdf
-    video: https://www.youtube.com/watch?v=mlbBuOdJPL0&t=3956s 
+    video: https://www.youtube.com/watch?v=mlbBuOdJPL0&t=3956s
 
-- venue: "[Seminar on High-Dimensional Computing](https://quantumtative.github.io/seminar_fall2023), Berkeley CA"
+- venue: >-
+    [Seminar on High-Dimensional Computing](https://quantumtative.github.io/seminar_fall2023),
+    Berkeley CA
   title: Introduction to TT-ALS and TT-Cross
   date: 2023-09-19
   buttons:
     notes: pdf/2023/2023_hsdc_seminar.pdf
 
-- venue: "[SIAM CSE23 Sparsity Minisymposium](https://www.siam.org/conferences/cm/conference/cse23), Amsterdam, The Netherlands"
-  title: Faster Exact Leverage Score Sampling from Khatri-Rao Products 
+- venue: >-
+    [SIAM CSE23 Sparsity Minisymposium](https://www.siam.org/conferences/cm/conference/cse23),
+    Amsterdam, The Netherlands
+  title: Faster Exact Leverage Score Sampling from Khatri-Rao Products
   date: 2023-03-01
   buttons:
     slides: pdf/2023/2023_siam_cse.pdf
-

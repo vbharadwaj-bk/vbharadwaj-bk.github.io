@@ -1,0 +1,251 @@
+name: Vivek Bharadwaj
+title: Machine Learning Engineer, Apple Platform Architecture
+date: November 2025
+links:
+  website: https://vivek-bharadwaj.com
+  github: https://github.com/vbharadwaj-bk
+  orcid: https://orcid.org/0000-0003-0483-9578
+
+education:
+  - institution: University of California, Berkeley
+    degree: PhD in Computer Science
+    dates: 2020-2025
+    advisors: [James Demmel, Aydın Buluç]
+    focus: [Geometric Deep Learning, Sparse Tensors, Graph Problems]
+    funding: DOE National Computational Science Graduate Fellowship
+  - institution: California Institute of Technology (Caltech)
+    degree: BS, Computer Science and Mathematics
+    dates: 2016-2020
+    gpa: 3.9/4.3
+
+research_interests_and_skills:
+  interests:
+    [
+      Graph Neural Networks,
+      GPU Kernel Engineering,
+      Randomized Algorithms,
+      Sparsity in Machine Learning,
+      Tensor Decomposition,
+    ]
+  languages: [C, C++, Python, Java, OCaml]
+  parallel_computing: [MPI, CUDA, OpenMP]
+  libraries_and_frameworks: [Pybind11, Pytorch]
+
+publications:
+  equal_contribution_note: "* denotes equal contribution."
+  conference_papers:
+    - title: An Efficient Sparse Kernel Generator for O(3)-Equivariant Deep Networks
+      authors:
+        - V. Bharadwaj
+        - A. Glover
+        - A. Buluç
+        - J. Demmel
+      equal_contribution_authors: [V. Bharadwaj, A. Glover]
+      venue: Proceedings of the SIAM Conference on Applied and Computational Discrete Algorithms (ACDA)
+      date: July 2025
+    - title: Efficient Leverage Score Sampling for Tensor Train Decomposition
+      authors:
+        - B. Rakhshan
+        - V. Bharadwaj
+        - O. A. Malik
+        - G. Rabusseau
+      equal_contribution_authors: [B. Rakhshan, V. Bharadwaj]
+      venue: Neural Information Processing Systems (NeurIPS) Main Conference
+      date: December 2024
+    - title: Distributed-Memory Randomized Algorithms for Sparse Tensor CP Decomposition
+      authors:
+        - V. Bharadwaj
+        - O. A. Malik
+        - R. Murray
+        - A. Buluç
+        - J. Demmel
+      venue: ACM Symposium on Parallelism in Algorithms and Architectures (SPAA)
+      date: June 2024
+    - title: Fast Exact Leverage Score Sampling from Khatri-Rao Products with Applications to Tensor Decomposition
+      authors:
+        - V. Bharadwaj
+        - O. A. Malik
+        - R. Murray
+        - L. Grigori
+        - A. Buluç
+        - J. Demmel
+      venue: Neural Information Processing Systems (NeurIPS) Main Conference
+      date: December 2023
+    - title: Distributed-Memory Sparse Kernels for Machine Learning
+      authors:
+        - V. Bharadwaj
+        - A. Buluç
+        - J. Demmel
+      venue: IEEE International Parallel and Distributed Processing Symposium (IPDPS)
+      date: June 2022
+  journal_papers:
+    - title: Ultraparamagnetic Cells Formed Through Intracellular Oxidation and Chelation of Paramagnetic Iron
+      authors:
+        - P. Ramesh
+        - S.J. Hwang
+        - H.C. Davis
+        - A. Lee-Gosselin
+        - V. Bharadwaj
+        - M. A. English
+        - J. Sheng
+        - V. Iyer
+        - M. G. Shapiro
+      venue: Angewandte Chemie (International ed. in English)
+      date: September 2018
+
+experience:
+  - organization: Apple Platform Architecture
+    role: Machine Learning Engineer
+    dates: September 2025-Present
+    highlights:
+      - Working at the intersection of hardware and software.
+  - organization: NVIDIA Math Libraries Team
+    role: Sparse Linear Algebra Intern
+    dates: Summer 2024
+    highlights:
+      - Rewrote large parts of cuSPARSELt, a library for structured sparse-dense matrix multiplication in machine learning, for new Blackwell generation GPUs.
+      - Investigated custom semiring support with JIT linking for sparse matrix-vector multiplication.
+  - organization: Lawrence Berkeley National Laboratory
+    role: Graduate Student Researcher
+    dates: Summers 2023, 2021, 2020
+    highlights:
+      - Focused on high-performance algorithms for randomized sparse problems.
+      - Research blended theoretical and applied work, from new randomized algorithms to optimized software kernels for high performance.
+  - organization: National Renewable Energy Laboratory
+    role: Visiting Graduate Student Researcher
+    dates: Summer 2022
+    highlights:
+      - Focused on Krylov subspace methods for ill-conditioned linear systems.
+      - Wrote CUDA kernels for randomized butterfly transformations and incomplete LDL preconditioners.
+  - organization: Jane Street Capital
+    role: Software Engineering Intern
+    dates: Summer 2019
+    highlights:
+      - Wrote protocols to relay market data from exchanges to traders.
+      - Improved Iron, an in-house fork of the Mercurial version control system.
+  - organization: Anandkumar Lab, Caltech
+    role: Summer Undergraduate Research Fellowship (SURF) Intern
+    dates: Summer 2018
+    highlights:
+      - Focused on tensor decompositions and Gaussian process modeling.
+      - Mentored by Rose Yu (now UCSD).
+  - organization: Shapiro Lab, Caltech
+    role: Summer Undergraduate Research Fellowship (SURF) Intern
+    dates: Summer 2017
+    highlights:
+      - Focused on GPU-based MRI simulations of diffusing water molecule spins.
+      - Work published in a journal of the German Chemical Society (code on GitHub).
+
+selected_talks:
+  - event: SIAM Computational Science and Engineering (CSE25)
+    date: March 4 2025
+    location: Fort Worth, TX
+    title: Engineering Fast Kernels for Rotation-Equivariant Deep Networks
+  - event: SIAM Conference on Applied Linear Algebra (LA24)
+    date: May 13 2024
+    location: Paris, France
+    title: Leverage-Based Sampling at Scale for Sparse Tensor CP Decomposition
+  - event: SIAM Conference on Parallel Processing (PP24)
+    date: Mar. 5 2024
+    location: Baltimore, MD
+    title: Distributed and Randomized Sparse Tensor Decomposition
+  - event: SIAM Computational Science and Engineering (CSE23)
+    date: Mar. 1, 2023
+    location: Amsterdam, Netherlands
+    title: New Leverage-Based Sampling Algorithms for Khatri-Rao Products
+
+awards:
+  - year: 2024
+    name: Berkeley Teaching Effectiveness Award
+    description: Awarded to fifteen selected graduate TAs who identified and fixed a particular teaching problem.
+  - year: 2022
+    name: Berkeley Outstanding Graduate Student Instructor
+    description: Awarded for teaching work in CS267 (Parallel Computing).
+  - year: 2021
+    name: Department of Energy Computational Science Graduate Fellowship
+    description: Awarded to 32 selected graduate students nationwide. Fellowship covers full PhD tuition and stipend for four years.
+  - year: 2020
+    name: Honorable Mention, National Science Foundation GRFP
+  - year: 2020
+    name: Caltech Thomas A. Tisch Prize for Undergraduate Teaching
+    description: Awarded for three years of teaching work in Caltech CS38 (Algorithms).
+  - year: 2019
+    name: Best Educational Hack, Hacktech
+    description: Awarded for Presentr, a prototype of a blackboard image-to-text decoder.
+  - year: 2017
+    name: Ph11 Scholar
+    description: Funded summer research position awarded for solving hurdle problems at Caltech.
+  - year: 2016
+    name: National Merit Scholar
+
+teaching:
+  - course: "SLMATH 1064: Mathematics of Big Data and Sketching"
+    term: Summer 2023
+    role: TA
+    description: TA for a two-week graduate summer program held by the Simons Laufer Mathematical Institute at IBM Research, Almaden.
+  - course: "CS267: Applications of Parallel Computers"
+    term: Spring 2022
+    role: TA
+    description: Berkeley graduate course on parallelism and high-performance computing.
+  - course: "CS38 / 138: Algorithms"
+    term: Spring 2020, 2019, 2018
+    role: TA
+    description: Caltech undergraduate / graduate proof-based algorithms class.
+  - course: "CS21: Decidability and Tractability"
+    term: Winter 2018
+    role: TA
+    description: Caltech undergraduate complexity theory class.
+
+professional_service:
+  peer_review:
+    - venue: ACM Transactions on Mathematical Software
+      year: 2025
+    - venue: ACM SPAA Junior PC
+      year: 2025
+    - venue: GrAPL IPDPS Workshop
+      year: 2025
+    - venue: Neural Information Processing Systems (NeurIPS)
+      year: 2024
+    - venue: Supercomputing (SC) Artifact Evaluation
+      year: 2024
+    - venue: Numerical Linear Algebra with Applications, Wiley
+      year: 2023
+    - venue: IEEE Signal Processing Letters
+      year: 2021
+  roles:
+    - title: Reviewer, Berkeley SURF Research Applications
+      date: March 2022
+    - title: Caltech Board of Control
+      dates: 2019-2020
+      description: Served on the student panel adjudicating cases of academic dishonesty.
+    - title: Student Chair, Caltech CS Student-Faculty Conference
+      year: 2018
+
+selected_coursework:
+  graduate_courses:
+    - "CS281A: Statistical Learning Theory"
+    - "CS262A: Advanced Topics in Computer Systems"
+    - "CS270: Combinatorial Algorithms and Data Structures"
+    - "ELENG C227C: Convex Optimization and Approximation"
+  undergraduate_courses:
+    - "Ma109ABC: Introduction to Geometry and Topology"
+    - "EE126A: Information Theory"
+    - "MA140: Probability"
+    - "CS150: Probability and Algorithms"
+    - "CS151: Complexity Theory"
+
+volunteering:
+  - role: Middle / High School Competition Judge
+    details:
+      - Alameda County Science Fair (2023, 2022)
+      - USA Young Physicists' Tournament (2021)
+      - Blair Middle School Science Fair (2020)
+  - role: CRS Science Ambassador
+    dates: Oct-Dec 2021
+    description: Presented science talks virtually for students at Washington Elementary, Richmond.
+  - role: Virtual Be a Scientist Mentor
+    dates: Jan-Mar 2021
+    description: Coached Berkeley students through science projects weekly.
+  - role: Caltech RISE Tutor
+    dates: Jan-April 2020
+    description: Volunteer tutor for high school students in need of assistance from Pasadena Unified School District.

@@ -3,29 +3,31 @@
 # -----------------------------------------------------------------------------
 
 title: # the website title (if blank, full name will be used instead)
-first_name: Vivek 
-middle_name: 
-last_name: Bharadwaj 
+first_name: Vivek
+middle_name:
+last_name: Bharadwaj
 description: "My personal website with research interests, talks, and publications."
-footer_text: Design based on al-folio adapted for Pelican. 
-keywords: HPC, Linear Algebra, Sparse Computations, Randomized Algorithms 
+footer_text: Design based on al-folio adapted for Pelican.
+keywords: HPC, Linear Algebra, Sparse Computations, Randomized Algorithms
 
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: images/icon.png
 
-# For both fields below, do not include leading / trailing slashes. 
+# For both fields below, do not include leading / trailing slashes.
 url: https://vivek-bharadwaj.com # the base hostname & protocol for your site
-baseurl: 
+baseurl:
 last_updated: true # set to true if you want to display last updated in the footer
-impressum_path:  # set to path to include impressum link in the footer, use the same path as permalink in a page, helps to conform with EU GDPR
+
+# Impressum link in the footer; same path as permalink in a page, helps to conform with EU GDPR.
+impressum_path:
 
 # -----------------------------------------------------------------------------
 # Theme
 # -----------------------------------------------------------------------------
 
 # code highlighter theme
-highlight_theme_light: github   # https://github.com/jwarby/jekyll-pygments-themes
-highlight_theme_dark: native    # https://github.com/jwarby/jekyll-pygments-themes
+highlight_theme_light: github # https://github.com/jwarby/jekyll-pygments-themes
+highlight_theme_dark: native # https://github.com/jwarby/jekyll-pygments-themes
 
 # -----------------------------------------------------------------------------
 # Layout and navigation
@@ -50,16 +52,18 @@ og_image: # The site-wide (default for all links) Open Graph preview image
 # -----------------------------------------------------------------------------
 # Social integration
 # -----------------------------------------------------------------------------
-email: 
-github_username: vbharadwaj-bk 
-gitlab_username: 
-bluesky_username: vivek-bharadwaj.com 
-mastodon_username: 
+email:
+github_username: vbharadwaj-bk
+gitlab_username:
+bluesky_username: vivek-bharadwaj.com
+mastodon_username:
 linkedin_username: vivek-bharadwaj-91135099
-telegram_username: 
+telegram_username:
 scholar_userid: 0cKXP7cAAAAJ&hl=en # your Google Scholar ID
 semanticscholar_id: # your Semantic Scholar ID
-whatsapp_number: # your WhatsApp number (full phone number in international format. Omit any zeroes, brackets, or dashes when adding the phone number in international format.)
+# Your WhatsApp number (full phone number in international format. Omit any zeroes, brackets,
+# or dashes when adding the phone number in international format.)
+whatsapp_number:
 orcid_id: 0000-0003-0483-9578 # your ORCID ID
 medium_username: # your Medium username
 quora_username: # your Quora username
@@ -93,21 +97,23 @@ contact_note: >
 # Analytics and search engine verification
 # -----------------------------------------------------------------------------
 
-google_analytics:  # your Google Analytics measurement ID (format: G-XXXXXXXXXX)
-cronitor_analytics:  # cronitor RUM analytics site ID (format: XXXXXXXXX)
+google_analytics: # your Google Analytics measurement ID (format: G-XXXXXXXXXX)
+cronitor_analytics: # cronitor RUM analytics site ID (format: XXXXXXXXX)
 
-bing_site_verification:  # out your bing-site-verification ID (Bing Webmaster)
+bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 
 # -----------------------------------------------------------------------------
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_enabled: true 
+blog_enabled: true
 blog_name: "blog posts"
-blog_nav_title: blog 
+blog_nav_title: blog
 blog_description: may contain trace amounts of peanuts
 blog_splash: "images/berkeley_splash_light.png"
-disclaimer_text: "No text in this post was generated using an LLM. The opinions expressed here do not reflect those of my employer or affiliates."
+disclaimer_text: >
+  No text in this post was generated using an LLM. The opinions 
+  expressed here do not reflect those of my employer or affiliates.
 
 display_tags: [] # these tags will be displayed on the front page of your blog
 display_categories: [] # these categories will be displayed on the front page of your blog
@@ -130,7 +136,7 @@ announcements:
   limit: 3 # leave blank to include all the news in the `_news` folder
 
 latest_posts:
-  enabled: false 
+  enabled: false
   scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
   limit: 3 # leave blank to include all the blog posts
 
@@ -152,32 +158,51 @@ badges: # Display different badges for your publications
   dimensions_badge: true # Dimensions badge (https://badge.dimensions.ai/)
 
 # Filter out certain bibtex entry keywords used internally from the bib output
-filtered_bibtex_keywords: [abbr, abstract, arxiv, bibtex_show, html, pdf, selected, supp, blog, code, poster, slides, website, preview, altmetric]
+filtered_bibtex_keywords:
+  - abbr
+  - abstract
+  - arxiv
+  - bibtex_show
+  - html
+  - pdf
+  - selected
+  - supp
+  - blog
+  - code
+  - poster
+  - slides
+  - website
+  - preview
+  - altmetric
 
 # Maximum number of authors to be shown for each publication (more authors are visible on click)
-max_author_limit: 6  # leave blank to always show all authors
-more_authors_animation_delay: 10  # more authors are revealed on click using animation; smaller delay means faster animation
-
+max_author_limit: 6 # leave blank to always show all authors
+# more authors are revealed on click using animation
+# smaller delay means faster animation
+more_authors_animation_delay: 10
 
 # -----------------------------------------------------------------------------
 # Optional Features
 # -----------------------------------------------------------------------------
 
-enable_google_analytics:    false  # enables google analytics
-enable_cronitor_analytics: false  # enables cronitor RUM analytics
+enable_google_analytics: false # enables google analytics
+enable_cronitor_analytics: false # enables cronitor RUM analytics
 enable_google_verification: false # enables google site verification
-google_site_verification: 
+google_site_verification:
 
-enable_bing_verification:   false  # enables bing site verification
-enable_masonry:             true   # enables automatic project cards arrangement
-enable_math:                true   # enables math typesetting (uses MathJax)
-enable_tooltips:            false  # enables automatic tooltip links generated
-                                   # for each section titles on pages and posts
-enable_darkmode:            true   # enables switching between light/dark modes
-enable_project_categories:  true   # enables categorization of projects into
-                                   # multiple categories
-enable_medium_zoom:         true   # enables image zoom feature (as on medium.com)
-enable_progressbar:         true   # enables a horizontal progress bar linked to the vertical scroll position
+enable_bing_verification: false # enables bing site verification
+enable_masonry: true # enables automatic project cards arrangement
+enable_math: true # enables math typesetting (uses MathJax)
+enable_tooltips:
+  false # enables automatic tooltip links generated
+  # for each section titles on pages and posts
+enable_darkmode: true # enables switching between light/dark modes
+enable_project_categories:
+  true # enables categorization of projects into
+  # multiple categories
+enable_medium_zoom: true # enables image zoom feature (as on medium.com)
+# enables a horizontal progress bar linked to the vertical scroll position
+enable_progressbar: true
 
 # -----------------------------------------------------------------------------
 # Library versions

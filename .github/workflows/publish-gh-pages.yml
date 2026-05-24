@@ -1,20 +1,22 @@
 name: Build Pelican Site and Deploy to GH-Pages
 on:
   push:
-    branches: [ "main" ]
-    
+    branches: ["main"]
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions: write-all
-  #contents: write 
+permissions:
+  write-all
+  #contents: write
   #pages: write
   #id-token: write
   #deployments: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress
+# and latest queued. However, do NOT cancel in-progress runs as we want to allow these
+# production deployments to complete.
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -31,7 +33,7 @@ jobs:
       - name: Set up Python 3.10
         uses: actions/setup-python@v3
         with:
-         python-version: "3.10"
+          python-version: "3.10"
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -49,7 +51,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './output'
+          path: "./output"
   deploy:
     environment:
       name: github-pages

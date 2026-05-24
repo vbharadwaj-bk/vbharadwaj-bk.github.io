@@ -2,60 +2,60 @@
   type: map
   contents:
     - name: Name
-      value: Vivek Bharadwaj 
-    - name: Affiliation 
+      value: Vivek Bharadwaj
+    - name: Affiliation
       value: |
         Apple
     - name: Research Interests
       value: |
         Geometric Deep Learning, Tensor Problems, HPC,
-        Randomized Algorithms, Sparsity in ML 
+        Randomized Algorithms, Sparsity in ML
     - name: Languages
-      value: C, C++, Python, Java, OCaml 
-    - name: Tools 
+      value: C, C++, Python, Java, OCaml
+    - name: Tools
       value: OpenMP, MPI, CUDA, UPC++, Pybind11, Pytorch
 
 - title: Education
   type: time_table
   contents:
     - title: PhD, Computer Science
-      institution: University of California, Berkeley 
+      institution: University of California, Berkeley
       year: 2020-2025
       description:
-        - "Advisors: James Demmel and Aydın Buluç" 
+        - "Advisors: James Demmel and Aydın Buluç"
         - "Funding: DOE CSGF (2021-2025)"
 
-    - title: Bachelor of Science, Computer Science & Mathematics 
-      institution: California Institute of Technology 
-      year: 2016-2020 
+    - title: Bachelor of Science, Computer Science & Mathematics
+      institution: California Institute of Technology
+      year: 2016-2020
       description:
         - "Cumulative GPA: 3.9/4.3"
 
-- title: Experience 
+- title: Experience
   type: time_table
   contents:
-    - title: Machine Learning Engineer 
-      institution: Apple 
+    - title: Machine Learning Engineer
+      institution: Apple
       year: Sept. 2025-Now
       description:
         - |
           Platform architecture; I work at the intersection of hardware and software,
-          investigating ways to map compute to hardware. 
+          investigating ways to map compute to hardware.
 
-    - title: Sparse Linear Algebra Intern 
+    - title: Sparse Linear Algebra Intern
       institution: NVIDIA Math Libraries Team
       year: Summer '24
       description:
         - |
           Focus: rewrote large parts of cuSPARSELt, a library for structured
           sparse-dense matrix multiplication in machine learning, for new Blackwell
-          GPUs. 
+          GPUs.
         - |
           Also investigated custom semiring support with JIT linking for sparse
           matrix-vector multiplication.
 
-    - title: Graduate Student Researcher 
-      institution: Lawrence Berkeley National Lab 
+    - title: Graduate Student Researcher
+      institution: Lawrence Berkeley National Lab
       year: Summers<br>'23, '21, '20
       description:
         - "Focus: randomized algorithms for sparse matrix and tensor factorization."
@@ -63,69 +63,71 @@
           Research is a blend of theoretical and applied work, with 
           an emphasis on high-peformance implementation.
 
-    - title: Visiting Student Researcher 
-      institution: National Renewable Energy Laboratory 
-      year: Summer '22 
+    - title: Visiting Student Researcher
+      institution: National Renewable Energy Laboratory
+      year: Summer '22
       description:
         - "Focus: randomized Krylov method preconditioning."
         - |
           Wrote CUDA kernels for randomized butterfly transformations and 
           incomplete LDL factorization, both used as preconditioners.
 
-    - title: Software Engineering Intern 
-      institution: Jane Street Capital 
+    - title: Software Engineering Intern
+      institution: Jane Street Capital
       year: Summer '19
       description:
         - Wrote protocols to relay market data from exchanges to traders.
         - Made improvements to Iron, an in-house fork of the Mercurial VCS.
 
     - title: Caltech SURF Intern
-      institution: Anandkumar Lab, Caltech  
-      year: Summer '18 
+      institution: Anandkumar Lab, Caltech
+      year: Summer '18
       description:
         - |
           Focus: Continuous analogues of tensor decomposition and Gaussian process
           modeling, mentored by Rose Yu.
 
-    - title: Ph11 Scholar 
-      institution: Shapiro Lab, Caltech 
+    - title: Ph11 Scholar
+      institution: Shapiro Lab, Caltech
       year: Summer '17
       description:
         - |
           Focus: GPU-based MRI simulations of diffusing water molecule spins in
-          strong magnetic fields. 
+          strong magnetic fields.
 
         - |
           Work published in a Journal of the German Chemical Society (code 
           on Github).
 
-- title: Publications, Talks, and Teaching 
+- title: Publications, Talks, and Teaching
   type: list
   contents:
-    - See links in the navigation bar. 
+    - See links in the navigation bar.
 
 - title: Awards and Fellowships
   type: time_table
   contents:
-    - year: 2024 
-      elements: 
+    - year: 2024
+      elements:
         - Berkeley Teaching Effectiveness Award
-    - year: 2022 
-      elements: 
-        - Berkeley Outstanding Graduate Student Instructor 
-    - year: 2021 
-      elements: 
-        - DoE Computational Science Graduate Fellowship 
-    - year: 2020 
-      elements: 
+    - year: 2022
+      elements:
+        - Berkeley Outstanding Graduate Student Instructor
+    - year: 2021
+      elements:
+        - DoE Computational Science Graduate Fellowship
+    - year: 2020
+      elements:
         - Honorable Mention, NSF GRFP
         - Thomas A. Tisch Prize for Undergraduate Teaching
     - year: 2019
       elements:
-        - Caltech Hacktech Best Educational Hack (Presentr) 
+        - Caltech Hacktech Best Educational Hack (Presentr)
     - year: 2017
       elements:
-        - "Ph11 Scholar. Funded research position awarded for solving \"hurdle\" problems at Caltech."
+        - >-
+          Ph11 Scholar. Funded research position awarded for solving "hurdle"
+          problems at Caltech.
     - year: 2016
       elements:
         - "National Merit Scholar. Applied funds to study at Caltech."
@@ -146,7 +148,7 @@
 
     - year: 2025
       elements:
-        - "General EECS Graduate Visit Day Co-organizer" 
+        - "General EECS Graduate Visit Day Co-organizer"
 
     - year: 2022
       elements:
@@ -161,29 +163,32 @@
     - year: 2019
       maindescription: "Student Chair, Caltech CS Student-Faculty Conference"
       elements:
-        - "Read our final report <a href=\"https://docs.google.com/document/d/e/2PACX-1vQb_tiDPwxd7M485BCGHVAvNjsGADY5sjggVnvqRqZnQe6nzv4nwiHn_GUIIIiaATT2mj7qJ8WonOlf/pub\">here</a>."
+        - >-
+          Read our final report
+          <a href="https://docs.google.com/document/d/e/2PACX-1vQb_tiDPwxd7M485BCGHVAvNjsGADY5sjggVnvqRqZnQe6nzv4nwiHn_GUIIIiaATT2mj7qJ8WonOlf/pub">here</a>.
 
-- title: Volunteering 
+- title: Volunteering
   type: time_table
   contents:
     - year: Ongoing
       maindescription: "Judge for the following science contests:"
-      elements: 
+      elements:
         - "2023, 2022: Alameda County Science Fair"
         - "2022: USA Young Physicists Tournament"
-        - "2020: Blair Middle School Science Fair" 
+        - "2020: Blair Middle School Science Fair"
 
-    - year: March 2025 
-      elements: 
+    - year: March 2025
+      elements:
         - "Panelist for Berkeley L&S Graduate School Workshop"
 
     - year: Oct-Dec 2021
-      elements: 
-        - "CRS Science Ambassador: Gave virtual science presentations to students at Washington Elementary, Richmond"
+      elements:
+        - >-
+          CRS Science Ambassador: Gave virtual science presentations to students
+          at Washington Elementary, Richmond
     - year: Jan-Mar 2021
-      elements: 
+      elements:
         - "Virtual Be a Scientist Mentor: Coached BUSD students through science projects weekly"
     - year: Spring 2020
-      elements: 
+      elements:
         - "Caltech RISE Tutor: Tutored high school students from Pasadena Unified School district."
-
