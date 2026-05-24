@@ -11,15 +11,19 @@ from extensions.toc_md_reader import TOCMarkdownReader
 from extensions.filter_projects import filter_projects 
 from extensions.template_block import *
 from extensions import al_folio_extension 
+from extensions import cv_typst_generator
 from extensions.urls_dev import relative_url, absolute_url
 
 SITE = None
 with open("content/config.yml", "rb") as stream:
     SITE = yaml.safe_load(stream)
 
-PLUGINS = ['pelican.plugins.webassets', 
-           'pelican.plugins.sitemap', 
-           al_folio_extension]
+PLUGINS = [
+           'pelican.plugins.webassets',
+           'pelican.plugins.sitemap',
+           al_folio_extension,
+           cv_typst_generator,
+           ]
 
 name_fields = ["first_name", "middle_name", "last_name"]
 AUTHOR = ' '.join([SITE[field] for field in name_fields if field in SITE and SITE[field] is not None])
@@ -32,6 +36,10 @@ SITEURL = ''
 
 THEME = 'al_folio_theme'
 PATH = 'content'
+
+CV_DATA_PATH = os.path.join(PATH, 'cv.yaml')
+CV_TEMPLATE_PATH = os.path.join('cv_template', 'cv.typst')
+CV_PDF_OUTPUT = os.path.join('cv', 'cv.pdf')
 
 TIMEZONE = 'America/Ensenada'
 

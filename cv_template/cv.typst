@@ -1,0 +1,187 @@
+{% macro format_authors(authors, equal_contrib, self_short) -%}
+{%- for author in authors -%}
+{%- set is_self = author == self_short -%}
+{%- set is_equal = equal_contrib and (author in equal_contrib) -%}
+{%- if is_self -%}*{{ author }}*{%- else -%}{{ author }}{%- endif -%}
+{%- if is_equal -%}\*{%- endif -%}
+{%- if not loop.last -%}, {% endif -%}
+{%- endfor -%}
+{%- endmacro %}
+
+#set page(
+  paper: "us-letter",
+  margin: 0.75in,
+  header: context {
+    if counter(page).get().first() > 1 [
+      _{{ cv.name }}_ #h(1fr) _{{ cv.date }}_
+    ]
+  }
+)
+
+#set text(size: 9pt, font: "New Computer Modern")
+#set par(leading: 0.55em, spacing: 0.9em, justify: true)
+#set list(tight: true)
+#show emph: it => text(style: "oblique", it.body)
+
+// Formatting for section headers (matches \titleformat and \titlerule)
+#show heading.where(level: 1): it => block(width: 100%, above: 1.4em, below: 1.1em)[
+  #set text(size: 10pt, weight: "bold")
+  #it.body
+  #v(-0.9em)
+  #line(length: 100%, stroke: 0.5pt)
+]
+
+// Header / Title Block
+#align(center)[
+  #text(size: 14.5pt, weight: "bold")[{{ cv.name }}] \
+  #v(-4pt) // <-- Negative value to pull the subtitle closer to the name
+  {{ cv.title }} \
+  Web: #link("{{ cv.links.website }}")[{{ cv.links.website }}] #sym.circle.small
+  Github: #link("{{ cv.links.github }}")[{{ cv.links.github_handle }}] #sym.circle.small
+  ORCID: #link("{{ cv.links.orcid }}")[{{ cv.links.orcid_id }}]
+]
+
+= EDUCATION
+
+{% for edu in cv.education -%}
+*{{ edu.institution }}* #h(1fr) {{ edu.dates_display }} \
+{{ edu.degree }}{% if edu.gpa is defined %} #h(1fr) Cumulative GPA: {{ edu.gpa }}{% endif %} \
+{% if edu.advisors is defined %}Advisers: {{ edu.advisors_display }} \
+{% endif -%}
+{% if edu.focus is defined %}Focus: {{ edu.focus | join(", ") }} \
+{% endif -%}
+{% if edu.funding is defined %}Funding: {{ edu.funding }}{% endif %}
+{% if not loop.last %}
+#v(1em)
+{% endif -%}
+{% endfor %}
+
+= RESEARCH INTERESTS AND SKILLS
+
+{% set skills = cv.research_interests_and_skills -%}
+#grid(
+  columns: (4cm, 1fr),
+  row-gutter: 1em,
+  [Interests], [{{ skills.interests | join(", ") }}],
+  [Languages], [{{ skills.languages | join(", ") }}],
+  [Parallel Computing], [{{ skills.parallel_computing | join(", ") }}],
+  [Libraries / Frameworks], [{{ skills.libraries_and_frameworks | join(", ") }}]
+)
+
+= PUBLICATIONS
+
+*Conference Papers*
+#v(-0.2em)
+{% for paper in cv.publications.conference_papers -%}
+- {{ format_authors(paper.authors, paper.equal_contribution_authors | default([]), cv.short_name) }}. {{ paper.title }}. _{{ paper.venue }}_, {{ paper.date }}.
+{% endfor %}
+
+#v(0.25em)
+*Journal Papers*
+#v(-0.2em)
+{% for paper in cv.publications.journal_papers -%}
+- {{ format_authors(paper.authors, paper.equal_contribution_authors | default([]), cv.short_name) }}. {{ paper.title }}. _{{ paper.venue }}_, {{ paper.date }}.
+{% endfor %}
+
+#text(size: 8pt)[{{ cv.publications.equal_contribution_note | replace("*", "\\*") }}]
+
+
+= EXPERIENCE
+
+{% for job in cv.experience -%}
+*{{ job.organization }}* #h(1fr) {{ job.dates }} \
+_{{ job.role }}_
+{% for highlight in job.highlights -%}
+- {{ highlight }}
+{% endfor %}
+{% if not loop.last %}
+#v(1em)
+{% endif -%}
+{% endfor %}
+
+= SELECTED TALKS
+
+{% for talk in cv.selected_talks -%}
+*{{ talk.event }}* #h(1fr) {{ talk.date }}{% if talk.location is defined %}, {{ talk.location }}{% endif %} \
+_{{ talk.title }}_ \
+{% if not loop.last %}
+#v(0.5em)
+{% endif -%}
+{% endfor %}
+
+
+= AWARDS
+
+{% for award in cv.awards -%}
+*{{ award.name }}* #h(1fr) {{ award.year }} \
+{% if award.description is defined %}{{ award.description }} \
+{% endif -%}
+{% if not loop.last %}
+\
+{% endif -%}
+{% endfor %}
+
+
+= TEACHING
+
+{% for item in cv.teaching -%}
+*{{ item.course }}* #h(1fr) {{ item.term }} \
+{{ item.description }} \
+{% if not loop.last %}
+#v(0.5em)
+{% endif -%}
+{% endfor %}
+
+
+= PROFESSIONAL SERVICE
+
+*Peer Review for Journals / Conferences*
+{% for item in cv.professional_service.peer_review -%}
+- {{ item.venue }} #h(1fr) {{ item.year }}
+{% endfor %}
+{% for role in cv.professional_service.roles -%}
+
+#v(0.5em)
+*{{ role.title }}* #h(1fr) {{ role.date | default(role.dates | default(role.year | default(""))) }} \
+{% if role.description is defined %}{{ role.description }} \
+{% endif -%}
+{% endfor %}
+
+
+= SELECTED COURSEWORK
+
+#grid(
+  columns: (1fr, 1fr),
+  gutter: 2em,
+  [
+    *Graduate Courses*
+{% for course in cv.selected_coursework.graduate_courses %}
+    - {{ course }}
+{% endfor %}
+  ],
+  [
+    *Undergraduate Courses*
+{% for course in cv.selected_coursework.undergraduate_courses %}
+    - {{ course }}
+{% endfor %}
+  ]
+)
+
+
+= VOLUNTEERING
+
+{% for item in cv.volunteering -%}
+{% if item.details is defined %}
+*{{ item.role }}*
+{% for detail in item.details -%}
+- {{ detail }}
+{% endfor %}
+{% else -%}
+*{{ item.role }}* #h(1fr) {{ item.dates | default("") }} \
+{{ item.description | default("") }} \
+{% endif -%}
+{% if not loop.last %}
+
+#v(0.5em)
+{% endif -%}
+{% endfor %}

@@ -10,4 +10,5 @@ rjsmin
 pillow
 invoke
 livereload
+typst
 pre-commit
