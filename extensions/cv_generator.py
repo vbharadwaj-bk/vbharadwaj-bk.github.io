@@ -29,49 +29,100 @@ MONTH_ABBREVIATIONS = {
 }
 
 
-def build_al_folio_cv_data(cv_data: Dict[str, Any]) -> List[Dict[str, Any]]:
+def _format_person_name(person: Dict[str, str]) -> str:
+    first = (person.get("first") or "").replace("*", "").strip()
+    last = (person.get("last") or "").replace("*", "").strip()
+    initials = "".join(f"{part[0]}." for part in first.split() if part)
+    if initials and last:
+        return f"{initials} {last}"
+    return initials or last
+
+
+def _build_typst_publications(
+    publications: Optional[List[Dict[str, Any]]],
+) -> Dict[str, Any]:
+    conference_papers: List[Dict[str, Any]] = []
+    journal_papers: List[Dict[str, Any]] = []
+
+    for publication in publications or []:
+        if publication.get("type") not in {"inproceedings", "article"}:
+            continue
+
+        authors: List[str] = []
+        equal_contribution_authors: List[str] = []
+        for author in publication.get("author_array", []) or []:
+            formatted = _format_person_name(author)
+            authors.append(formatted)
+            if "*" in (author.get("first") or "") or "*" in (author.get("last") or ""):
+                equal_contribution_authors.append(formatted)
+
+        entry = {
+            "authors": authors,
+            "equal_contribution_authors": equal_contribution_authors,
+            "title": publication.get("title"),
+            "venue": publication.get("booktitle") or publication.get("journal"),
+            "date": _format_badge_year(
+                f"{publication.get('month', '')} {publication.get('year', '')}".strip(),
+                max_length=100,
+            ),
+        }
+
+        if publication.get("type") == "inproceedings":
+            conference_papers.append(entry)
+        else:
+            journal_papers.append(entry)
+
+    return {
+        "equal_contribution_note": "* denotes equal contribution.",
+        "conference_papers": conference_papers,
+        "journal_papers": journal_papers,
+    }
+
+
+def _format_badge_year(value: Optional[object], max_length: int = 20) -> Optional[str]:
+    if value is None:
+        return None
+    value = str(value).strip()
+    for month, abbreviation in MONTH_ABBREVIATIONS.items():
+        value = re.sub(rf"\b{month}\b", abbreviation, value, flags=re.IGNORECASE)
+
+    if len(value) <= max_length:
+        return value
+
+    value = re.sub(r"\b20(\d{2})\b", r"'\1", value)
+
+    if "," in value:
+        segments = [segment.strip() for segment in value.split(",") if segment.strip()]
+        formatted_segments: List[str] = []
+        for segment in segments:
+            if len(segment) > max_length:
+                for dash in ("–", "—", "-"):
+                    if dash in segment:
+                        start, end = segment.split(dash, 1)
+                        formatted_segments.extend([start.strip(), dash, end.strip()])
+                        break
+                else:
+                    formatted_segments.append(segment)
+            else:
+                formatted_segments.append(segment)
+        return "<br>".join(formatted_segments)
+
+    for dash in ("–", "—", "-"):
+        if dash in value:
+            start, end = value.split(dash, 1)
+            return f"{start.strip()}<br>{dash}<br>{end.strip()}"
+
+    return value
+
+
+def build_al_folio_cv_data(
+    cv_data: Dict[str, Any], publications: Optional[List[Dict[str, Any]]] = None
+) -> List[Dict[str, Any]]:
     sections: List[Dict[str, Any]] = []
     cv_data = cv_data or {}
 
     def join_list(values: Optional[List[str]]) -> str:
         return ", ".join(values or [])
-
-    def format_badge_year(value: Optional[object], max_length: int = 20) -> Optional[str]:
-        if value is None:
-            return None
-        value = str(value).strip()
-        for month, abbreviation in MONTH_ABBREVIATIONS.items():
-            value = re.sub(rf"\b{month}\b", abbreviation, value, flags=re.IGNORECASE)
-
-        if len(value) <= max_length:
-            return value
-
-        value = re.sub(r"\b20(\d{2})\b", r"'\1", value)
-
-        if "," in value:
-            segments = [segment.strip() for segment in value.split(",") if segment.strip()]
-            formatted_segments: List[str] = []
-            for segment in segments:
-                if len(segment) > max_length:
-                    for dash in ("–", "—", "-"):
-                        if dash in segment:
-                            start, end = segment.split(dash, 1)
-                            formatted_segments.extend(
-                                [start.strip(), dash, end.strip()]
-                            )
-                            break
-                    else:
-                        formatted_segments.append(segment)
-                else:
-                    formatted_segments.append(segment)
-            return "<br>".join(formatted_segments)
-
-        for dash in ("–", "—", "-"):
-            if dash in value:
-                start, end = value.split(dash, 1)
-                return f"{start.strip()}<br>{dash}<br>{end.strip()}"
-
-        return value
 
     general_contents: List[Dict[str, Any]] = []
     if cv_data.get("name"):
@@ -123,7 +174,7 @@ def build_al_folio_cv_data(cv_data: Dict[str, Any]) -> List[Dict[str, Any]]:
             {
                 "title": degree or None,
                 "institution": edu.get("institution"),
-                "year": format_badge_year(edu.get("dates")),
+                "year": _format_badge_year(edu.get("dates")),
                 "description": description or None,
             }
         )
@@ -139,7 +190,7 @@ def build_al_folio_cv_data(cv_data: Dict[str, Any]) -> List[Dict[str, Any]]:
             {
                 "title": job.get("role"),
                 "institution": job.get("organization"),
-                "year": format_badge_year(job.get("dates")),
+                "year": _format_badge_year(job.get("dates")),
                 "description": job.get("highlights"),
             }
         )
@@ -153,9 +204,13 @@ def build_al_folio_cv_data(cv_data: Dict[str, Any]) -> List[Dict[str, Any]]:
             }
         )
 
-    publications = cv_data.get("publications") or {}
-    conference_count = len(publications.get("conference_papers") or [])
-    journal_count = len(publications.get("journal_papers") or [])
+    publications = publications or []
+    conference_count = len(
+        [publication for publication in publications if publication.get("type") == "inproceedings"]
+    )
+    journal_count = len(
+        [publication for publication in publications if publication.get("type") == "article"]
+    )
     talks_count = len(cv_data.get("selected_talks") or [])
     teaching_count = len(cv_data.get("teaching") or [])
     summary_parts: List[str] = []
@@ -187,7 +242,7 @@ def build_al_folio_cv_data(cv_data: Dict[str, Any]) -> List[Dict[str, Any]]:
 
     awards_by_year: List[Dict[str, Any]] = []
     for award in cv_data.get("awards", []) or []:
-        year = format_badge_year(award.get("year"))
+        year = _format_badge_year(award.get("year"))
         entry = next((item for item in awards_by_year if item["year"] == year), None)
         if entry is None:
             entry = {"year": year, "elements": []}
@@ -217,7 +272,7 @@ def build_al_folio_cv_data(cv_data: Dict[str, Any]) -> List[Dict[str, Any]]:
         )
 
     for role in service.get("roles", []) or []:
-        year = format_badge_year(role.get("date") or role.get("dates") or role.get("year"))
+        year = _format_badge_year(role.get("date") or role.get("dates") or role.get("year"))
         entry: Dict[str, Any] = {"year": year}
         if role.get("description"):
             entry["maindescription"] = role.get("title")
@@ -247,7 +302,7 @@ def build_al_folio_cv_data(cv_data: Dict[str, Any]) -> List[Dict[str, Any]]:
             )
             continue
 
-        entry: Dict[str, Any] = {"year": format_badge_year(volunteer.get("dates"))}
+        entry: Dict[str, Any] = {"year": _format_badge_year(volunteer.get("dates"))}
         if volunteer.get("description"):
             entry["maindescription"] = volunteer.get("role")
             entry["elements"] = [volunteer.get("description")]
@@ -281,6 +336,8 @@ class CVTypstGenerator(Generator):
             cv_data = yaml.safe_load(handle)
 
         cv_data = self._normalize_cv_data(cv_data)
+        site = self.context.get("SITE", {})
+        cv_data["publications"] = _build_typst_publications(site.get("publications"))
 
         template_dir = os.path.dirname(template_path) or "."
         template_name = os.path.basename(template_path)

@@ -108,21 +108,20 @@ PAGINATION_PATTERNS = (
     (2, '{base_name}/page/{number}/', '{base_name}/page/{number}/index.html'),
 )
 
-# Should extend to getting all data from the folder 
+# Should extend to getting all data from the folder
 SITE["data"] = {}
 
 for data_name in ["venues", "coauthors", "talks"]:
     with open(f"content/data/{data_name}.yml", "rb") as stream:
         SITE["data"][data_name] = yaml.safe_load(stream)
 
+SITE["time"] = datetime.now()
+parse_bibliography("content/publications.bib", "publications", SITE)
+
 with open("content/cv.yaml", "rb") as stream:
     SITE["data"]["cv"] = cv_generator.build_al_folio_cv_data(
-        yaml.safe_load(stream)
+        yaml.safe_load(stream), SITE.get("publications")
     )
-
-
-SITE["time"] = datetime.now()
-parse_bibliography("content/pages/publications.bib", 'publications', SITE)
 
 render_main_scss(SITE)
 
