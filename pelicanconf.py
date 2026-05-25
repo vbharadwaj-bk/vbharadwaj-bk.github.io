@@ -11,7 +11,7 @@ from extensions.toc_md_reader import TOCMarkdownReader
 from extensions.filter_projects import filter_projects 
 from extensions.template_block import *
 from extensions import al_folio_extension 
-from extensions import cv_typst_generator
+from extensions import cv_generator
 from extensions.urls_dev import relative_url, absolute_url
 
 SITE = None
@@ -22,7 +22,7 @@ PLUGINS = [
            'pelican.plugins.webassets',
            'pelican.plugins.sitemap',
            al_folio_extension,
-           cv_typst_generator,
+           cv_generator,
            ]
 
 name_fields = ["first_name", "middle_name", "last_name"]
@@ -39,7 +39,7 @@ PATH = 'content'
 
 CV_DATA_PATH = os.path.join(PATH, 'cv.yaml')
 CV_TEMPLATE_PATH = os.path.join('cv_template', 'cv.typst')
-CV_PDF_OUTPUT = os.path.join('cv', 'cv.pdf')
+CV_PDF_OUTPUT = 'cv.pdf'
 
 TIMEZONE = 'America/Ensenada'
 
@@ -89,7 +89,7 @@ ARCHIVES_SAVE_AS = ''
 
 
 PAGE_PATHS = ['pages', 'projects']
-PATH_METADATA = '(?P<path_no_ext>.*)\..*'
+PATH_METADATA = r'(?P<path_no_ext>.*)\..*'
 PAGE_URL = '{path_no_ext}/'
 PAGE_SAVE_AS = '{path_no_ext}/index.html'
 
@@ -111,9 +111,14 @@ PAGINATION_PATTERNS = (
 # Should extend to getting all data from the folder 
 SITE["data"] = {}
 
-for data_name in ["cv", "venues", "coauthors", "talks"]:
+for data_name in ["venues", "coauthors", "talks"]:
     with open(f"content/data/{data_name}.yml", "rb") as stream:
         SITE["data"][data_name] = yaml.safe_load(stream)
+
+with open("content/cv.yaml", "rb") as stream:
+    SITE["data"]["cv"] = cv_generator.build_al_folio_cv_data(
+        yaml.safe_load(stream)
+    )
 
 
 SITE["time"] = datetime.now()
@@ -156,7 +161,7 @@ SITEMAP = {
     },
     "exclude": [
             "^/noindex/",  # starts with "/noindex/"
-            "posts/\d+/$",
+            r"posts/\d+/$",
             "posts/category/",
             "posts/page/",
             "posts/tag/",
