@@ -1,6 +1,6 @@
 name: Vivek Bharadwaj
 title: Machine Learning Engineer, Apple Platform Architecture
-date: November 2025
+date: May 2026
 links:
   website: https://vivek-bharadwaj.com
   github: https://github.com/vbharadwaj-bk
@@ -32,23 +32,26 @@ research_interests_and_skills:
   libraries_and_frameworks: [Pybind11, Pytorch]
 
 experience:
-  - organization: Apple Platform Architecture
+  - organization: Apple
     role: Machine Learning Engineer
     dates: September 2025-Present
     highlights:
-      - Working at the intersection of hardware and software.
+      - Mapping machine learning workloads to hardware on the platform architecture team.
+      - Work spans performance modeling, kernel engineering, and algorithm exploration.  
   - organization: NVIDIA Math Libraries Team
     role: Sparse Linear Algebra Intern
     dates: Summer 2024
     highlights:
-      - Rewrote large parts of cuSPARSELt, a library for structured sparse-dense matrix multiplication in machine learning, for new Blackwell generation GPUs.
+      - Rewrote large parts of cuSPARSELt, a library for structured sparse-dense matrix multiplication 
+        in machine learning, for new Blackwell generation GPUs.
       - Investigated custom semiring support with JIT linking for sparse matrix-vector multiplication.
   - organization: Lawrence Berkeley National Laboratory
     role: Graduate Student Researcher
     dates: Summers 2023, 2021, 2020
     highlights:
       - Focused on high-performance algorithms for randomized sparse problems.
-      - Research blended theoretical and applied work, from new randomized algorithms to optimized software kernels for high performance.
+      - Research blended theoretical and applied work, from new randomized algorithms to 
+        optimized software kernels for high performance.
   - organization: National Renewable Energy Laboratory
     role: Visiting Graduate Student Researcher
     dates: Summer 2022

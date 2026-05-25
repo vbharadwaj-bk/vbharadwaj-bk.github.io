@@ -22,7 +22,7 @@ MONTH_ABBREVIATIONS = {
     "june": "Jun",
     "july": "Jul",
     "august": "Aug",
-    "september": "Sept",
+    "september": "Sep",
     "october": "Oct",
     "november": "Nov",
     "december": "Dec",
@@ -83,6 +83,9 @@ def _format_badge_year(value: Optional[object], max_length: int = 20) -> Optiona
     if value is None:
         return None
     value = str(value).strip()
+    
+    value = value.replace("Present", "Now")
+    
     for month, abbreviation in MONTH_ABBREVIATIONS.items():
         value = re.sub(rf"\b{month}\b", abbreviation, value, flags=re.IGNORECASE)
 
@@ -90,6 +93,11 @@ def _format_badge_year(value: Optional[object], max_length: int = 20) -> Optiona
         return value
 
     value = re.sub(r"\b20(\d{2})\b", r"'\1", value)
+
+    if value.startswith("Summers"):
+        if "," in value:
+            parts = value.split(",", 1)
+            return f"{parts[0]}<br>{parts[1].strip()}"
 
     if "," in value:
         segments = [segment.strip() for segment in value.split(",") if segment.strip()]
@@ -204,39 +212,11 @@ def build_al_folio_cv_data(
             }
         )
 
-    publications = publications or []
-    conference_count = len(
-        [publication for publication in publications if publication.get("type") == "inproceedings"]
-    )
-    journal_count = len(
-        [publication for publication in publications if publication.get("type") == "article"]
-    )
-    talks_count = len(cv_data.get("selected_talks") or [])
-    teaching_count = len(cv_data.get("teaching") or [])
-    summary_parts: List[str] = []
-    if conference_count or journal_count:
-        if conference_count and journal_count:
-            summary_parts.append(
-                f"Publications ({conference_count} conference, {journal_count} journal)"
-            )
-        elif conference_count:
-            summary_parts.append(f"Publications ({conference_count} conference)")
-        else:
-            summary_parts.append(f"Publications ({journal_count} journal)")
-    if talks_count:
-        summary_parts.append(f"Talks ({talks_count})")
-    if teaching_count:
-        summary_parts.append(f"Teaching ({teaching_count})")
-
-    summary = "See links in the navigation bar."
-    if summary_parts:
-        summary = f"{', '.join(summary_parts)}. See links in the navigation bar."
-
     sections.append(
         {
             "title": "Publications, Talks, and Teaching",
             "type": "list",
-            "contents": [summary],
+            "contents": ["See links in the navigation bar."],
         }
     )
 
