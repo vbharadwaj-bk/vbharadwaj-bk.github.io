@@ -22,7 +22,7 @@ MONTH_ABBREVIATIONS = {
     "june": "Jun",
     "july": "Jul",
     "august": "Aug",
-    "september": "Sep",
+    "september": "Sept",
     "october": "Oct",
     "november": "Nov",
     "december": "Dec",
@@ -42,9 +42,11 @@ def build_al_folio_cv_data(cv_data: Dict[str, Any]) -> List[Dict[str, Any]]:
         value = str(value).strip()
         for month, abbreviation in MONTH_ABBREVIATIONS.items():
             value = re.sub(rf"\b{month}\b", abbreviation, value, flags=re.IGNORECASE)
-        value = re.sub(r"\b20(\d{2})\b", r"'\1", value)
+
         if len(value) <= max_length:
             return value
+
+        value = re.sub(r"\b20(\d{2})\b", r"'\1", value)
 
         if "," in value:
             segments = [segment.strip() for segment in value.split(",") if segment.strip()]
@@ -116,10 +118,6 @@ def build_al_folio_cv_data(cv_data: Dict[str, Any]) -> List[Dict[str, Any]]:
             description.append(f"Cumulative GPA: {edu['gpa']}")
 
         degree = edu.get("degree") or ""
-        if degree:
-            degree = degree.replace(" in ", ", ")
-            if degree.startswith("BS,"):
-                degree = degree.replace("BS,", "Bachelor of Science,", 1)
 
         education_contents.append(
             {
