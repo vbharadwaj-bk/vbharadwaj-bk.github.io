@@ -300,7 +300,7 @@ class MathBlockPreprocessor(Preprocessor):
         while 1:
             m = self.TEMPLATE_BLOCK_MATH.search(text)
             if m:
-                mathblock = '\[' + m.group('mathblock') + '\]'
+                mathblock = r'\[' + m.group('mathblock') + r'\]'
                 stash = self.md.htmlStash.store(mathblock)
                 text = f'{text[:m.start()]}{stash}{text[m.end():]}'
             else:
@@ -309,7 +309,7 @@ class MathBlockPreprocessor(Preprocessor):
         while 1:
             m = self.TEMPLATE_LINE_MATH.search(text)
             if m:
-                mathline = '\(' + m.group('mathline') + '\)'
+                mathline = r'\(' + m.group('mathline') + r'\)'
                 stash = self.md.htmlStash.store(mathline)
                 text = f'{text[:m.start()]}{stash}{text[m.end():]}'
             else:

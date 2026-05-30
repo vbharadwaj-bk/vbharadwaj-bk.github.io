@@ -139,6 +139,8 @@ teaching:
 
 professional_service:
   peer_review:
+    - venue: SIAM Journal on Scientific Computing
+      year: 2026
     - venue: ACM Transactions on Mathematical Software
       year: 2025
     - venue: ACM SPAA Junior PC
