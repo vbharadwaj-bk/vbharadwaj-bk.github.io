@@ -12,7 +12,7 @@
 }
 
 .profile-image-frame {
-  --profile-size: 260px;
+  --profile-size: 240px;
   width: min(100%, var(--profile-size));
   height: var(--profile-size);
   overflow: hidden;
@@ -90,78 +90,6 @@
   margin-bottom: 0;
 }
 </style>
-<script>
-  const updateProfileSize = () => {
-    if (window.matchMedia('(max-width: 700px)').matches) {
-      document
-        .querySelectorAll('.desktop .profile-image-frame')
-        .forEach((frame) => frame.style.removeProperty('--profile-size'));
-      return;
-    }
-
-    document.querySelectorAll('.desktop .profile-image-frame').forEach((frame) => {
-      const leftCol = document.querySelector('.desktop .col-8');
-      if (!leftCol) {
-        return;
-      }
-
-      const computedSize = parseFloat(
-        getComputedStyle(frame).getPropertyValue('--profile-size')
-      );
-      const baseSize = Number.isFinite(computedSize) && computedSize > 0 ? computedSize : 260;
-      const leftHeight = leftCol.getBoundingClientRect().height;
-      if (leftHeight > 0) {
-        const size = Math.min(baseSize, Math.floor(leftHeight));
-        frame.style.setProperty('--profile-size', `${size}px`);
-      }
-    });
-  };
-
-  window.addEventListener('load', updateProfileSize);
-  window.addEventListener('resize', updateProfileSize);
-</script>
-<script>
-  const animateHeader = () => {
-    if (window.matchMedia('(max-width: 700px)').matches) {
-      return;
-    }
-
-    const header = document.querySelector('.desktop .title-desc .post-title');
-    if (!header) {
-      return;
-    }
-
-    const fullText = header.textContent.replace(/\s+/g, ' ').trim();
-    if (!fullText) {
-      return;
-    }
-
-    header.textContent = '';
-    const prompt = document.createElement('span');
-    prompt.className = 'terminal-prompt';
-    prompt.textContent = '>';
-    const typedText = document.createElement('span');
-    typedText.className = 'terminal-text';
-    const cursor = document.createElement('span');
-    cursor.className = 'terminal-cursor';
-    header.append(prompt, typedText, cursor);
-
-    let index = 0;
-    const typeNext = () => {
-      if (index < fullText.length) {
-        typedText.textContent += fullText[index];
-        index += 1;
-        window.setTimeout(typeNext, 90);
-      } else {
-        cursor.classList.add('hidden');
-      }
-    };
-
-    typeNext();
-  };
-
-  window.addEventListener('load', animateHeader);
-</script>
 
       <div class="post">
         <header class="post-header">
@@ -297,5 +225,48 @@
           {%- endif %}
       </article>
 </div>
+
+<script>
+  const animateHeader = () => {
+    if (window.matchMedia('(max-width: 700px)').matches) {
+      return;
+    }
+
+    const header = document.querySelector('.desktop .title-desc .post-title');
+    if (!header) {
+      return;
+    }
+
+    const fullText = header.textContent.replace(/\s+/g, ' ').trim();
+    if (!fullText) {
+      return;
+    }
+
+    header.textContent = '';
+    const prompt = document.createElement('span');
+    prompt.className = 'terminal-prompt';
+    prompt.textContent = '>';
+    const typedText = document.createElement('span');
+    typedText.className = 'terminal-text';
+    const cursor = document.createElement('span');
+    cursor.className = 'terminal-cursor';
+    header.append(prompt, typedText, cursor);
+
+    let index = 0;
+    const typeNext = () => {
+      if (index < fullText.length) {
+        typedText.textContent += fullText[index];
+        index += 1;
+        window.setTimeout(typeNext, 90);
+      } else {
+        cursor.classList.add('hidden');
+      }
+    };
+
+    typeNext();
+  };
+
+  animateHeader();
+</script>
 
 {% endblock %}
