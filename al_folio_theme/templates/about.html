@@ -5,9 +5,17 @@
 {% from "_includes/talk_entries.html" import talk_list with context %}
 
 {% block content %}
+<style>
+@media (max-width: 700px) {
+  .post-header .post-title { display: none !important; }
+  .title-desc .desc { margin-bottom: 0; }
+}
+</style>
+
       <div class="post">
         <header class="post-header">
-          <div class="desktop">
+          <!-- Desktop title moved next to profile image for bottom alignment -->
+          <div class="mobile">
             <h1 class="post-title font-weight-lighter">
               {% if SITE.title is none -%}<span class="font-weight-bolder">{{ SITE.first_name }}</span>&nbsp;{%- if SITE.middle_name -%}
                   {{- SITE.middle_name -}}&nbsp;
@@ -22,8 +30,18 @@
           {% if page.profile -%}
           <div class="desktop">
             <div class="container pl-0 pr-0">
-            <div class="row">
+            <div class="row align-items-end">
             <div class="col-8 pr-0">
+              <div class="title-desc d-flex flex-column justify-content-end">
+                <h1 class="post-title font-weight-lighter">
+                  {% if SITE.title is none -%}<span class="font-weight-bolder">{{ SITE.first_name }}</span>&nbsp;{%- if SITE.middle_name -%}
+                      {{- SITE.middle_name -}}&nbsp;
+                    {%- endif -%}
+                  <span class="font-weight-lighter">{{ SITE.last_name}}</span>
+                  {%- else -%}{{ SITE.title }}{%- endif %}
+                </h1>
+                <p class="desc">{{ page.subtitle }}</p>
+              </div>
               {{ page.content }}
             </div>
             <div class="col-4">
@@ -36,10 +54,9 @@
                   {% else %}
                     {%- set profile_image_class = "img-fluid z-depth-1 rounded" -%}
                   {% endif %}
-                  {{ figure(profile_image_path, class=profile_image_class, alt=page.profile.image, cache_bust=True, width=0.01, height=0.01)}}
+                  {{ figure(profile_image_path, class=profile_image_class, alt=page.profile.image, cache_bust=True, width=220, height=220)}}
                 {% endif -%}
                 <div class="d-flex justify-content-center">
-                {%- include '_includes/social.html' %}
                 </div>
                 {% if page.profile.address %}
                   <div class="address">
@@ -74,7 +91,6 @@
             </div>
             </div>
               <div class="row d-flex justify-content-center">
-              {%- include '_includes/social.html' %}
               </div>
               <div class="row d-flex justify-content-center">
                 {% if page.profile.address %}
