@@ -68,6 +68,36 @@
   margin-bottom: 0;
 }
 </style>
+<script>
+  const updateProfileSize = () => {
+    if (window.matchMedia('(max-width: 700px)').matches) {
+      document
+        .querySelectorAll('.desktop .profile-image-frame')
+        .forEach((frame) => frame.style.removeProperty('--profile-size'));
+      return;
+    }
+
+    document.querySelectorAll('.desktop .profile-image-frame').forEach((frame) => {
+      const leftCol = document.querySelector('.desktop .col-8');
+      if (!leftCol) {
+        return;
+      }
+
+      const computedSize = parseFloat(
+        getComputedStyle(frame).getPropertyValue('--profile-size')
+      );
+      const baseSize = Number.isFinite(computedSize) && computedSize > 0 ? computedSize : 260;
+      const leftHeight = leftCol.getBoundingClientRect().height;
+      if (leftHeight > 0) {
+        const size = Math.min(baseSize, Math.floor(leftHeight));
+        frame.style.setProperty('--profile-size', `${size}px`);
+      }
+    });
+  };
+
+  window.addEventListener('load', updateProfileSize);
+  window.addEventListener('resize', updateProfileSize);
+</script>
 
       <div class="post">
         <header class="post-header">
