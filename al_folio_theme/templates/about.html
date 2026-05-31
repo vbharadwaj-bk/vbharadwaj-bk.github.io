@@ -55,18 +55,35 @@
 }
 
 .title-desc .post-title {
-  font-family: "IBM Plex Mono", monospace;
+  font-family: "Google Sans Code", monospace;
   font-size: 2.1rem;
   line-height: 1.1;
   margin-bottom: 0.2rem;
 }
 
 .post-header .post-title {
-  font-family: "IBM Plex Mono", monospace;
+  font-family: "Google Sans Code", monospace;
 }
 
 .title-desc .desc {
   font-size: 1rem;
+}
+
+.terminal-prompt {
+  margin-right: 0.35ch;
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 0.6ch;
+  height: 1em;
+  background-color: currentColor;
+  margin-left: 0.1ch;
+  vertical-align: -0.1em;
+}
+
+.terminal-cursor.hidden {
+  display: none;
 }
 
 .about-content > :last-child {
@@ -102,6 +119,48 @@
 
   window.addEventListener('load', updateProfileSize);
   window.addEventListener('resize', updateProfileSize);
+</script>
+<script>
+  const animateHeader = () => {
+    if (window.matchMedia('(max-width: 700px)').matches) {
+      return;
+    }
+
+    const header = document.querySelector('.desktop .title-desc .post-title');
+    if (!header) {
+      return;
+    }
+
+    const fullText = header.textContent.replace(/\s+/g, ' ').trim();
+    if (!fullText) {
+      return;
+    }
+
+    header.textContent = '';
+    const prompt = document.createElement('span');
+    prompt.className = 'terminal-prompt';
+    prompt.textContent = '>';
+    const typedText = document.createElement('span');
+    typedText.className = 'terminal-text';
+    const cursor = document.createElement('span');
+    cursor.className = 'terminal-cursor';
+    header.append(prompt, typedText, cursor);
+
+    let index = 0;
+    const typeNext = () => {
+      if (index < fullText.length) {
+        typedText.textContent += fullText[index];
+        index += 1;
+        window.setTimeout(typeNext, 90);
+      } else {
+        cursor.classList.add('hidden');
+      }
+    };
+
+    typeNext();
+  };
+
+  window.addEventListener('load', animateHeader);
 </script>
 
       <div class="post">
