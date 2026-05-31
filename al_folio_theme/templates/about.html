@@ -10,6 +10,63 @@
   .post-header .post-title { display: none !important; }
   .title-desc .desc { margin-bottom: 0; }
 }
+
+.profile-image-frame {
+  --profile-size: 260px;
+  width: min(100%, var(--profile-size));
+  height: var(--profile-size);
+  overflow: hidden;
+  position: relative;
+}
+
+.profile-image-frame figure,
+.profile-image-frame picture {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.profile-image-frame img {
+  height: 100%;
+  width: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  max-width: none;
+}
+
+@media (max-width: 700px) {
+  .mobile .profile-image-frame {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .mobile .profile-image-frame img {
+    position: static;
+    transform: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    max-width: 100%;
+  }
+}
+
+.title-desc .post-title {
+  font-size: 2.1rem;
+  line-height: 1.1;
+  margin-bottom: 0.2rem;
+}
+
+.title-desc .desc {
+  font-size: 1rem;
+}
+
+.about-content > :last-child {
+  margin-bottom: 0;
+}
 </style>
 
       <div class="post">
@@ -42,7 +99,9 @@
                 </h1>
                 <p class="desc">{{ page.subtitle }}</p>
               </div>
-              {{ page.content }}
+              <div class="about-content">
+                {{ page.content }}
+              </div>
             </div>
             <div class="col-4">
               <div class="profile">
@@ -50,11 +109,14 @@
                   {%- set profile_image_path = page.profile.image  -%}
 
                   {% if page.profile.image_circular %}
-                    {%- set profile_image_class = "img-fluid z-depth-1 rounded-circle" -%}
+                    {%- set profile_frame_class = "profile-image-frame rounded-circle z-depth-1" -%}
                   {% else %}
-                    {%- set profile_image_class = "img-fluid z-depth-1 rounded" -%}
+                    {%- set profile_frame_class = "profile-image-frame rounded z-depth-1" -%}
                   {% endif %}
-                  {{ figure(profile_image_path, class=profile_image_class, alt=page.profile.image, cache_bust=True, width=220, height=220)}}
+                  {%- set profile_image_class = "profile-image-img" -%}
+                  <div class="{{ profile_frame_class }}">
+                    {{ figure(profile_image_path, class=profile_image_class, alt=page.profile.image, cache_bust=True, width=260, height=260)}}
+                  </div>
                 {% endif -%}
                 <div class="d-flex justify-content-center">
                 </div>
@@ -79,11 +141,14 @@
                   {%- set profile_image_path = page.profile.image  -%}
 
                   {% if page.profile.image_circular %}
-                    {%- set profile_image_class = "img-fluid z-depth-1 rounded-circle" -%}
+                    {%- set profile_frame_class = "profile-image-frame rounded-circle z-depth-1" -%}
                   {% else %}
-                    {%- set profile_image_class = "img-fluid z-depth-1 rounded" -%}
+                    {%- set profile_frame_class = "profile-image-frame rounded z-depth-1" -%}
                   {% endif %}
-                  {{ figure(profile_image_path, class=profile_image_class, alt=page.profile.image, cache_bust=True)}}
+                  {%- set profile_image_class = "profile-image-img" -%}
+                  <div class="{{ profile_frame_class }}">
+                    {{ figure(profile_image_path, class=profile_image_class, alt=page.profile.image, cache_bust=True, width=260, height=260)}}
+                  </div>
                 {% endif -%}
               </div>
             </div>
@@ -100,7 +165,9 @@
                 {% endif %}
               </div>
               <div class="row pt-3">
-                {{ page.content }}
+                <div class="about-content">
+                  {{ page.content }}
+                </div>
               </div>
               </div>
             </div>
