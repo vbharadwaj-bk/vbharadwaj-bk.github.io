@@ -2,8 +2,20 @@
  * Styles for the base elements of the theme.
  ******************************************************************************/
 
-b {
-  font-weight: #{$font-weight-normal};
+:root {
+  --font-weight-base: 450;
+  --font-weight-bold: 550;
+  --font-weight-ultrabold: 600;
+}
+
+b,
+strong {
+  font-weight: var(--font-weight-bold);
+}
+
+body {
+  font-family: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  font-weight: var(--font-weight-base);
 }
 
 h1,
@@ -13,6 +25,13 @@ h4,
 h5,
 h6 {
   color: var(--global-heading-color);
+  font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;
+  font-weight: var(--font-weight-ultrabold);
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
 }
 
 
@@ -33,6 +52,14 @@ table {
     div {
       font-weight: inherit;
     }
+  }
+}
+
+.news table {
+  td,
+  th,
+  th div {
+    font-weight: var(--font-weight-base);
   }
 }
 
@@ -244,6 +271,10 @@ blockquote {
     color: var(--global-heading-color);
   }
 
+  .navbar-brand.title {
+    font-family: "Google Sans Code", monospace;
+  }
+
   .navbar-nav .nav-item .nav-link {
     color: var(--global-heading-color);
 
@@ -426,7 +457,7 @@ footer.sticky-bottom {
 
   h1 {
     color: var(--global-theme-color);
-    font-size: 5rem;
+    font-size: 3.5rem;
   }
 }
 
@@ -1281,9 +1312,7 @@ nav[data-toggle="toc"] {
   }
 
   h2.talks {
-    color: var(--global-divider-color);
-    margin-bottom: -2rem;
-    text-align: right;
+    display: none;
   }
 
   ol.talks {

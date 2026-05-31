@@ -7,11 +7,11 @@
       {% set class="nodivide" %}
       {% endif%}
       <div class="row {{class}}">
-        <div class="col-sm-3 date">
+        <div class="col-sm-2 date">
         {{ entry.date | strftime("%b %-d, %Y") }}
         </div>
 
-        <div class="col-sm-9">
+        <div class="col-sm-10">
           <!-- Title -->
           <div class="title">{{entry.venue}}</div>
           <div class="periodical">{{entry.title}}</div>
