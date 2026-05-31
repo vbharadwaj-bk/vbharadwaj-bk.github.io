@@ -3,9 +3,14 @@
  ******************************************************************************/
 
 :root {
-  --font-weight-base: 450;
-  --font-weight-bold: 550;
-  --font-weight-ultrabold: 600;
+  --font-weight-base: 420;
+  --font-weight-bold: 560;
+  --font-weight-ultrabold: 560;
+  --global-divider-width: 2px;
+}
+
+.profile-icons .social a:hover {
+  text-decoration: none;
 }
 
 b,
@@ -36,7 +41,18 @@ h2 {
 
 
 hr {
-  border-top: 1px solid var(--global-divider-color);
+  border-top: var(--global-divider-width) solid var(--global-divider-color);
+}
+
+.header-bar,
+.tag-category-list {
+  border-bottom-width: var(--global-divider-width);
+}
+
+.post-list li,
+.talks .row,
+.publications .row {
+  border-bottom-width: var(--global-divider-width);
 }
 
 table {
@@ -457,7 +473,7 @@ footer.sticky-bottom {
 
   h1 {
     color: var(--global-theme-color);
-    font-size: 3.5rem;
+    font-size: 2.8rem;
   }
 }
 
@@ -690,7 +706,7 @@ footer.sticky-bottom {
       }
 
       .title {
-        font-weight: #{$font-weight-normal};
+        font-weight: var(--font-weight-bold);
         color: var(--global-heading-color);
       }
 
@@ -844,13 +860,12 @@ code {
 }
 
 
-// Transitioning Themes
+// Transitioning Themes (disabled for instant theme switch)
 html.transition,
 html.transition *,
 html.transition *:before,
 html.transition *:after {
-  transition: all 750ms !important;
-  transition-delay: 0 !important;
+  transition: none !important;
 }
 
 // Extra Markdown style (post Customization)

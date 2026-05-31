@@ -12,7 +12,7 @@
 }
 
 .profile-image-frame {
-  --profile-size: 240px;
+  --profile-size: 200px;
   width: min(100%, var(--profile-size));
   height: var(--profile-size);
   overflow: hidden;
@@ -37,6 +37,39 @@
   max-width: none;
 }
 
+.profile {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.profile-stack {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.profile-icons {
+  width: min(100%, var(--profile-size));
+}
+
+.profile-icons .social {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem;
+  font-size: clamp(1.2rem, 6vw, 1.9rem);
+}
+
+.profile-icons .social a {
+  display: inline-flex;
+}
+
 @media (max-width: 700px) {
   .mobile .profile-image-frame {
     width: 100%;
@@ -51,6 +84,10 @@
     height: 100%;
     object-fit: cover;
     max-width: 100%;
+  }
+
+  .mobile .profile-icons {
+    width: 100%;
   }
 }
 
@@ -136,12 +173,15 @@
                     {%- set profile_frame_class = "profile-image-frame rounded z-depth-1" -%}
                   {% endif %}
                   {%- set profile_image_class = "profile-image-img" -%}
-                  <div class="{{ profile_frame_class }}">
-                    {{ figure(profile_image_path, class=profile_image_class, alt=page.profile.image, cache_bust=True, width=260, height=260)}}
+                  <div class="profile-stack">
+                    <div class="{{ profile_frame_class }}">
+                      {{ figure(profile_image_path, class=profile_image_class, alt=page.profile.image, cache_bust=True, width=260, height=260)}}
+                    </div>
+                    <div class="profile-icons">
+                      {%- include '_includes/social.html' %}
+                    </div>
                   </div>
                 {% endif -%}
-                <div class="d-flex justify-content-center">
-                </div>
                 {% if page.profile.address %}
                   <div class="address">
                   {{ page.profile.address }}
@@ -168,8 +208,13 @@
                     {%- set profile_frame_class = "profile-image-frame rounded z-depth-1" -%}
                   {% endif %}
                   {%- set profile_image_class = "profile-image-img" -%}
-                  <div class="{{ profile_frame_class }}">
-                    {{ figure(profile_image_path, class=profile_image_class, alt=page.profile.image, cache_bust=True, width=260, height=260)}}
+                  <div class="profile-stack">
+                    <div class="{{ profile_frame_class }}">
+                      {{ figure(profile_image_path, class=profile_image_class, alt=page.profile.image, cache_bust=True, width=260, height=260)}}
+                    </div>
+                    <div class="profile-icons">
+                      {%- include '_includes/social.html' %}
+                    </div>
                   </div>
                 {% endif -%}
               </div>
@@ -177,8 +222,6 @@
             <div class="col-3">
             </div>
             </div>
-              <div class="row d-flex justify-content-center">
-              </div>
               <div class="row d-flex justify-content-center">
                 {% if page.profile.address %}
                   <div class="address">
