@@ -21,9 +21,7 @@
     <p class="post-meta">
       {{ article.date | strftime("%B %-d") }}&nbsp;&nbsp;&middot;&nbsp;&nbsp;<a href="{{ SITE.SITEURL ~ '/posts/' ~ year }}"><i class="fas fa-calendar fa-sm"></i>&nbsp;{{ year }}</a>{% if article.tags|length > 0 %}&nbsp;&nbsp;&middot;&nbsp;&nbsp;{% for tag in article.tags %}<a href="{{ tag.url | relative_url }}"><i class="fas fa-hashtag fa-sm"></i> {{ tag }}</a>{% if not loop.last %} &nbsp; {% endif %}{% endfor %}{% endif %}{% if category and category.name != "" %}&nbsp;&nbsp;&middot;&nbsp;&nbsp;<a href="{{ category.url | relative_url }}"><i class="fas fa-tag fa-sm"></i> {{ category }}</a>{% endif %}
     </p>
-  </header>
-
-  <article class="post-content">
+    <p>
     {% set disclaimer_raw = article.disclaimer if article.disclaimer is defined else true %}
     {% set disclaimer_enabled = disclaimer_raw %}
     {% if disclaimer_raw is string %}
@@ -36,6 +34,11 @@
       <span class="post-authorship-note-text">{{ disclaimer_text }}</span>
     </div>
     {% endif %}
+    </p>
+
+  </header>
+
+  <article class="post-content">
     <div id="markdown-content">
       {{ article.content }}
     </div>
