@@ -29,6 +29,4 @@ architecture team. My dissertation covers **deep learning kernel generation**,
 **randomized numerical linear algebra**. More recently, I've been thinking about 
 transformer architectures. 
 
-
-
-**Email**: `firstname_lastname [at] berkeley.edu`
+<i class="fa-solid fa-envelope"></i> `firstname_lastname [at] berkeley.edu`
