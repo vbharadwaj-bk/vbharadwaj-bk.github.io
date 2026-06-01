@@ -5,7 +5,6 @@
 :root {
   --font-weight-base: 420;
   --font-weight-bold: 560;
-  --font-weight-ultrabold: 560;
   --global-divider-width: 2px;
 }
 
@@ -31,7 +30,7 @@ h5,
 h6 {
   color: var(--global-heading-color);
   font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;
-  font-weight: var(--font-weight-ultrabold);
+  font-weight: var(--font-weight-base) !important;
 }
 
 h2 {
