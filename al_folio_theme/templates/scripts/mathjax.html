@@ -11,6 +11,20 @@
           {% endfor %}
         }
         {% endif %}
+      },
+      startup: {
+        ready: () => {
+          MathJax.startup.defaultReady();
+          const style = document.createElement('style');
+          style.innerHTML = `
+            mjx-container[display="true"] {
+              min-width: 0 !important;
+              overflow-x: auto;
+              overflow-y: hidden;
+            }
+          `;
+          document.head.appendChild(style);
+        }
       }
     };
   </script>
