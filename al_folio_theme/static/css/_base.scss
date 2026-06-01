@@ -3,8 +3,8 @@
  ******************************************************************************/
 
 :root {
-  --font-weight-base: 420;
-  --font-weight-bold: 560;
+  --font-weight-base: 440;
+  --font-weight-bold: 580;
   --global-divider-width: 2px;
 }
 
@@ -29,8 +29,7 @@ h4,
 h5,
 h6 {
   color: var(--global-heading-color);
-  font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;
-  font-weight: var(--font-weight-base) !important;
+  font-weight: var(--font-weight-base);
 }
 
 h2 {
