@@ -75,6 +75,16 @@ table {
   th div {
     font-weight: var(--font-weight-base);
   }
+
+  td,
+  th {
+    padding-left: 0.9rem;
+  }
+
+  td:first-child,
+  th:first-child {
+    padding-left: 0;
+  }
 }
 
 a,
