@@ -105,6 +105,47 @@
           </div>
         </div>
       </nav>
+      {% if is_homepage %}
+      <script>
+        const animateNavbarTitle = () => {
+          const title = document.querySelector('.navbar-brand.title');
+          if (!title || title.dataset.typed === 'true') {
+            return;
+          }
+
+          const fullText = title.textContent.replace(/\s+/g, ' ').trim();
+          if (!fullText) {
+            return;
+          }
+
+          title.dataset.typed = 'true';
+          title.textContent = '';
+          const prompt = document.createElement('span');
+          prompt.className = 'terminal-prompt';
+          prompt.textContent = '>';
+          const typedText = document.createElement('span');
+          typedText.className = 'terminal-text';
+          const cursor = document.createElement('span');
+          cursor.className = 'terminal-cursor';
+          title.append(prompt, typedText, cursor);
+
+          let index = 0;
+          const typeNext = () => {
+            if (index < fullText.length) {
+              typedText.textContent += fullText[index];
+              index += 1;
+              window.setTimeout(typeNext, 90);
+            } else {
+              cursor.classList.add('hidden');
+            }
+          };
+
+          typeNext();
+        };
+
+        window.addEventListener('load', animateNavbarTitle);
+      </script>
+      {% endif %}
 {% if SITE.enable_progressbar %}
       <!-- Scrolling Progress Bar -->
       <progress id="progress" value="0">
