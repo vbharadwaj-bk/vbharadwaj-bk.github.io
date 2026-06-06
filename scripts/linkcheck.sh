@@ -5,12 +5,11 @@
 # Serves the built `output/` over HTTP (the dev build uses root-absolute URLs
 # like /images/..., which don't resolve under file://) and crawls it.
 #
+# Exits non-zero when broken links are found.
+#
 # Environment variables:
 #   LINKCHECK_PORT=8911   port for the temporary HTTP server
 #   LINKCHECK_EXTERN=1    also verify external URLs (slower, needs network)
-#   LINKCHECK_STRICT=1    exit non-zero when broken links are found
-#                         (blocks the commit; otherwise the report is
-#                         informational and the commit proceeds)
 set -uo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
@@ -55,10 +54,8 @@ STATUS=${PIPESTATUS[0]}
 echo
 if [ "$STATUS" -ne 0 ]; then
   echo "[linkcheck] Broken links found. Full report: $REPORT"
-  [ "${LINKCHECK_STRICT:-0}" = "1" ] && exit 1
 else
   echo "[linkcheck] No broken links found."
 fi
 
-# Informational by default — don't block the commit unless LINKCHECK_STRICT=1.
-exit 0
+exit "$STATUS"
