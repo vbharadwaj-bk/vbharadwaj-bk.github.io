@@ -9,6 +9,8 @@ import re
 
 from jinja2 import Environment, FileSystemLoader
 
+from extensions.md_jinja_extensions import register_md_globals
+
 from markdown.inlinepatterns import InlineProcessor
 from markdown.extensions import Extension
 import xml.etree.ElementTree as etree
@@ -56,18 +58,10 @@ class TemplateBlockPreprocessor(Preprocessor):
         re.MULTILINE | re.DOTALL | re.VERBOSE
     )
 
-    INLINE_FIGURE_RE = re.compile(
-        dedent(r'''
-            ^!figure\((?P<args>.*)\)[ ]*$
-        '''),
-        re.MULTILINE | re.VERBOSE
-    )
-
-    SIZE_TO_COL = {
-        "small": 6,
-        "medium": 8,
-        "large": 12,
-    }
+    # A {{ ... }} region is treated as an arbitrary Jinja template. The match
+    # includes the delimiters so the captured text is itself valid Jinja, and
+    # DOTALL lets a single expression span multiple lines.
+    JINJA_BLOCK_RE = re.compile(r'\{\{.*?\}\}', re.DOTALL)
 
     def __init__(self, md, config):
         super().__init__(md)
@@ -78,7 +72,14 @@ class TemplateBlockPreprocessor(Preprocessor):
         for key in filters:
             self.env.filters[key] = filters[key]
 
+        # Register the custom helpers (md_figure, ...) usable in {{ ... }} blocks.
+        register_md_globals(self.env)
+
         self.figure_import = '{% from "figure.html" import figure with context %}\n'
+        # Imports made available to bare {{ ... }} Jinja blocks. Helper functions
+        # such as md_figure are registered as globals (see md_jinja_extensions),
+        # so only the raw figure macro needs an explicit import here.
+        self.jinja_block_imports = '{% from "figure.html" import figure with context %}'
 
     def _render_figure_card(self, params):
         if "path" not in params:
@@ -130,101 +131,14 @@ class TemplateBlockPreprocessor(Preprocessor):
             zoomable=bool(params.get("zoomable", True)),
         )
 
-    def _render_inline_figure(self, args_text):
-        args = []
-        current = []
-        quote_char = None
-
-        for ch in args_text:
-            if quote_char is None:
-                if ch in ('"', "'"):
-                    quote_char = ch
-                    current.append(ch)
-                elif ch == ',':
-                    args.append(''.join(current).strip())
-                    current = []
-                else:
-                    current.append(ch)
-            else:
-                current.append(ch)
-                if ch == quote_char:
-                    quote_char = None
-
-        if quote_char is not None:
-            raise ValueError("Unterminated quote in !figure arguments.")
-
-        args.append(''.join(current).strip())
-
-        if len(args) != 4:
-            raise ValueError("Expected 4 arguments: path, size, alt, caption.")
-
-        path = args[0]
-        size = args[1]
-        alt_raw = args[2]
-        caption_raw = args[3]
-
-        if len(alt_raw) < 2 or alt_raw[0] not in ('"', "'") or alt_raw[-1] != alt_raw[0]:
-            raise ValueError("'alt' must be wrapped in matching quotes.")
-
-        if len(caption_raw) < 2 or caption_raw[0] not in ('"', "'") or caption_raw[-1] != caption_raw[0]:
-            raise ValueError("'caption' must be wrapped in matching quotes.")
-
-        alt = alt_raw[1:-1].strip()
-        caption = caption_raw[1:-1].strip()
-
-        if not path:
-            raise ValueError("'path' cannot be empty.")
-
-        size_key = size.lower()
-        if size_key not in self.SIZE_TO_COL:
-            raise ValueError("'size' must be one of: small, medium, large.")
-
-        col = self.SIZE_TO_COL[size_key]
-        left_col = max((12 - col) // 2, 0)
-        right_col = max(12 - col - left_col, 0)
-
-        template_input = dedent('''
-            <div class="row">
-            {% if left_col > 0 %}
-                <div class="col-{{ left_col }}"></div>
-            {% endif %}
-                <div class="col-{{ col }} card border-0 bg-white p-1 mb-3">
-                {{ figure(path=path, alt=alt, title=alt, caption=caption, class="img-fluid rounded z-depth-1", zoomable=True) }}
-            </div>
-            {% if right_col > 0 %}
-            <div class="col-{{ right_col }}"></div>
-            {% endif %}
-            </div>
-        ''')
-
-        template = self.env.from_string(self.figure_import + template_input)
-        return template.render(
-            path=path,
-            alt=alt,
-            caption=caption,
-            col=col,
-            left_col=left_col,
-            right_col=right_col,
-        ).strip()
-
+    def _render_jinja_block(self, block_text):
+        template = self.env.from_string(self.jinja_block_imports + block_text)
+        return template.render().strip()
 
     def run(self, lines):
         """ Match and store Template Blocks in the `HtmlStash`. """
 
         text = "\n".join(lines)
-
-        while 1:
-            m = self.INLINE_FIGURE_RE.search(text)
-            if m:
-                args_text = m.group("args")
-                try:
-                    rendered = self._render_inline_figure(args_text)
-                except Exception as e:
-                    rendered = f'<p>FIGURE ERROR: {e}</p>'
-
-                text = f'{text[:m.start()]}{rendered}{text[m.end():]}'
-            else:
-                break
 
         while 1:
             m = self.FIGURE_CARD_BLOCK_RE.search(text)
@@ -260,6 +174,23 @@ class TemplateBlockPreprocessor(Preprocessor):
 
             else:
                 break
+
+        # Process bare {{ ... }} Jinja regions last, after !TEMPLATE! blocks
+        # have already been rendered to HTML (so no stray braces remain there).
+        search_start = 0
+        while 1:
+            m = self.JINJA_BLOCK_RE.search(text, search_start)
+            if m:
+                try:
+                    rendered = self._render_jinja_block(m.group(0))
+                except Exception as e:
+                    rendered = f'<p>JINJA TEMPLATE ERROR: {e}</p>'
+                text = f'{text[:m.start()]}{rendered}{text[m.end():]}'
+                # Resume past the rendered output so we don't re-scan it.
+                search_start = m.start() + len(rendered)
+            else:
+                break
+
         return text.split("\n")
 
 

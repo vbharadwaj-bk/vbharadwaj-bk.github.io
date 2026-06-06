@@ -39,7 +39,7 @@ $$F = - \frac{\partial E}{\partial \bold{R}} = - \frac{\partial f_{\textrm{NN}}(
 The advantage of this approach is that the resulting force field is *conservative*, 
 which promotes energy conservation over the simulation lifetime.
 
-!figure(images/blog/atomic_gnn.png, medium, "Pipeline for molecular property prediction.", "Atomic graph neural networks take in atom positions and metadata. They emit predictions of total system energy and the force on each atom.")
+{{ md_figure("images/blog/atomic_gnn.png", "medium", "Pipeline for molecular property prediction.", "Atomic graph neural networks take in atom positions and metadata. They emit predictions of total system energy and the force on each atom.") }}
 
 The energy of a molecule doesn't change when you rotate it in space. It also shouldn't change
 if the order of the position vectors in $\bold{R}$ changes. A rotation-equivariant graph neural network
@@ -231,7 +231,7 @@ of $\bold{P}\paren{\bold{x} \otimes \bold{y}}$ corresponding to Wigner matrices 
 and it linearly combines the chunks that remain to reduce dimensionality. The weights in $\bold W$
 will be learnable parameters of our network.
 
-!figure(images/blog/cg_tensor_product.png, medium, "CG Tensor product and weight matmul.", "The Clebsch-Gordon (CG) tensor product followed by a dimensionality reduction and structured reweighting.")
+{{ md_figure("images/blog/cg_tensor_product.png", "medium", "CG Tensor product and weight matmul.", "The Clebsch-Gordon (CG) tensor product followed by a dimensionality reduction and structured reweighting.") }}
 
 The operation $\bold{P} \paren{\bold{x} \otimes \bold{y}}$ is called the **Clebsch-Gordon tensor product**.
 For convenience, we will often expand this operation to include multiplication by $\bold W$. At this point,
@@ -243,7 +243,7 @@ Let's now turn to the [Nequip](https://github.com/mir-group/nequip) equivariant 
 input atomic coordinates are first processed into a nearest neighbors graph $G = (V, E)$. 
 Each node is then assigned a feature vector.
 
-!figure(images/blog/egnn.png, medium, "An equivariant GNN.", "Equivariant graph neural networks combine node features with edge features using the CG tensor product. The resulting vectors are aggregated across the neighborhood of each node.")
+{{ md_figure("images/blog/egnn.png", "medium", "An equivariant GNN.", "Equivariant graph neural networks combine node features with edge features using the CG tensor product. The resulting vectors are aggregated across the neighborhood of each node.") }}
 
 At some intermediate layer of the network, let the node features be
 $\bold{x_1}...\bold{x_{\abs{V}}}$ with representation $\bold{D}_x$: we will first construct edge 
@@ -284,7 +284,7 @@ of the GPU kernel optimizations we made to achieve high performance, but does no
 used. That's what this section covers, and getting this architecture correct was a critical stepping stone to
 ensuring wide adoption of our package. 
 
-!figure(images/blog/oeq_software_stack.svg, large, "OpenEquivariance software stack.", "The OpenEquivariance software stack.")
+{{ md_figure("images/blog/oeq_software_stack.svg", "large", "OpenEquivariance software stack.", "The OpenEquivariance software stack.") }}
 
 Because tensor product operations vary wildly between network architectures (and indeed, even between layers of 
 the same network!), OpenEquivariance uses JIT compilation to achieve high performance. Users begin by

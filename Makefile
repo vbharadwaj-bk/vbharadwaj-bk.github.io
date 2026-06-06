@@ -52,6 +52,7 @@ html:
 
 clean:
 	[ ! -d "$(OUTPUTDIR)" ] || rm -rf "$(OUTPUTDIR)"
+	[ ! -d "$(BASEDIR)/cache" ] || rm -rf "$(BASEDIR)/cache"
 
 regenerate:
 	"$(PELICAN)" -r "$(INPUTDIR)" -o "$(OUTPUTDIR)" -s "$(CONFFILE)" $(PELICANOPTS)

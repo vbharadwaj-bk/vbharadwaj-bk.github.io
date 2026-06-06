@@ -146,6 +146,14 @@ MARKDOWN = {
     'output_format': 'html5',
 }
 
+# Content is rendered through custom Markdown extensions (see
+# extensions/template_block.py) whose logic can change independently of the
+# source files. Pelican's content cache keys only on file mtime, so it would
+# happily serve stale HTML after an extension change. The site builds in well
+# under a second, so we disable the cache to keep builds always-correct.
+LOAD_CONTENT_CACHE = False
+CACHE_CONTENT = False
+
 SITEMAP = {
     "format": "xml",
     "priorities": {

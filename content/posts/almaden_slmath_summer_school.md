@@ -8,20 +8,7 @@ Summary: >
   at IBM Research in Alamden, 2023. 
 ---
 
-!TEMPLATE!
-<div class="row">
-    <div class="col-2">
-    </div>
-        <div class="col-8 card border-0 bg-white p-1 mb-3">
-        {{ figure(path="images/blog/ibm_slmath/group_indoors.jpg",title="Group Photo, SLMATH 1064", class="img-fluid rounded z-depth-1", zoomable=True) }}
-        <div class="caption">
-        Students and staff at SLMATH 1064. 
-        </div>
-</div>
-<div class="col-2">
-</div>
-</div>
-!TEMPLATE!
+{{ md_figure("images/blog/ibm_slmath/group_indoors.jpg", "medium", "Group Photo, SLMATH 1064", "Students and staff at SLMATH 1064.") }}
 
 The Simons Laufer Mathematical Institute (previously known as MSRI) 
 hosts two-week programs for graduate students across the US to 
@@ -60,20 +47,7 @@ I work at the intersection of these topics. In addition
 to TAing, I was gratified to meet some of the heavyweights
 in both fields, and we had many productive discussions.
 
-!TEMPLATE!
-<div class="row">
-    <div class="col-2">
-    </div>
-        <div class="col-8 card border-0 bg-white p-1 mb-3">
-        {{ figure(path="images/blog/ibm_slmath/group_outdoors.jpg",title="Class Photo Outdoors", class="img-fluid rounded z-depth-1", zoomable=True) }}
-        <div class="caption">
-        Outdoor class photo against the backdrop of sunny Almaden. 
-        </div>
-</div>
-<div class="col-2">
-</div>
-</div>
-!TEMPLATE!
+{{ md_figure("images/blog/ibm_slmath/group_outdoors.jpg", "medium", "Class Photo Outdoors", "Outdoor class photo against the backdrop of sunny Almaden.") }}
 
 ### Logistics 
 The students stayed at the dormitories of San Jose State university
@@ -103,20 +77,7 @@ of research talks given by the students; 17 of the participants
 shared their research, and all three of us TAs presented our work
 as well. 
 
-!TEMPLATE!
-<div class="row">
-    <div class="col-2">
-    </div>
-        <div class="col-8 card border-0 bg-white p-1 mb-3">
-        {{ figure(path="images/blog/ibm_slmath/research_showcase.jpg",title="Research Showcase", class="img-fluid rounded z-depth-1", zoomable=True) }}
-        <div class="caption">
-        Introducing a speaker at the final-day research showcase. 
-        </div>
-    </div>
-<div class="col-2">
-</div>
-</div>
-!TEMPLATE!
+{{ md_figure("images/blog/ibm_slmath/research_showcase.jpg", "medium", "Research Showcase", "Introducing a speaker at the final-day research showcase.") }}
 
 I think the students really enjoyed the feedback from
 the instructors - I certainly did. The last two hours consisted

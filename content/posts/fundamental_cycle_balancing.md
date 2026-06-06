@@ -118,19 +118,7 @@ the original negative weight edges. Then consider
 the following signed graph on four vertices shaped like the 
 letter "N":
 
-!TEMPLATE!
-<div class="row">
-    <div class="col-4">
-    </div>
-
-        <div class="col-4 card border-0 bg-white p-1 mb-3" style="background-color: white !important">
-        {{ figure(path="images/blog/cycle_balancing.svg",title="An Example Signed Graph") }}
-        </div>
-
-    <div class="col-4">
-    </div>
-</div>
-!TEMPLATE!
+{{ md_figure("images/blog/cycle_balancing.svg", "small", "An Example Signed Graph") }}
 
 The frustration index of this graph is 0: we assign 1 to $B$ and $C$,
 and 0 to $A$ and $D$, corresponding to a partition $P^*= [(B, C), (A, D)]$. 
