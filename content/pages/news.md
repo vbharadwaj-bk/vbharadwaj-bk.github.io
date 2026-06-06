@@ -14,7 +14,7 @@ entries:
 
   - date: 2025-06-22
     content: |
-      I'm presenting this [poster]({static}/pdf/2025/enn_poster.pdf) at LBNL's [Deep Learning for Science](https://dl4sci-school.lbl.gov/home) workshop - stop by to chat
+      I'm presenting this [poster]({static}/pdf/2025/enn_poster.pdf) at LBNL's [Deep Learning for Science](https://sites.google.com/lbl.gov/dl4sci2025/) workshop - stop by to chat
       if you're attending. 
       
 
