@@ -8,7 +8,7 @@ Summary: >
   at IBM Research in Alamden, 2023. 
 ---
 
-{{ md_figure("images/blog/ibm_slmath/group_indoors.jpg", "medium", "Students and staff at SLMATH 1064.", "Group Photo, SLMATH 1064") }}
+{{ md_figure("images/blog/ibm_slmath/group_indoors.jpg", "medium", "Students and staff at SLMATH 1064.")}}
 
 The Simons Laufer Mathematical Institute (previously known as MSRI) 
 hosts two-week programs for graduate students across the US to 
