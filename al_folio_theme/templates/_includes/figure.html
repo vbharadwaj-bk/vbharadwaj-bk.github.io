@@ -10,6 +10,7 @@
                 title=none,
                 zoomable=none,
                 caption=none,
+                style=none,
                 cache_bust=true) -%}
 
 {% set img_path = path | replace(".jpg", "") | replace(".jpeg", "") | replace(".png", "") | replace(".tiff", "") %}
@@ -28,6 +29,7 @@
       {% if alt %}alt="{{ alt | trim }}"{% endif %}
       {% if title %}title="{{ title | trim }}"{% endif %}
       {% if zoomable %}data-zoomable{% endif %}
+      {% if style %}style="{{ style }}"{% endif %}
       onerror="this.onerror=null; $('.responsive-img-srcset').remove();"
     >
   </picture>

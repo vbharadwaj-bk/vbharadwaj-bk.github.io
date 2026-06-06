@@ -28,9 +28,9 @@ arbitrary presentation logic inline:
 
 Available helpers (see `extensions/md_jinja_extensions.py`):
 
-- **`md_figure(path, size="small", caption=None, hover=None)`** — a single,
-  horizontally-centered image on a transparent card (so transparent SVGs blend
-  into the page).
+- **`md_figure(path, size="small", caption=None, hover=None, bg_color=None)`** —
+  a single, horizontally-centered image on a transparent card (so transparent
+  SVGs blend into the page).
   - `path` — image path under `content/`.
   - `size` — the image width; the remaining horizontal space becomes equal
     gutters on either side:
@@ -44,6 +44,10 @@ Available helpers (see `extensions/md_jinja_extensions.py`):
 
   - `caption` — text shown beneath the image. Omit it for no caption.
   - `hover` — tooltip / alt text. Defaults to `caption` when not given.
+  - `bg_color` — image background color. When `None` (default) the image is
+    transparent inline and takes the page background color when magnified
+    (so a clicked/zoomed transparent SVG isn't see-through). Pass `"white"`
+    or a hex color (e.g. `"#1b1b1b"`) to force that color in both states.
 - **`figure(path, ...)`** — the raw al-folio figure macro (from
   `_includes/figure.html`), auto-imported into every block for fine-grained
   control (class, width/height, zoomable, etc.).

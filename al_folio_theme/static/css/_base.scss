@@ -193,6 +193,14 @@ blockquote {
   background-color: transparent !important;
 }
 
+// When an md_figure image is magnified (medium-zoom adds
+// .medium-zoom-image--opened) give it a solid page-colored background so
+// transparent images (e.g. SVGs) don't show the page content behind them.
+// An explicit bg_color is applied as an inline style and overrides this.
+.md-figure-img.medium-zoom-image--opened {
+  background-color: var(--global-bg-color);
+}
+
 // Citation
 
 .citation,
