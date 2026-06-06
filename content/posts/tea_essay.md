@@ -21,23 +21,7 @@ This essay won the [2023-2024 award](https://gsi.berkeley.edu/programs-services/
 website. Also check out
 my [student reviews for CS267 in 2022]({static}/pdf/teaching_reviews/reviews_berkeley.pdf)!* 
 
-
-!TEMPLATE!
-<div class="row">
-    <div class="col-2">
-    </div>
-        <div class="col-8 card border-0 bg-white p-1 mb-3">
-        {{ figure(path="images/blog/cookies.jpeg",title="A tray of cookies.", class="img-fluid rounded z-depth-1", zoomable=False) }}
-        <div class="caption">
-        A delicious tray of cookies. Wikimedia
-        Commons public domain.
-        </div>
-</div>
-<div class="col-2">
-</div>
-</div>
-!TEMPLATE!
-
+{{ md_figure("images/blog/cookies.jpeg", "medium") }}
 
 The demand for computer science classes has 
 ballooned across the nation, and UC Berkeley 
