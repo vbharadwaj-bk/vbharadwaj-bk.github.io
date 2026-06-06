@@ -12,4 +12,3 @@ invoke
 livereload
 typst
 pre-commit
-LinkChecker

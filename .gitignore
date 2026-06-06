@@ -6,4 +6,3 @@ staging/*
 !staging/.empty
 .DS_Store
 original_images/
-linkcheck-report.txt

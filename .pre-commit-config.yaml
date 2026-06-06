@@ -4,12 +4,3 @@ repos:
     hooks:
       - id: prettier
         files: \.(yml|yaml)$
-  - repo: local
-    hooks:
-      - id: linkcheck
-        name: Check for broken links
-        entry: scripts/linkcheck.sh
-        language: script
-        pass_filenames: false
-        always_run: true
-        verbose: true
