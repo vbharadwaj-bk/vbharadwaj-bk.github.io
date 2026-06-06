@@ -17,7 +17,7 @@
 <nav aria-label="Blog page naviation">
   <ul class="pagination pagination-lg justify-content-center">
     <li class="page-item {% if not prev_page_url %}disabled{% endif %}">
-      <a class="page-link" href="{{ prev_page_url }}" tabindex="-1" aria-disabled="{{ dates_page.has_previous() }}">Newer</a>
+      <a class="page-link" href="{{ prev_page_url or '#' }}" tabindex="-1" aria-disabled="{{ dates_page.has_previous() }}">Newer</a>
     </li>
 
     {% set start_range = [1, dates_page.number - 2] | max %}
@@ -28,7 +28,7 @@
     {% endfor -%}
 
     <li class="page-item {% if not next_page_url %}disabled{% endif %}">
-      <a class="page-link" href="{{ next_page_url }}">Older</a>
+      <a class="page-link" href="{{ next_page_url or '#' }}">Older</a>
     </li>
   </ul>
 </nav>
