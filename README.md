@@ -28,9 +28,22 @@ arbitrary presentation logic inline:
 
 Available helpers (see `extensions/md_jinja_extensions.py`):
 
-- **`md_figure(path, size="small", alt="", caption="")`** — a single,
-  horizontally-centered image. `size` is one of `small`, `medium`, or `large`,
-  which set the image width (and the centered gutters around it).
+- **`md_figure(path, size="small", caption=None, hover=None)`** — a single,
+  horizontally-centered image on a transparent card (so transparent SVGs blend
+  into the page).
+  - `path` — image path under `content/`.
+  - `size` — the image width; the remaining horizontal space becomes equal
+    gutters on either side:
+
+    | `size`   | width (of 12 cols) | gutter each side |
+    |----------|--------------------|------------------|
+    | `tiny`   | 4                  | 4                |
+    | `small`  | 6 (default)        | 3                |
+    | `medium` | 8                  | 2                |
+    | `large`  | 12 (full width)    | 0                |
+
+  - `caption` — text shown beneath the image. Omit it for no caption.
+  - `hover` — tooltip / alt text. Defaults to `caption` when not given.
 - **`figure(path, ...)`** — the raw al-folio figure macro (from
   `_includes/figure.html`), auto-imported into every block for fine-grained
   control (class, width/height, zoomable, etc.).

@@ -8,7 +8,7 @@ Summary: >
   at IBM Research in Alamden, 2023. 
 ---
 
-{{ md_figure("images/blog/ibm_slmath/group_indoors.jpg", "medium", "Group Photo, SLMATH 1064", "Students and staff at SLMATH 1064.") }}
+{{ md_figure("images/blog/ibm_slmath/group_indoors.jpg", "medium", "Students and staff at SLMATH 1064.", "Group Photo, SLMATH 1064") }}
 
 The Simons Laufer Mathematical Institute (previously known as MSRI) 
 hosts two-week programs for graduate students across the US to 
@@ -47,7 +47,7 @@ I work at the intersection of these topics. In addition
 to TAing, I was gratified to meet some of the heavyweights
 in both fields, and we had many productive discussions.
 
-{{ md_figure("images/blog/ibm_slmath/group_outdoors.jpg", "medium", "Class Photo Outdoors", "Outdoor class photo against the backdrop of sunny Almaden.") }}
+{{ md_figure("images/blog/ibm_slmath/group_outdoors.jpg", "medium", "Outdoor class photo against the backdrop of sunny Almaden.", "Class Photo Outdoors") }}
 
 ### Logistics 
 The students stayed at the dormitories of San Jose State university
@@ -77,7 +77,7 @@ of research talks given by the students; 17 of the participants
 shared their research, and all three of us TAs presented our work
 as well. 
 
-{{ md_figure("images/blog/ibm_slmath/research_showcase.jpg", "medium", "Research Showcase", "Introducing a speaker at the final-day research showcase.") }}
+{{ md_figure("images/blog/ibm_slmath/research_showcase.jpg", "medium", "Introducing a speaker at the final-day research showcase.", "Research Showcase") }}
 
 I think the students really enjoyed the feedback from
 the instructors - I certainly did. The last two hours consisted

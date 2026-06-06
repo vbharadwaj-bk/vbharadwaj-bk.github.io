@@ -18,8 +18,9 @@ from textwrap import dedent
 from jinja2 import Environment
 
 
-# Bootstrap-style column widths for the supported figure sizes.
+# Bootstrap-style column widths (out of 12) for the supported figure sizes.
 SIZE_TO_COL = {
+    "tiny": 4,
     "small": 6,
     "medium": 8,
     "large": 12,
@@ -36,16 +37,23 @@ def _make_md_figure(env: Environment):
 
     template = env.from_string(_MD_FIGURE_TEMPLATE)
 
-    def md_figure(path, size="small", alt="", caption=""):
+    def md_figure(path, size="small", caption=None, hover=None):
         """Render a single, horizontally-centered image.
 
-        ``size`` (``small`` / ``medium`` / ``large``) controls how wide the
-        image is; the remaining horizontal space is split into equal gutters.
+        ``size`` (``tiny`` / ``small`` / ``medium`` / ``large``) controls how
+        wide the image is; the remaining horizontal space is split into equal
+        gutters.
+
+        ``caption`` is shown beneath the image. ``hover`` is the tooltip/alt
+        text; when omitted it falls back to ``caption``.
         """
         if not path:
             raise ValueError("'path' cannot be empty.")
         if size not in SIZE_TO_COL:
-            raise ValueError("'size' must be one of: small, medium, large.")
+            raise ValueError("'size' must be one of: tiny, small, medium, large.")
+
+        if hover is None:
+            hover = caption
 
         col = SIZE_TO_COL[size]
         left_col = max((12 - col) // 2, 0)
@@ -53,8 +61,8 @@ def _make_md_figure(env: Environment):
 
         return template.render(
             path=path,
-            alt=alt,
             caption=caption,
+            hover=hover,
             col=col,
             left_col=left_col,
             right_col=right_col,
@@ -63,14 +71,16 @@ def _make_md_figure(env: Environment):
     return md_figure
 
 
+# The card is transparent by default so images with transparent backgrounds
+# (e.g. SVGs) blend into the page rather than sitting on a white rectangle.
 _MD_FIGURE_TEMPLATE = dedent('''
     {% from "figure.html" import figure with context %}
     <div class="row">
     {% if left_col > 0 %}
         <div class="col-{{ left_col }}"></div>
     {% endif %}
-        <div class="col-{{ col }} card border-0 bg-white p-1 mb-3">
-        {{ figure(path=path, alt=alt, title=alt, caption=caption, class="img-fluid rounded z-depth-1", zoomable=True) }}
+        <div class="col-{{ col }} card border-0 md-figure-card p-1 mb-3">
+        {{ figure(path=path, alt=hover, title=hover, caption=caption, class="img-fluid rounded z-depth-1", zoomable=True) }}
         </div>
     {% if right_col > 0 %}
         <div class="col-{{ right_col }}"></div>

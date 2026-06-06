@@ -11,15 +11,22 @@ toc:
 
 Do you notice anything interesting about this image?
 
-{{ md_figure("images/blog/wordlebot/lowres.png", "small", "Aditi and I on a Spring day in Berkeley.", "This isn't an instagram filter...") }}
+{{ md_figure("images/blog/wordlebot/lowres.png", 
+  "small",
+  hover="Aditi and I on a Spring day in Berkeley.") 
+}}
 
 It looks a bit washed out, and the pixels are odd. Let's zoom in: 
 
-{{ md_figure("images/blog/wordlebot/mediumres.png", "small", "Clock tower closeup.", "A closeup of the Campanille.") }}
+{{ md_figure("images/blog/wordlebot/mediumres.png", "small", hover="Clock tower closeup.") }}
 
 Huh... look at all those little squares... let's zoom in one more time...
 
-{{ md_figure("images/blog/wordlebot/highres.png", "small", "Wordle and Connections Results.", "Look familiar, New York Times readers?") }}
+{{ md_figure(
+  "images/blog/wordlebot/highres.png", 
+  "small", 
+  hover="Wordle and Connections Results.")
+}}
 
 If you play either [Wordle](https://www.nytimes.com/games/wordle) or 
 [Connections](https://www.nytimes.com/games/connections), then you recognize this! Each "pixel" of this larger
@@ -43,7 +50,10 @@ When you finish a game of Wordle or Connections, the app copies your result to t
 the result with another app. I programmed an iPhone [shortcut](https://support.apple.com/guide/shortcuts/welcome/ios)
 to send this data with a specific subject header to my Gmail account.  
 
-{{ md_figure("images/blog/wordlebot/iphone_shortcut.png", "small", "Programming an iPhone shortcut.", "The shortcuts app lets you do all kinds of interesting automation.") }}
+{{ md_figure("images/blog/wordlebot/iphone_shortcut.png", 
+  "small", 
+  hover="Programming an iPhone shortcut.")
+}}
 
 ## Step 2: Storing Game Results 
 I set up a filter in Gmail that matches any email with the subject header set by the shortcut. When an email matches, it skips my inbox
@@ -53,7 +63,11 @@ For the next step, I headed to Google Sheets, created a new spreadsheet, and set
 [Apps Script](https://developers.google.com/apps-script) automation. Every time the script runs, it grabs all emails with the specified,
 parses their data, and appends them to the spreadsheet on the specified date. Here's a sample of the results: 
 
-{{ md_figure("images/blog/wordlebot/spreadsheet.png", "small", "A spreadsheet containing game results.", "The spreadsheet grows with every game you play.") }}
+{{ md_figure(
+  "images/blog/wordlebot/spreadsheet.png", 
+  "small", 
+  hover="A spreadsheet containing game results.")
+}}
 
 See below for a complete Javascript code listing, although it's not that interesting. 
 I'm not a Javascript programmer, so I used ChatGPT to vibecode most of the script (it did excellent work). The 

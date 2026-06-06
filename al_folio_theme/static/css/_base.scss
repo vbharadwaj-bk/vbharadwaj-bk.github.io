@@ -186,6 +186,13 @@ blockquote {
   background-color: white !important;
 }
 
+// md_figure wrapper: transparent so images with their own transparent
+// background (e.g. SVGs) blend into the page instead of sitting on the
+// theme's card color. Higher specificity + !important beats the `.card` rule.
+.card.md-figure-card {
+  background-color: transparent !important;
+}
+
 // Citation
 
 .citation,
