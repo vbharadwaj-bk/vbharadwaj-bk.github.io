@@ -8,12 +8,11 @@ disclaimer: false
 ---
 
 Most academics have a collection of favorite articles and books on their websites.
-Here are mine. I don't agree with all the opinions that these pieces express,
-but the ideas are worth grappling with.
+Here are mine. I don't endorse all of these viewpoints, but I did enjoy reading them. 
 
 #### Math + CompSci Essays
 
-| Item |
+| |
 |------|
 | [Paul Lockhart's Lament](https://www.mimuw.edu.pl/~pawelst/rzut_oka/Zajecia_dla_MISH_2011-12/Lektury_files/LockhartsLament.pdf) |
 | [Rich Sutton's Bitter Lesson](http://www.incompleteideas.net/IncIdeas/BitterLesson.html) |
@@ -24,8 +23,15 @@ but the ideas are worth grappling with.
 
 &nbsp;
 
+#### Technical Articles 
+| Item | Author |
+|------|--------|
+| [*Using group theory to explore the space of positional encodings for attention*](https://blog.janestreet.com/using-group-theory-to-explore-positional-encodings-attention/) | Alok Puranik | 
+
+&nbsp;
+
 #### Technical Books 
-| Book | Author |
+| Item | Author |
 |------|--------|
 | *Introduction to the Theory of Computation* | Michael Sipser | 
 | *ENIAC in Action: Making and Remaking the Modern Computer* | Crispin Rope, Mark Priestley, and Thomas Haigh |
@@ -33,7 +39,7 @@ but the ideas are worth grappling with.
 &nbsp;
 
 #### Articles, nonfiction 
-| Item | Sad, Thoughtful, Funny? |
+| Item | Reaction |
 |------|-------------------------|
 | [The Aquarium](https://www.newyorker.com/magazine/2011/06/13/the-aquarium) | 😢 | 
 | [Who is the Bad Art Friend?](https://www.nytimes.com/2021/10/05/magazine/dorland-v-larson.html) | 🤔 | 
@@ -43,8 +49,18 @@ but the ideas are worth grappling with.
 
 &nbsp;
 
+#### Books, nonfiction 
+| Item | Reaction |
+|------|-------------------------|
+| [*Abundance*](https://en.wikipedia.org/wiki/Abundance_(Klein_and_Thompson_book)) | 🤔 |
+| [*Paying for the Party*](https://en.wikipedia.org/wiki/Paying_for_the_Party) | 🤔 |
+| *The University: An Owner's Manual* | 🤔 |
+| *And Still We Rise: The Trials and Triumphs of Twelve Gifted Inner-City Students* | 🤔 |
+
+&nbsp;
+
 #### Short fiction 
-| Item | Sad, Thoughtful, Funny? |
+| Item | Reaction |
 |------|-------------------------|
 | [Omakase](https://www.newyorker.com/magazine/2018/06/18/omakase) | 🤔 |
 | [Cat Person](https://www.newyorker.com/magazine/2017/12/11/cat-person) | 😢 |
@@ -55,17 +71,8 @@ but the ideas are worth grappling with.
 &nbsp;
 
 #### Books, fiction 
-| Item | Sad, Thoughtful, Funny? |
+| Item | Reaction |
 |------|-------------------------|
+| [*Yesteryear*](https://en.wikipedia.org/wiki/Yesteryear_(novel)) | 🤣 |
 | [*Dear Committee Members*](https://www.newyorker.com/recommends/read/dear-committee-members-by-julie-schumacher) | 🤣 |
 | *The Uncollected Stories of Allan Garganus* | 🤔 |
-
-&nbsp;
-
-#### Books, nonfiction 
-| Item | Sad, Thoughtful, Funny? |
-|------|-------------------------|
-| [*Abundance*](https://en.wikipedia.org/wiki/Abundance_(Klein_and_Thompson_book)) | 🤔 |
-| [*Paying for the Party*](https://en.wikipedia.org/wiki/Paying_for_the_Party) | 🤔 |
-| *The University: An Owner's Manual* | 🤔 |
-| *And Still We Rise: The Trials and Triumphs of Twelve Gifted Inner-City Students* | 🤔 |
