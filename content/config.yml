@@ -205,6 +205,28 @@ enable_medium_zoom: true # enables image zoom feature (as on medium.com)
 enable_progressbar: true
 
 # -----------------------------------------------------------------------------
+# Typography
+# -----------------------------------------------------------------------------
+
+# Main body font. To switch fonts, change all three fields:
+#   name             - the CSS font-family name as it appears in the @font-face
+#   google_fonts_url - the Google Fonts stylesheet URL that loads `name`
+#   fallback         - fonts used if `name` fails to load
+font:
+  name: "Hanken Grotesk"
+  google_fonts_url: "https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap"
+  fallback: '"Helvetica Neue", Arial, sans-serif'
+
+# Code / monospace font (used for the navbar brand title). Same three fields:
+#   name             - the CSS font-family name as it appears in the @font-face
+#   google_fonts_url - the Google Fonts stylesheet URL that loads `name`
+#   fallback         - fonts used if `name` fails to load
+code_font:
+  name: "Google Sans Code"
+  google_fonts_url: "https://fonts.googleapis.com/css2?family=Google+Sans+Code:wght@300;400;500;600;700&display=swap"
+  fallback: "monospace"
+
+# -----------------------------------------------------------------------------
 # Library versions
 # -----------------------------------------------------------------------------
 

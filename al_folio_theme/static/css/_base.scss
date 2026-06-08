@@ -18,7 +18,8 @@ strong {
 }
 
 body {
-  font-family: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  // Font is configured via `font:` in config.yml; --site-font is set in head.html.
+  font-family: var(--site-font, "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif);
   font-weight: var(--font-weight-base);
   font-size: 1rem;
 }
@@ -329,7 +330,8 @@ blockquote {
   }
 
   .navbar-brand.title {
-    font-family: "Google Sans Code", monospace;
+    // Code font is configured via `code_font:` in config.yml; --site-code-font is set in head.html.
+    font-family: var(--site-code-font, "Google Sans Code", monospace);
   }
 
   .navbar-nav .nav-item .nav-link {

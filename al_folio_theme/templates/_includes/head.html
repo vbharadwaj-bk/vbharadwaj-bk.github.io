@@ -14,8 +14,12 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Material+Icons">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="{{ SITE.font.google_fonts_url }}" rel="stylesheet">
+    <link href="{{ SITE.code_font.google_fonts_url }}" rel="stylesheet">
+    <style>:root {
+      --site-font: "{{ SITE.font.name }}", {{ SITE.font.fallback }};
+      --site-code-font: "{{ SITE.code_font.name }}", {{ SITE.code_font.fallback }};
+    }</style>
 
     <!-- Code Syntax Highlighting -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/{{ SITE.highlight_theme_light ~ '.css' }}" media="" id="highlight_theme_light">
