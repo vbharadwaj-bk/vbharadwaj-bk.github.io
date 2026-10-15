@@ -11,6 +11,17 @@ url: https://vivek-bharadwaj.com
 baseurl:
 last_updated: true
 
+identity_icons:
+  - cow
+  - hippo
+  - otter
+  - frog
+  - fish-fins
+  - shrimp
+  - crow
+  - dove
+  - kiwi-bird
+
 github_username: vbharadwaj-bk
 bluesky_username: vivek-bharadwaj.com
 linkedin_username: vivek-bharadwaj-91135099

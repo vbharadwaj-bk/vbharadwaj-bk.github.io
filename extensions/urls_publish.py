@@ -2,7 +2,7 @@ import yaml
 
 def make_functions():
     config = None
-    with open('content/config.yml', "rb") as stream:
+    with open('content/config.yaml', "rb") as stream:
         config = yaml.safe_load(stream)
 
     if config["baseurl"] is not None: 

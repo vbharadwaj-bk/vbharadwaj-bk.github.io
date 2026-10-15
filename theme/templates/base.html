@@ -31,9 +31,14 @@
 <header class="masthead">
   <div class="wrap">
     <a class="identity" href="{{ '' | relative_url }}">
-      {%- if SITE.title %}<span>{{ SITE.title }}</span>
-      {%- else %}<span>{{ SITE.first_name }}{% if SITE.middle_name %} {{ SITE.middle_name }}{% endif %}</span><span>{{ SITE.last_name }}</span>
-      {%- endif -%}
+      {%- if SITE.identity_icons %}
+      <i class="identity-icon fa-solid" aria-hidden="true" data-icons="{{ SITE.identity_icons | join(' ') }}"></i>
+      {%- endif %}
+      <span class="identity-name">
+        {%- if SITE.title %}<span>{{ SITE.title }}</span>
+        {%- else %}<span>{{ SITE.first_name }}{% if SITE.middle_name %} {{ SITE.middle_name }}{% endif %}</span><span>{{ SITE.last_name }}</span>
+        {%- endif -%}
+      </span>
     </a>
     <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-controls="site-nav" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') !== 'true')">
       <span></span><span></span><span></span>
@@ -79,6 +84,7 @@
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@{{ SITE.mathjax.version }}/es5/tex-mml-chtml.js"></script>
 {%- endif %}
+<script defer src="{{ 'theme/js/identity-icon.js' | relative_url }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/medium-zoom@{{ SITE.medium_zoom.version }}/dist/medium-zoom.min.js"></script>
 <script>mediumZoom('[data-zoomable]');</script>
 </body>

@@ -14,7 +14,7 @@ from extensions.template_block import TemplateBlockExtension
 from extensions.toc_md_reader import TOCMarkdownReader
 from extensions.urls_dev import absolute_url, relative_url
 
-with open("content/config.yml", "rb") as stream:
+with open("content/config.yaml", "rb") as stream:
     SITE = yaml.safe_load(stream)
 
 AUTHOR = " ".join(SITE[f] for f in ["first_name", "middle_name", "last_name"] if SITE.get(f))
@@ -78,7 +78,7 @@ LOAD_CONTENT_CACHE = False
 CACHE_CONTENT = False
 
 SITE["time"] = datetime.now()
-with open("content/data/talks.yml", "rb") as talks, open(CV_DATA_PATH, "rb") as cv:
+with open("content/talks.yaml", "rb") as talks, open(CV_DATA_PATH, "rb") as cv:
     SITE["data"] = {"talks": yaml.safe_load(talks), "cv": yaml.safe_load(cv)}
 parse_bibliography("content/publications.bib", "publications", SITE)
 
