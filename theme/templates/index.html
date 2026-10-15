@@ -1,12 +1,16 @@
 {% extends "base.html" %}
 {% import "_includes/macros.html" as m with context %}
 
-{% block title %}{{ SITE.blog_name }} | {{ super() }}{% endblock %}
+{% block title %}Blog | {{ super() }}{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Changa+One&display=swap">
+{% endblock %}
 
 {% block content %}
 <section class="block">
   <div class="wrap">
-    {{ m.page_header(SITE.blog_name, icon='pen-nib') }}
+    <h1 class="blog-title">{{ SITE.blog_name }}</h1>
     {%- if SITE.blog_splash %}
     <img class="splash" src="{{ SITE.blog_splash | relative_url }}" alt="A sketch of the Bay Area skyline" width="2388" height="486">
     {%- endif %}

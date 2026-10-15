@@ -17,13 +17,17 @@
 {%- for course in teaching %}
 <section class="block course">
   <div class="wrap">
-    <article class="entry teaching">
-      {%- if course.badge %}
-      <div class="tags"><span class="tag venue">{{ course.badge }}</span></div>
-      {%- endif %}
-      <h3>{{ course.title }}</h3>
-      <p class="sub">{{ course.subtitle }}</p>
-      <div class="prose">{{ course.content }}</div>
+    <article class="entry course-row">
+      <div>
+        {%- if course.badge %}
+        <div class="tags"><span class="tag venue">{{ course.badge }}</span></div>
+        {%- endif %}
+        <p class="sub">{{ course.subtitle }}</p>
+      </div>
+      <div>
+        <h3>{{ course.title }}</h3>
+        <div class="prose">{{ course.content }}</div>
+      </div>
     </article>
   </div>
 </section>

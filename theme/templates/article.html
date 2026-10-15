@@ -15,7 +15,7 @@
 {% block content %}
 {%- set disclaimer = article.disclaimer if article.disclaimer is defined else true %}
 {%- if disclaimer is string %}{% set disclaimer = disclaimer | lower not in ['false', '0', 'no', 'off'] %}{% endif %}
-<article class="block">
+<article class="block post-{{ article.slug }}">
   <div class="wrap">
     <header>
       <h1 class="page-title">{{ article.title }}</h1>

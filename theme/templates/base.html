@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/{{ SITE.fontawesome.version }}/css/all.min.css">
   <link rel="stylesheet" href="{{ 'theme/css/pygments.css' | relative_url }}">
   <link rel="stylesheet" href="{{ 'theme/css/site.css' | relative_url }}">
+  {%- block head %}{% endblock %}
   <style>:root { --font: "{{ SITE.font.name }}", {{ SITE.font.fallback }}; --code-font: "{{ SITE.code_font.name }}", {{ SITE.code_font.fallback }}; }</style>
 </head>
 <body class="{% block body_class %}plain{% endblock %}">

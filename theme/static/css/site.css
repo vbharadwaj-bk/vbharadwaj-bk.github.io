@@ -3,6 +3,8 @@
   --text: #f2ece9;
   --muted: rgba(242, 236, 233, 0.68);
   --accent: #e8c87a;
+  --link: #f4e4b8;
+  --link-hover: #d9b25c;
   --line: rgba(242, 236, 233, 0.16);
   --line-soft: rgba(242, 236, 233, 0.08);
   --surface: rgba(242, 236, 233, 0.04);
@@ -205,19 +207,26 @@ main > .block:first-child { border-top: none; }
 .meta a:hover { color: var(--accent); }
 
 .inline,
+.bio p a,
 .prose a,
 .news a,
-.teaching a {
-  color: var(--text);
+.entry .sub a,
+.columns p a {
+  color: var(--link);
   text-decoration: none;
-  border-bottom: 1px solid var(--accent);
+  text-underline-offset: 3px;
   transition: color 150ms;
 }
 
 .inline:hover,
+.bio p a:hover,
 .prose a:hover,
 .news a:hover,
-.teaching a:hover { color: var(--accent); }
+.entry .sub a:hover,
+.columns p a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
 
 .more {
   font-size: 14px;
@@ -331,8 +340,6 @@ main > .block:first-child { border-top: none; }
   margin: 0 0 8px;
 }
 
-.entry .sub a { text-decoration: none; border-bottom: 1px solid var(--line); }
-.entry .sub a:hover { color: var(--accent); }
 
 .authors b { font-weight: 500; color: var(--text); }
 
@@ -407,8 +414,18 @@ a.tag:hover, summary.tag:hover { color: var(--accent); border-color: var(--accen
 .columns h3 a:hover { color: var(--accent); }
 
 .columns p { margin: 0; font-size: 14px; color: var(--muted); }
-.columns p a { text-decoration: none; }
 .columns .tags { margin-top: 12px; }
+
+.blog-title {
+  margin: 0;
+  text-align: center;
+  font-family: "Changa One", var(--font);
+  font-weight: 400;
+  font-size: clamp(36px, 6vw, 52px);
+  line-height: 1.1;
+}
+
+.block > .wrap > .blog-title + * { margin-top: 18px; }
 
 .splash {
   display: block;
@@ -463,7 +480,22 @@ a.tag:hover, summary.tag:hover { color: var(--accent); border-color: var(--accen
 
 .thumb.icon { background: var(--surface); font-size: 9px; }
 
-.teaching .tags { margin-bottom: 10px; }
+.course-row {
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr);
+  gap: 20px;
+}
+
+.course-row .sub { margin: 8px 0 0; font-size: 13px; }
+
+.course-row .prose { margin-top: 6px; }
+
+.course-row .prose p:has(> strong:only-child) {
+  margin: 0 0 4px;
+  font-size: 14px;
+}
+
+.course-row .prose p:has(> strong:only-child) + p:not(:has(> strong:only-child)) { margin-top: 12px; }
 
 .block.course { padding: 32px 0; }
 
@@ -587,9 +619,12 @@ pre {
   border-collapse: collapse;
   width: 100%;
   font-size: 15px;
-  display: block;
-  overflow-x: auto;
 }
+
+.prose thead:not(:has(th:not(:empty))) { display: none; }
+
+.post-required-reading .prose table { table-layout: fixed; }
+.post-required-reading .prose th:first-child:not(:last-child) { width: 68%; }
 
 .prose th,
 .prose td {
@@ -755,7 +790,8 @@ mjx-container[display="true"] {
 
 @media (max-width: 560px) {
   .rows > li,
-  .cv-section .rows > li { grid-template-columns: 1fr; gap: 2px; }
+  .cv-section .rows > li,
+  .course-row { grid-template-columns: 1fr; gap: 2px; }
   .post-item { grid-template-columns: minmax(0, 1fr) 64px; gap: 16px; }
   .thumb { width: 64px; height: 64px; padding: 6px; }
   .thumb.photo { padding: 0; }
