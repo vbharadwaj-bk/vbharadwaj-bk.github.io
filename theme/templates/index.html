@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% import "_includes/macros.html" as m with context %}
+
+{% block title %}Blog | {{ super() }}{% endblock %}
+
+{% block content %}
+<section class="block">
+  <div class="wrap">
+    {{ m.page_header('Blog', icon='pen-nib') }}
+  </div>
+</section>
+<section class="block">
+  <div class="wrap">
+    <div class="posts">
+      {%- for post in articles_page.object_list %}
+      <article class="post-item">
+        <div>
+          <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+          <p>{{ post.summary | striptags }}</p>
+          <p class="meta">{{ post.date | strftime('%B %-d, %Y') }}{% if post.category %} &middot; <a href="{{ post.category.url | relative_url }}">{{ post.category }}</a>{% endif %}</p>
+        </div>
+        {%- if post.thumbnail %}
+        <a class="thumb{% if post.thumbnail.lower().endswith(('.jpg', '.jpeg')) %} photo{% endif %}" href="{{ post.url | relative_url }}"><img src="{{ post.thumbnail | relative_url }}" alt="" loading="lazy"></a>
+        {%- elif post.thumbnail_icon %}
+        <a class="thumb icon" href="{{ post.url | relative_url }}">{{ post.thumbnail_icon }}</a>
+        {%- endif %}
+      </article>
+      {%- endfor %}
+    </div>
+    {{ m.pager(articles_paginator, articles_page) }}
+  </div>
+</section>
+{% endblock %}

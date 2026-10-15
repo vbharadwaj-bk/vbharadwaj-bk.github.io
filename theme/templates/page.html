@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% import "_includes/macros.html" as m with context %}
+
+{% block title %}{{ page.title | display_title }} | {{ super() }}{% endblock %}
+
+{% block content %}
+<section class="block narrow">
+  <div class="wrap">
+    {{ m.page_header(page.title | display_title, page.summary) }}
+    <div class="prose">
+      {{ page.content }}
+    </div>
+  </div>
+</section>
+{% endblock %}

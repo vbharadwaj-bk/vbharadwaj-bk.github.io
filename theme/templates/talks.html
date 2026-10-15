@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% import "_includes/macros.html" as m with context %}
+
+{% block title %}{{ page.title | display_title }} | {{ super() }}{% endblock %}
+
+{% block content %}
+<section class="block">
+  <div class="wrap">
+    {{ m.page_header(page.title | display_title, icon='person-chalkboard') }}
+    <ul class="rows ruled">
+      {%- for entry in SITE.data.talks %}
+      {{ m.talk(entry) }}
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+{% endblock %}

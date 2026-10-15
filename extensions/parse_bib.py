@@ -53,7 +53,7 @@ def parse_bibliography(filename, output_key, SITE):
 
         for author in d.persons['author']:
             entry_author = {}
-            entry_author["first"] = ' '.join(author.first_names)
+            entry_author["first"] = ' '.join(author.first_names + author.middle_names)
             entry_author["last"] = ' '.join(author.last_names)
             entry["author_array"].append(entry_author)
 

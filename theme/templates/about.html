@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% import "_includes/macros.html" as m with context %}
+
+{% block body_class %}{% endblock %}
+
+{% block content %}
+{%- set profiles = [
+  ('google-scholar', 'Scholar', 'https://scholar.google.com/citations?user=' ~ SITE.scholar_userid if SITE.scholar_userid),
+  ('github', 'GitHub', 'https://github.com/' ~ SITE.github_username if SITE.github_username),
+  ('bluesky', 'Bluesky', 'https://bsky.app/profile/' ~ SITE.bluesky_username if SITE.bluesky_username),
+  ('linkedin', 'LinkedIn', 'https://www.linkedin.com/in/' ~ SITE.linkedin_username if SITE.linkedin_username),
+  ('orcid', 'ORCID', 'https://orcid.org/' ~ SITE.orcid_id if SITE.orcid_id),
+] %}
+<section class="block about">
+  <div class="wrap">
+    <div class="bio">
+      {{ page.content }}
+      <div class="profiles">
+        {%- for icon, name, url in profiles if url %}
+        <a href="{{ url }}"><i class="fa-brands fa-{{ icon }}"></i>{{ name }}</a>
+        {%- endfor %}
+      </div>
+    </div>
+    {%- if page.profile and page.profile.image %}
+    <figure class="portrait">
+      <img src="{{ page.profile.image | bust_file_cache | relative_url }}" alt="{{ AUTHOR }}" width="440" height="440">
+    </figure>
+    {%- endif %}
+  </div>
+</section>
+
+{%- if page.news and news %}
+<section class="block">
+  <div class="wrap">
+    {{ m.label('News', 'newspaper') }}
+    {{ m.news_list(news[:SITE.announcements.limit]) }}
+    <a class="more" href="{{ 'news/' | relative_url }}">All news &rarr;</a>
+  </div>
+</section>
+{%- endif %}
+
+{%- if page.selected_papers %}
+<section class="block">
+  <div class="wrap">
+    {{ m.label('Selected Work', 'flask') }}
+    <div class="entries">
+      {%- for entry in SITE.publications if entry.selected %}
+      {{ m.paper(entry) }}
+      {%- endfor %}
+    </div>
+    <a class="more" href="{{ 'publications/' | relative_url }}">All publications &rarr;</a>
+  </div>
+</section>
+{%- endif %}
+
+{%- if page.talks %}
+<section class="block">
+  <div class="wrap">
+    {{ m.label('Recent Talks', 'person-chalkboard') }}
+    <div class="columns">
+      {%- for talk in SITE.data.talks[:page.talks.limit] %}
+      <article>
+        <span class="date">{{ talk.date | strftime('%b %-d, %Y') }}</span>
+        <h3>{{ talk.title }}</h3>
+        <p>{{ talk.venue }}</p>
+      </article>
+      {%- endfor %}
+    </div>
+    <a class="more" href="{{ 'talks/' | relative_url }}">All talks &rarr;</a>
+  </div>
+</section>
+{%- endif %}
+
+{%- if SITE.blog_enabled and articles %}
+<section class="block">
+  <div class="wrap">
+    {{ m.label('Writing', 'pen-nib') }}
+    <div class="columns">
+      {%- for post in articles[:3] %}
+      <article>
+        <span class="date">{{ post.date | strftime('%b %-d, %Y') }}</span>
+        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+        <p>{{ post.summary | striptags }}</p>
+      </article>
+      {%- endfor %}
+    </div>
+    <a class="more" href="{{ 'posts/' | relative_url }}">All posts &rarr;</a>
+  </div>
+</section>
+{%- endif %}
+{% endblock %}

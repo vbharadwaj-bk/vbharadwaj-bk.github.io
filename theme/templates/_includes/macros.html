@@ -1,0 +1,112 @@
+{% set link_names = {'arxiv': 'arXiv', 'pdf': 'PDF', 'html': 'HTML', 'supp': 'Supplement', 'web': 'Website'} %}
+
+{% macro url_for(link) -%}
+{{ link if '://' in link else link | relative_url }}
+{%- endmacro %}
+
+{% macro label(text, icon=none) -%}
+<h2 class="label">{% if icon %}<i class="fa-solid fa-{{ icon }}"></i>{% endif %}{{ text }}</h2>
+{%- endmacro %}
+
+{% macro page_header(title, summary=none, icon=none) -%}
+<header>
+  <h1 class="page-title">{% if icon %}<i class="fa-solid fa-{{ icon }}"></i>{% endif %}{{ title }}</h1>
+  {%- if summary %}
+  <p class="page-summary">{{ summary }}</p>
+  {%- endif %}
+</header>
+{%- endmacro %}
+
+{% macro news_list(items, ruled=false) -%}
+<ul class="rows news{% if ruled %} ruled{% endif %}">
+  {%- for item in items %}
+  <li><span class="date">{{ item.date | strftime('%b %-d, %Y') }}</span><div>{{ item.content }}</div></li>
+  {%- endfor %}
+</ul>
+{%- endmacro %}
+
+{% macro authors(entry) -%}
+{%- for author in entry.author_array -%}
+{%- set name = author.first ~ ' ' ~ author.last -%}
+{% if author.is_self %}<b>{{ name }}</b>{% else %}{{ name }}{% endif %}{% if not loop.last %}, {% endif %}
+{%- endfor -%}
+{%- endmacro %}
+
+{% macro venue(entry) -%}
+{%- if entry.type == 'article' -%}{{ entry.journal }}
+{%- elif entry.type in ['inproceedings', 'incollection'] -%}{{ entry.booktitle }}
+{%- elif entry.type in ['phdthesis', 'mastersthesis', 'thesis'] -%}PhD Dissertation, {{ entry.school }}
+{%- endif -%}
+{%- endmacro %}
+
+{% macro paper(entry, extras=false) -%}
+{%- set first_link = (entry.button_fields.values() | list | first) -%}
+<article class="entry" id="{{ entry.key }}">
+  <h3>{% if first_link %}<a href="{{ url_for(first_link.link) }}">{{ entry.title }}</a>{% else %}{{ entry.title }}{% endif %}</h3>
+  <p class="sub authors">{{ authors(entry) }}</p>
+  {%- if extras %}
+  <p class="sub">{{ venue(entry) }}</p>
+  {%- endif %}
+  <div class="tags">
+    {%- if entry.abbr %}<span class="tag venue">{{ entry.abbr }}{% if entry.year %} {{ entry.year }}{% endif %}</span>{% endif %}
+    {%- for field, button in entry.button_fields.items() %}
+    <a class="tag" href="{{ url_for(button.link) }}">{{ link_names.get(field, field | capitalize) }}</a>
+    {%- endfor %}
+    {%- if extras %}
+    <span class="extras">
+      {%- if entry.abstract %}
+      <details><summary class="tag">Abstract</summary><div class="panel"><p>{{ entry.abstract }}</p></div></details>
+      {%- endif %}
+      {%- if entry.bibtex_show %}
+      <details><summary class="tag">BibTeX</summary><div class="panel">{{ entry.bibtex }}</div></details>
+      {%- endif %}
+    </span>
+    {%- endif %}
+  </div>
+</article>
+{%- endmacro %}
+
+{% macro talk(entry) -%}
+<li>
+  <span class="date">{{ entry.date | strftime('%b %-d, %Y') }}</span>
+  <div class="entry">
+    <h3>{{ entry.title }}</h3>
+    <p class="sub">{{ entry.venue }}</p>
+    {%- if entry.buttons %}
+    <div class="tags">
+      {%- for field, link in entry.buttons.items() %}
+      <a class="tag" href="{{ url_for(link) }}">{{ field | capitalize }}</a>
+      {%- endfor %}
+    </div>
+    {%- endif %}
+  </div>
+</li>
+{%- endmacro %}
+
+{% macro post_rows(posts) -%}
+<ul class="rows ruled">
+  {%- for post in posts %}
+  <li><span class="date">{{ post.date | strftime('%b %-d, %Y') }}</span><a class="inline" href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+  {%- endfor %}
+</ul>
+{%- endmacro %}
+
+{% macro pager(paginator, current) -%}
+{%- if paginator and paginator.num_pages > 1 %}
+<nav class="pager">
+  {%- if current.has_previous() %}
+  <a href="{{ paginator.page(current.previous_page_number()).url | relative_url }}">Newer</a>
+  {%- else %}
+  <span class="off">Newer</span>
+  {%- endif %}
+  {%- for number in paginator.page_range %}
+  <a href="{{ paginator.page(number).url | relative_url }}"{% if number == current.number %} aria-current="page"{% endif %}>{{ number }}</a>
+  {%- endfor %}
+  {%- if current.has_next() %}
+  <a href="{{ paginator.page(current.next_page_number()).url | relative_url }}">Older</a>
+  {%- else %}
+  <span class="off">Older</span>
+  {%- endif %}
+</nav>
+{%- endif %}
+{%- endmacro %}

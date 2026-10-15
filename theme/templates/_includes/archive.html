@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% import "_includes/macros.html" as m with context %}
+
+{% block title %}{{ archive_title }} | {{ super() }}{% endblock %}
+
+{% block content %}
+<section class="block">
+  <div class="wrap">
+    {{ m.page_header(archive_title, icon='pen-nib') }}
+  </div>
+</section>
+<section class="block">
+  <div class="wrap">
+    {{ m.post_rows(articles_page.object_list) }}
+    {{ m.pager(articles_paginator, articles_page) }}
+    <a class="more" href="{{ 'posts/' | relative_url }}">All posts &rarr;</a>
+  </div>
+</section>
+{% endblock %}

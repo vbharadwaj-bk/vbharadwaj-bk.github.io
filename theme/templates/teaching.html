@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% import "_includes/macros.html" as m with context %}
+
+{% block title %}{{ page.title | display_title }} | {{ super() }}{% endblock %}
+
+{% block body_class %}{% endblock %}
+
+{% block content %}
+<section class="block">
+  <div class="wrap">
+    {{ m.page_header(page.title | display_title, icon='graduation-cap') }}
+    {%- if page.content %}
+    <div class="prose">{{ page.content }}</div>
+    {%- endif %}
+  </div>
+</section>
+{%- for course in teaching %}
+<section class="block course">
+  <div class="wrap">
+    <article class="entry teaching">
+      {%- if course.badge %}
+      <div class="tags"><span class="tag venue">{{ course.badge }}</span></div>
+      {%- endif %}
+      <h3>{{ course.title }}</h3>
+      <p class="sub">{{ course.subtitle }}</p>
+      <div class="prose">{{ course.content }}</div>
+    </article>
+  </div>
+</section>
+{%- endfor %}
+{% endblock %}

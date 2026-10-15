@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% import "_includes/macros.html" as m with context %}
+
+{% block title %}{{ archive_title }} | {{ super() }}{% endblock %}
+
+{% block content %}
+<section class="block">
+  <div class="wrap">
+    {{ m.page_header(archive_title, icon='pen-nib') }}
+    <ul class="rows ruled">
+      {%- for item, posts in archive_items %}
+      <li><span class="date">{{ posts | length }} post{{ 's' if posts | length != 1 }}</span><a class="inline" href="{{ item.url | relative_url }}">{{ item }}</a></li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+{% endblock %}

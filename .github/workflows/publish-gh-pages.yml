@@ -42,7 +42,6 @@ jobs:
       - name: Build website
         run: |
           python -m pelican -s publishconf.py
-          rm -rf output/theme/.webassets-cache
       - name: Fix permissions
         run: |
           chmod -c -R +rX "output/" | while read line; do

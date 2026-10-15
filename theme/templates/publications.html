@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% import "_includes/macros.html" as m with context %}
+
+{% block title %}{{ page.title | display_title }} | {{ super() }}{% endblock %}
+
+{% block content %}
+<section class="block">
+  <div class="wrap">
+    {{ m.page_header(page.title | display_title, icon='flask') }}
+    <div class="entries">
+      {%- for entry in SITE.publications %}
+      {{ m.paper(entry, extras=true) }}
+      {%- endfor %}
+    </div>
+    <p class="footnote">* denotes equal contribution.</p>
+  </div>
+</section>
+{% endblock %}

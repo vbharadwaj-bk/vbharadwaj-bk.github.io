@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% import "_includes/macros.html" as m with context %}
+{% set cv = SITE.data.cv %}
+
+{% macro row(when, title, sub=none, points=none) -%}
+<li>
+  <span class="date">{{ when or '' }}</span>
+  <div>
+    <h3>{{ title }}</h3>
+    {%- if sub %}<p class="sub">{{ sub }}</p>{% endif %}
+    {%- if points %}
+    <ul class="points">
+      {%- for point in points %}<li>{{ point }}</li>{% endfor %}
+    </ul>
+    {%- endif %}
+  </div>
+</li>
+{%- endmacro %}
+
+{% macro section(title, icon) -%}
+<section class="block cv-section">
+  <div class="wrap">
+    {{ m.label(title, icon) }}
+    <ul class="rows ruled">
+      {{ caller() }}
+    </ul>
+  </div>
+</section>
+{%- endmacro %}
+
+{% block title %}CV | {{ super() }}{% endblock %}
+
+{% block body_class %}{% endblock %}
+
+{% block content %}
+<section class="block">
+  <div class="wrap">
+    {{ m.page_header('CV', cv.title) }}
+    {%- if page.cv_pdf %}
+    <div class="tags"><a class="tag venue" href="{{ page.cv_pdf | relative_url }}"><i class="fa-solid fa-file-pdf"></i>&nbsp; Download PDF</a></div>
+    {%- endif %}
+  </div>
+</section>
+
+{% call section('Education', 'graduation-cap') %}
+  {%- for edu in cv.education %}
+  {%- set points = [] %}
+  {%- if edu.advisors %}{% do points.append('Advisors: ' ~ edu.advisors | join(' and ')) %}{% endif %}
+  {%- if edu.focus %}{% do points.append('Focus: ' ~ edu.focus | join(', ')) %}{% endif %}
+  {%- if edu.funding %}{% do points.append('Funding: ' ~ edu.funding) %}{% endif %}
+  {%- if edu.gpa %}{% do points.append('GPA: ' ~ edu.gpa) %}{% endif %}
+  {{ row(edu.dates, edu.degree, edu.institution, points) }}
+  {%- endfor %}
+{% endcall %}
+
+{% call section('Experience', 'briefcase') %}
+  {%- for job in cv.experience %}
+  {{ row(job.dates, job.role, job.organization, job.highlights) }}
+  {%- endfor %}
+{% endcall %}
+
+{% call section('Awards and Fellowships', 'award') %}
+  {%- for award in cv.awards %}
+  {{ row(award.year, award.name, award.description) }}
+  {%- endfor %}
+{% endcall %}
+
+{% call section('Teaching', 'chalkboard') %}
+  {%- for course in cv.teaching %}
+  {{ row(course.term, course.course, course.description) }}
+  {%- endfor %}
+{% endcall %}
+
+{% call section('Selected Talks', 'person-chalkboard') %}
+  {%- for talk in cv.selected_talks %}
+  {{ row(talk.date, talk.title, talk.event ~ ', ' ~ talk.location) }}
+  {%- endfor %}
+{% endcall %}
+
+{% call section('Professional Service', 'handshake') %}
+  {%- for role in cv.professional_service.roles %}
+  {{ row(role.date or role.dates or role.year, role.title, role.description) }}
+  {%- endfor %}
+  {%- set reviews = [] %}
+  {%- for review in cv.professional_service.peer_review %}{% do reviews.append(review.year ~ ': ' ~ review.venue) %}{% endfor %}
+  {{ row('Ongoing', 'Peer review', none, reviews) }}
+{% endcall %}
+
+{% call section('Volunteering', 'hand-holding-heart') %}
+  {%- for item in cv.volunteering %}
+  {{ row(item.dates or 'Ongoing', item.role, item.description, item.details) }}
+  {%- endfor %}
+{% endcall %}
+
+{% call section('Interests and Skills', 'screwdriver-wrench') %}
+  {%- for key, values in cv.research_interests_and_skills.items() %}
+  {{ row(none, key | replace('_', ' ') | capitalize, values | join(', ')) }}
+  {%- endfor %}
+{% endcall %}
+
+{% call section('Selected Coursework', 'book-open') %}
+  {%- for key, courses in cv.selected_coursework.items() %}
+  {{ row(none, key | replace('_', ' ') | capitalize, none, courses) }}
+  {%- endfor %}
+{% endcall %}
+{% endblock %}

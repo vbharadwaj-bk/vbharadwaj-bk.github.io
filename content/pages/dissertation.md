@@ -2,7 +2,6 @@
 title: dissertation 
 template: page 
 nav: true 
-summary: Information about my PhD exit talk and published work
 ---
 
 <center>

@@ -2,7 +2,6 @@
 title: news 
 template: news_archive 
 nav: false 
-summary: An archive of announcements.
 
 entries:
   - date: 2025-07-12

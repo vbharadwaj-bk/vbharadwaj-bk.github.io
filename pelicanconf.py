@@ -1,179 +1,110 @@
-import yaml
-import sys, os
+import os
+import sys
 from datetime import datetime
-sys.path.append('.')
 
-from extensions.cache_buster import *
-from extensions.render_main_scss import *
-from extensions.slugify import *
-from extensions.parse_bib import *
+import yaml
+
+sys.path.append(".")
+
+from extensions import cv_generator, site_data
+from extensions.cache_buster import bust_file_cache
+from extensions.filters import display_title
+from extensions.parse_bib import parse_bibliography
+from extensions.template_block import TemplateBlockExtension
 from extensions.toc_md_reader import TOCMarkdownReader
-from extensions.filter_projects import filter_projects 
-from extensions.template_block import *
-from extensions import al_folio_extension 
-from extensions import cv_generator
-from extensions.urls_dev import relative_url, absolute_url
+from extensions.urls_dev import absolute_url, relative_url
 
-SITE = None
 with open("content/config.yml", "rb") as stream:
     SITE = yaml.safe_load(stream)
 
-PLUGINS = [
-           'pelican.plugins.webassets',
-           'pelican.plugins.sitemap',
-           al_folio_extension,
-           cv_generator,
-           ]
+AUTHOR = " ".join(SITE[f] for f in ["first_name", "middle_name", "last_name"] if SITE.get(f))
+SITENAME = SITE["title"] or AUTHOR
+SITEURL = ""
 
-name_fields = ["first_name", "middle_name", "last_name"]
-AUTHOR = ' '.join([SITE[field] for field in name_fields if field in SITE and SITE[field] is not None])
+THEME = "theme"
+PATH = "content"
+TIMEZONE = "America/Ensenada"
+DEFAULT_LANG = "en"
 
-SITENAME = SITE["title"]
+PLUGINS = ["pelican.plugins.sitemap", site_data, cv_generator]
+READERS = {"md": TOCMarkdownReader}
+JINJA_ENVIRONMENT = {"trim_blocks": True, "lstrip_blocks": True, "extensions": ["jinja2.ext.do"]}
 
-if SITENAME is None:
-    SITENAME = AUTHOR
-SITEURL = ''
+NAV = [
+    ("About", ""),
+    ("Publications", "publications/"),
+    ("Talks", "talks/"),
+    ("Teaching", "teaching/"),
+    ("Blog", "posts/"),
+    ("CV", "cv/"),
+]
 
-THEME = 'al_folio_theme'
-PATH = 'content'
+CV_DATA_PATH = os.path.join(PATH, "cv.yaml")
+CV_TEMPLATE_PATH = os.path.join("cv_template", "cv.typst")
+CV_PDF_OUTPUT = "cv.pdf"
 
-CV_DATA_PATH = os.path.join(PATH, 'cv.yaml')
-CV_TEMPLATE_PATH = os.path.join('cv_template', 'cv.typst')
-CV_PDF_OUTPUT = 'cv.pdf'
+ARTICLE_PATHS = ["posts"]
+ARTICLE_URL = "posts/{date:%Y}/{slug}/"
+ARTICLE_SAVE_AS = "posts/{date:%Y}/{slug}/index.html"
+INDEX_SAVE_AS = "posts/index.html"
+CATEGORY_URL = "posts/category/{slug}/"
+CATEGORY_SAVE_AS = "posts/category/{slug}/index.html"
+CATEGORIES_SAVE_AS = "posts/category/index.html"
+TAG_URL = "posts/tag/{slug}/"
+TAG_SAVE_AS = "posts/tag/{slug}/index.html"
+TAGS_SAVE_AS = "posts/tag/index.html"
+YEAR_ARCHIVE_URL = "posts/{date:%Y}/"
+YEAR_ARCHIVE_SAVE_AS = "posts/{date:%Y}/index.html"
+AUTHOR_SAVE_AS = AUTHORS_SAVE_AS = ARCHIVES_SAVE_AS = ""
 
-TIMEZONE = 'America/Ensenada'
+PAGE_PATHS = ["pages"]
+PATH_METADATA = r"(?P<path_no_ext>.*)\..*"
+PAGE_URL = "{path_no_ext}/"
+PAGE_SAVE_AS = "{path_no_ext}/index.html"
+STATIC_PATHS = ["images", "pdf", "json"]
 
-DEFAULT_LANG = 'en'
-
-ARTICLE_URL = 'posts/{date:%Y}/{slug}/'
-ARTICLE_SAVE_AS = 'posts/{date:%Y}/{slug}/index.html'
-
-FORMATTED_FIELDS = []
-
-if SITE["blog_enabled"]:
-    INDEX_SAVE_AS = '/posts/index.html'
-    ARTICLE_PATHS=['posts']
-
-    CATEGORY_URL = 'posts/category/{slug}/'
-    CATEGORY_SAVE_AS = 'posts/category/{slug}/index.html'
-
-    TAG_URL = 'posts/tag/{slug}/'
-    TAG_SAVE_AS = 'posts/tag/{slug}/index.html'
-
-    YEAR_ARCHIVE_SAVE_AS = 'posts/{date:%Y}/index.html'
-    PAGINATED_TEMPLATES = {'index': None, 'tag': 10, 'category': 10, 'author': 10, 'period_archives': 10}
-
-    CATEGORIES_SAVE_AS = 'posts/category/index.html'
-    TAGS_SAVE_AS = 'posts/tag/index.html'
-
-else:
-    INDEX_SAVE_AS = ''
-    ARTICLE_PATHS=[]
-
-    CATEGORY_URL = ''
-    CATEGORY_SAVE_AS = ''
-
-    TAG_URL = ''
-    TAG_SAVE_AS = ''
-
-    PAGINATED_TEMPLATES = {}
-    FORMATTED_FIELDS = []
-
-    CATEGORIES_SAVE_AS = ''
-    TAGS_SAVE_AS = ''
-
-# Suppress generation of these pages.
-AUTHOR_URL = AUTHOR_SAVE_AS = ''
-AUTHORS_SAVE_AS = ''
-ARCHIVES_SAVE_AS = ''
-
-
-PAGE_PATHS = ['pages', 'projects']
-PATH_METADATA = r'(?P<path_no_ext>.*)\..*'
-PAGE_URL = '{path_no_ext}/'
-PAGE_SAVE_AS = '{path_no_ext}/index.html'
-
-STATIC_PATHS = ['images', 'pdf', 'json']
-
-# Feed generation is usually not desired when developing
-FEED_ALL_ATOM = None
-CATEGORY_FEED_ATOM = None
-TRANSLATION_FEED_ATOM = None
-AUTHOR_FEED_ATOM = None
-AUTHOR_FEED_RSS = None
-
-DEFAULT_PAGINATION = 5 
+DEFAULT_PAGINATION = 5
+PAGINATED_TEMPLATES = {"index": None, "tag": 10, "category": 10, "period_archives": 10}
 PAGINATION_PATTERNS = (
-    (1, '{base_name}', '{base_name}/index.html'),
-    (2, '{base_name}/page/{number}/', '{base_name}/page/{number}/index.html'),
+    (1, "{base_name}", "{base_name}/index.html"),
+    (2, "{base_name}/page/{number}/", "{base_name}/page/{number}/index.html"),
 )
 
-# Should extend to getting all data from the folder
-SITE["data"] = {}
-
-for data_name in ["venues", "coauthors", "talks"]:
-    with open(f"content/data/{data_name}.yml", "rb") as stream:
-        SITE["data"][data_name] = yaml.safe_load(stream)
-
-SITE["time"] = datetime.now()
-parse_bibliography("content/publications.bib", "publications", SITE)
-
-with open("content/cv.yaml", "rb") as stream:
-    SITE["data"]["cv"] = cv_generator.build_al_folio_cv_data(
-        yaml.safe_load(stream), SITE.get("publications")
-    )
-
-render_main_scss(SITE)
-
-JINJA_FILTERS = {
-                'relative_url': relative_url, 
-                'absolute_url': absolute_url, 
-                'bust_file_cache': bust_file_cache,
-                'slugify': slugify,
-                'filter_projects': filter_projects
-                }
-
-MARKDOWN = {
-    'extensions': ['codehilite', 'extra', 'meta', 'admonition', 'toc',
-                   TemplateBlockExtension(filters=JINJA_FILTERS)],
-    'extension_configs': {
-        'codehilite': {'css_class': 'highlight'},
-        'extra': {'attr_list': {}},
-        'meta': {},
-        'admonition': {},
-        'toc': {}
-    },
-    'output_format': 'html5',
-}
-
-# Content is rendered through custom Markdown extensions (see
-# extensions/template_block.py) whose logic can change independently of the
-# source files. Pelican's content cache keys only on file mtime, so it would
-# happily serve stale HTML after an extension change. The site builds in well
-# under a second, so we disable the cache to keep builds always-correct.
+FEED_ALL_ATOM = CATEGORY_FEED_ATOM = TRANSLATION_FEED_ATOM = None
+AUTHOR_FEED_ATOM = AUTHOR_FEED_RSS = None
+FORMATTED_FIELDS = []
 LOAD_CONTENT_CACHE = False
 CACHE_CONTENT = False
 
+SITE["time"] = datetime.now()
+with open("content/data/talks.yml", "rb") as talks, open(CV_DATA_PATH, "rb") as cv:
+    SITE["data"] = {"talks": yaml.safe_load(talks), "cv": yaml.safe_load(cv)}
+parse_bibliography("content/publications.bib", "publications", SITE)
+
+
+def jinja_filters(relative_url, absolute_url):
+    return {
+        "relative_url": relative_url,
+        "absolute_url": absolute_url,
+        "bust_file_cache": bust_file_cache,
+        "display_title": display_title,
+    }
+
+
+def markdown_settings(filters):
+    return {
+        "extensions": ["codehilite", "extra", "meta", "admonition", "toc", TemplateBlockExtension(filters=filters)],
+        "extension_configs": {"codehilite": {"css_class": "highlight"}},
+        "output_format": "html5",
+    }
+
+
+JINJA_FILTERS = jinja_filters(relative_url, absolute_url)
+MARKDOWN = markdown_settings(JINJA_FILTERS)
+
 SITEMAP = {
     "format": "xml",
-    "priorities": {
-        "pages": 0.7,
-        "indexes": 0.5,
-        "articles": 0.3
-    },
-    "changefreqs": {
-        "indexes": "daily",
-        "pages": "monthly",
-        "articles": "monthly",
-    },
-    "exclude": [
-            "^/noindex/",  # starts with "/noindex/"
-            r"posts/\d+/$",
-            "posts/category/",
-            "posts/page/",
-            "posts/tag/",
-            "404.html$",
-        ]
+    "priorities": {"pages": 0.7, "indexes": 0.5, "articles": 0.3},
+    "changefreqs": {"indexes": "daily", "pages": "monthly", "articles": "monthly"},
+    "exclude": [r"posts/\d+/$", "posts/category/", "posts/page/", "posts/tag/", "404.html$"],
 }
-
-READERS = {'md': TOCMarkdownReader}

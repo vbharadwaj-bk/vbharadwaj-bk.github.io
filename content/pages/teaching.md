@@ -3,7 +3,6 @@ title: teaching
 template: teaching 
 nav: true 
 nav_order: 3
-summary: Courses I've TA'd for. 
 
 courses:
   - title: "[Mathematics of Big Data: Sketching and Multi-Linear Algebra](https://www.slmath.org/summer-schools/1064#overview_summer_graduate_school)"

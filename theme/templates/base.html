@@ -1,0 +1,80 @@
+{%- set site_name = SITE.title or AUTHOR -%}
+<!doctype html>
+<html lang="{{ SITE.lang or DEFAULT_LANG }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {%- if page and page.redirect %}
+  <meta http-equiv="refresh" content="3; url={{ '' | absolute_url }}">
+  {%- endif %}
+  <title>{% block title %}{{ site_name }}{% endblock %}</title>
+  <meta name="author" content="{{ AUTHOR }}">
+  <meta name="description" content="{{ ((page and (page.description or page.summary)) or SITE.description) | striptags }}">
+  {%- if SITE.keywords %}
+  <meta name="keywords" content="{{ SITE.keywords }}">
+  {%- endif %}
+  {%- if SITE.icon %}
+  <link rel="icon" href="{{ SITE.icon | relative_url }}">
+  {%- endif %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="{{ SITE.font.google_fonts_url }}">
+  <link rel="stylesheet" href="{{ SITE.code_font.google_fonts_url }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/{{ SITE.fontawesome.version }}/css/all.min.css">
+  <link rel="stylesheet" href="{{ 'theme/css/pygments.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ 'theme/css/site.css' | relative_url }}">
+  <style>:root { --font: "{{ SITE.font.name }}", {{ SITE.font.fallback }}; --code-font: "{{ SITE.code_font.name }}", {{ SITE.code_font.fallback }}; }</style>
+</head>
+<body class="{% block body_class %}plain{% endblock %}">
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="identity" href="{{ '' | relative_url }}">{{ site_name }}</a>
+    <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-controls="site-nav" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') !== 'true')">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="menu" id="site-nav">
+      <div class="links">
+        {%- for title, url in NAV %}
+        {%- set current = (output_file == 'index.html') if url == '' else output_file.startswith(url) %}
+        <a href="{{ url | relative_url }}"{% if current %} aria-current="page"{% endif %}>{{ title }}</a>
+        {%- endfor %}
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+{% block content %}{% endblock %}
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; {{ SITE.time.year }} {{ AUTHOR }}</span>
+    {%- if SITE.last_updated %}
+    <span>Last updated {{ SITE.time | strftime('%B %-d, %Y') }}</span>
+    {%- endif %}
+  </div>
+</footer>
+
+{%- if SITE.enable_math %}
+<script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams'
+      {%- if page and page.latex_macros %},
+      macros: {
+        {%- for name, body in page.latex_macros.items() %}
+        {{ name }}: {{ body | replace('\\', '\\\\') }}{% if not loop.last %},{% endif %}
+        {%- endfor %}
+      }
+      {%- endif %}
+    }
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@{{ SITE.mathjax.version }}/es5/tex-mml-chtml.js"></script>
+{%- endif %}
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@{{ SITE.medium_zoom.version }}/dist/medium-zoom.min.js"></script>
+<script>mediumZoom('[data-zoomable]');</script>
+</body>
+</html>
