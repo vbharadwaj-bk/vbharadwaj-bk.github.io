@@ -3,8 +3,8 @@
   <img src="{{ (path | bust_file_cache if cache_bust else path) | relative_url }}"
     {%- if width %} width="{{ width }}"{% endif %}
     {%- if height %} height="{{ height }}"{% endif %}
-    {%- if alt %} alt="{{ alt | trim }}"{% endif %}
-    {%- if title %} title="{{ title | trim }}"{% endif %}
+    {%- if alt %} alt="{{ alt | trim | e }}"{% endif %}
+    {%- if title %} title="{{ title | trim | e }}"{% endif %}
     {%- if style %} style="{{ style }}"{% endif %}
     {%- if zoomable %} data-zoomable{% endif %} loading="lazy">
   {%- if caption %}

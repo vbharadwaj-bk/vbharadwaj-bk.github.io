@@ -9,7 +9,7 @@
   {%- endif %}
   <title>{% block title %}{{ site_name }}{% endblock %}</title>
   <meta name="author" content="{{ AUTHOR }}">
-  <meta name="description" content="{{ ((page and (page.metadata.description or page.metadata.summary)) or SITE.description) | striptags }}">
+  <meta name="description" content="{{ ((page and (page.metadata.description or page.metadata.summary)) or SITE.description) | striptags | e }}">
   {%- if SITE.keywords %}
   <meta name="keywords" content="{{ SITE.keywords }}">
   {%- endif %}
@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="{{ SITE.font.google_fonts_url }}">
   <link rel="stylesheet" href="{{ SITE.code_font.google_fonts_url }}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/{{ SITE.fontawesome.version }}/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/{{ SITE.fontawesome.version }}/css/all.min.css" integrity="{{ SITE.fontawesome.integrity }}" crossorigin="anonymous" referrerpolicy="no-referrer">
   <link rel="stylesheet" href="{{ 'theme/css/pygments.css' | relative_url }}">
   <link rel="stylesheet" href="{{ 'theme/css/site.css' | relative_url }}">
   {%- block head %}{% endblock %}
@@ -82,10 +82,10 @@
     }
   };
 </script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@{{ SITE.mathjax.version }}/es5/tex-mml-chtml.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@{{ SITE.mathjax.version }}/es5/tex-mml-chtml.js" integrity="{{ SITE.mathjax.integrity }}" crossorigin="anonymous"></script>
 {%- endif %}
 <script defer src="{{ 'theme/js/identity-icon.js' | relative_url }}"></script>
-<script src="https://cdn.jsdelivr.net/npm/medium-zoom@{{ SITE.medium_zoom.version }}/dist/medium-zoom.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@{{ SITE.medium_zoom.version }}/dist/medium-zoom.min.js" integrity="{{ SITE.medium_zoom.integrity }}" crossorigin="anonymous"></script>
 <script>mediumZoom('[data-zoomable]');</script>
 </body>
 </html>

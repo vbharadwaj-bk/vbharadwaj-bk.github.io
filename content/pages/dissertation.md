@@ -46,9 +46,9 @@ we submitted our work to:
 <div class="chartjs" style="aspect-ratio: 2">
   <canvas id="github_contributions"></canvas>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@0.1.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js" integrity="sha384-jb8JQMbMoBUzgWatfe6COACi2ljcDdZQ2OxczGA3bGNeWe+6DChMTBJemed7ZnvJ" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js" integrity="sha384-hjHDaifUzyrHiHwPlh7MsiEnarfPObVsti+hNTcqvKYUW0jRU39Yn510W+JdEuiv" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@0.1.1/dist/chartjs-adapter-moment.min.js" integrity="sha384-6UnKNJH54wbUPT5gmb/LwfUhVC1HOY0rhT8pzkd8HckDGBPuCw6dc4NhIgEf5Tjo" crossorigin="anonymous"></script>
 
   <script>
     function cssvar(name) {

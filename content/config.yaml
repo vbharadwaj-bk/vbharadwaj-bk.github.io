@@ -50,7 +50,10 @@ code_font:
   fallback: "monospace"
 fontawesome:
   version: "6.7.2"
+  integrity: "sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
 mathjax:
   version: "3.2.0"
+  integrity: "sha384-+BSz3oj3ILMYvOBr16U9i0H4RZRmGyQQ+1q9eqr8T3skmAFrJk8GmgwgqlCZdNSo"
 medium_zoom:
   version: "1.0.8"
+  integrity: "sha384-Fbpr+9mGkCdAm4iWAHAVMjIcoqfHsExatT6uWiHh4dBoIh/4QiR8f4ZAji9TdIt/"

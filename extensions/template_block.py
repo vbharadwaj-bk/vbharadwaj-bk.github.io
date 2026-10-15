@@ -13,7 +13,7 @@ FIGURE_IMPORT = '{% from "figure.html" import figure with context %}\n'
 
 FIGURE_CARD = """
 <figure class="figure" style="width: {{ width }}%">
-  <img src="{{ path | bust_file_cache | relative_url }}"{% if title %} alt="{{ title }}" title="{{ title }}"{% endif %}{% if zoomable %} data-zoomable{% endif %} loading="lazy">
+  <img src="{{ path | bust_file_cache | relative_url }}"{% if title %} alt="{{ title | e }}" title="{{ title | e }}"{% endif %}{% if zoomable %} data-zoomable{% endif %} loading="lazy">
   {%- if caption %}
   <figcaption>{{ caption }}</figcaption>
   {%- endif %}

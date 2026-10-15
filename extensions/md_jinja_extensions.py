@@ -10,7 +10,7 @@ HEX_COLOR = re.compile(r"^#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})$")
 MD_FIGURE = """
 <figure class="figure {{ size }}">
   <img src="{{ path | bust_file_cache | relative_url }}"
-    {%- if hover %} alt="{{ hover | trim }}" title="{{ hover | trim }}"{% endif %}
+    {%- if hover %} alt="{{ hover | trim | e }}" title="{{ hover | trim | e }}"{% endif %}
     {%- if bg_color %} style="background-color: {{ bg_color }};"{% else %} class="zoom-backdrop"{% endif %} data-zoomable loading="lazy">
   {%- if caption %}
   <figcaption>{{ caption | trim }}</figcaption>

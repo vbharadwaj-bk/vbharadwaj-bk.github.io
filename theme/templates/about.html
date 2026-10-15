@@ -58,7 +58,7 @@
   <div class="wrap">
     {{ m.label('Recent Talks', 'person-chalkboard') }}
     <div class="columns">
-      {%- for talk in SITE.data.talks[:page.talks.limit] %}
+      {%- for talk in talks[:page.talks.limit] %}
       <article>
         <span class="date">{{ talk.date | strftime('%b %-d, %Y') }}</span>
         <h3>{{ talk.title }}</h3>

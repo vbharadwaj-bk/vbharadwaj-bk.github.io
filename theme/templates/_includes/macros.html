@@ -35,7 +35,8 @@
 {% macro venue(entry) -%}
 {%- if entry.type == 'article' -%}{{ entry.journal }}
 {%- elif entry.type in ['inproceedings', 'incollection'] -%}{{ entry.booktitle }}
-{%- elif entry.type in ['phdthesis', 'mastersthesis', 'thesis'] -%}PhD Dissertation, {{ entry.school }}
+{%- elif entry.type == 'phdthesis' -%}PhD Dissertation, {{ entry.school }}
+{%- elif entry.type in ['mastersthesis', 'thesis'] -%}Thesis, {{ entry.school }}
 {%- endif -%}
 {%- endmacro %}
 

@@ -1,9 +1,12 @@
 # My Academic Website 
 
-This is my academic website. It's a port of
+This is my academic website. It used to
+be a port of
 [al-folio](https://github.com/alshedivat/al-folio) adapted for the Python
-static site generator [Pelican](https://getpelican.com/). You can find
-the Python version of the template [here](https://github.com/vbharadwaj-bk/al-folio-python).
+static site generator [Pelican](https://getpelican.com/); but I redesigned it
+with Claude in 2026. You can find
+the Python version of the original 
+template [here](https://github.com/vbharadwaj-bk/al-folio-python).
 
 ## Content Authoring Extensions
 

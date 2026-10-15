@@ -709,8 +709,7 @@ pre {
   border-radius: 4px;
 }
 
-.figure figcaption,
-.caption {
+.figure figcaption {
   margin-top: 8px;
   font-size: 13px;
   color: var(--muted);

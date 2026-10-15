@@ -8,7 +8,7 @@
   <div class="wrap">
     {{ m.page_header(page.title | display_title, icon='person-chalkboard') }}
     <ul class="rows ruled">
-      {%- for entry in SITE.data.talks %}
+      {%- for entry in talks %}
       {{ m.talk(entry) }}
       {%- endfor %}
     </ul>

@@ -133,9 +133,7 @@ class TOCMarkdownReader(MarkdownReader):
             )
 
             if "toc" in metadata:
-                toc_md = Markdown(extensions=['toc'])
-                _ = toc_md.convert(m.group("content"))
-                metadata["parsed_toc"] = toc_md.toc_tokens
+                metadata["parsed_toc"] = self._md.toc_tokens
 
         content = _normalize_custom_admonition_titles(content)
 
