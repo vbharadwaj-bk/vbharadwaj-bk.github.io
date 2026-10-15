@@ -6,10 +6,10 @@
 {% block content %}
 <section class="block">
   <div class="wrap">
-    {{ m.page_header(archive_title, icon='pen-nib') }}
+    {{ m.page_header(archive_title, icon='hashtag') }}
     <ul class="rows ruled">
       {%- for item, posts in archive_items %}
-      <li><span class="date">{{ posts | length }} post{{ 's' if posts | length != 1 }}</span><a class="inline" href="{{ item.url | relative_url }}">{{ item }}</a></li>
+      <li><span class="date">{{ posts | length }} post{{ 's' if posts | length != 1 }}</span>{{ m.tag_link(item, 'inline') }}</li>
       {%- endfor %}
     </ul>
   </div>

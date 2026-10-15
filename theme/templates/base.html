@@ -9,7 +9,7 @@
   {%- endif %}
   <title>{% block title %}{{ site_name }}{% endblock %}</title>
   <meta name="author" content="{{ AUTHOR }}">
-  <meta name="description" content="{{ ((page and (page.description or page.summary)) or SITE.description) | striptags }}">
+  <meta name="description" content="{{ ((page and (page.metadata.description or page.metadata.summary)) or SITE.description) | striptags }}">
   {%- if SITE.keywords %}
   <meta name="keywords" content="{{ SITE.keywords }}">
   {%- endif %}
@@ -29,7 +29,11 @@
 
 <header class="masthead">
   <div class="wrap">
-    <a class="identity" href="{{ '' | relative_url }}">{{ site_name }}</a>
+    <a class="identity" href="{{ '' | relative_url }}">
+      {%- if SITE.title %}<span>{{ SITE.title }}</span>
+      {%- else %}<span>{{ SITE.first_name }}{% if SITE.middle_name %} {{ SITE.middle_name }}{% endif %}</span><span>{{ SITE.last_name }}</span>
+      {%- endif -%}
+    </a>
     <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-controls="site-nav" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') !== 'true')">
       <span></span><span></span><span></span>
     </button>

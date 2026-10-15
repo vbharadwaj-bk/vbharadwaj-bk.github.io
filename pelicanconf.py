@@ -35,6 +35,7 @@ NAV = [
     ("Publications", "publications/"),
     ("Talks", "talks/"),
     ("Teaching", "teaching/"),
+    ("Dissertation", "dissertation/"),
     ("Blog", "posts/"),
     ("CV", "cv/"),
 ]

@@ -83,6 +83,10 @@
 </li>
 {%- endmacro %}
 
+{% macro tag_link(item, class='') -%}
+<a class="tag-link {{ class }}" href="{{ item.url | relative_url }}"><i class="fa-solid fa-hashtag"></i>{{ item }}</a>
+{%- endmacro %}
+
 {% macro post_rows(posts) -%}
 <ul class="rows ruled">
   {%- for post in posts %}

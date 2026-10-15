@@ -1,12 +1,15 @@
 {% extends "base.html" %}
 {% import "_includes/macros.html" as m with context %}
 
-{% block title %}Blog | {{ super() }}{% endblock %}
+{% block title %}{{ SITE.blog_name }} | {{ super() }}{% endblock %}
 
 {% block content %}
 <section class="block">
   <div class="wrap">
-    {{ m.page_header('Blog', icon='pen-nib') }}
+    {{ m.page_header(SITE.blog_name, icon='pen-nib') }}
+    {%- if SITE.blog_splash %}
+    <img class="splash" src="{{ SITE.blog_splash | relative_url }}" alt="A sketch of the Bay Area skyline" width="2388" height="486">
+    {%- endif %}
   </div>
 </section>
 <section class="block">
@@ -17,7 +20,7 @@
         <div>
           <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
           <p>{{ post.summary | striptags }}</p>
-          <p class="meta">{{ post.date | strftime('%B %-d, %Y') }}{% if post.category %} &middot; <a href="{{ post.category.url | relative_url }}">{{ post.category }}</a>{% endif %}</p>
+          <p class="meta">{{ post.date | strftime('%B %-d, %Y') }}{% if post.category %} &middot; {{ m.tag_link(post.category) }}{% endif %}</p>
         </div>
         {%- if post.thumbnail %}
         <a class="thumb{% if post.thumbnail.lower().endswith(('.jpg', '.jpeg')) %} photo{% endif %}" href="{{ post.url | relative_url }}"><img src="{{ post.thumbnail | relative_url }}" alt="" loading="lazy"></a>

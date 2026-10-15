@@ -63,6 +63,13 @@
         <span class="date">{{ talk.date | strftime('%b %-d, %Y') }}</span>
         <h3>{{ talk.title }}</h3>
         <p>{{ talk.venue }}</p>
+        {%- if talk.buttons %}
+        <div class="tags">
+          {%- for field, link in talk.buttons.items() %}
+          <a class="tag" href="{{ m.url_for(link) }}">{{ field | capitalize }}</a>
+          {%- endfor %}
+        </div>
+        {%- endif %}
       </article>
       {%- endfor %}
     </div>

@@ -4,9 +4,9 @@
 {% block title %}{{ page.title | display_title }} | {{ super() }}{% endblock %}
 
 {% block content %}
-<section class="block narrow">
+<section class="block">
   <div class="wrap">
-    {{ m.page_header(page.title | display_title, page.summary) }}
+    {{ m.page_header(page.title | display_title, page.metadata.summary) }}
     <div class="prose">
       {{ page.content }}
     </div>

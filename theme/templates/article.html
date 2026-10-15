@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import "_includes/macros.html" as m with context %}
 {% set page = article %}
 
 {% macro toc_list(tokens) -%}
@@ -14,14 +15,14 @@
 {% block content %}
 {%- set disclaimer = article.disclaimer if article.disclaimer is defined else true %}
 {%- if disclaimer is string %}{% set disclaimer = disclaimer | lower not in ['false', '0', 'no', 'off'] %}{% endif %}
-<article class="block narrow">
+<article class="block">
   <div class="wrap">
     <header>
       <h1 class="page-title">{{ article.title }}</h1>
       <p class="meta">
         <a href="{{ ('posts/' ~ article.date.year ~ '/') | relative_url }}">{{ article.date | strftime('%B %-d, %Y') }}</a>
-        {%- if article.category %} &middot; <a href="{{ article.category.url | relative_url }}">{{ article.category }}</a>{% endif %}
-        {%- for tag in article.tags %} &middot; <a href="{{ tag.url | relative_url }}">#{{ tag }}</a>{% endfor %}
+        {%- if article.category %} &middot; {{ m.tag_link(article.category) }}{% endif %}
+        {%- for tag in article.tags %} &middot; {{ m.tag_link(tag) }}{% endfor %}
       </p>
       {%- if disclaimer %}
       <p class="note"><b>Author's note</b>{{ SITE.disclaimer_text }}</p>
