@@ -15,6 +15,7 @@
   --color-line: rgba(242, 236, 233, 0.16);
   --color-line-soft: rgba(242, 236, 233, 0.08);
   --color-table-rule: rgba(242, 236, 233, 0.6);
+  --color-table-cmidrule: rgba(242, 236, 233, 0.35);
 
   --color-map-land: #3d4649;
   --color-map-water: #1f2527;

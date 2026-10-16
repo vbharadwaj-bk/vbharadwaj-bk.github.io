@@ -647,8 +647,8 @@ pre {
   border-collapse: collapse;
   width: 100%;
   font-size: 15px;
-  border-top: 0.08em solid var(--color-table-rule);
-  border-bottom: 0.08em solid var(--color-table-rule);
+  border-top: 2px solid var(--color-table-rule);
+  border-bottom: 2px solid var(--color-table-rule);
 }
 
 .prose th,
@@ -663,9 +663,9 @@ pre {
 .prose td:last-child { padding-right: 0; }
 
 .prose thead:not(:has(th:not(:empty))) { display: none; }
-.prose thead th { border-bottom: 0.05em solid var(--color-table-rule); }
-.prose tr.midrule > td { border-top: 0.05em solid var(--color-table-rule); }
-.prose td.cmidrule { border-top: 0.03em solid var(--color-table-rule); }
+.prose thead th { border-bottom: 1px solid var(--color-table-rule); }
+.prose tr.midrule > td { border-top: 1px solid var(--color-table-rule); }
+.prose td.cmidrule { border-top: 1px solid var(--color-table-cmidrule); }
 
 .post-required-reading .prose table { table-layout: fixed; }
 .post-required-reading .prose tr > :first-child:not(:last-child) { width: 68%; }
