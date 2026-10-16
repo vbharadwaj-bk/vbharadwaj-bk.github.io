@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% import "_includes/macros.html" as m with context %}
-{% set cv = SITE.data.cv %}
+{% set cv = page.cv %}
 {% set sections = {
   'Education': ('building-columns', 'Education'),
   'Experience': ('briefcase', 'Experience'),

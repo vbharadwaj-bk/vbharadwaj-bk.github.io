@@ -1,0 +1,21 @@
+:root {
+  --color-background: #2d3436;
+  --color-surface: rgba(242, 236, 233, 0.04);
+  --color-code-background: rgba(0, 0, 0, 0.22);
+  --color-thumbnail-background: #ffffff;
+  --color-zoom-overlay: rgba(45, 52, 54, 0.96);
+
+  --color-text: #f2ece9;
+  --color-text-muted: rgba(242, 236, 233, 0.68);
+
+  --color-accent-light: #f4e4b8;
+  --color-accent: #e8c87a;
+  --color-accent-dark: #d9b25c;
+
+  --color-line: rgba(242, 236, 233, 0.16);
+  --color-line-soft: rgba(242, 236, 233, 0.08);
+
+  --global-text-color: var(--color-text);
+  --global-theme-color: var(--color-accent);
+  --chart-grid-color: var(--color-line);
+}

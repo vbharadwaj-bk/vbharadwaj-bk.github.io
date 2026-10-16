@@ -5,7 +5,7 @@
 {%- endmacro %}
 
 {% macro label(text, icon=none) -%}
-<h2 class="label">{% if icon %}<i class="fa-solid fa-{{ icon }}"></i>{% endif %}{{ text }}</h2>
+<h2 class="label">{% if icon %}<i class="fa-solid fa-{{ icon }}"></i>{% endif %}{{ text | capitalize }}</h2>
 {%- endmacro %}
 
 {% macro page_header(title, summary=none, icon=none) -%}
@@ -49,7 +49,7 @@
   <p class="sub">{{ venue(entry) }}</p>
   {%- endif %}
   <div class="tags">
-    {%- if entry.abbr %}<span class="tag venue">{{ entry.abbr }}{% if entry.year %} {{ entry.year }}{% endif %}</span>{% endif %}
+    {%- if entry.abbr %}<span class="tag venue publication">{{ entry.abbr }}{% if entry.year %} {{ entry.year }}{% endif %}</span>{% endif %}
     {%- for field, button in entry.button_fields.items() %}
     <a class="tag" href="{{ url_for(button.link) }}">{{ link_names.get(field, field | capitalize) }}</a>
     {%- endfor %}

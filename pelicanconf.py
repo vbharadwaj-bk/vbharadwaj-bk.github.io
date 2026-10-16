@@ -40,7 +40,6 @@ NAV = [
     ("CV", "cv/"),
 ]
 
-CV_DATA_PATH = os.path.join(PATH, "cv.yaml")
 CV_TEMPLATE_PATH = os.path.join("cv_template", "cv.typst")
 CV_PDF_OUTPUT = "cv.pdf"
 
@@ -78,8 +77,6 @@ LOAD_CONTENT_CACHE = False
 CACHE_CONTENT = False
 
 SITE["time"] = datetime.now()
-with open("content/talks.yaml", "rb") as talks, open(CV_DATA_PATH, "rb") as cv:
-    SITE["data"] = {"talks": yaml.safe_load(talks), "cv": yaml.safe_load(cv)}
 parse_bibliography("content/publications.bib", "publications", SITE)
 
 

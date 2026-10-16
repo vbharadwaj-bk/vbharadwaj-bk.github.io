@@ -1,12 +1,12 @@
 from __future__ import annotations
 
+import copy
 import logging
 import os
 import re
 from typing import Any, Dict, List, Optional
 
 import typst
-import yaml
 from jinja2 import Environment, FileSystemLoader, StrictUndefined
 from pelican import signals
 from pelican.generators import Generator
@@ -128,16 +128,13 @@ class CVTypstGenerator(Generator):
         pass
 
     def generate_output(self, writer) -> None:
-        cv_data_path = self._get_cv_data_path()
         template_path = self._get_template_path()
         output_path = self._get_output_path()
 
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
-        with open(cv_data_path, "rb") as handle:
-            cv_data = yaml.safe_load(handle)
-
-        cv_data = self._normalize_cv_data(cv_data)
+        cv_page = next(page for page in self.context["pages"] if "cv" in page.metadata)
+        cv_data = self._normalize_cv_data(copy.deepcopy(cv_page.metadata["cv"]))
         site = self.context.get("SITE", {})
         cv_data["publications"] = _build_typst_publications(site.get("publications"))
 
@@ -156,10 +153,6 @@ class CVTypstGenerator(Generator):
         typst.compile(rendered.encode("utf-8"), output=output_path)
 
         log.info("Rendered CV PDF to %s", output_path)
-
-    def _get_cv_data_path(self) -> str:
-        content_root = self.settings.get("PATH", "content")
-        return self.settings.get("CV_DATA_PATH", os.path.join(content_root, "cv.yaml"))
 
     def _get_template_path(self) -> str:
         return self.settings.get("CV_TEMPLATE_PATH", os.path.join("cv_template", "cv.typst"))

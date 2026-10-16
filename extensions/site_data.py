@@ -56,10 +56,7 @@ def process(generators):
     )
     context["news"] = load_page_list(generator, markdown, "pages/news.md", "entries", [("content", False)])
 
-    context["talks"] = [
-        {**talk, "venue": render_markdown(generator, markdown, talk["venue"], "", inline=True)}
-        for talk in context["SITE"]["data"]["talks"]
-    ]
+    context["talks"] = load_page_list(generator, markdown, "pages/talks.md", "talks", [("venue", True)])
 
     for content in context["pages"] + context["articles"]:
         load_latex_macros(content)

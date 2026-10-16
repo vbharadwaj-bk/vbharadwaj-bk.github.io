@@ -17,7 +17,7 @@ Markdown. They are implemented by the Markdown preprocessors in
 
 > Note: content caching is disabled (`LOAD_CONTENT_CACHE = False` in
 > `pelicanconf.py`) so that changes to these extensions always take effect on
-> the next build. `make clean` also clears the `cache/` directory.
+> the next build.
 
 ### `{{ ... }}` — inline Jinja
 
