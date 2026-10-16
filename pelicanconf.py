@@ -8,7 +8,7 @@ sys.path.append(".")
 
 from extensions import cv_generator, site_data
 from extensions.booktabs import BooktabsExtension
-from extensions.cache_buster import bust_file_cache
+from extensions.cache_buster import bust_file_cache, theme_asset_filter
 from extensions.filters import display_title
 from extensions.parse_bib import parse_bibliography
 from extensions.template_block import TemplateBlockExtension
@@ -86,6 +86,7 @@ def jinja_filters(relative_url, absolute_url):
         "relative_url": relative_url,
         "absolute_url": absolute_url,
         "bust_file_cache": bust_file_cache,
+        "theme_asset": theme_asset_filter(relative_url),
         "display_title": display_title,
     }
 

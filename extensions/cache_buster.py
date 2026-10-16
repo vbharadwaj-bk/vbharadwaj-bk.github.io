@@ -1,30 +1,24 @@
 import hashlib
-import os
-import random
 
-# Translated via ChatGPT from  
+# Translated via ChatGPT from
 # https://distresssignal.org/busting-css-cache-with-jekyll-md5-hash
 
-class CacheDigester:
-    def __init__(self, file_name):
-        self.file_name = file_name
-        self.BUF_SIZE = 65536
 
+def file_version(path):
+    md5 = hashlib.md5()
+    with open(path, 'rb') as stream:
+        for block in iter(lambda: stream.read(65536), b''):
+            md5.update(block)
+    return f"v={md5.hexdigest()[:10]}"
 
-    def digest(self):
-        md5 = hashlib.md5()
-        with open(f'content/{self.file_name}', 'rb') as f:
-            while True:
-                data = f.read(self.BUF_SIZE)
-                if not data:
-                    break
-                md5.update(data) 
-        
-        return f"{self.file_name}?{md5.hexdigest()}"
 
 def bust_file_cache(file_name):
-    if '://' not in file_name:
-        digester = CacheDigester(file_name)
-        return digester.digest()
-    else:
+    if '://' in file_name:
         return file_name
+    return f"{file_name}?{file_version(f'content/{file_name}')}"
+
+
+def theme_asset_filter(relative_url):
+    def theme_asset(path):
+        return relative_url(f"theme/{path}?{file_version(f'theme/static/{path}')}")
+    return theme_asset

@@ -21,9 +21,9 @@
   <link rel="stylesheet" href="{{ SITE.font.google_fonts_url }}">
   <link rel="stylesheet" href="{{ SITE.code_font.google_fonts_url }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/{{ SITE.fontawesome.version }}/css/all.min.css" integrity="{{ SITE.fontawesome.integrity }}" crossorigin="anonymous" referrerpolicy="no-referrer">
-  <link rel="stylesheet" href="{{ 'theme/css/pygments.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ 'theme/css/colors.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ 'theme/css/site.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ 'css/pygments.css' | theme_asset }}">
+  <link rel="stylesheet" href="{{ 'css/colors.css' | theme_asset }}">
+  <link rel="stylesheet" href="{{ 'css/site.css' | theme_asset }}">
   {%- block head %}{% endblock %}
   <style>:root { --font: "{{ SITE.font.name }}", {{ SITE.font.fallback }}; --code-font: "{{ SITE.code_font.name }}", {{ SITE.code_font.fallback }}; }</style>
 </head>
@@ -85,7 +85,7 @@
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@{{ SITE.mathjax.version }}/es5/tex-mml-chtml.js" integrity="{{ SITE.mathjax.integrity }}" crossorigin="anonymous"></script>
 {%- endif %}
-<script defer src="{{ 'theme/js/identity-icon.js' | relative_url }}"></script>
+<script defer src="{{ 'js/identity-icon.js' | theme_asset }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/medium-zoom@{{ SITE.medium_zoom.version }}/dist/medium-zoom.min.js" integrity="{{ SITE.medium_zoom.integrity }}" crossorigin="anonymous"></script>
 <script>mediumZoom('[data-zoomable]');</script>
 </body>

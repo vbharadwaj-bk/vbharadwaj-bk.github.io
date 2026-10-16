@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="{{ base }}maplibre-gl.css" integrity="{{ maplibre.style }}" crossorigin="anonymous">
 <div class="trip-map" style="height: {{ height }}px" data-style="https://tiles.openfreemap.org/styles/{{ style }}" data-trips='{{ trips | tojson }}'></div>
 <script defer src="{{ base }}maplibre-gl.js" integrity="{{ maplibre.script }}" crossorigin="anonymous"></script>
-<script defer src="{{ 'theme/js/trip-map.js' | relative_url }}"></script>
+<script defer src="{{ 'js/trip-map.js' | theme_asset }}"></script>
 </div>
 {%- endmacro %}
 
