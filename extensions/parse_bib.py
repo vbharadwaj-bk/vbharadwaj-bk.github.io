@@ -100,7 +100,7 @@ def parse_bibliography(filename, output_key, SITE):
             author.last_names = [name.replace("*", "") for name in author.last_names]
             author.prelast_names = [name.replace("*", "") for name in author.prelast_names]
 
-        md = Markdown(extensions=['extra', 'codehilite'])
+        md = Markdown(extensions=['extra', 'codehilite'], extension_configs={'codehilite': {'css_class': 'highlight'}})
         md_code = "``` bibtex\n" + d.to_string("bibtex") + "\n```"
         entry["bibtex"] = md.convert(md_code)
         entries.append(entry)

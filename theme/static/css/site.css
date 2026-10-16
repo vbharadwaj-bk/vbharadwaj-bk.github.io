@@ -345,6 +345,8 @@ main > .block:first-child { border-top: none; }
 
 .entries { display: grid; gap: 26px; }
 
+.entry { min-width: 0; }
+
 .entry h3 {
   font-weight: 600;
   font-size: 17px;
@@ -408,6 +410,8 @@ a.tag:hover, summary.tag:hover { color: var(--color-accent); border-color: var(-
 
 .extras .panel {
   flex-basis: 100%;
+  min-width: 0;
+  max-width: 100%;
   order: 1;
   font-size: 14px;
   letter-spacing: 0;
@@ -642,6 +646,11 @@ pre {
 }
 
 .extras .highlight { margin: 0; font-size: 13px; }
+
+.extras .highlight pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
 
 .prose table {
   border-collapse: collapse;
