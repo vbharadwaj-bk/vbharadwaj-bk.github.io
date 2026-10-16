@@ -88,7 +88,7 @@ class BooktabsPreprocessor(Preprocessor):
         rows = parse_rows(body)
         width = max((len(row.cells) for row in rows), default=0)
         body_html = "".join(self.render_row(row, width) for row in rows)
-        return f'<table class="booktabs"><tbody>{body_html}</tbody></table>'
+        return f'<div class="table-scroll"><table class="booktabs"><tbody>{body_html}</tbody></table></div>'
 
     def run(self, lines):
         text = "\n".join(lines)

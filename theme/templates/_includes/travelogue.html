@@ -15,10 +15,10 @@
 {%- endmacro %}
 
 {% macro trip_table(trips) -%}
-<table class="booktabs"><tbody>
+<div class="table-scroll"><table class="booktabs"><tbody>
 <tr><td>Dates</td><td>Event</td><td>Location</td></tr>
 {%- for trip in trips %}
 <tr{% if loop.first %} class="midrule"{% endif %}><td>{{ trip.dates | e }}</td><td>{{ trip.event | e }}</td><td>{{ trip.location | e }}</td></tr>
 {%- endfor %}
-</tbody></table>
+</tbody></table></div>
 {%- endmacro %}

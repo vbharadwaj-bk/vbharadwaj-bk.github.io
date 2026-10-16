@@ -651,6 +651,13 @@ pre {
   border-bottom: 2px solid var(--color-table-rule);
 }
 
+.table-scroll {
+  overflow-x: auto;
+  margin: 0 0 18px;
+}
+
+.table-scroll > table { margin: 0; }
+
 .prose th,
 .prose td {
   text-align: left;
