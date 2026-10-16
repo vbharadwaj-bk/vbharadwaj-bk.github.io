@@ -54,7 +54,7 @@ def parse_bibliography(filename, output_key, SITE):
         for author in d.persons['author']:
             entry_author = {}
             entry_author["first"] = ' '.join(author.first_names + author.middle_names)
-            entry_author["last"] = ' '.join(author.last_names)
+            entry_author["last"] = ' '.join(author.prelast_names + author.last_names)
             entry["author_array"].append(entry_author)
 
             if entry_author["first"].replace("*", "") == SITE["first_name"] and \
@@ -98,6 +98,7 @@ def parse_bibliography(filename, output_key, SITE):
             author.first_names = [name.replace("*", "") for name in author.first_names]
             author.middle_names = [name.replace("*", "") for name in author.middle_names]
             author.last_names = [name.replace("*", "") for name in author.last_names]
+            author.prelast_names = [name.replace("*", "") for name in author.prelast_names]
 
         md = Markdown(extensions=['extra', 'codehilite'])
         md_code = "``` bibtex\n" + d.to_string("bibtex") + "\n```"

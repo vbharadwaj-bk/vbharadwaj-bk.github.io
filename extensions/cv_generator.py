@@ -43,9 +43,10 @@ def _build_typst_publications(
 ) -> Dict[str, Any]:
     conference_papers: List[Dict[str, Any]] = []
     journal_papers: List[Dict[str, Any]] = []
+    preprints: List[Dict[str, Any]] = []
 
     for publication in publications or []:
-        if publication.get("type") not in {"inproceedings", "article"}:
+        if publication.get("type") not in {"inproceedings", "article", "misc"}:
             continue
 
         authors: List[str] = []
@@ -60,7 +61,7 @@ def _build_typst_publications(
             "authors": authors,
             "equal_contribution_authors": equal_contribution_authors,
             "title": publication.get("title"),
-            "venue": publication.get("booktitle") or publication.get("journal"),
+            "venue": publication.get("booktitle") or publication.get("journal") or _preprint_venue(publication),
             "date": _format_badge_year(
                 f"{publication.get('month', '')} {publication.get('year', '')}".strip(),
                 max_length=100,
@@ -69,14 +70,22 @@ def _build_typst_publications(
 
         if publication.get("type") == "inproceedings":
             conference_papers.append(entry)
-        else:
+        elif publication.get("type") == "article":
             journal_papers.append(entry)
+        else:
+            preprints.append(entry)
 
     return {
         "equal_contribution_note": "* denotes equal contribution.",
         "conference_papers": conference_papers,
         "journal_papers": journal_papers,
+        "preprints": preprints,
     }
+
+
+def _preprint_venue(publication: Dict[str, Any]) -> str:
+    eprint = publication.get("eprint")
+    return f"arXiv:{eprint}" if eprint else "Preprint"
 
 
 def _format_badge_year(value: Optional[object], max_length: int = 20) -> Optional[str]:

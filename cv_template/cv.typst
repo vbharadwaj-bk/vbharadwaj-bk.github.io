@@ -83,6 +83,15 @@
 - {{ format_authors(paper.authors, paper.equal_contribution_authors | default([]), cv.short_name) }}. {{ paper.title }}. _{{ paper.venue }}_, {{ paper.date }}.
 {% endfor %}
 
+{% if cv.publications.preprints %}
+#v(0.25em)
+*Preprints*
+#v(-0.2em)
+{% for paper in cv.publications.preprints -%}
+- {{ format_authors(paper.authors, paper.equal_contribution_authors | default([]), cv.short_name) }}. {{ paper.title }}. _{{ paper.venue }}_, {{ paper.date }}.
+{% endfor %}
+{% endif %}
+
 #text(size: 8pt)[{{ cv.publications.equal_contribution_note | replace("*", "\\*") }}]
 
 
