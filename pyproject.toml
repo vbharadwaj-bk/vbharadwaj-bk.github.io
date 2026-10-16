@@ -2,7 +2,9 @@
 name = "academic-website"
 version = "0"
 requires-python = ">=3.12"
-dependencies = [
+
+[dependency-groups]
+site = [
     "invoke==3.0.3",
     "livereload==2.7.1",
     "markdown==3.11.1",
@@ -13,9 +15,8 @@ dependencies = [
     "pygments==2.19.2",
     "typst==0.15.0",
 ]
-
-[dependency-groups]
 dev = ["pre-commit==4.7.0"]
 
 [tool.uv]
 package = false
+default-groups = ["site", "dev"]
