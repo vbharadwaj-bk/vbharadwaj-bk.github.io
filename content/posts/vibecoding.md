@@ -18,9 +18,11 @@ the design and getting an LLM to write most of the code.
 
 
 
-| Project | Description |   
-|---------|---------------|
-| [Wedding Site](https://aditiandvivek.com) | Why pay Zola when you can do it yourself? |
-| Family music digitization | A Python script that connects to Spotify's web API. Fuzzy-searches a yaml of songs / artists against Spotify's catalogue and creates a new playlist with the results.| 
-| Rasberry Pi Home Setup | Smart home automation. |
-| Personal Website Redesign | Maintenance and fixing all the bugs. |
+!TABLE!
+Project                                   | Description
+---
+[Wedding Site](https://aditiandvivek.com) | Why pay Zola when you can do it yourself?
+Family music digitization                 | A Python script that connects to Spotify's web API. Fuzzy-searches a yaml of songs / artists against Spotify's catalogue and creates a new playlist with the results.
+Rasberry Pi Home Setup                    | Smart home automation.
+Personal Website Redesign                 | Maintenance and fixing all the bugs.
+!TABLE!

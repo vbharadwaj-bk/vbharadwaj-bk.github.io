@@ -299,12 +299,14 @@ the tensor product. Binding codes for either framework retrieve the cached kerne
 them to the hardware. We considered a variety of other package designs, but as this table shows, each
 has a specific drawback.
 
-| Approach            | Cross-GPU? | Cross-ML-Framework? | `torch.compile()`? | Notes                                                                            |
-|---------------------|------------|---------------------|--------------------|----------------------------------------------------------------------------------|
-| Precompiled Kernels | ✅          | ✅                   | ✅                  | Too much case handling / branching within a kernel compared to JIT.              |
-| CUDA Python         | ⛔️          | ✅                   | ⛔️                  | Offers streamlined JIT compiler and CUDA API access, not much else.              |
-| Triton              | 🤔          | ⛔️                   | ✅                  | Easy to program, but sacrifices too much SRAM control.                           |
-| OpenEquivariance    | ✅          | ✅                   | ✅                  | Requires high upfront development cost for JIT compiler / ML framework bindings. |
+!TABLE!
+Approach            | Cross-GPU? | Cross-ML-Framework? | `torch.compile()`? | Notes
+---
+Precompiled Kernels | ✅          | ✅                   | ✅                  | Too much case handling / branching within a kernel compared to JIT.
+CUDA Python         | ⛔️         | ✅                   | ⛔️                 | Offers streamlined JIT compiler and CUDA API access, not much else.
+Triton              | 🤔          | ⛔️                  | ✅                  | Easy to program, but sacrifices too much SRAM control.
+OpenEquivariance    | ✅          | ✅                   | ✅                  | Requires high upfront development cost for JIT compiler / ML framework bindings.
+!TABLE!
 
 Users of chemical foundation models need to call their model from C++, e.g. when integrating with LAMMPS; this rules
 out CUDA Python. Triton has relatively poor performance for this kernel, ceding too much control to the automatic shared

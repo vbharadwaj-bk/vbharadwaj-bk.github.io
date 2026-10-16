@@ -14,14 +14,15 @@ I want to thank everybody who attended my dissertation talk. I was
 so thrilled to share my work, and I hope anyone who attended found it
 interesting. Find the details below!
 
-| Dissertation Talk | Accelerating Multilinear Maps and Structured Sparse Tensor Kernels               |
-|-----------------------------|----------------------------------------------------------------------------------|
-| Date                        | July 21, 2025                                                                    |
-| Time                        | 10:00 AM PDT                                                                     |
-| Location                    | 310 Jacobs Hall, UC Berkeley |
-| Calendar Invite + Zoom Link | [Click here](https://events.berkeley.edu/events/event/300838-dissertation-talk-accelerating-multilinear-maps#), scroll to "Download to my calendar" |
-| Slides                      | [PDF]({static}/pdf/2025/bharadwaj_dissertation_slides.pdf)                          |
-| Published Thesis | [PDF](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2025/EECS-2025-146.pdf)                          |
+!TABLE!
+Title                       | Accelerating Multilinear Maps and Structured Sparse Tensor Kernels
+Date                        | July 21, 2025
+Time                        | 10:00 AM PDT
+Location                    | 310 Jacobs Hall, UC Berkeley
+Calendar Invite + Zoom Link | [Click here](https://events.berkeley.edu/events/event/300838-dissertation-talk-accelerating-multilinear-maps#), scroll to "Download to my calendar"
+Slides                      | [PDF]({static}/pdf/2025/bharadwaj_dissertation_slides.pdf)
+Published Thesis            | [PDF](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2025/EECS-2025-146.pdf)
+!TABLE!
 
 </br>
 
@@ -195,16 +196,18 @@ Some numbers (like thesis page count, research diary length, or
 Github contributions) are pointless and clearly influenced 
 by noise. Others, I'm very proud of. 
 
-| Statistic | Quantity |
-| -------- | --------------- |
-| Piazza forum contributions as a CS267 teaching assistant | 831 |
-| Powerpoint slides in research diary | 630+ |
-| Total dissertation page count (incl. frontmatter + references) | 183 |
-| BeBOP + PASSION group presentations | 35 |
-| Domestic + international conference trips | 15 |
-| Semesters at Berkeley, including summers | 14 |
-| Non-research classes taken | 8 |
-| Published papers | 5 |
-| Summer internships | 2 |
-| PhDs earned | 1 |
+!TABLE!
+Statistic                                                      | Quantity
+---
+Piazza forum contributions as a CS267 teaching assistant       | 831
+Powerpoint slides in research diary                            | 630+
+Total dissertation page count (incl. frontmatter + references) | 183
+BeBOP + PASSION group presentations                            | 35
+Domestic + international conference trips                      | 15
+Semesters at Berkeley, including summers                       | 14
+Non-research classes taken                                     | 8
+Published papers                                               | 5
+Summer internships                                             | 2
+PhDs earned                                                    | 1
+!TABLE!
 </br>

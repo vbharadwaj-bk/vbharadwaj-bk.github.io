@@ -7,6 +7,7 @@ import yaml
 sys.path.append(".")
 
 from extensions import cv_generator, site_data
+from extensions.booktabs import BooktabsExtension
 from extensions.cache_buster import bust_file_cache
 from extensions.filters import display_title
 from extensions.parse_bib import parse_bibliography
@@ -91,7 +92,10 @@ def jinja_filters(relative_url, absolute_url):
 
 def markdown_settings(filters):
     return {
-        "extensions": ["codehilite", "extra", "meta", "admonition", "toc", TemplateBlockExtension(filters=filters)],
+        "extensions": [
+            "codehilite", "extra", "meta", "admonition", "toc",
+            TemplateBlockExtension(filters=filters), BooktabsExtension(),
+        ],
         "extension_configs": {"codehilite": {"css_class": "highlight"}},
         "output_format": "html5",
     }

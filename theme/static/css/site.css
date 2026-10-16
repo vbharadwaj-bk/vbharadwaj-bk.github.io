@@ -647,29 +647,28 @@ pre {
   border-collapse: collapse;
   width: 100%;
   font-size: 15px;
+  border-top: 0.08em solid var(--color-table-rule);
+  border-bottom: 0.08em solid var(--color-table-rule);
 }
-
-.prose thead:not(:has(th:not(:empty))) { display: none; }
-
-.post-required-reading .prose table { table-layout: fixed; }
-.post-required-reading .prose th:first-child:not(:last-child) { width: 68%; }
 
 .prose th,
 .prose td {
   text-align: left;
-  padding: 8px 12px 8px 0;
-  border-bottom: 1px solid var(--color-line-soft);
+  font-weight: inherit;
+  padding: 6px 16px 6px 0;
   vertical-align: top;
 }
 
-.prose th {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  border-bottom-color: var(--color-line);
-}
+.prose th:last-child,
+.prose td:last-child { padding-right: 0; }
+
+.prose thead:not(:has(th:not(:empty))) { display: none; }
+.prose thead th { border-bottom: 0.05em solid var(--color-table-rule); }
+.prose tr.midrule > td { border-top: 0.05em solid var(--color-table-rule); }
+.prose td.cmidrule { border-top: 0.03em solid var(--color-table-rule); }
+
+.post-required-reading .prose table { table-layout: fixed; }
+.post-required-reading .prose tr > :first-child:not(:last-child) { width: 68%; }
 
 .admonition {
   margin: 0 0 18px;
@@ -727,7 +726,7 @@ pre {
 }
 
 .prose .card-title { font-size: 14px; font-weight: 600; margin: 0 0 8px; color: var(--color-accent); }
-.prose .card table { display: table; margin: 0; }
+.prose .card table { margin: 0; border: none; }
 .prose .card td { border-bottom: 1px solid var(--color-line-soft); padding: 6px 0; }
 .prose .card tr:last-child td { border-bottom: none; }
 .prose .card td div { color: var(--color-text-muted); }

@@ -90,6 +90,24 @@ card_class: "card border-0 bg-white p-1 mb-3"
 !FIGURECARD!
 ```
 
+### `!TABLE!` — booktabs-style tables
+
+Fence rows between `!TABLE!` markers. Write one row on each line and separate
+the cells with `|`. A `---` line adds a midrule, and `--- 2-3` adds a cmidrule
+under columns 2 to 3. The top and bottom rules are automatic. Cells accept
+inline Markdown and `$...$` math. Use `\|` for a literal pipe outside math.
+
+```
+!TABLE!
+**Statistic** | **Quantity**
+---
+Published papers | 5
+Norm $\|x\|_2$ | [PDF]({static}/pdf/thesis.pdf)
+!TABLE!
+```
+
+The parser is in `extensions/booktabs.py`.
+
 ### Math
 
 LaTeX math is rewritten for MathJax: inline `$ ... $` becomes `\( ... \)` and
