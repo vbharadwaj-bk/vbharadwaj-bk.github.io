@@ -5,45 +5,94 @@ Category: personal
 Summary: Places I've visited in graduate school. 
 thumbnail_icon: '<i class="fa-solid fa-plane fa-5x"></i>'
 disclaimer: false
+template_includes:
+  - travelogue.html
+trips:
+  - dates: 2025 July
+    event: SIAM ACDA 2025
+    location: Montréal, Canada
+    coords: [45.5032, -73.5698]
+  - dates: 2025 July
+    event: CSGF Program Review
+    location: Washington D.C.
+    coords: [38.8951, -77.0364]
+  - dates: 2025 March
+    event: SIAM CSE 2025
+    location: Fort Worth, TX
+    coords: [32.7532, -97.3327]
+  - dates: 2024 Dec.
+    event: NeurIPS 2024
+    location: Vancouver, Canada
+    coords: [49.2609, -123.114]
+  - dates: 2024 July
+    event: CSGF Program Review
+    location: Washington D.C.
+    coords: [38.8951, -77.0364]
+  - dates: 2024 June
+    event: SPAA 2024
+    location: Nantes, France
+    coords: [47.2186, -1.5541]
+  - dates: 2024 May
+    event: SIAM Applied Linear Algebra
+    location: Paris, France
+    coords: [48.8535, 2.3484]
+  - dates: 2024 Mar.
+    event: SIAM Parallel Processing
+    location: Baltimore, MD
+    coords: [39.2909, -76.6108]
+  - dates: 2024 Jan.
+    event: SLICE Lab Winter Retreat
+    location: Santa Cruz, CA
+    coords: [36.9744, -122.0295]
+  - dates: 2023 Dec.
+    event: NeurIPS 2023
+    location: New Orleans, LA
+    coords: [29.9575, -90.0629]
+  - dates: 2023 Nov.
+    event: Supercomputing 2023
+    location: Denver, CO
+    coords: [39.7392, -104.9849]
+  - dates: 2023 Oct.
+    event: Sparsitute Annual Meeting & Sparse Tensor Workshop
+    location: Chicago, IL
+    coords: [41.8756, -87.6244]
+  - dates: 2023 July
+    event: Simons SLMATH 1064
+    location: Almaden, CA
+    coords: [37.2113, -121.8083]
+  - dates: 2023 Feb.-Mar.
+    event: SIAM CSE 2023
+    location: Amsterdam, The Netherlands
+    coords: [52.3731, 4.8925]
+  - dates: 2022 Nov.
+    event: Supercomputing 2022
+    location: Dallas, TX
+    coords: [32.7763, -96.7969]
+  - dates: 2022 July
+    event: CSGF Program Review
+    location: Washington D.C.
+    coords: [38.8951, -77.0364]
+  - dates: 2022 June
+    event: IPDPS 2022
+    location: Virtual
+  - dates: 2022 May-Aug.
+    event: CSGF Practicum Internship, NREL
+    location: Golden, CO
+    coords: [39.7546, -105.2206]
+  - dates: 2021 Nov.
+    event: Supercomputing 2021
+    location: St. Louis, MO
+    coords: [38.6254, -90.19]
+  - dates: 2020 Nov.
+    event: Supercomputing 2020
+    location: Virtual
 ---
 I've had the good fortune to travel a lot during my PhD, with more trips to follow. 
 Here's a list of events I've attended (or will attend shortly) and places I've visited 
 outside Berkeley. Events marked with a (*) indicate conferences or gatherings 
 where I presented something.
 
-<div style="width: 100%; overflow: hidden; height: 400px; margin-bottom: 1rem">
-  <iframe 
-     src="https://www.google.com/maps/d/u/1/embed?mid=1Y6KOiGxTrFNNeL1DOkCSUfuSPrwCtBA&ehbc=2E312F&noprof=1" 
-     width="100%"
-     height="800"
-     frameborder="0"
-     style="border:0; margin-top: -200px;"
-     >
-  </iframe>
-</div>
+{{ trip_map(page.trips) }}
 
 
-!TABLE!
-Dates          | Event                                               | Location
----
-2025 July      | *SIAM ACDA 2025                                     | Montréal, Canada
-2025 July      | *CSGF Program Review                                | Washington D.C.
-2025 March     | *SIAM CSE 2025                                      | Fort Worth, TX
-2024 Dec.      | *NeurIPS 2024                                       | Vancouver, Canada
-2024 July      | *CSGF Program Review                                | Washington D.C.
-2024 June      | *SPAA 2024                                          | Nantes, France
-2024 May       | *SIAM Applied Linear Algebra                        | Paris, France
-2024 Mar.      | *SIAM Parallel Processing                           | Baltimore, MD
-2024 Jan.      | *SLICE Lab Winter Retreat                           | Santa Cruz, CA
-2023 Dec.      | *NeurIPS 2023                                       | New Orleans, LA
-2023 Nov.      | Supercomputing 2023                                 | Denver, CO
-2023 Oct.      | *Sparsitute Annual Meeting & Sparse Tensor Workshop | Chicago, IL
-2023 July      | *Simons SLMATH 1064                                 | Almaden, CA
-2023 Feb.-Mar. | *SIAM CSE 2023                                      | Amsterdam, The Netherlands
-2022 Nov.      | Supercomputing 2022                                 | Dallas, TX
-2022 July      | *CSGF Program Review                                | Washington D.C.
-2022 June      | *IPDPS 2022                                         | Virtual
-2022 May-Aug.  | CSGF Practicum Internship, NREL                     | Golden, CO
-2021 Nov.      | Supercomputing 2021                                 | St. Louis, MO
-2020 Nov.      | Supercomputing 2020                                 | Virtual
-!TABLE!
+{{ trip_table(page.trips) }}

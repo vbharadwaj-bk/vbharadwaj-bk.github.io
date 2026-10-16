@@ -1,0 +1,24 @@
+{% set maplibre = {
+  'version': '5.24.0',
+  'script': 'sha384-5+cfbwT0iiub6VsQAdn6yz16nr6sDiQoHx6tm4O8OVYXHYOxcffFmCJBL0dgdvGp',
+  'style': 'sha384-uTttxo/aOKbdE5RlD/SPzSDoDmNvGlUYPjONi2MN/b7c9HPSvW07OIuyP7uL6jxK',
+} %}
+
+{% macro trip_map(trips, style='dark', height=420) -%}
+{%- set base = 'https://cdn.jsdelivr.net/npm/maplibre-gl@' ~ maplibre.version ~ '/dist/' -%}
+<div class="trip-map-block">
+<link rel="stylesheet" href="{{ base }}maplibre-gl.css" integrity="{{ maplibre.style }}" crossorigin="anonymous">
+<div class="trip-map" style="height: {{ height }}px" data-style="https://tiles.openfreemap.org/styles/{{ style }}" data-trips='{{ trips | tojson }}'></div>
+<script defer src="{{ base }}maplibre-gl.js" integrity="{{ maplibre.script }}" crossorigin="anonymous"></script>
+<script defer src="{{ 'theme/js/trip-map.js' | relative_url }}"></script>
+</div>
+{%- endmacro %}
+
+{% macro trip_table(trips) -%}
+<table class="booktabs"><tbody>
+<tr><td>Dates</td><td>Event</td><td>Location</td></tr>
+{%- for trip in trips %}
+<tr{% if loop.first %} class="midrule"{% endif %}><td>{{ trip.dates | e }}</td><td>{{ trip.event | e }}</td><td>{{ trip.location | e }}</td></tr>
+{%- endfor %}
+</tbody></table>
+{%- endmacro %}

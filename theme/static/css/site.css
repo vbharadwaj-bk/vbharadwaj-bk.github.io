@@ -708,6 +708,29 @@ pre {
   text-align: center;
 }
 
+.trip-map {
+  width: 100%;
+  margin: 8px 0 26px;
+  border: 1px solid var(--color-line);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.prose .trip-map a { color: inherit; }
+
+.maplibregl-popup-content {
+  background: var(--color-background);
+  color: var(--color-text);
+  font: 13px/1.5 var(--font);
+  padding: 10px 12px;
+  border: 1px solid var(--color-line);
+  border-radius: 4px;
+}
+
+.prose .maplibregl-popup-content ul { margin: 4px 0 0; padding-left: 16px; }
+.prose .maplibregl-popup-content li + li { margin-top: 2px; }
+.maplibregl-popup-tip { display: none; }
+
 .medium-zoom-overlay { background: var(--color-zoom-overlay) !important; }
 .medium-zoom-image--opened.zoom-backdrop { background: var(--color-background); }
 

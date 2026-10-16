@@ -16,6 +16,9 @@
   --color-line-soft: rgba(242, 236, 233, 0.08);
   --color-table-rule: rgba(242, 236, 233, 0.6);
 
+  --color-map-land: #3d4649;
+  --color-map-water: #1f2527;
+
   --global-text-color: var(--color-text);
   --global-theme-color: var(--color-accent);
   --chart-grid-color: var(--color-line);

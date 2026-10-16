@@ -127,10 +127,9 @@ class TOCMarkdownReader(MarkdownReader):
             )
             content, metadata = super().read(source_path)
         else:
-            content, metadata = (
-                self._md.reset().convert(m.group("content")),
-                self._load_yaml_metadata(m.group("metadata"), source_path),
-            )
+            metadata = self._load_yaml_metadata(m.group("metadata"), source_path)
+            self._md.preprocessors["template_block"].page = metadata
+            content = self._md.reset().convert(m.group("content"))
 
             if "toc" in metadata:
                 metadata["parsed_toc"] = self._md.toc_tokens

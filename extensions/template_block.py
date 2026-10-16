@@ -4,6 +4,7 @@ import re
 
 import yaml
 from jinja2 import Environment, FileSystemLoader
+from jinja2.runtime import Macro
 from markdown import Extension
 from markdown.preprocessors import Preprocessor
 
@@ -50,6 +51,7 @@ class TemplateBlockPreprocessor(Preprocessor):
         self.env.filters.update(config.get("filters") or {})
         register_md_globals(self.env)
         self.figure_card = self.env.from_string(FIGURE_CARD)
+        self.page = {}
 
     def render_figure_card(self, params):
         if "path" not in params:
@@ -65,10 +67,16 @@ class TemplateBlockPreprocessor(Preprocessor):
             width=round(100 * col / 12, 2),
         )
 
+    def included_macros(self):
+        macros = {}
+        for name in self.page.get("template_includes") or []:
+            module = self.env.get_template(name).module
+            macros.update({key: value for key, value in vars(module).items() if isinstance(value, Macro)})
+        return macros
+
     def render_template(self, source):
-        if "figure(" in source:
-            source = FIGURE_IMPORT + source
-        return self.env.from_string(source).render().strip()
+        imports = FIGURE_IMPORT if "figure(" in source else ""
+        return self.env.from_string(imports + source).render(page=self.page, **self.included_macros()).strip()
 
     def replace_blocks(self, text, pattern, render, label):
         while match := pattern.search(text):
