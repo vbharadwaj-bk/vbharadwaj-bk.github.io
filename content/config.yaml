@@ -32,7 +32,7 @@ blog_enabled: true
 blog_name: May Contain Peanuts
 blog_splash: images/berkeley_splash_light.png
 disclaimer_text: >
-  No text in this post was generated using an LLM. The opinions
+  No prose in this post was generated using an LLM. The opinions
   expressed here do not reflect those of my employer or affiliates.
 
 announcements:
