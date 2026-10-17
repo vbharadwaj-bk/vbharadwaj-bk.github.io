@@ -10,7 +10,7 @@ Summary: >
 
 
 ## October 16, 2027
-There is upheaval in the mathematics right now due to a 
+There is upheaval in mathematics right now due to a 
 [mechanized onslaught of proofs](https://github.com/openai/math) brought by OpenAI. I cannot
 claim to be the deepest stakeholder in the mathematical community, but I majored in it as
 an undergraduate and proved some results about randomized linear algebra over the course of
@@ -32,7 +32,7 @@ mathematical battle lines have been drawn, and I'd fight on his side.
 
 But here, I'm going to focus on junior computer scientists, engineers, and graduate students;
 this is a "view from the trenches". I also don't want to add to the noise on social networks like
-LinkedIn, which is filled with an army of grifters who, like mosquitos, suck away
+LinkedIn, which is filled with an army of grifters who, like mosquitoes, suck away
 my attention with every narcotizing piece of Claudeslop they mindlessly profligate. That's why I'm
 keeping my opinions on this quiet webpage. 
 
