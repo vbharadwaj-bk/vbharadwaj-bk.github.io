@@ -283,8 +283,6 @@ main > .block:first-child { border-top: none; }
 
 .bio .fa-envelope { width: 1.1em; margin-right: 6px; text-align: center; }
 
-.bio strong { font-weight: inherit; }
-
 .bio code {
   font: inherit;
   background: none;
@@ -672,11 +670,14 @@ pre {
   text-align: left;
   font-weight: inherit;
   padding: 6px 16px 6px 0;
-  vertical-align: top;
+  vertical-align: middle;
 }
 
+.prose th:first-child,
+.prose td:first-child { padding-left: 8px; }
+
 .prose th:last-child,
-.prose td:last-child { padding-right: 0; }
+.prose td:last-child { padding-right: 8px; }
 
 .prose thead:not(:has(th:not(:empty))) { display: none; }
 .prose thead th { border-bottom: 1px solid var(--color-table-rule); }
