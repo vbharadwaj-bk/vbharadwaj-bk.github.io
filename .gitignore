@@ -6,3 +6,4 @@ staging/*
 .DS_Store
 original_images/
 uv.lock
+*/.obsidian/*

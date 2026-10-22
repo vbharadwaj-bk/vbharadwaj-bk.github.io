@@ -1,12 +1,31 @@
 ---
 Title: A Microblog of Recent Events 
-Date: 2026-10-16 
+Date: 2026-10-21 
 Category: personal 
 thumbnail_icon: '<i class="fa-solid fa-book fa-5x"></i>'
 Summary: >
   Journaling some observations. 
   
 ---
+
+## October 21, 2027
+I read my new lease agreement, then fed it to Claude to flag any issues. It highlighted a
+page that I wasn't aware of at first and is very good at querying information. For example:
+without digging through dozens of pages, I could just ask it what internet providers the
+leasing company offers. 
+
+Claude always seems to find an "red flag" or nitpick, though. This time, it fixated on the
+year of the last lead report (2006), which I found to be a minor issue. LLMs do this for
+code reviews too, which is why I find it pretty much useless for that purpose. Every
+"possibly None" variable becomes a P1 fire. The same issue shows up in Claude-generated test
+suites: many of the tests cover tautologies or corner cases that could never arise in practice.
+Worse yet, bloated test increase iteration time when developing and lull you into a false sense
+of security. 
+
+I've concluded that a code review doesn't *have* to catch every single issue for prototype code.
+For production systems, a consistent style guide or library of best-practice idioms could be 
+automatically enforced by an LLM. A code review should cover high-level logical changes, while
+tests should exercise nontrivial parts of the code. 
 
 
 ## October 16, 2027
