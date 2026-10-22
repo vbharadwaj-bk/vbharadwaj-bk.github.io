@@ -8,7 +8,7 @@ Summary: >
   
 ---
 
-## October 21, 2027
+## October 21, 2026
 I read my new lease agreement, then fed it to Claude to flag any issues. It highlighted a
 page that I wasn't aware of at first and is very good at querying information. For example:
 without digging through dozens of pages, I could just ask it what internet providers the
@@ -28,7 +28,7 @@ automatically enforced by an LLM. A code review should cover high-level logical 
 tests should exercise nontrivial parts of the code. 
 
 
-## October 16, 2027
+## October 16, 2026
 There is upheaval in mathematics right now due to a 
 [mechanized onslaught of proofs](https://github.com/openai/math) brought by OpenAI. I cannot
 claim to be the deepest stakeholder in the mathematical community, but I majored in it as
